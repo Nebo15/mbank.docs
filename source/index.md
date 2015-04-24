@@ -16,7 +16,14 @@ includes:
   - payments-inout
   - cards
   - admin
-
+  - bw_general
+  - bw_wallets
+  - bw_services
+  - bw_payments
+  - bw_cards
+  - bw_limits
+  - bw_invoices
+  - bw_templates
 search: true
 ---
 
