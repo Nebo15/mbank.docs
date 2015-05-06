@@ -24,15 +24,15 @@ includes:
   - bw_limits
   - bw_invoices
   - bw_templates
+  - bw_admin_categories
+  - bw_admin_payments
+  - bw_admin_registries
+  - bw_admin_replenishment
+  - bw_admin_service_parameters
+  - bw_admin_services
+  - bw_admin_settings
+  - bw_admin_templates
+  - bw_admin_types
+  - bw_admin_wallets
 search: true
 ---
-
-
-
-
-
-
-
-
-
-

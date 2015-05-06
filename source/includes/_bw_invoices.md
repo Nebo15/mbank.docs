@@ -37,7 +37,7 @@ $ curl -u +12345675578:password -H 'Content-type:application/json' -d '{"payer":
 * `invalid_payer` - нельзя выставлять счет самому себе
 * `missing_amount` - не указана сумма
 
-## Список инвойсов выставленных пользователю {#invoices_list}
+## Список инвойсов выставленных пользователю
 
 ```shell
 $ curl -u +12345675578:password http://sandbox.wallet.best/v1/invoices

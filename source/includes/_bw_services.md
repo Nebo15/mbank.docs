@@ -101,7 +101,7 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services
             "limit": "",
             "verification_required": false
         }
-    }
+    ]
 }
 ```
 
@@ -149,7 +149,7 @@ $ curl -u +79261111111:p@ssw0rD http://sandbox.wallet.best/v1/groups
             "icon_url_32x32": "",
             "amount": 4
         }
-    }
+    ]
 }
 ```
 
@@ -158,7 +158,7 @@ $ curl -u +79261111111:p@ssw0rD http://sandbox.wallet.best/v1/groups
 В ответе в meta присутствует параметр request_time со значением UNIX timestamp.
 Если делать запрос с параметром If-Modified-Since в котором будет указан timestamp предыдущего запроса, то ответ может быть с HTTP кодом 304.
 
-В метаданных есть поле `suggestion_rules` c массивом **код оператора** : **ID сервиса**
+В метаданных есть поле `suggestion_rules` c массивом **код оператора в международном формате** : **ID сервиса**
 ```shell
 $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/groups
 ```
@@ -168,14 +168,14 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/groups
     "meta": {
         "request_time": 1407182553,
         "suggestion_rules": {
-            "920": 1,
-            "939": 1,
-            "900": 3,
-            "968": 3,
-            "910": 2,
-            "911": 2,
-            "901": 5,
-            "953": 5
+            "+7920": 1,
+            "+7939": 1,
+            "+7900": 3,
+            "+7968": 3,
+            "+7910": 2,
+            "+7911": 2,
+            "+7901": 5,
+            "+7953": 5
         },
         "code": 200
     },

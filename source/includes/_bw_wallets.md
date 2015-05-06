@@ -63,7 +63,7 @@ $ curl -H 'Content-type:application/json'
 * `code` - код активации кошелька из СМС сообщения
 
 ```shell
-$ curl -H 'Content-type:application/json'
+$ curl -H 'Content-type:application/json'  
  -d '{"phone": "+79261111111", "code": "242321"}'
  http://sandbox.wallet.best/v1/wallet/activate
 ```

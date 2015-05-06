@@ -66,7 +66,7 @@
 
 ![проведение платежа](http://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUg0JTQstGD0YXRhNCw0LfQvdGL0Lkg0L_Qu9Cw0YLQtdC2AAoJ0YDQvtGC0L7QutC-0LsgbXNlcnZlcgoKbm90ZSBvdmVyIGNsaWVudCwAEwg6INCf0L7QtNCzADIHstC4AE8Fu9GM0LDRjyAAbQewCgoANAYtPgAxCVBPU1QgL3BheW1lbnRzIHtwYXJhbXN9AGcGcmlnaHQgb2YAYAkKAIEGCCDRgdC-0LfQtNCw0LXRggCBPA0sCiDRgNCw0YHRgdGH0LjRgtGL0LIAIAi60L7QvNC40YHRgdC40Y4KINC90LjQutGC0L4AAwiD0LTQsCDQtdGJ0LUg0L3QtQCCHQq40YIKZW5kIG5vdGUKCgCCEwctPgCCCgY6IHtpZDogMTIzLCBhbW91bnQ6IDEwMCwgdG90YWw6IDExMCwgbmV4dF9hY3Rpb246IHBheX0AglEHbGVmAIFlBQBEBwog0LrQu9C40LXQvQCBWQa-0LrQsNC3AIFADL_QvgCCXgW3AIJuBQCDQQa70Y4gCgAUB9C90YPRjiDRgQCDSQW40LzQvtGB0YLRjACDag6wIDExMCDRgAoAOheMAIJnBrMAhCYFgdC10L0AggQN0YwAgggLAIQGHgCEYQsAg2ouLzEyMy9wYXkAg3YhAFQFh9C40L0AhBAJ0YAAhQ0FvtC0AIEoBgCFaA0AgloO0YMAhXkGtdC00LvQsNCzAIRYBtGB0Y8g0L4AhhUFsNGI0LgAgmgG0YwKAIUCBQCCWgbRjwCERQUAhCILAIJXBQCEJQoAhBwSAIN_DWdldH0Ahg0TR0UAgXgPAIRjE3N0YXR1czogY29tcGxldGVkAIY4BwCEMSO70YPRhwCGPQcAgSshIAoAWQogKNC40YEAhGAI0LXQvSkKIFlheSEAhhcJ&s=modern-blue)
 
-## Платеж в пользу сервиса
+### Платеж в пользу сервиса
 
 Параметры:
 
@@ -218,7 +218,7 @@ $ curl -u+79261111111:password -H 'Content-type:application/json'
 * `service_not_found` - запрошенный сервис не найдет
 * `missing_parameters` - не передан обязательный параметр parameters
 
-## Перевод между кошельками
+### Перевод между кошельками
 
 Параметры:
 
@@ -269,7 +269,7 @@ $ curl -u+79261111111:password -H 'Content-type:application/json'
 * `insufficient_funds` - недостаточно средств для выполнения p2p перевода
 
 
-## Пополнение кошелька
+### Пополнение кошелька
 
 Пополнение кошелька пользователя через запросы к API возможно с использованием пластиковых карт. Существуют 3 сценария пополнения кошелька с карты:
 
@@ -553,7 +553,7 @@ $ curl -u+79261111111:password -H 'Content-type:application/json' -X POST http:/
 * `card` - идентификатор сохраненной карты с которой будут списаны деньги (опциональный)
 * `store_card` - **true | false** - сохранить карту, чтобы использовать ее для платежей в дальнейшем (опциональный)
 
-## Однократное списание с карты
+### Однократное списание с карты
 
 Создаем платеж:
 
@@ -605,7 +605,7 @@ http://sandbox.wallet.best/v1/payments
                 "default_value": null,
                 "suggested_values": [],
                 "items": null,
-                "localizedFields": [
+                "localized_fields": [
                     "title",
                     "pattern_desc"
                 ],
@@ -686,7 +686,7 @@ curl -u+79261111111:password -H 'Content-type:application/json' -X POST http://a
 
 Далее следует перенаправить пользователя на платежную страницу по ссылке из поля `card.payment_page_url`
 
-## С сохранением данных карты
+### С сохранением данных карты
 
 Сценарий ничем не отличается от предыдущего, кроме передачи флага `store_card` = **true** при создании платежа.
 Идентификатор карты, возвращенный в `data.card.id` можно впоследствии использовать для пополнения счета кошелька или выполнения транзитных платежей с сохраненной карты.
@@ -740,7 +740,7 @@ http://sandbox.wallet.best/v1/payments
                 "default_value": null,
                 "suggested_values": [],
                 "items": null,
-                "localizedFields": [
+                "localized_fields": [
                     "title",
                     "pattern_desc"
                 ],
@@ -820,7 +820,7 @@ curl -u+79261111111:password -H 'Content-type:application/json' -X POST http://a
 }
 ```
 
-## C сохраненной карты
+### C сохраненной карты
 
 Транзитный платеж с сохраненной карты отличается от платежа с однократным списанием только указанием идентификатора карты в поле `card` при создании платежа.
 
@@ -873,7 +873,7 @@ http://sandbox.wallet.best/v1/payments
                 "default_value": null,
                 "suggested_values": [],
                 "items": null,
-                "localizedFields": [
+                "localized_fields": [
                     "title",
                     "pattern_desc"
                 ],
@@ -903,7 +903,7 @@ http://sandbox.wallet.best/v1/payments
 }
 ```
 
-## Отложенный выбор типа платежа
+### Отложенный выбор типа платежа
 
 Пользователь может отложить выбор типа платежа между out и inout до подтверждения платежа. Платеж может быть создан, как платеж со счета кошелька out, затем, если клиент передумал и решил заплатить картой, при подтверждении платежа вызовом
 
@@ -965,7 +965,7 @@ http://sandbox.wallet.best/v1/payments
                 "default_value": null,
                 "suggested_values": [],
                 "items": null,
-                "localizedFields": [
+                "localized_fields": [
                     "title",
                     "pattern_desc"
                 ],
@@ -1028,7 +1028,7 @@ http://sandbox.wallet.best/v1/payments/25832/pay
                 "default_value": null,
                 "suggested_values": [],
                 "items": null,
-                "localizedFields": [
+                "localized_fields": [
                     "title",
                     "pattern_desc"
                 ],
