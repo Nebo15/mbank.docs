@@ -2,7 +2,7 @@
 
 ##Загрузка списка точек пополения
 ```shell
-curl -uuser:user http://api.mbank.dev/adm2/replenishment_points?size=1
+curl -uuser:user http://sandbox.wallet.best/adm2/replenishment_points?size=1
 ```
 
 ```json
@@ -55,7 +55,7 @@ curl -uuser:user http://api.mbank.dev/adm2/replenishment_points?size=1
 ##Получение точки пополнения по id
 
 ```shell
-$ curl -uuser:user http://api.mbank.dev/adm2/replenishment_point/547f1cf956c35f0d41967779
+$ curl -uuser:user http://sandbox.wallet.best/adm2/replenishment_point/547f1cf956c35f0d41967779
 ```
 
 ```json
@@ -91,7 +91,7 @@ $ curl -uuser:user http://api.mbank.dev/adm2/replenishment_point/547f1cf956c35f0
 ##Добавление точки пополнения (руками)
 
 ```shell
-curl -uuser:user -d '{"type":"Type?Oo","worktime":"Worktime","address":"Some address string","latitude":151413.123,"longitude":100500.123,"projects":"mbank"}' http://api.mbank.dev/adm2/replenishment_point
+curl -uuser:user -d '{"type":"Type?Oo","worktime":"Worktime","address":"Some address string","latitude":151413.123,"longitude":100500.123,"projects":"mbank"}' http://sandbox.wallet.best/adm2/replenishment_point
 ```
 
 ```json
@@ -134,7 +134,7 @@ curl -uuser:user -d '{"type":"Type?Oo","worktime":"Worktime","address":"Some add
 ##Изменение точки пополнения
 
 ```shell
-curl -H 'Content-type:application/json' -X POST -uuser:user -d '{"id":"5542670dcccc9049990041b9","type":{"ru_RU":"Type","en_US":"Type english"},"worktime":{"ru_RU":"Worktime","en_US":null},"address":{"ru_RU":"Address ru","en_US":"Address en"},"latitude":1514113.123,"longitude":1005100.123}' http://api.mbank.dev/adm2/replenishment_point
+curl -H 'Content-type:application/json' -X POST -uuser:user -d '{"id":"5542670dcccc9049990041b9","type":{"ru_RU":"Type","en_US":"Type english"},"worktime":{"ru_RU":"Worktime","en_US":null},"address":{"ru_RU":"Address ru","en_US":"Address en"},"latitude":1514113.123,"longitude":1005100.123}' http://sandbox.wallet.best/adm2/replenishment_point
 ```
 
 ```json
@@ -172,7 +172,7 @@ curl -H 'Content-type:application/json' -X POST -uuser:user -d '{"id":"5542670dc
 ##Добавление точек пополнения из файла
 
 ```shell
-curl -uuser:user -H 'Content-Type: multipart/form-data' -X POST -F "file=@path_to_file/replenishment_points.csv" http://api.mbank.dev/adm2/replenishment_points_file
+curl -uuser:user -H 'Content-Type: multipart/form-data' -X POST -F "file=@path_to_file/replenishment_points.csv" http://sandbox.wallet.best/adm2/replenishment_points_file
 ```
 
 ```json
@@ -240,7 +240,7 @@ curl -uuser:user -H 'Content-Type: multipart/form-data' -X POST -F "file=@path_t
 ##Удаление точки пополнения
 
 ```shell
-curl -uuser:user -X DELETE -d '{"id":"5542670dcccc9049990041b9"}' api.mbank.dev/adm2/replenishment_point
+curl -uuser:user -X DELETE -d '{"id":"5542670dcccc9049990041b9"}' sandbox.wallet.best/adm2/replenishment_point
 ```
 
 ```json
@@ -248,6 +248,6 @@ curl -uuser:user -X DELETE -d '{"id":"5542670dcccc9049990041b9"}' api.mbank.dev/
     "meta": {
         "code": 200
     },
-    "data": "5542670dcccc9049990041b9"
+    "data": {}
 }
 ```

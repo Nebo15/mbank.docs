@@ -2,7 +2,7 @@
 
 ##Загрузка списка регистров
 ```shell
-curl -uuser:user http://api.mbank.dev/adm2/registries?size=2
+curl -uuser:user http://sandbox.wallet.best/adm2/registries?size=2
 ```
 
 ```json
@@ -22,7 +22,7 @@ curl -uuser:user http://api.mbank.dev/adm2/registries?size=2
             "type": "testType3",
             "user": "test",
             "date": "2015-04-10T00:00:00+00:00",
-            "file": "http:\/\/api.mbank.dev\/registries\/af\/23d\/test.xlsx"
+            "file": "http:\/\/sandbox.wallet.best\/registries\/af\/23d\/test.xlsx"
         },
         {
             "id": "55423dadcccc90b39a0041ac",
@@ -30,7 +30,7 @@ curl -uuser:user http://api.mbank.dev/adm2/registries?size=2
             "type": "testType2",
             "user": "test",
             "date": "2015-04-16T00:00:00+00:00",
-            "file": "http:\/\/api.mbank.dev\/registries\/ad\/23d\/test.xls"
+            "file": "http:\/\/sandbox.wallet.best\/registries\/ad\/23d\/test.xls"
         }
     ]
 }
@@ -52,7 +52,7 @@ curl -uuser:user http://api.mbank.dev/adm2/registries?size=2
 ##Загрузка регистра по id
 
 ```shell
-curl -uuser:user http://api.mbank.dev/adm2/registry/55423dafcccc9048990041ac
+curl -uuser:user http://sandbox.wallet.best/adm2/registry/55423dafcccc9048990041ac
 ```
 
 ```json
@@ -67,7 +67,7 @@ curl -uuser:user http://api.mbank.dev/adm2/registry/55423dafcccc9048990041ac
             "type": "testType3",
             "user": "test",
             "date": "2015-04-10T00:00:00+00:00",
-            "file": "http:\/\/api.mbank.dev\/registries\/af\/23d\/test.xlsx"
+            "file": "http:\/\/sandbox.wallet.best\/registries\/af\/23d\/test.xlsx"
         }
     ]
 }
@@ -87,7 +87,7 @@ curl -uuser:user http://api.mbank.dev/adm2/registry/55423dafcccc9048990041ac
 * 'application/gzip'
 
 ```shell
-$ curl -H 'Content-type:application/json' -uuser:user -d '{"date":"2015-04-11","type":"testType4"}' http://api.mbank.dev/adm2/registry
+$ curl -H 'Content-type:application/json' -uuser:user -d '{"date":"2015-04-11","type":"testType4"}' http://sandbox.wallet.best/adm2/registry
 ```
 
 ```json
@@ -104,7 +104,7 @@ $ curl -H 'Content-type:application/json' -uuser:user -d '{"date":"2015-04-11","
 > После первого запроса на полученный url нужно загрузить файл
 
 ```shell
-$ curl -uuser:user -H 'Content-Type: multipart/form-data' -X POST -F "file=@path_to_file/test.xls" http://api.mbank.dev/adm2/registry/55424de7cccc9049990041b1
+$ curl -uuser:user -H 'Content-Type: multipart/form-data' -X POST -F "file=@path_to_file/test.xls" http://sandbox.wallet.best/adm2/registry/55424de7cccc9049990041b1
 ```
 
 ```json
@@ -118,7 +118,7 @@ $ curl -uuser:user -H 'Content-Type: multipart/form-data' -X POST -F "file=@path
         "type": "testType4",
         "user": "test",
         "date": 1428710400,
-        "file": "http:\/\/api.mbank.dev\/registries\/ec\/250\/test.xls"
+        "file": "http:\/\/sandbox.wallet.best\/registries\/ec\/250\/test.xls"
     }
 }
 ```

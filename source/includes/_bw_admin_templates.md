@@ -3,7 +3,7 @@
 ##Загрузка списка шаблонов
 
 ```shell
-$curl -H 'X-Project-ID:mbank' -X GET -u user:user "api.mbank.dev/adm2/templates"
+$curl -H 'X-Project-ID:mbank' -X GET -u user:user "sandbox.wallet.best/adm2/templates"
 ```
 
 ```json
@@ -45,7 +45,7 @@ $curl -H 'X-Project-ID:mbank' -X GET -u user:user "api.mbank.dev/adm2/templates"
                 "regex_unmap_value": ""
             },
             "items": [],
-            "count_services": 3,
+            "services_count": 3,
             "localized_fields": [
                 "title",
                 "pattern_desc"
@@ -70,13 +70,13 @@ $curl -H 'X-Project-ID:mbank' -X GET -u user:user "api.mbank.dev/adm2/templates"
 * `is_pattern` - является ли шиблоном
 * `patterns` - валидаторы
 * `items` - значения
-* `count_services` - кол-во сервисов, параметры которых привязанны к этому шаблону
+* `services_count` - кол-во сервисов, параметры которых привязанны к этому шаблону
 * `localized_fields` - локализированные поля
 
 ##Загрузка шаблона по id
 
 ```shell
-$ curl -H 'X-Project-ID:mbank' -X GET -u user:user "api.mbank.dev/adm2/templates/5429887756c35f625da94314"
+$ curl -H 'X-Project-ID:mbank' -X GET -u user:user "sandbox.wallet.best/adm2/templates/5429887756c35f625da94314"
 ```
 
 ```json
@@ -191,13 +191,13 @@ $ curl -H 'X-Project-ID:mbank' -X GET -u user:user "api.mbank.dev/adm2/templates
 * `is_pattern` - является ли шиблоном
 * `patterns` - валидаторы
 * `items` - значения
-* `count_services` - кол-во сервисов, параметры которых привязанны к этому шаблону
+* `services_count` - кол-во сервисов, параметры которых привязанны к этому шаблону
 * `localized_fields` - локализированные поля
 
 ##Создание шаблона
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u test:password -d '{"items":null,"type":{"id":"54293c0e56c35ff85dcf6ee8","title":"string","description":"Steam оплата","regex_map":"","regex_map_value":"","regex_unmap":"","regex_unmap_value":""},"title":{"ru_RU":"Пополнение Steam"},"range_start":"","range_end":"","pattern":"^[a-zA-Z0-9_]{3,64}$","pattern_desc":{"ru_RU":"Какой-то там логин в стим"},"default_value":null,"regex_values":[],"regex_description":[],"is_required":true}' http://api.mbank.dev/adm2/templates/create/from/1161/phoneNumber
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"items":null,"type":{"id":"54293c0e56c35ff85dcf6ee8","title":"string","description":"Steam оплата","regex_map":"","regex_map_value":"","regex_unmap":"","regex_unmap_value":""},"title":{"ru_RU":"Пополнение Steam"},"range_start":"","range_end":"","pattern":"^[a-zA-Z0-9_]{3,64}$","pattern_desc":{"ru_RU":"Какой-то там логин в стим"},"default_value":null,"regex_values":[],"regex_description":[],"is_required":true}' http://sandbox.wallet.best/adm2/templates/create/from/1161/phoneNumber
 ```
 
 ```json
@@ -242,10 +242,10 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u test:
 Создание шаблона с параметра сервиса (мсервер id)
 Тело запроса на создание шаблона аналогично с телом запроса на изменение параметра
 
-##Изменение щаблона
+##Изменение шаблона
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -u user:user -X POST -d '{"pattern_id":"55499bbdcccc902022004238","items":null,"type":{"id":"54293c0e56c35ff85dcf6ee8","title":"string","description":"Steam оплата","regex_map":"11","regex_map_value":"22","regex_unmap":"33","regex_unmap_value":"44"},"title":{"ru_RU":"Пополнение Steam"},"range_start":"","range_end":"","pattern":"^[a-zA-Z0-9_]{3,64}$","pattern_desc":{"ru_RU":"Какой-то там логин в стим"},"default_value":"{{last_value}}","regex_values":[],"regex_description":[],"is_required":true}' http://api.mbank.dev/adm2/templates
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -u user:user -X POST -d '{"pattern_id":"55499bbdcccc902022004238","items":null,"type":{"id":"54293c0e56c35ff85dcf6ee8","title":"string","description":"Steam оплата","regex_map":"11","regex_map_value":"22","regex_unmap":"33","regex_unmap_value":"44"},"title":{"ru_RU":"Пополнение Steam"},"range_start":"","range_end":"","pattern":"^[a-zA-Z0-9_]{3,64}$","pattern_desc":{"ru_RU":"Какой-то там логин в стим"},"default_value":"{{last_value}}","regex_values":[],"regex_description":[],"is_required":true}' http://sandbox.wallet.best/adm2/templates
 ```
 
 ```json
@@ -292,7 +292,7 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -u user:user -X 
 ##Удаление шаблона
 
 ```shell
-$curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u test:password  -d '{"id":"55499bbdcccc902022004238"}' http://api.mbank.dev/adm2/templates
+$curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u user:user  -d '{"id":"55499bbdcccc902022004238"}' http://sandbox.wallet.best/adm2/templates
 ```
 
 ```json
@@ -300,6 +300,6 @@ $curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u te
     "meta": {
         "code": 200
     },
-    "data": "55499bbdcccc902022004238"
+    "data": {}
 }
 ```

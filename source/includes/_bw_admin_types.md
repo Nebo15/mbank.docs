@@ -12,7 +12,7 @@
 ##Получение списка типов
 
 ```shell
-curl -uuser:user api.mbank.dev/adm2/types
+curl -uuser:user sandbox.wallet.best/adm2/types
 ```
 
 ```json
@@ -46,7 +46,7 @@ curl -uuser:user api.mbank.dev/adm2/types
 ##Получение типа по id
 
 ```shell
-curl  -H 'X-Project-ID:mbank' -uuser:user api.mbank.dev/adm2/type/5542652ecccc90abb20041b8
+curl  -H 'X-Project-ID:mbank' -uuser:user sandbox.wallet.best/adm2/type/5542652ecccc90abb20041b8
 ```
 
 ```json
@@ -69,7 +69,7 @@ curl  -H 'X-Project-ID:mbank' -uuser:user api.mbank.dev/adm2/type/5542652ecccc90
 ##Добавление типа
 
 ```shell
-curl  -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -uuser:user -X POST -d '{"title":"new_title","description":"description_for_new_title","regex_map":"\/^$\/$","regex_map_value":"\/^$\/$","regex_unmap":"100500","regex_unmap_value":"100500"}' http://api.mbank.dev/adm2/type
+curl  -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -uuser:user -X POST -d '{"title":"new_title","description":"description_for_new_title","regex_map":"\/^$\/$","regex_map_value":"\/^$\/$","regex_unmap":"100500","regex_unmap_value":"100500"}' http://sandbox.wallet.best/adm2/type
 ```
 
 ```json
@@ -99,7 +99,7 @@ curl  -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -uuser:user -X 
 ##Изменение типа
 
 ```shell
-curl  -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -uuser:user -X POST -d '{"id": "5549b733cccc904b09004261", "title":"edited title","description":"edited description","regex_map":"\/^$\/$","regex_map_value":"\/^$\/$","regex_unmap":"100500","regex_unmap_value":"100500"}' http://api.mbank.dev/adm2/type
+curl  -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -uuser:user -X POST -d '{"id": "5549b733cccc904b09004261", "title":"edited title","description":"edited description","regex_map":"\/^$\/$","regex_map_value":"\/^$\/$","regex_unmap":"100500","regex_unmap_value":"100500"}' http://sandbox.wallet.best/adm2/type
 
 ```
 
@@ -125,7 +125,7 @@ curl  -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -uuser:user -X 
 ##Удаление типа
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u test:password  -d '{"id":"5549b733cccc904b09004261"}' http://api.mbank.dev/adm2/type
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u user:user  -d '{"id":"5549b733cccc904b09004261"}' http://sandbox.wallet.best/adm2/type
 ```
 
 ```json
@@ -133,6 +133,6 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u tes
     "meta": {
         "code": 200
     },
-    "data": "5549b733cccc904b09004261"
+    "data": {}
 }
 ```

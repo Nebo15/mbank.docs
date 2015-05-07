@@ -3,7 +3,7 @@
 ##Добавление параметра
 
 ```shell
-curl -H 'Content-type:application/json' -H 'X-Project-ID:mbank' -X POST -u test:password -d '{"id":"some_parameter_name","type":"5548d11acccc90702f0041b9","title":{"ru_RU":"parameter title"},"range_start":100500,"range_end":100501,"pattern":"\/\\d{4}\/","pattern_desc":{"ru_RU":"pattern_desc title"},"default_value":"{{last_value}}","regex_values":[111,222,333],"regex_descriptions":[{"ru_RU":"regex_description_111"},{"ru_RU":"regex_description_222"},{"ru_RU":"regex_description_333"}],"is_disabled":false,"is_hidden":false,"is_required":true}' http://api.mbank.dev/adm2/53a70ca256c35f1664f64b20/parameter
+curl -H 'Content-type:application/json' -H 'X-Project-ID:mbank' -X POST -u user:user -d '{"id":"some_parameter_name","type":"5548d11acccc90702f0041b9","title":{"ru_RU":"parameter title"},"range_start":100500,"range_end":100501,"pattern":"\/\\d{4}\/","pattern_desc":{"ru_RU":"pattern_desc title"},"default_value":"{{last_value}}","regex_values":[111,222,333],"regex_descriptions":[{"ru_RU":"regex_description_111"},{"ru_RU":"regex_description_222"},{"ru_RU":"regex_description_333"}],"is_disabled":false,"is_hidden":false,"is_required":true}' http://sandbox.wallet.best/adm2/53a70ca256c35f1664f64b20/parameter
 ```
 
 ```json
@@ -25,7 +25,7 @@ curl -H 'Content-type:application/json' -H 'X-Project-ID:mbank' -X POST -u test:
             }
         },
         "image_exists": true,
-        "icon_url": "http:\/\/api.mbank.dev\/img\/services\/53a70ca256c35f1664f64b20.png?1430835917",
+        "icon_url": "http:\/\/sandbox.wallet.best\/img\/services\/53a70ca256c35f1664f64b20.png?1430835917",
         "labels": {
             "changed": false,
             "verification_required": false,
@@ -52,7 +52,7 @@ curl -H 'Content-type:application/json' -H 'X-Project-ID:mbank' -X POST -u test:
         "maxsum": 15000,
         "minsum": 7,
         "geo": [],
-        "params": [
+        "parameters": [
             {
                 "id": "some_parameter_name",
                 "is_disabled": false,
@@ -143,7 +143,7 @@ curl -H 'Content-type:application/json' -H 'X-Project-ID:mbank' -X POST -u test:
 ##Изменение параметра
 
 ```shell
-curl -H 'Content-type:application/json' -H 'X-Project-ID:mbank' -X POST -u test:password -d '{"id":"some_parameter_name","type":"5548d11acccc90702f0041b9","title":{"ru_RU":"parameter title"},"range_start":100500,"range_end":100501,"pattern":"\/\\d{4}\/","pattern_desc":{"ru_RU":"pattern_desc title"},"default_value":"{{last_value}}_edited","regex_values":[111,222,333],"regex_descriptions":[{"ru_RU":"regex_description_333"},{"ru_RU":"regex_description_333"},{"ru_RU":"regex_description_333"}],"is_disabled":false,"is_hidden":false,"is_required":true}' http://api.mbank.dev/adm2/53a70ca256c35f1664f64b20/some_parameter_name/parameter
+curl -H 'Content-type:application/json' -H 'X-Project-ID:mbank' -X POST -u user:user -d '{"id":"some_parameter_name","type":"5548d11acccc90702f0041b9","title":{"ru_RU":"parameter title"},"range_start":100500,"range_end":100501,"pattern":"\/\\d{4}\/","pattern_desc":{"ru_RU":"pattern_desc title"},"default_value":"{{last_value}}_edited","regex_values":[111,222,333],"regex_descriptions":[{"ru_RU":"regex_description_333"},{"ru_RU":"regex_description_333"},{"ru_RU":"regex_description_333"}],"is_disabled":false,"is_hidden":false,"is_required":true}' http://sandbox.wallet.best/adm2/53a70ca256c35f1664f64b20/some_parameter_name/parameter
 ```
 
 ```json
@@ -157,7 +157,7 @@ curl -H 'Content-type:application/json' -H 'X-Project-ID:mbank' -X POST -u test:
 ##Удаление параметра
 
 ```shell
-curl -H 'X-Project-ID:mbank' -X DELETE -u user:user http://api.mbank.dev/adm2/53a70ca256c35f1664f64b20/some_parameter_name/parameter
+curl -H 'X-Project-ID:mbank' -X DELETE -u user:user http://sandbox.wallet.best/adm2/53a70ca256c35f1664f64b20/some_parameter_name/parameter
 ```
 
 ```json
@@ -179,7 +179,7 @@ curl -H 'X-Project-ID:mbank' -X DELETE -u user:user http://api.mbank.dev/adm2/53
             }
         },
         "image_exists": true,
-        "icon_url": "http:\/\/api.mbank.dev\/img\/services\/53a70ca256c35f1664f64b20.png?1430836068",
+        "icon_url": "http:\/\/sandbox.wallet.best\/img\/services\/53a70ca256c35f1664f64b20.png?1430836068",
         "labels": {
             "changed": false,
             "verification_required": false,
@@ -206,7 +206,7 @@ curl -H 'X-Project-ID:mbank' -X DELETE -u user:user http://api.mbank.dev/adm2/53
         "maxsum": 15000,
         "minsum": 7,
         "geo": [],
-        "params": [],
+        "parameters": [],
         "diff_source": {},
         "status": "online",
         "service_statuses": [
@@ -230,7 +230,7 @@ curl -H 'X-Project-ID:mbank' -X DELETE -u user:user http://api.mbank.dev/adm2/53
 ##Загрузка параметра
 
 ```shell
-curl -H 'X-Project-ID:mbank' -X GET -u test:password http://api.mbank.dev/adm2/53359fb2255c741a749f0c4c/phoneNumber/parameter
+curl -H 'X-Project-ID:mbank' -X GET -u user:user http://sandbox.wallet.best/adm2/53359fb2255c741a749f0c4c/phoneNumber/parameter
 ```
 
 ```json
@@ -284,7 +284,7 @@ curl -H 'X-Project-ID:mbank' -X GET -u test:password http://api.mbank.dev/adm2/5
 
 
 ```shell
-curl -H 'X-Project-ID:mbank' -X POST -u test:password -d '{"service_id":"53359fb2255c741a749f0c4a","field_id":"phoneNumber"}' http://api.mbank.dev/adm2/service/param/sync
+curl -H 'X-Project-ID:mbank' -X POST -u user:user -d '{"service_id":"53359fb2255c741a749f0c4a","parameter_id":"phoneNumber"}' http://sandbox.wallet.best/adm2/service/param/sync
 ```
 
 ```json
@@ -298,7 +298,7 @@ curl -H 'X-Project-ID:mbank' -X POST -u test:password -d '{"service_id":"53359fb
 ##Синхронизация items у параметров
 
 ```shell
-curl  -X POST -u test:password -d '{"service_id":"53a70d2456c35f58640fdd47","field_id":"phoneNumber"}' http://api.mbank.dev/adm2/service/param/sync_items
+curl  -X POST -u user:user -d '{"service_id":"53a70d2456c35f58640fdd47","parameter_id":"phoneNumber"}' http://sandbox.wallet.best/adm2/service/param/sync_items
 ```
 
 ```json

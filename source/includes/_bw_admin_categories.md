@@ -2,7 +2,7 @@
 
 ## Загрузка списка категорий
 ```shell
-$ curl -uuser:user "http://sandbox.wallet.best/adm2/"
+$ curl -uuser:user "http://sandbox.wallet.best/adm2/categories"
 ```
 ```json
 {
@@ -19,9 +19,7 @@ $ curl -uuser:user "http://sandbox.wallet.best/adm2/"
             },
             "group": "cellular",
             "position": 1,
-            "icon_url": "",
-            "image_exists": null,
-            "count_services": 8,
+            "services_count": 8,
             "localized_fields": [
                 "name"
             ]
@@ -35,9 +33,7 @@ $ curl -uuser:user "http://sandbox.wallet.best/adm2/"
 * `name` - локализированное название категории
 * `group` - группа, к которой относится категория
 * `position` - позиция категории в списке
-* `icon_url` - url изображения категории
-* `image_exists` - bool значение присутсвия изображения
-* `count_services` - кол-во привязанных к категории сервисов
+* `services_count` - кол-во привязанных к категории сервисов
 * `localized_fields` - массив с локализированными полями
 
 
@@ -61,9 +57,7 @@ $ curl  -X POST -u user:user -d '{"name":"some_name","group":"some_group","posit
         },
         "group": "some_group",
         "position": 1,
-        "icon_url": "",
-        "image_exists": null,
-        "count_services": 0,
+        "services_count": 0,
         "localized_fields": [
             "name"
         ]
@@ -96,9 +90,7 @@ $ curl -X POST -u user:user -d '{"name":{"ru_RU":"some_name_edited", "en_US":"so
         },
         "group": "some_group",
         "position": 1,
-        "icon_url": "",
-        "image_exists": null,
-        "count_services": 0,
+        "services_count": 0,
         "localized_fields": [
             "name"
         ]
@@ -119,7 +111,7 @@ $ curl -H 'Content-type:application/json' -X DELETE -d '{"id":"549c92fb56c35f660
     "meta": {
         "code": 200
     },
-    "data": "549c92fb56c35f660ecd341f"
+    "data": {}
 }
 ```
 
