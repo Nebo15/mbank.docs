@@ -272,7 +272,7 @@ curl -uuser:user -H 'Content-Type: multipart/form-data' -X POST -F "file=@path_t
 ##Изменение статуса сервиса
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:aplication/json' -X POST -u user:user -d '{"id":"53359fb2255c741a749f0c44","status":"offline"}' http://sandbox.wallet.best/adm2/service/status
+curl -H 'X-Project-ID:mbank' -H 'Content-type:aplication/json' -X POST -u user:user -d '{"status":"offline","is_enabled":false}' http://api.mbank.dev/adm2/services/53359fb2255c741a749f0c44/status
 ```
 
 ```json
@@ -299,48 +299,6 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:aplication/json' -X POST -u user:u
             "changed": false,
             "verification_required": false,
             "autopayment_service": false,
-            "is_hidden": false,
-            "is_enabled": true
-        },
-        "localized_fields": [
-            "name",
-            "group"
-        ]
-    }
-}
-```
-
-
-##Изменение активности сервиса
-
-```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:aplication/json' -X POST -u user:user -d '{"id":"53359fb2255c741a749f0c44","active":false}' http://sandbox.wallet.best/adm2/service/enable
-```
-
-```json
-{
-    "meta": {
-        "code": 200
-    },
-    "data": {
-        "id": "53359fb2255c741a749f0c44",
-        "mserver_id": 1000,
-        "name": {
-            "ru_RU": "Теле2",
-            "en_US": "Tele2"
-        },
-        "group": {
-            "ru_RU": "Мобильная связь",
-            "en_US": "Cellular providers"
-        },
-        "image_exists": true,
-        "image_url": "http:\/\/sandbox.wallet.best\/img\/services\/53359fb2255c741a749f0c44.png?1430840029",
-        "status": "offline",
-        "keywords": "",
-        "labels": {
-            "changed": false,
-            "verification_required": false,
-            "autopayment_service": false,
             "is_hidden": true,
             "is_enabled": false
         },
@@ -351,6 +309,11 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:aplication/json' -X POST -u user:u
     }
 }
 ```
+
+###Параметры
+
+* `status` - статус сервиса (online|offline)
+* `is_enabled` - статус сервиса вкл/выкл (true|false)
 
 ##Удаление сервиса
 

@@ -1,6 +1,6 @@
-#(BW ADM) Регистры
+#(BW ADM) Реестры
 
-##Загрузка списка регистров
+##Загрузка списка реестров
 ```shell
 curl -uuser:user http://sandbox.wallet.best/adm2/registries?size=2
 ```
@@ -49,7 +49,7 @@ curl -uuser:user http://sandbox.wallet.best/adm2/registries?size=2
 * `size` - размер страницы, которую запрашивает клиент, по умолчанию 20
 
 
-##Загрузка регистра по id
+##Загрузка реестра по id
 
 ```shell
 curl -uuser:user http://sandbox.wallet.best/adm2/registry/55423dafcccc9048990041ac
@@ -75,7 +75,7 @@ curl -uuser:user http://sandbox.wallet.best/adm2/registry/55423dafcccc9048990041
 
 При загрузке - Вы получите те же саммые данные, что и при списке
 
-##Добавление регистра
+##Добавление реестра
 Добавление регистра происходит в две итерации
 Принимаемые типы файлов:
 

@@ -191,8 +191,6 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u use
 ```shell
 curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"phone":"+12345842116","email":"test@testdt.com"}' http://sandbox.wallet.best/adm2/wallet
 
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"phone":"+12345842117","drop_image":true}' http://sandbox.wallet.best/adm2/wallet
-
 curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"phone":"+12345842117","person_status":"data_entered"}' http://sandbox.wallet.best/adm2/wallet
 
 curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"phone":"+12345842117","reset_password":true}' http://sandbox.wallet.best/adm2/wallet
@@ -214,9 +212,24 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:
 ###Изменяемые поля (разные запросы)
 
 * `email`
-* `drop_image` - Удалить изображение
 * `person_status` - Изменить статус верификации (см. Изменение статуса персональных данныхv)
 * `reset_password` - (true|false) - заставить сменить пароль
+
+##Удаление аватарки пользователя
+
+```shell
+$curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u user:user http://sandbox.wallet.best/adm2/wallets/+123457443658/image
+```
+
+```json
+{
+    "meta": {
+        "code": 200
+    },
+    "data": {}
+}
+```
+
 
 ##Получение списка устройств кошелька
 
