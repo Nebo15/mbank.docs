@@ -1,7 +1,4 @@
-# Административное API
-
-
-## Аутентификация
+# Аутентификация
 
 На тестовой системе созданы 2 пользователя от имени которых возможен вызов административного API.
 
@@ -11,20 +8,20 @@
 | admin      | admin   | admin             |
 
 
-## Многопроектность
+# Многопроектность
 
 Во всех запросах можно указать относительного какого проекта производится запрос.
 
 * `project_id` - ID проекта, в котором будет производиться поиск. Доступен только суперадминистраторам.
 
 
-## Постраничная навиция
+# Постраничная навиция
 
 * `page` - номер (начиная с 0) страницы, которую запрашивает клиент, опционально, по умолчанию 0
 * `size` - размер страницы, которую запрашивает клиент, опционально, по умолчанию 35
 
 
-## Поиск по кошелькам проекта
+# Поиск по кошелькам проекта
 
 ### Постраничная навиция
 
@@ -150,7 +147,7 @@ $ curl -uadmin:admin "https://www.synq.ru/mserver2-dev/admin/wallets?family_name
 }
 ```
 
-## Аналитика по кошелькам
+# Аналитика по кошелькам
 
 ### Параметры
 
@@ -229,7 +226,7 @@ $ curl -uadmin:admin "https://www.synq.ru/mserver2-dev/admin/wallets_count?group
 ```
 
 
-## Загрузка кошелька
+# Загрузка кошелька
 
 ### Поля ответа:
 
@@ -377,7 +374,7 @@ $ curl -uuser:user "https://www.synq.ru/mserver2-dev/admin/wallets/%2B7926000000
 }
 ```
 
-## Загрузка IP адресов кошелька
+# Загрузка IP адресов кошелька
 
 ```shell
 $ curl -uuser:user "https://www.synq.ru/mserver2-dev/admin/wallets/%2B12345657367/ip"
@@ -395,7 +392,7 @@ $ curl -uuser:user "https://www.synq.ru/mserver2-dev/admin/wallets/%2B1234565736
 }
 ```
 
-## Получение кода активации кошелька
+# Получение кода активации кошелька
 
 ```shell
 $ curl -uuser:user "https://www.synq.ru/mserver2-dev/admin/wallets/%2B12345657367/security_code"
@@ -413,7 +410,7 @@ $ curl -uuser:user "https://www.synq.ru/mserver2-dev/admin/wallets/%2B1234565736
 ```
 
 
-## Блокировка кошелька
+# Блокировка кошелька
 
 ### Параметры
 
@@ -444,7 +441,7 @@ $ curl -uuser:user  -H 'Content-type:application/json' --data '{"message": "За
 ```
 
 
-## Разблокировка кошелька
+# Разблокировка кошелька
 
 ```shell
 $ curl -uuser:user -X POST "https://www.synq.ru/mserver2-dev/admin/wallets/%2B12345657367/enable"
@@ -467,7 +464,7 @@ $ curl -uuser:user -X POST "https://www.synq.ru/mserver2-dev/admin/wallets/%2B12
 ```
 
 
-## Поиск по платежам
+# Поиск по платежам
 
 ### Параметры (опциональные)
 
@@ -679,7 +676,7 @@ $ curl -uuser:user "https://www.synq.ru/mserver2-dev/admin/payments?inbound_paym
 ```
 
 
-## Отчет об остатке кошельков проекта за период
+# Отчет об остатке кошельков проекта за период
 
 ### Параметры
 
@@ -718,7 +715,7 @@ $ curl -uadmin:admin "https://www.synq.ru/mserver2-dev/admin/wallets/balance?fro
 ```
 
 
-## Отчет о количестве платежей проекта за период
+# Отчет о количестве платежей проекта за период
 
 ### Параметры
 
@@ -950,7 +947,7 @@ $ curl -uadmin:admin "https://www.synq.ru/mserver2-dev/admin/payments/count?tick
 }
 ```
 
-## Отчет о обороте платежей проекта за период
+# Отчет о обороте платежей проекта за период
 
 ### Параметры
 
@@ -1168,7 +1165,7 @@ $ curl -uadmin:admin "https://www.synq.ru/mserver2-dev/admin/payments/turnover?t
 }
 ```
 
-## Получение списка персональных данных
+# Получение списка персональных данных
 
 Информация выдаётся постранично.
 
@@ -1224,7 +1221,7 @@ $ curl -uuser:user "https://www.synq.ru/mserver2-dev/admin/persons?page=1&size=2
 }
 ```
 
-## Изменение статуса персональных данных
+# Изменение статуса персональных данных
 
 ### Параметры
 
@@ -1260,7 +1257,7 @@ $ curl  -H 'Content-type:application/json' -uuser:user -d '{"status": "data_veri
 }
 ```
 
-## Удаление кошелька
+# Удаление кошелька
 
 <aside class="warning">Команда работает только на dev сервере</aside>
 
