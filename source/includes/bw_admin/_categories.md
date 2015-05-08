@@ -11,15 +11,16 @@ $ curl -uuser:user "http://sandbox.wallet.best/adm2/categories"
     },
     "data": [
         {
-            "id": "53359fb2255c741a749f0c42",
-            "mserver_id": 3,
+            "id": "549c92fb56c35f660ecd341f",
+            "mserver_id": 978,
             "name": {
-                "ru_RU": "Мобильная связь",
-                "en_US": "Cellular providers"
+                "ru_RU": "Денежные переводы",
+                "en_US": null
             },
-            "group": "cellular",
-            "position": 1,
-            "services_count": 8,
+            "group": "",
+            "keywords": "",
+            "position": 13,
+            "services_count": 3,
             "localized_fields": [
                 "name"
             ]
@@ -40,7 +41,7 @@ $ curl -uuser:user "http://sandbox.wallet.best/adm2/categories"
 ## Добавление категории
 
 ```shell
-$ curl  -X POST -u user:user -d '{"name":"some_name","group":"some_group","position":1,"projects":["mbank","bov"]}' http://sandbox.wallet.best/adm2/category
+$ curl -H 'Content-type:application/json' -X POST -u user:user -d '{"name":"some_name","group":"some_group","position":1,"projects":["mbank","bov"]}' http://sandbox.wallet.best/adm2/categories
 ```
 
 ```json
@@ -56,6 +57,7 @@ $ curl  -X POST -u user:user -d '{"name":"some_name","group":"some_group","posit
             "en_US": null
         },
         "group": "some_group",
+        "keywords": "",
         "position": 1,
         "services_count": 0,
         "localized_fields": [
@@ -73,7 +75,7 @@ $ curl  -X POST -u user:user -d '{"name":"some_name","group":"some_group","posit
 
 ## Редактирование категории
 ```shell
-$ curl -X POST -u user:user -d '{"name":{"ru_RU":"some_name_edited", "en_US":"some_en_name"},"group":"some_group","position":1,"projects":["mbank","bov"], "id":"55421733cccc904a990041a8"}' http://sandbox.wallet.best/adm2/category
+$ curl -H 'Content-type:application/json' -X POST -u user:user -d '{"name":{"ru_RU":"some_name_edited", "en_US":"some_en_name"},"group":"some_group","position":1,"projects":["mbank","bov"], "keywords":"one,two,three"}' http://sandbox.wallet.best/adm2/categories/55421733cccc904a990041a8
 ```
 
 ```json
@@ -89,6 +91,7 @@ $ curl -X POST -u user:user -d '{"name":{"ru_RU":"some_name_edited", "en_US":"so
             "en_US": "some_en_name"
         },
         "group": "some_group",
+        "keywords":"one,two,three",
         "position": 1,
         "services_count": 0,
         "localized_fields": [
@@ -103,7 +106,7 @@ $ curl -X POST -u user:user -d '{"name":{"ru_RU":"some_name_edited", "en_US":"so
 ## Удаление категории
 
 ```shell
-$ curl -H 'Content-type:application/json' -X DELETE -d '{"id":"549c92fb56c35f660ecd341f"}' -uuser:user http://sandbox.wallet.best/adm2/category
+$ curl -X DELETE -uuser:user http://sandbox.wallet.best/adm2/categories/55421733cccc904a990041a8
 ```
 
 ```json
