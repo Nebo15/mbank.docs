@@ -12,7 +12,7 @@ includes:
   - bw_admin/categories
   - bw_admin/payments
   - bw_admin/registries
-  - bw_admin/replenishment
+  - bw_admin/locations
   - bw_admin/service_parameters
   - bw_admin/services
   - bw_admin/settings

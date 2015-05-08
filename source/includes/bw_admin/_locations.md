@@ -2,7 +2,7 @@
 
 ##Загрузка списка точек пополения
 ```shell
-curl -uuser:user http://sandbox.wallet.best/adm2/replenishment_points?size=1
+curl -uuser:user http://api.mbank.dev/adm2/locations/?size=1
 ```
 
 ```json
@@ -15,7 +15,12 @@ curl -uuser:user http://sandbox.wallet.best/adm2/replenishment_points?size=1
     },
     "data": [
         {
-            "id": "547f1cf956c35f0d41967779",
+            "id": "554ce380cccc9082250041f2",
+            "name": {
+                "ru_RU": "Имя точки пополнения 7",
+                "en_US": null
+            },
+            "group": "verification",
             "type": {
                 "ru_RU": "Терминал",
                 "en_US": null
@@ -25,12 +30,13 @@ curl -uuser:user http://sandbox.wallet.best/adm2/replenishment_points?size=1
                 "en_US": null
             },
             "address": {
-                "ru_RU": "Ясный , пр.Ленина 2",
+                "ru_RU": "Россия, Абдулино, Ясный пр.Ленина 2",
                 "en_US": null
             },
-            "longitude": 55.144997,
-            "latitude": 51.789234,
+            "longitude": 53.658752,
+            "latitude": 53.690968,
             "localized_fields": [
+                "name",
                 "type",
                 "worktime",
                 "address"
@@ -45,6 +51,8 @@ curl -uuser:user http://sandbox.wallet.best/adm2/replenishment_points?size=1
 
 ### Ответ
 * `id` - идентификатор точки пополнения
+* `name` - имя точки пополнения
+* `group` - группа точки [replenishment|verification|money_transfer]
 * `type` - тип точки
 * `worktime` - время работы
 * `address` - адрес
@@ -55,7 +63,7 @@ curl -uuser:user http://sandbox.wallet.best/adm2/replenishment_points?size=1
 ##Получение точки пополнения по id
 
 ```shell
-$ curl -uuser:user http://sandbox.wallet.best/adm2/replenishment_point/547f1cf956c35f0d41967779
+$ curl -uuser:user http://api.mbank.dev/adm2/locations/554ce380cccc9082250041f2
 ```
 
 ```json
@@ -64,22 +72,28 @@ $ curl -uuser:user http://sandbox.wallet.best/adm2/replenishment_point/547f1cf95
         "code": 200
     },
     "data": {
-        "id": "547f1cf956c35f0d41967779",
+        "id": "554ce380cccc9082250041f2",
+        "name": {
+            "ru_RU": "Имя точки пополнения 7",
+            "en_US": null
+        },
         "type": {
             "ru_RU": "Терминал",
             "en_US": null
         },
+        "group": "verification",
         "worktime": {
             "ru_RU": "Круглосуточно",
             "en_US": null
         },
         "address": {
-            "ru_RU": "Ясный , пр.Ленина 2",
+            "ru_RU": "Россия, Абдулино, Ясный пр.Ленина 2",
             "en_US": null
         },
-        "longitude": 55.144997,
-        "latitude": 51.789234,
+        "longitude": 53.658752,
+        "latitude": 53.690968,
         "localized_fields": [
+            "name",
             "type",
             "worktime",
             "address"
@@ -91,7 +105,7 @@ $ curl -uuser:user http://sandbox.wallet.best/adm2/replenishment_point/547f1cf95
 ##Добавление точки пополнения (руками)
 
 ```shell
-curl -uuser:user -d '{"type":"Type?Oo","worktime":"Worktime","address":"Some address string","latitude":151413.123,"longitude":100500.123,"projects":"mbank"}' http://sandbox.wallet.best/adm2/replenishment_point
+curl -H 'Content-type:application/json' -uuser:user -d '{"type":"Type?Oo","worktime":"Worktime","name":"Some name","address":"Some address string","group":"Some group","source_id":"admin","latitude":151413.123,"longitude":100500.123,"projects":"mbank"}' http://api.mbank.dev/adm2/locations/
 ```
 
 ```json
@@ -100,11 +114,16 @@ curl -uuser:user -d '{"type":"Type?Oo","worktime":"Worktime","address":"Some add
         "code": 200
     },
     "data": {
-        "id": "55426441cccc90b39a0041af",
+        "id": "554ce621cccc9093300041b3",
+        "name": {
+            "ru_RU": "Some name",
+            "en_US": null
+        },
         "type": {
             "ru_RU": "Type?Oo",
             "en_US": null
         },
+        "group": "Some group",
         "worktime": {
             "ru_RU": "Worktime",
             "en_US": null
@@ -116,6 +135,7 @@ curl -uuser:user -d '{"type":"Type?Oo","worktime":"Worktime","address":"Some add
         "longitude": 100500.123,
         "latitude": 151413.123,
         "localized_fields": [
+            "name",
             "type",
             "worktime",
             "address"
@@ -127,6 +147,9 @@ curl -uuser:user -d '{"type":"Type?Oo","worktime":"Worktime","address":"Some add
 ###Поля
 * `type` - тип точки
 * `worktime` - время работы
+* `name` - имя точки
+* `group` - группа [replenishment|verification|money_transfer]
+* `source_id` - (admin|best|elecsnet)
 * `address` - адрес
 * `longitude` - долгота
 * `latitude` - широта
@@ -134,7 +157,7 @@ curl -uuser:user -d '{"type":"Type?Oo","worktime":"Worktime","address":"Some add
 ##Изменение точки пополнения
 
 ```shell
-curl -H 'Content-type:application/json' -X POST -uuser:user -d '{"id":"5542670dcccc9049990041b9","type":{"ru_RU":"Type","en_US":"Type english"},"worktime":{"ru_RU":"Worktime","en_US":null},"address":{"ru_RU":"Address ru","en_US":"Address en"},"latitude":1514113.123,"longitude":1005100.123}' http://sandbox.wallet.best/adm2/replenishment_point
+curl -H 'Content-type:application/json' -X POST -uuser:user -d '{"type":{"ru_RU":"Type","en_US":"Type english"},"worktime":{"ru_RU":"Worktime","en_US":null},"address":{"ru_RU":"Address ru","en_US":"Address en"},"latitude":1514113.123,"longitude":1005100.123,"name":"Some name","group":"verification","source_id":"admin"}' http://api.mbank.dev/adm2/locations/554ce621cccc9093300041b3
 ```
 
 ```json
@@ -143,11 +166,16 @@ curl -H 'Content-type:application/json' -X POST -uuser:user -d '{"id":"5542670dc
         "code": 200
     },
     "data": {
-        "id": "5542670dcccc9049990041b9",
+        "id": "554ce621cccc9093300041b3",
+        "name": {
+            "ru_RU": "Some name",
+            "en_US": null
+        },
         "type": {
             "ru_RU": "Type",
             "en_US": "Type english"
         },
+        "group": "verification",
         "worktime": {
             "ru_RU": "Worktime",
             "en_US": null
@@ -159,6 +187,7 @@ curl -H 'Content-type:application/json' -X POST -uuser:user -d '{"id":"5542670dc
         "longitude": 1005100.123,
         "latitude": 1514113.123,
         "localized_fields": [
+            "name",
             "type",
             "worktime",
             "address"
@@ -167,12 +196,12 @@ curl -H 'Content-type:application/json' -X POST -uuser:user -d '{"id":"5542670dc
 }
 ```
 
-Аналогичный запрос, как и при добавлении, но с передачей id точки
+Аналогичный запрос, как и при добавлении
 
 ##Добавление точек пополнения из файла
 
 ```shell
-curl -uuser:user -H 'Content-Type: multipart/form-data' -X POST -F "file=@path_to_file/replenishment_points.csv" http://sandbox.wallet.best/adm2/replenishment_points_file
+curl -uuser:user -H 'Content-Type: multipart/form-data' -X POST -F "file=/Users/Samorai/www/mbank.api/tests/data/csv/replenishment_points.csv" http://api.mbank.dev/adm2/locations/file
 ```
 
 ```json
@@ -182,17 +211,21 @@ curl -uuser:user -H 'Content-Type: multipart/form-data' -X POST -F "file=@path_t
     },
     "data": [
         {
-            "id": "554267d9cccc9000a90041b1",
+            "id": "554ce7fecccc90d8240041e7",
+            "name": {
+                "ru_RU": "Имя точки пополнения 1",
+                "en_US": null
+            },
             "type": {
                 "ru_RU": "Терминал",
                 "en_US": null
             },
             "worktime": {
-                "ru_RU": "Абдулино",
+                "ru_RU": "Круглосуточно",
                 "en_US": null
             },
             "address": {
-                "ru_RU": "Абдулино, ул. Коммунистическая, д. 85",
+                "ru_RU": "Россия, Абдулино, ул. Коммунистическая д. 85",
                 "en_US": null
             },
             "longitude": 53.648503,
@@ -204,17 +237,21 @@ curl -uuser:user -H 'Content-Type: multipart/form-data' -X POST -F "file=@path_t
             ]
         },
         {
-           "id": "554267dacccc9000a90041b2",
+           "id": "554ce7ffcccc90d8240041e8",
+           "name": {
+               "ru_RU": "Имя точки пополнения 2",
+               "en_US": null
+           },
            "type": {
                "ru_RU": "Терминал",
                "en_US": null
            },
            "worktime": {
-               "ru_RU": "Абдулино",
+               "ru_RU": "Круглосуточно",
                "en_US": null
            },
            "address": {
-               "ru_RU": "Абдулино, с.Северное , ул.Чапаева 41",
+               "ru_RU": "Россия, Абдулино, с.Северное ул.Чапаева 41",
                "en_US": null
            },
            "longitude": 53.661618,
@@ -229,25 +266,29 @@ curl -uuser:user -H 'Content-Type: multipart/form-data' -X POST -F "file=@path_t
 }
 ```
 
+
+Имя;Адрес;Тип;group;Время работы;source_id
+Имя точки пополнения 1;Россия, Абдулино, ул. Коммунистическая д. 85;Терминал;verification;Круглосуточно;admin
+Имя точки пополнения 2;Россия, Абдулино, с.Северное ул.Чапаева 41;Терминал;verification;Круглосуточно;admin
+
 В ответе будет список точек, которые были добавлены.
 Пример формата файла:
 
-| Тип; | Время работы; | Населенный пункт |
+| Имя; | Адрес; | Тип; | group; | Время работы; | source_id |
 |------------------- |:------------------- |:------------|
-| Терминал; | Круглосуточно; | Абдулино;ул. Коммунистическая, д. 85 |
-| Терминал; | Круглосуточно; | Абдулино;с.Северное , ул.Чапаева 41 |
+| Имя точки пополнения 1; | Россия, Абдулино, ул. Коммунистическая д. 85; | Терминал; | verification; | Круглосуточно; | admin; |
+| Имя точки пополнения 2; | Абдулино, с.Северное ул.Чапаева 41; | Терминал; | verification; | Круглосуточно; | admin; |
 
 ##Удаление точки пополнения
 
 ```shell
-curl -uuser:user -X DELETE -d '{"id":"5542670dcccc9049990041b9"}' sandbox.wallet.best/adm2/replenishment_point
+curl -uuser:user -X DELETE api.mbank.dev/adm2/locations/554ce815cccc9056320041d3
 ```
 
 ```json
 {
     "meta": {
         "code": 200
-    },
-    "data": {}
+    }
 }
 ```
