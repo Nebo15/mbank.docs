@@ -290,7 +290,7 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:
 ##Загрузка списка лимитов
 
 ```shell
-curl -H 'X-Project-ID:mbank' -X GET -u user:user "sandbox.wallet.best/adm2/settings/limits"
+curl -H 'X-Project-ID:mbank' -X GET -u user:user "sandbox.wallet.best/adm2/settings/limits/"
 ```
 
 ```json
@@ -300,29 +300,31 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user "sandbox.wallet.best/adm2/setti
     },
     "data": [
         {
-            "id": "53dfa34856c35f737505a834",
+            "id": "53dfa37456c35f7375ebdc44",
             "title": {
-                "ru_RU": "Максимальный остаток на счет",
+                "ru_RU": "Оплата услуг",
                 "en_US": null
             },
             "description": {
-                "ru_RU": "Сумма сверх указанного лимита будет временно недоступна для любых операций",
+                "ru_RU": "Кроме перечисленных ниже",
                 "en_US": null
             },
-            "status": {
-                "anonymous": "1",
-                "verified": "1"
+            "anonymous": {
+                "type": "bool",
+                "value": true,
+                "status": "anonymous"
             },
-            "limit": {
-                "anonymous": "15000",
-                "verified": "60000"
+            "verified": {
+                "type": "bool",
+                "value": true,
+                "status": "verified"
             },
-            "type_limits": [
-                "anonymous",
-                "verified",
-                "personified"
-            ],
-            "position": 0,
+            "personified": {
+                "type": "string",
+                "value": null,
+                "status": "personified"
+            },
+            "position": 7,
             "localized_fields": [
                 "title",
                 "description"
@@ -344,59 +346,45 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user "sandbox.wallet.best/adm2/setti
 ##Загрузка лимита по id
 
 ```shell
-$ curl -H 'X-Project-ID:mbank' -X GET -u user:user "sandbox.wallet.best/adm2/settings/limits/53dfa34856c35f737505a834"
+$ curl -H 'X-Project-ID:mbank' -X GET -u user:user "sandbox.wallet.best/adm2/settings/limits/53dfa37456c35f7375ebdc44"
 ```
 
 ```json
-
 {
     "meta": {
         "code": 200
     },
     "data": {
-        "id": "53dfa34856c35f737505a834",
+        "id": "53dfa37456c35f7375ebdc44",
         "title": {
-            "ru_RU": "Максимальный остаток на счет",
+            "ru_RU": "Оплата услуг",
             "en_US": null
         },
         "description": {
-            "ru_RU": "Сумма сверх указанного лимита будет временно недоступна для любых операций",
+            "ru_RU": "Кроме перечисленных ниже",
             "en_US": null
         },
-        "status": {
-            "anonymous": "1",
-            "verified": "1"
+        "anonymous": {
+            "type": "bool",
+            "value": true,
+            "status": "anonymous"
         },
-        "limit": {
-            "anonymous": "15000",
-            "verified": "60000"
+        "verified": {
+            "type": "bool",
+            "value": true,
+            "status": "verified"
         },
-        "type_limits": [
-            "anonymous",
-            "verified",
-            "personified"
-        ],
-        "position": 0,
+        "personified": {
+            "type": "string",
+            "value": null,
+            "status": "personified"
+        },
+        "position": 7,
         "localized_fields": [
             "title",
             "description"
         ]
     }
-}
-```
-
-##Удаление лимита
-
-```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u user:user  -d '{"id":"53dfa34856c35f737505a834"}' http://sandbox.wallet.best/adm2/settings/limits
-```
-
-```json
-{
-    "meta": {
-        "code": 200
-    },
-    "data": {}
 }
 ```
 
@@ -419,7 +407,7 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:
 
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"title":{"ru_RU":"Название","en_US":"test title"},"description":{"ru_RU":"Описание","en_US":"test description"},"limit":{"anonymous":111,"verified":222,"personified":333},"status":{"anonymous":0,"verified":1,"personified":2}}' http://sandbox.wallet.best/adm2/settings/limits
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"title":{"ru_RU":"Название","en_US":"test title"},"description":{"ru_RU":"Описание","en_US":"test description"},"limit":{"anonymous":111,"verified":222,"personified":333},"status":{"anonymous":0,"verified":1,"personified":2}}' http://api.mbank.dev/adm2/settings/limits/
 ```
 
 ```json
@@ -428,7 +416,7 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:
         "code": 200
     },
     "data": {
-        "id": "55498d60cccc90f621004248",
+        "id": "554cb2d6cccc9080250041a8",
         "title": {
             "ru_RU": "Название",
             "en_US": "test title"
@@ -437,22 +425,22 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:
             "ru_RU": "Описание",
             "en_US": "test description"
         },
-        "status": {
-            "anonymous": 0,
-            "verified": 1,
-            "personified": 2
+        "anonymous": {
+            "type": "string",
+            "value": 111,
+            "status": "anonymous"
         },
-        "limit": {
-            "anonymous": 111,
-            "verified": 222,
-            "personified": 333
+        "verified": {
+            "type": "bool",
+            "value": true,
+            "status": "verified"
         },
-        "type_limits": [
-            "anonymous",
-            "verified",
-            "personified"
-        ],
-        "position": 2,
+        "personified": {
+            "type": "bool",
+            "value": false,
+            "status": "personified"
+        },
+        "position": 10,
         "localized_fields": [
             "title",
             "description"
@@ -469,7 +457,7 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:
 ##Изменение лимита
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"id":"55498d60cccc90f621004248","title":{"ru_RU":"Название","en_US":"test title edited"},"description":{"ru_RU":"Описание","en_US":"test description edited"}, "limit":{"anonymous":111,"verified":222,"personified":333},"status":{"anonymous":0,"verified":1,"personified":2}}' http://sandbox.wallet.best/adm2/settings/limits
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"title":{"ru_RU":"Название","en_US":"test title edited"},"description":{"ru_RU":"Описание","en_US":"test description edited"}, "limit":{"anonymous":111,"verified":222,"personified":333},"status":{"anonymous":0,"verified":1,"personified":2}}' http://api.mbank.dev/adm2/settings/limits/554cb2d6cccc9080250041a8
 
 ```
 
@@ -479,7 +467,7 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:
         "code": 200
     },
     "data": {
-        "id": "55498d60cccc90f621004248",
+        "id": "554cb2d6cccc9080250041a8",
         "title": {
             "ru_RU": "Название",
             "en_US": "test title edited"
@@ -488,22 +476,22 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:
             "ru_RU": "Описание",
             "en_US": "test description edited"
         },
-        "status": {
-            "anonymous": 0,
-            "verified": 1,
-            "personified": 2
+        "anonymous": {
+            "type": "string",
+            "value": 111,
+            "status": "anonymous"
         },
-        "limit": {
-            "anonymous": 111,
-            "verified": 222,
-            "personified": 333
+        "verified": {
+            "type": "bool",
+            "value": true,
+            "status": "verified"
         },
-        "type_limits": [
-            "anonymous",
-            "verified",
-            "personified"
-        ],
-        "position": 2,
+        "personified": {
+            "type": "bool",
+            "value": false,
+            "status": "personified"
+        },
+        "position": 12,
         "localized_fields": [
             "title",
             "description"
@@ -512,4 +500,19 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:
 }
 ```
 
-При редактировании лимитп передаются те же самые поля, что и при добалении, дополнительно передается  id редактируемого лимита
+При редактировании лимит передаются те же самые поля, что и при добалении
+
+##Удаление лимита
+
+```shell
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u user:user http://api.mbank.dev/adm2/settings/limits/554cb2d6cccc9080250041a8
+```
+
+```json
+{
+    "meta": {
+        "code": 200
+    },
+    "data": {}
+}
+```
