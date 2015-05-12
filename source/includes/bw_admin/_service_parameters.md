@@ -3,7 +3,7 @@
 ##Добавление параметра
 
 ```shell
-curl -H 'Content-type:application/json' -H 'X-Project-ID:mbank' -X POST -u user:user -d '{"id":"some_parameter_name","type":"5548d11acccc90702f0041b9","title":{"ru_RU":"parameter title"},"range_start":100500,"range_end":100501,"pattern":"\/\\d{4}\/","pattern_desc":{"ru_RU":"pattern_desc title"},"default_value":"{{last_value}}","regex_values":[111,222,333],"regex_descriptions":[{"ru_RU":"regex_description_111"},{"ru_RU":"regex_description_222"},{"ru_RU":"regex_description_333"}],"is_disabled":false,"is_hidden":false,"is_required":true}' http://sandbox.wallet.best/adm2/53a70ca256c35f1664f64b20/parameter
+curl -H 'Content-type:application/json' -H 'X-Project-ID:mbank' -X POST -u user:user -d '{"id":"some_parameter_name","type":"5548d11acccc90702f0041b9","title":{"ru_RU":"parameter title"},"range_start":100500,"range_end":100501,"pattern":"\/\\d{4}\/","pattern_desc":{"ru_RU":"pattern_desc title"},"default_value":"{{last_value}}","regex_values":[111,222,333],"regex_descriptions":[{"ru_RU":"regex_description_111"},{"ru_RU":"regex_description_222"},{"ru_RU":"regex_description_333"}],"is_disabled":false,"is_hidden":false,"is_required":true}' http://sandbox.wallet.best/adm2/services/53a70ca256c35f1664f64b20/parameters
 ```
 
 ```json
@@ -143,7 +143,7 @@ curl -H 'Content-type:application/json' -H 'X-Project-ID:mbank' -X POST -u user:
 ##Изменение параметра
 
 ```shell
-curl -H 'Content-type:application/json' -H 'X-Project-ID:mbank' -X POST -u user:user -d '{"id":"some_parameter_name","type":"5548d11acccc90702f0041b9","title":{"ru_RU":"parameter title"},"range_start":100500,"range_end":100501,"pattern":"\/\\d{4}\/","pattern_desc":{"ru_RU":"pattern_desc title"},"default_value":"{{last_value}}_edited","regex_values":[111,222,333],"regex_descriptions":[{"ru_RU":"regex_description_333"},{"ru_RU":"regex_description_333"},{"ru_RU":"regex_description_333"}],"is_disabled":false,"is_hidden":false,"is_required":true}' http://sandbox.wallet.best/adm2/53a70ca256c35f1664f64b20/some_parameter_name/parameter
+curl -H 'Content-type:application/json' -H 'X-Project-ID:mbank' -X POST -u user:user -d '{"id":"some_parameter_name","type":"5548d11acccc90702f0041b9","title":{"ru_RU":"parameter title"},"range_start":100500,"range_end":100501,"pattern":"\/\\d{4}\/","pattern_desc":{"ru_RU":"pattern_desc title"},"default_value":"{{last_value}}_edited","regex_values":[111,222,333],"regex_descriptions":[{"ru_RU":"regex_description_333"},{"ru_RU":"regex_description_333"},{"ru_RU":"regex_description_333"}],"is_disabled":false,"is_hidden":false,"is_required":true}' http://sandbox.wallet.best/adm2/services/53a70ca256c35f1664f64b20/parameters/some_parameter_name
 ```
 
 ```json
@@ -157,7 +157,7 @@ curl -H 'Content-type:application/json' -H 'X-Project-ID:mbank' -X POST -u user:
 ##Удаление параметра
 
 ```shell
-curl -H 'X-Project-ID:mbank' -X DELETE -u user:user http://sandbox.wallet.best/adm2/53a70ca256c35f1664f64b20/some_parameter_name/parameter
+curl -H 'X-Project-ID:mbank' -X DELETE -u user:user http://sandbox.wallet.best/adm2/services/53a70ca256c35f1664f64b20/parameters/some_parameter_name
 ```
 
 ```json
@@ -230,7 +230,7 @@ curl -H 'X-Project-ID:mbank' -X DELETE -u user:user http://sandbox.wallet.best/a
 ##Загрузка параметра
 
 ```shell
-curl -H 'X-Project-ID:mbank' -X GET -u user:user http://sandbox.wallet.best/adm2/53359fb2255c741a749f0c4c/phoneNumber/parameter
+curl -H 'X-Project-ID:mbank' -X GET -u user:user http://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c4c/parameters/phoneNumber
 ```
 
 ```json
@@ -284,7 +284,7 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user http://sandbox.wallet.best/adm2
 
 
 ```shell
-curl -H 'X-Project-ID:mbank' -X POST -u user:user -d '{"service_id":"53359fb2255c741a749f0c4a","parameter_id":"phoneNumber"}' http://sandbox.wallet.best/adm2/service/param/sync
+curl -H 'X-Project-ID:mbank' -X POST -u user:user http://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c4a/parameters/phoneNumber/sync
 ```
 
 ```json
@@ -298,7 +298,7 @@ curl -H 'X-Project-ID:mbank' -X POST -u user:user -d '{"service_id":"53359fb2255
 ##Синхронизация items у параметров
 
 ```shell
-curl  -X POST -u user:user -d '{"service_id":"53a70d2456c35f58640fdd47","parameter_id":"phoneNumber"}' http://sandbox.wallet.best/adm2/service/param/sync_items
+curl  -X POST -u user:user http://sandbox.wallet.best/adm2/services/53a70d2456c35f58640fdd47/parameters/phoneNumber/items/sync
 ```
 
 ```json

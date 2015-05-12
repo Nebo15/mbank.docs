@@ -213,7 +213,7 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/wallet
         "name": "Петян",
         "verified": true,
         "person_status": "data_verified",
-        "picture_url": "http:\/\/api.mbank.dev\/img\/wallets\/7a\/91c\/54291c7a56c35f205da91f9d.jpg?1424445896",
+        "picture_url": "http:\/\/sandbox.wallet.best\/img\/wallets\/7a\/91c\/54291c7a56c35f205da91f9d.jpg?1424445896",
         "email": "test@wallet.best",
         "can_use_autopayments": false,
         "intercom_user_hash": "82bdad9a133b1efda3aeba7b3a78e00afd0d8f4dc5a604b06663a2d6f07fc9b2"

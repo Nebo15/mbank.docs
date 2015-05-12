@@ -634,7 +634,7 @@ http://sandbox.wallet.best/v1/payments
 
 Платим:
 ```shell
-curl -u+79261111111:password -H 'Content-type:application/json' -X POST http://api.mbank.dev/v1/payments/25818/pay
+curl -u+79261111111:password -H 'Content-type:application/json' -X POST http://sandbox.wallet.best/v1/payments/25818/pay
 ```
 
 ```json
@@ -768,7 +768,7 @@ http://sandbox.wallet.best/v1/payments
 ```
 Платим:
 ```shell
-curl -u+79261111111:password -H 'Content-type:application/json' -X POST http://api.mbank.dev/v1/payments/25818/pay
+curl -u+79261111111:password -H 'Content-type:application/json' -X POST http://sandbox.wallet.best/v1/payments/25818/pay
 ```
 
 ```json
@@ -1065,7 +1065,7 @@ http://sandbox.wallet.best/v1/payments/25832/pay
 $ curl -u +79261111111:password -H 'Content-type:application/json' http://sandbox.wallet.best/v1/payments?page=0&size=35
 ```
 
-Параметры `page` и `size` в запросе позволяют задать номер (начиная с 0) и размер страницы, которую запрашивает клиент. По умолчанию номер страницы - 0 и размер страницы - 35 платежей. Опциональные параметры `type` и `status` позволяют фильтровать платежи по типу и статусу. По умолчанию, платежи со статусом `created` не попадают в список, чтобы их увидеть, необходимо задать этот статус явно. Статусы и типы можно перечислять через запятую, например: `status=created,completed`.
+Параметры `page` и `size` в запросе позволяют задать номер (начиная с 0) и размер страницы, которую запрашивает клиент. По умолчанию номер страницы - 0 и размер страницы - 35 платежей. Опциона��ьные параметры `type` и `status` позволяют фильтровать платежи по типу и статусу. По умолчанию, платежи со статусом `created` не попадают в список, чтобы их увидеть, необходимо задать этот статус явно. Статусы и типы можно перечислять через запятую, например: `status=created,completed`.
 
 ```json
 {

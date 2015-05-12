@@ -1,18 +1,11 @@
 #Типы
 
-* `id` - идентификатор
-* `title` - название
-* `description` - описание
-* `regex_map` - Регулярное выражения поиска (Правило преобразования MServer&rarr;Client)
-* `regex_map_value` - Значение для замены (Значение преобразования MServer&rarr;Client)
-* `regex_unmap` - Регулярное выражения поиска (Правило преобразования Client&rarr;MServer)
-* `regex_unmap_value` - Значение для замены (Значение преобразования Client&rarr;MServer)
 
 
 ##Получение списка типов
 
 ```shell
-curl -uuser:user sandbox.wallet.best/adm2/types
+curl -uuser:user http://sandbox.wallet.best/adm2/types/
 ```
 
 ```json
@@ -43,10 +36,19 @@ curl -uuser:user sandbox.wallet.best/adm2/types
     ]
 }
 ```
+
+* `id` - идентификатор
+* `title` - название
+* `description` - описание
+* `regex_map` - Регулярное выражения поиска (Правило преобразования MServer&rarr;Client)
+* `regex_map_value` - Значение для замены (Значение преобразования MServer&rarr;Client)
+* `regex_unmap` - Регулярное выражения поиска (Правило преобразования Client&rarr;MServer)
+* `regex_unmap_value` - Значение для замены (Значение преобразования Client&rarr;MServer)
+
 ##Получение типа по id
 
 ```shell
-curl  -H 'X-Project-ID:mbank' -uuser:user sandbox.wallet.best/adm2/type/5542652ecccc90abb20041b8
+curl  -H 'X-Project-ID:mbank' -uuser:user http://sandbox.wallet.best/adm2/types/5542652ecccc90abb20041b8
 ```
 
 ```json
@@ -69,7 +71,7 @@ curl  -H 'X-Project-ID:mbank' -uuser:user sandbox.wallet.best/adm2/type/5542652e
 ##Добавление типа
 
 ```shell
-curl  -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -uuser:user -X POST -d '{"title":"new_title","description":"description_for_new_title","regex_map":"\/^$\/$","regex_map_value":"\/^$\/$","regex_unmap":"100500","regex_unmap_value":"100500"}' http://sandbox.wallet.best/adm2/type
+curl  -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -uuser:user -X POST -d '{"title":"new_title","description":"description_for_new_title","regex_map":"\/^$\/$","regex_map_value":"\/^$\/$","regex_unmap":"100500","regex_unmap_value":"100500"}' http://sandbox.wallet.best/adm2/types/
 ```
 
 ```json
@@ -99,7 +101,7 @@ curl  -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -uuser:user -X 
 ##Изменение типа
 
 ```shell
-curl  -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -uuser:user -X POST -d '{"id": "5549b733cccc904b09004261", "title":"edited title","description":"edited description","regex_map":"\/^$\/$","regex_map_value":"\/^$\/$","regex_unmap":"100500","regex_unmap_value":"100500"}' http://sandbox.wallet.best/adm2/type
+curl  -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -uuser:user -X POST -d '{"title":"edited title","description":"edited description","regex_map":"\/^$\/$","regex_map_value":"\/^$\/$","regex_unmap":"100500","regex_unmap_value":"100500"}' http://sandbox.wallet.best/adm2/types/5549b733cccc904b09004261
 
 ```
 
@@ -125,7 +127,7 @@ curl  -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -uuser:user -X 
 ##Удаление типа
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u user:user  -d '{"id":"5549b733cccc904b09004261"}' http://sandbox.wallet.best/adm2/type
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u user:user http://sandbox.wallet.best/adm2/types/5549b733cccc904b09004261
 ```
 
 ```json

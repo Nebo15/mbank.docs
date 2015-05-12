@@ -3,7 +3,7 @@
 ## Загрузка списка платежей
 
 ```shell
-curl -uuser:user http://sandbox.wallet.best/adm2/payments?size=2
+curl -uuser:user http://sandbox.wallet.best/adm2/payments/?size=2
 ```
 
 ```json

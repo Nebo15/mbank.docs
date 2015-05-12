@@ -2,7 +2,7 @@
 
 ## Загрузка списка категорий
 ```shell
-$ curl -uuser:user "http://sandbox.wallet.best/adm2/categories"
+$ curl -uuser:user "http://sandbox.wallet.best/adm2/categories/"
 ```
 ```json
 {
@@ -41,7 +41,7 @@ $ curl -uuser:user "http://sandbox.wallet.best/adm2/categories"
 ## Добавление категории
 
 ```shell
-$ curl -H 'Content-type:application/json' -X POST -u user:user -d '{"name":"some_name","group":"some_group","position":1,"projects":["mbank","bov"]}' http://sandbox.wallet.best/adm2/categories
+$ curl -H 'Content-type:application/json' -X POST -u user:user -d '{"name":"some_name","group":"some_group","position":1,"projects":["mbank","bov"]}' http://sandbox.wallet.best/adm2/categories/
 ```
 
 ```json
@@ -101,7 +101,6 @@ $ curl -H 'Content-type:application/json' -X POST -u user:user -d '{"name":{"ru_
 }
 ```
 При редактировании категории передаются те же самые поля, что и при создании
-Дополнительно передается id категории
 
 ## Удаление категории
 

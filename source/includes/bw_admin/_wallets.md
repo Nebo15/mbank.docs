@@ -2,7 +2,7 @@
 ##Загрузка кошелька
 
 ```shell
-curl -H 'X-Project-ID:mbank' -uuser:user sandbox.wallet.best/adm2/wallet/+380631345678
+curl -H 'X-Project-ID:mbank' -uuser:user http://sandbox.wallet.best/adm2/wallets/+380631345678
 ```
 
 ```json
@@ -171,7 +171,7 @@ curl -H 'X-Project-ID:mbank' -uuser:user sandbox.wallet.best/adm2/wallet/+380631
 ##Удаление кошелька
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u user:user "http://sandbox.wallet.best/adm2/wallet/+123457643395"
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u user:user "http://sandbox.wallet.best/adm2/wallets/+123457643395"
 ```
 
 ```json
@@ -186,17 +186,46 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u use
 
 Работает только на DEV сервере
 
-##Изменение кошелька
+##Изменение email кошелька
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"phone":"+12345842116","email":"test@testdt.com"}' http://sandbox.wallet.best/adm2/wallet
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"email":"test@testdt.com"}' http://sandbox.wallet.best/adm2/wallets/+12345842116/email
+```
 
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"phone":"+12345842117","person_status":"data_entered"}' http://sandbox.wallet.best/adm2/wallet
+```json
+{
+    "meta": {
+        "code": 200,
+        "time": 0.270401
+    },
+    "data": {}
+}
+```
 
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"phone":"+12345842117","reset_password":true}' http://sandbox.wallet.best/adm2/wallet
+##Изменение person/status кошелька
 
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"phone":"+12345842117","reset_password":false}' http://sandbox.wallet.best/adm2/wallet
+```shell
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"person_status":"data_entered"}' http://sandbox.wallet.best/adm2/wallets/+12345842117/person/status
+```
 
+```json
+{
+    "meta": {
+        "code": 200,
+        "time": 0.270401
+    },
+    "data": {}
+}
+```
+
+###Изменяемые поля
+
+* `person_status` - Изменить статус верификации (см. Изменение статуса персональных данныхv)
+
+##Заставить сменить пароль
+
+```shell
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"password_reset":true}' http://sandbox.wallet.best/adm2/wallets/+12345842117/password/reset
 ```
 
 ```json
@@ -210,15 +239,12 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:
 ```
 
 ###Изменяемые поля (разные запросы)
-
-* `email`
-* `person_status` - Изменить статус верификации (см. Изменение статуса персональных данныхv)
-* `reset_password` - (true|false) - заставить сменить пароль
+* `password_reset` - (true|false) - заставить сменить пароль
 
 ##Удаление аватарки пользователя
 
 ```shell
-$curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u user:user http://sandbox.wallet.best/adm2/wallets/+123457443658/image
+$curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u user:user http://sandbox.wallet.best/adm2/wallets/+123457443658/icon
 ```
 
 ```json
@@ -234,7 +260,7 @@ $curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u us
 ##Получение списка устройств кошелька
 
 ```shell
-curl -H 'X-Project-ID:mbank' -X GET -u user:user http://sandbox.wallet.best/adm2/wallet/+12345471665/devices
+curl -H 'X-Project-ID:mbank' -X GET -u user:user http://sandbox.wallet.best/adm2/wallets/+12345471665/devices
 
 ```
 
@@ -283,7 +309,7 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user http://sandbox.wallet.best/adm2
 ##Блокировка кошелька
 
 ```shell
-curl  -X POST -u user:user -d '{"phone":"+12345334867","message":"message","reason":"reason"}' http://sandbox.wallet.best/adm2/wallet/disable
+curl  -X POST -u user:user -d '{"message":"message","reason":"reason"}' http://sandbox.wallet.best/adm2/wallets/+12345334867/disable
 ```
 
 ```json
@@ -296,13 +322,13 @@ curl  -X POST -u user:user -d '{"phone":"+12345334867","message":"message","reas
 }
 ```
 
-* `Сообщение, которое увидит пользователь` -
-* `Причина блокировки` -
+* `message` - Сообщение, которое увидит пользователь
+* `reason` - Причина блокировки
 
 ##Разблокировка кошелька
 
 ```shell
-curl  -X POST -u user:user -d '{"phone":"+12345334867"}' http://sandbox.wallet.best/adm2/wallet/enable
+curl  -X POST -u user:user http://sandbox.wallet.best/adm2/wallets/+12345334867/enable
 ```
 
 ```json
@@ -373,8 +399,11 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user http://sandbox.wallet.best/adm2
 ```
 
 Список кошельков - у которых совпадают данные
+
 * `by_ip` - Заходили с одного ip
 * `by_card` - Привязанна одна и та же карта
-* `by_identification_data` - `by_person` - совпадают идентификационные данные; `by_passport` - совпадают паспортные данные
+* `by_identification_data`
+* * `by_person` - совпадают идентификационные данные;
+* * `by_passport` - совпадают паспортные данные
 * `by_udid` - заходили с одного устройства
 * `by_contacts` - степень похожести телефонной книги составляет >= 20%
