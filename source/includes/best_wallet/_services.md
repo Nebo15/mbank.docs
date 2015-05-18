@@ -90,7 +90,25 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services
             "status": "online",
             "icon_url": "https:\/\/api.mbank.ru\/img\/providers\/dev_834.png",
             "limit": "",
-            "verification_required": true
+            "verification_required": true,
+            "group": {
+                "id": "53359fb2255c741a749f0c4b",
+                "name": "Интернет провайдеры"
+            },
+            "geo": [
+                [
+                    "Москва",
+                    "Центральный округ",
+                    "Российская Федерация"
+                ],
+                [
+                    "Питер",
+                    "Вохомский район",
+                    "Костромская область",
+                    "Центральный округ",
+                    "Российская Федерация"
+                ]
+            ]
         },
         {
             "id": 1000,
@@ -99,7 +117,11 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services
             "status": "offline",
             "icon_url": "https:\/\/api.mbank.ru\/img\/providers\/dev_1000.png",
             "limit": "",
-            "verification_required": false
+            "verification_required": false,
+            "group": {
+                "id": "53359fb2255c741a749f0c59",
+                "name": "Мобильная связь зарубежья"
+            }
         }
     ]
 }
