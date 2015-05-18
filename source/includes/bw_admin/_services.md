@@ -333,7 +333,7 @@ curl -H 'X-Project-ID:mbank' -X DELETE -u user:user http://sandbox.wallet.best/a
 ##Загрузка сервисов по mserver_id
 
 ```shell
-curl -H 'X-Project-ID:mbank' -X GET -u user:user "sandbox.wallet.best/adm2/services_by_mserver_ids/1013,1001"
+curl -H 'X-Project-ID:mbank' -X GET -u user:user "api.mbank.dev/adm2/services/mserver/1013,1001"
 ```
 
 ```json
