@@ -1,7 +1,8 @@
 rvm:
   - 2.0.0
 # sudo: required
-# before_script:
-  # - GEM_PATH="/home/user/project/vendor/bundle/gems/"
+before_script:
+  - git config --global user.email "marvin@nebo15.com"
+  - git config --global user.name "The Marvin"
 script:
   - bundle exec rake publish
