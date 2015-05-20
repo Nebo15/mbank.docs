@@ -197,7 +197,7 @@ $ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/a
 ##Создание шаблона
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"mserver_id":"1161","parameter_id":"phoneNumber","items":null,"type":{"id":"54293c0e56c35ff85dcf6ee8","title":"string","description":"Steam оплата","regex_map":"","regex_map_value":"","regex_unmap":"","regex_unmap_value":""},"title":{"ru_RU":"Пополнение Steam"},"range_start":"","range_end":"","pattern":"^[a-zA-Z0-9_]{3,64}$","pattern_desc":{"ru_RU":"Какой-то там логин в стим"},"default_value":null,"regex_values":[],"regex_description":[],"is_required":true}' http://sandbox.wallet.best/adm2/templates/
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"service_id":"54293c0e56c35ff85dcf6ee8","parameter_id":"phoneNumber","items":null,"type":{"id":"54293c0e56c35ff85dcf6ee8","title":"string","description":"Steam оплата","regex_map":"","regex_map_value":"","regex_unmap":"","regex_unmap_value":""},"title":{"ru_RU":"Пополнение Steam"},"range_start":"","range_end":"","pattern":"^[a-zA-Z0-9_]{3,64}$","pattern_desc":{"ru_RU":"Какой-то там логин в стим"},"default_value":null,"regex_values":[],"regex_description":[],"is_required":true}' http://sandbox.wallet.best/adm2/templates/
 ```
 
 ```json
