@@ -1,6 +1,6 @@
 rvm:
   - 2.0.0
-# sudo: required
+sudo: false
 before_script:
   - git config --global user.email "marvin@nebo15.com"
   - git config --global user.name "The Marvin"
