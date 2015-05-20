@@ -1,4 +1,6 @@
 rvm:
   - 2.0.0
+before_script:
+  - bundle install
 script:
   - rake publish
