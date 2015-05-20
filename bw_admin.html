@@ -29,10 +29,10 @@
       <div id="toc">
       </div>
         <ul class="toc-footer">
-            <li><a href='/mserver.html'>Mserver API</a></li>
-            <li><a href='/mserver_admin.html'>Mserver Admin API</a></li>
-            <li><a href='/bestwallet.html'>BestWallet API</a></li>
-            <li><a href='/bw_admin.html'>BestWallet Admin API</a></li>
+            <li><a href='mserver.html'>Mserver API</a></li>
+            <li><a href='mserver_admin.html'>Mserver Admin API</a></li>
+            <li><a href='bestwallet.html'>BestWallet API</a></li>
+            <li><a href='bw_admin.html'>BestWallet Admin API</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -2416,7 +2416,7 @@
 </ul>
 
 <h2 id="Создание-шаблона">Создание шаблона</h2>
-<pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"mserver_id":"1161","parameter_id":"phoneNumber","items":null,"type":{"id":"54293c0e56c35ff85dcf6ee8","title":"string","description":"Steam оплата","regex_map":"","regex_map_value":"","regex_unmap":"","regex_unmap_value":""},"title":{"ru_RU":"Пополнение Steam"},"range_start":"","range_end":"","pattern":"^[a-zA-Z0-9_]{3,64}$","pattern_desc":{"ru_RU":"Какой-то там логин в стим"},"default_value":null,"regex_values":[],"regex_description":[],"is_required":true}'</span> http://sandbox.wallet.best/adm2/templates/
+<pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"service_id":"54293c0e56c35ff85dcf6ee8","parameter_id":"phoneNumber","items":null,"type":{"id":"54293c0e56c35ff85dcf6ee8","title":"string","description":"Steam оплата","regex_map":"","regex_map_value":"","regex_unmap":"","regex_unmap_value":""},"title":{"ru_RU":"Пополнение Steam"},"range_start":"","range_end":"","pattern":"^[a-zA-Z0-9_]{3,64}$","pattern_desc":{"ru_RU":"Какой-то там логин в стим"},"default_value":null,"regex_values":[],"regex_description":[],"is_required":true}'</span> http://sandbox.wallet.best/adm2/templates/
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
