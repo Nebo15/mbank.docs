@@ -1,4 +1,5 @@
 rvm:
   - 2.0.0
-after_script:
+script:
+  - rake build
   - rake publish
