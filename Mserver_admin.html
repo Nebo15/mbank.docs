@@ -1,0 +1,1296 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Mserver Admin API</title>
+
+    <link href="stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <script src="javascripts/all.js" type="text/javascript"></script>
+
+  </head>
+
+  <body class="Mserver_admin">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+      <!--<img src="images/logo.png" />-->
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc">
+      </div>
+        <ul class="toc-footer">
+            <li><a href='/mserver.html'>Mserver API</a></li>
+            <li><a href='/mserver_admin.html'>Mserver Admin API</a></li>
+            <li><a href='/bestwallet.html'>BestWallet API</a></li>
+            <li><a href='/bw_admin.html'>BestWallet Admin API</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        
+          <h1 id="Аутентификация">Аутентификация</h1>
+
+<p>На тестовой системе созданы 2 пользователя от имени которых возможен вызов административного API.</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Логин</th>
+<th style="text-align: left">Пароль</th>
+<th style="text-align: left">Роли пользователя</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">user</td>
+<td style="text-align: left">user</td>
+<td style="text-align: left">user</td>
+</tr>
+<tr>
+<td style="text-align: left">admin</td>
+<td style="text-align: left">admin</td>
+<td style="text-align: left">admin</td>
+</tr>
+</tbody></table>
+
+<h1 id="Многопроектность">Многопроектность</h1>
+
+<p>Во всех запросах можно указать относительного какого проекта производится запрос.</p>
+
+<ul>
+<li><code class="prettyprint">project_id</code> - ID проекта, в котором будет производиться поиск. Доступен только суперадминистраторам.</li>
+</ul>
+
+<h1 id="Постраничная-навиция">Постраничная навиция</h1>
+
+<ul>
+<li><code class="prettyprint">page</code> - номер (начиная с 0) страницы, которую запрашивает клиент, опционально, по умолчанию 0</li>
+<li><code class="prettyprint">size</code> - размер страницы, которую запрашивает клиент, опционально, по умолчанию 35</li>
+</ul>
+
+<h1 id="Поиск-по-кошелькам-проекта">Поиск по кошелькам проекта</h1>
+
+<h3 id="Постраничная-навиция">Постраничная навиция</h3>
+
+<p>См. выше.</p>
+
+<h3 id="Параметры">Параметры</h3>
+
+<ul>
+<li><code class="prettyprint">order_by</code> - поле для сортировки</li>
+<li><code class="prettyprint">order_direction</code> - направление сортировки: asc или desc (case insensitive)</li>
+</ul>
+
+<h3 id="Поля-ответа:">Поля ответа:</h3>
+
+<ul>
+<li><code class="prettyprint">phone</code> - номер телефона, к которому привязан кошелек</li>
+<li><code class="prettyprint">amount</code> - остаток на балансе кошелька</li>
+<li><code class="prettyprint">enabled</code> - false если кошелек заблокирован, иначе - true</li>
+<li><code class="prettyprint">active</code> - true если кошелек активирован через СМС-код</li>
+<li><code class="prettyprint">role</code> - роль пользователя (всегда равно user)</li>
+<li><code class="prettyprint">created_at</code> - дата регистрации пользователя</li>
+<li><code class="prettyprint">person.*</code> - идентификационные данные пользователя</li>
+<li><code class="prettyprint">statistics.payments.lifetime.turnover</code> - оборот по кошельку за все время</li>
+<li><code class="prettyprint">statistics.payments.lifetime.in_turnover</code> - оборот по транзакциям типа in за все время</li>
+<li><code class="prettyprint">statistics.payments.lifetime.out_turnover</code> - оборот по транзакциям типа out за все время</li>
+<li><code class="prettyprint">statistics.payments.lifetime.p2p_turnover</code> - оборот по транзакциям типа p2p за все время</li>
+<li><code class="prettyprint">statistics.payments.lifetime.count</code> - количество транзакций за все время</li>
+<li><code class="prettyprint">statistics.payments.lifetime.in_count</code> - количество транзакций типа in за все время</li>
+<li><code class="prettyprint">statistics.payments.lifetime.out_count</code> - количество транзакций типа out за все время</li>
+<li><code class="prettyprint">statistics.payments.lifetime.p2p_count</code> - количество транзакций типа out за все время</li>
+<li><code class="prettyprint">statistics.payments.last_month.turnover</code> - оборот по кошельку за последний месяц</li>
+<li><code class="prettyprint">statistics.payments.last_month.in_turnover</code> - оборот по транзакциям типа in за последний месяц</li>
+<li><code class="prettyprint">statistics.payments.last_month.out_turnover</code> - оборот по транзакциям типа out за последний месяц</li>
+<li><code class="prettyprint">statistics.payments.last_month.p2p_turnover</code> - оборот по транзакциям типа p2p за последний месяц</li>
+<li><code class="prettyprint">statistics.payments.last_month.count</code> - количество транзакций за последний месяц</li>
+<li><code class="prettyprint">statistics.payments.last_month.in_count</code> - количество транзакций типа in за последний месяц</li>
+<li><code class="prettyprint">statistics.payments.last_month.out_count</code> - количество транзакций типа out за последний месяц</li>
+<li><code class="prettyprint">statistics.payments.last_month.p2p_count</code> - количество транзакций типа out за последний месяц</li>
+<li><code class="prettyprint">statistics.cards.count</code> - количество привязанных и удаленных карт</li>
+<li><code class="prettyprint">statistics.cards.active_count</code> - количество привязанных активных карт</li>
+</ul>
+
+<h3 id="Поля-для-сортировки:">Поля для сортировки:</h3>
+
+<ul>
+<li><code class="prettyprint">statistics.payments.lifetime.*</code> - по любому полю со статистики транзакций за все время</li>
+<li><code class="prettyprint">statistics.cards.*count</code> - по любому count полю со статистики количества карт</li>
+<li><code class="prettyprint">created_at</code> - по дате регистрации</li>
+<li><code class="prettyprint">amount</code> - по остаткам</li>
+</ul>
+
+<h3 id="Фильтры:">Фильтры:</h3>
+
+<ul>
+<li><code class="prettyprint">ips</code> - по списку IP адресов разделённых запятой</li>
+<li><code class="prettyprint">created_before</code> и <code class="prettyprint">created_after</code> - по дате регистрации</li>
+<li><code class="prettyprint">person_given_name</code>, <code class="prettyprint">person_family_name</code> и <code class="prettyprint">person_patronymic_name</code> - по ФИО, поиск полного совпадения или совпадения в начале</li>
+<li><code class="prettyprint">person_status</code> - по статусу идентификации</li>
+<li><code class="prettyprint">person_passport_series_number</code> - по номеру и серии паспорта</li>
+<li><code class="prettyprint">phones</code> - по списку номеров телефонов, разделённых запятыми; поиск полного совпадения или совпадения в начале</li>
+<li><code class="prettyprint">card_number_first</code> - по первым 6-ти цифрам номера карты</li>
+<li><code class="prettyprint">card_number_last</code> - по последним 4-ем цифрам номера карты</li>
+<li><code class="prettyprint">card_id</code> - по ID карты в IPSP</li>
+<li><code class="prettyprint">amount_from</code> и <code class="prettyprint">amount_to</code> - по сумме остатка на кошельке</li>
+<li><code class="prettyprint">active</code> - по статусу активации (true|false)</li>
+<li><code class="prettyprint">disabled</code> - по статусу блокировки (true|false)</li>
+</ul>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uadmin:admin <span class="s2">"https://www.synq.ru/mserver2-dev/admin/wallets?family_name=арсен&amp;active=true&amp;order_by=payment_count&amp;order_direction=desc"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"page"</span><span class="p">:{</span><span class="w">
+         </span><span class="s2">"total_elements"</span><span class="p">:</span><span class="mi">4</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"phone"</span><span class="p">:</span><span class="s2">"+380503839001"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">8598.17</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"enabled"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"active"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"role"</span><span class="p">:</span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2014-08-20T15:10:25.943Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"person"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"family_name"</span><span class="p">:</span><span class="s2">"Арсеньев"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"given_name"</span><span class="p">:</span><span class="s2">"Алексей"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"patronymic_name"</span><span class="p">:</span><span class="s2">"Александрович"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"passport_series_number"</span><span class="p">:</span><span class="s2">"2202655885"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"passport_issued_at"</span><span class="p">:</span><span class="s2">"2012-02-27"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"itn"</span><span class="p">:</span><span class="s2">"330500938709"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ssn"</span><span class="p">:</span><span class="s2">"11223344595"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"data_entered"</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="s2">"statistics"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"payments"</span><span class="p">:{</span><span class="w">
+               </span><span class="s2">"lifetime"</span><span class="p">:{</span><span class="w">
+                  </span><span class="s2">"turnover"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"in_turnover"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"out_turnover"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"p2p_turnover"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"in_count"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"out_count"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"p2p_count"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+
+               </span><span class="err">}</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"last_month"</span><span class="p">:{</span><span class="w">
+                  </span><span class="s2">"turnover"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"in_turnover"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"out_turnover"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"p2p_turnover"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"in_count"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"out_count"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"p2p_count"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+
+               </span><span class="err">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"cards"</span><span class="p">:{</span><span class="w">
+               </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"active_count"</span><span class="p">:</span><span class="mi">2</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h1 id="Аналитика-по-кошелькам">Аналитика по кошелькам</h1>
+
+<h3 id="Параметры">Параметры</h3>
+
+<ul>
+<li><code class="prettyprint">group_by</code> - поле для группировки</li>
+<li><code class="prettyprint">tick</code> (day|month) - выбор разреза при группировке (день|месяц). По умолчанию - день.</li>
+</ul>
+
+<h3 id="Фильтры:">Фильтры:</h3>
+
+<p>(См. &ldquo;Поиск по кошелькам&rdquo;)</p>
+
+<ul>
+<li><code class="prettyprint">ips</code> - по списку IP адресов разделённых запятой</li>
+<li><code class="prettyprint">created_before</code> и <code class="prettyprint">created_after</code> - по дате регистрации</li>
+<li><code class="prettyprint">person_given_name</code>, <code class="prettyprint">person_family_name</code> и <code class="prettyprint">person_patronymic_name</code> - по ФИО, поиск полного совпадения или совпадения в начале</li>
+<li><code class="prettyprint">person_status</code> - по статусу идентификации</li>
+<li><code class="prettyprint">person_passport_series_number</code> - по номеру и серии паспорта</li>
+<li><code class="prettyprint">phones</code> - по списку номеров телефонов, разделённых запятыми; поиск полного совпадения или совпадения в начале</li>
+<li><code class="prettyprint">card_number_first</code> - по первым 6-ти цифрам номера карты</li>
+<li><code class="prettyprint">card_number_last</code> - по последним 4-ем цифрам номера карты</li>
+<li><code class="prettyprint">card_id</code> - по ID карты в IPSP</li>
+<li><code class="prettyprint">amount_from</code> и <code class="prettyprint">amount_to</code> - по сумме остатка на кошельке</li>
+<li><code class="prettyprint">active</code> - по статусу активации (true|false)</li>
+<li><code class="prettyprint">disabled</code> - по статусу блокировки (true|false)</li>
+</ul>
+
+<h3 id="Группировки:">Группировки:</h3>
+
+<ul>
+<li><code class="prettyprint">created_at</code> - вернет количество новых регистрацией за каждый <code class="prettyprint">tick</code></li>
+</ul>
+
+<blockquote>
+<p>Количество зарегистрированных кошельков с фильтром</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uadmin:admin <span class="s2">"https://www.synq.ru/mserver2-dev/admin/wallets/count?active=true"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Динамика регистраций кошельков с фильтром</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uadmin:admin <span class="s2">"https://www.synq.ru/mserver2-dev/admin/wallets_count?group_by=created_at&amp;tick=day&amp;created_after=2014-01-01"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"tick"</span><span class="p">:</span><span class="s2">"2014-06-01"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"count"</span><span class="p">:</span><span class="mf">125477.16</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"tick"</span><span class="p">:</span><span class="s2">"2014-06-02"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"tick"</span><span class="p">:</span><span class="s2">"2014-06-03"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h1 id="Загрузка-кошелька">Загрузка кошелька</h1>
+
+<h3 id="Поля-ответа:">Поля ответа:</h3>
+
+<ul>
+<li><code class="prettyprint">phone</code></li>
+<li><code class="prettyprint">amount</code></li>
+<li><code class="prettyprint">enabled</code></li>
+<li><code class="prettyprint">active</code></li>
+<li><code class="prettyprint">role</code></li>
+<li><code class="prettyprint">created_at</code></li>
+<li><code class="prettyprint">person.*</code> - идентификационные данные пользователя</li>
+<li><code class="prettyprint">cards.*</code> - данные по картам прикреплённым к кошельку</li>
+<li><code class="prettyprint">cards.state</code> - (created | pending | active | failed | deleted | used) - состояние карты</li>
+<li><code class="prettyprint">cards.3ds</code> - (unknown | success | failed | none) - вид 3D Secure</li>
+<li><code class="prettyprint">cards.last_payment_status</code> - (created | processing | completed | declined) - статус последнего платежа</li>
+<li><code class="prettyprint">statistics.payments.lifetime.turnover</code> - оборот по кошельку за все время</li>
+<li><code class="prettyprint">statistics.payments.lifetime.in_turnover</code> - оборот по транзакциям типа in за все время</li>
+<li><code class="prettyprint">statistics.payments.lifetime.out_turnover</code> - оборот по транзакциям типа out за все время</li>
+<li><code class="prettyprint">statistics.payments.lifetime.p2p_turnover</code> - оборот по транзакциям типа p2p за все время</li>
+<li><code class="prettyprint">statistics.payments.lifetime.count</code> - количество транзакций за все время</li>
+<li><code class="prettyprint">statistics.payments.lifetime.in_count</code> - количество транзакций типа in за все время</li>
+<li><code class="prettyprint">statistics.payments.lifetime.out_count</code> - количество транзакций типа out за все время</li>
+<li><code class="prettyprint">statistics.payments.lifetime.p2p_count</code> - количество транзакций типа out за все время</li>
+<li><code class="prettyprint">statistics.payments.last_month.turnover</code> - оборот по кошельку за последний месяц</li>
+<li><code class="prettyprint">statistics.payments.last_month.in_turnover</code> - оборот по транзакциям типа in за последний месяц</li>
+<li><code class="prettyprint">statistics.payments.last_month.out_turnover</code> - оборот по транзакциям типа out за последний месяц</li>
+<li><code class="prettyprint">statistics.payments.last_month.p2p_turnover</code> - оборот по транзакциям типа p2p за последний месяц</li>
+<li><code class="prettyprint">statistics.payments.last_month.count</code> - количество транзакций за последний месяц</li>
+<li><code class="prettyprint">statistics.payments.last_month.in_count</code> - количество транзакций типа in за последний месяц</li>
+<li><code class="prettyprint">statistics.payments.last_month.out_count</code> - количество транзакций типа out за последний месяц</li>
+<li><code class="prettyprint">statistics.payments.last_month.p2p_count</code> - количество транзакций типа out за последний месяц</li>
+<li><code class="prettyprint">statistics.cards.count</code> - количество привязанных и удаленных карт</li>
+<li><code class="prettyprint">statistics.cards.active_count</code> - количество привязанных активных карт</li>
+</ul>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user <span class="s2">"https://www.synq.ru/mserver2-dev/admin/wallets/%2B79260000006"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"phone"</span><span class="p">:</span><span class="s2">"+79260000006"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">65572.14</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"enabled"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"active"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"role"</span><span class="p">:</span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2014-06-01T12:43:52.876Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"person"</span><span class="p">:{</span><span class="w">
+         </span><span class="s2">"family_name"</span><span class="p">:</span><span class="s2">"Арсеньев"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"given_name"</span><span class="p">:</span><span class="s2">"Алексей"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"patronymic_name"</span><span class="p">:</span><span class="s2">"Александрович"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"passport_series_number"</span><span class="p">:</span><span class="s2">"2202655885"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"passport_issued_at"</span><span class="p">:</span><span class="s2">"2012-02-27"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"itn"</span><span class="p">:</span><span class="s2">"330500938709"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"ssn"</span><span class="p">:</span><span class="s2">"11223344595"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"data_entered"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"cards"</span><span class="p">:[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"card_id"</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"used"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="s2">"541715******2399"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"MasterCard"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"3ds"</span><span class="p">:</span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lifetime_turnover"</span><span class="p">:</span><span class="mf">245435.56</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"card_holder_name"</span><span class="p">:</span><span class="s2">"Ivanov Ivan"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_payment_status"</span><span class="p">:</span><span class="s2">"completed"</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"limits"</span><span class="p">:{</span><span class="w">
+         </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"in"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"out"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"p2p"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+         </span><span class="err">}</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"turnover"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+             </span><span class="s2">"monthly"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"in"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                   </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w">
+                   </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"out"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                   </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w">
+                   </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"p2p"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                   </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w">
+                   </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+             </span><span class="err">}</span><span class="p">,</span><span class="w">
+         </span><span class="err">}</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"cards"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"active"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"available"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+            </span><span class="err">}</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"statistics"</span><span class="p">:{</span><span class="w">
+         </span><span class="s2">"payments"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"lifetime"</span><span class="p">:{</span><span class="w">
+               </span><span class="s2">"turnover"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"in_turnover"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"out_turnover"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"p2p_turnover"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"in_count"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"out_count"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"p2p_count"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+
+            </span><span class="err">}</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_month"</span><span class="p">:{</span><span class="w">
+               </span><span class="s2">"turnover"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"in_turnover"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"out_turnover"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"p2p_turnover"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"in_count"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"out_count"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"p2p_count"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="w">
+
+            </span><span class="err">}</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="s2">"cards"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"active_count"</span><span class="p">:</span><span class="mi">2</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h1 id="Загрузка-ip-адресов-кошелька">Загрузка IP адресов кошелька</h1>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user <span class="s2">"https://www.synq.ru/mserver2-dev/admin/wallets/%2B12345657367/ip"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"page"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"total_elements"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"::1"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h1 id="Получение-кода-активации-кошелька">Получение кода активации кошелька</h1>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user <span class="s2">"https://www.synq.ru/mserver2-dev/admin/wallets/%2B12345657367/security_code"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"security_code"</span><span class="p">:</span><span class="s2">"2899066"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h1 id="Блокировка-кошелька">Блокировка кошелька</h1>
+
+<h3 id="Параметры">Параметры</h3>
+
+<ul>
+<li><code class="prettyprint">message</code> - сообщение для пользователя кошелька, объясняющее причину блокировки и как дальше жить</li>
+<li><code class="prettyprint">reason</code> - сообщение для сотрудников проекта о причине блокировки (не видно клиенту)</li>
+</ul>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user  -H <span class="s1">'Content-type:application/json'</span> --data <span class="s1">'{"message": "Заблокирован до выяснения.", "reason": "Клиент - кардер." }'</span> <span class="s2">"https://www.synq.ru/mserver2-dev/admin/wallets/%2B12345657367/disable"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"phone"</span><span class="p">:</span><span class="s2">"+12345657367"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="mi">10000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reset_password"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lock_message"</span><span class="p">:</span><span class="s2">"Заблокироваан до выяснения."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"verified"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"enabled"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"active"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lock_reason"</span><span class="p">:</span><span class="s2">"Клиент - кардер."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"locked_at"</span><span class="p">:</span><span class="s2">"2014-08-14T16:46:42.122Z"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h1 id="Разблокировка-кошелька">Разблокировка кошелька</h1>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user -X POST <span class="s2">"https://www.synq.ru/mserver2-dev/admin/wallets/%2B12345657367/enable"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"phone"</span><span class="p">:</span><span class="s2">"+12345657367"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="mi">10000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"reset_password"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"verified"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"enabled"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"active"</span><span class="p">:</span><span class="kc">true</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h1 id="Поиск-по-платежам">Поиск по платежам</h1>
+
+<h3 id="Параметры-(опциональные)">Параметры (опциональные)</h3>
+
+<ul>
+<li><code class="prettyprint">wallet</code> - телефон кошелька, чьи платежи мы хотим видеть</li>
+<li><code class="prettyprint">type</code> - тип платежа</li>
+<li><code class="prettyprint">status</code>- статус платежа</li>
+<li><code class="prettyprint">service_name</code> - полное или частичное имя сервиса</li>
+<li><code class="prettyprint">service_ids</code> - список ID сервиса (как альтернатива service_name), ID сервисов перечисляются через запятую, например: 3,19,293</li>
+<li><code class="prettyprint">amount_from</code> и <code class="prettyprint">amount_to</code> - границы диапазона сумм платежей, формат UTC</li>
+<li><code class="prettyprint">date_from</code> и <code class="prettyprint">date_to</code> - границы диапазона дат создания платежей</li>
+<li><code class="prettyprint">page</code> - номер (начиная с 0) страницы, которую запрашивает клиент, по умолчанию 0</li>
+<li><code class="prettyprint">size</code> - размер страницы, которую запрашивает клиент, по умолчанию 20</li>
+<li><code class="prettyprint">order_by</code> - поле для сортировки</li>
+<li><code class="prettyprint">order_direction</code> - направление сортировки</li>
+<li><code class="prettyprint">client_ip</code> - IP адрес плательщика (или сервиса с которого поступило распоряжение на списание)</li>
+<li><code class="prettyprint">inbound_payment_id</code> - идентификатор платежа из IPSP</li>
+<li><code class="prettyprint">inbound_payment_status</code> - идентификатор платежа из IPSP</li>
+<li><code class="prettyprint">inbound_payment_amount_from</code> и <code class="prettyprint">inbound_payment_amount_to</code> - границы диапазона сумм платежей IPSP</li>
+<li><code class="prettyprint">inbound_payment_date_from</code> и <code class="prettyprint">inbound_payment_date_to</code> - границы диапазона дат создания платежей IPSP</li>
+<li><code class="prettyprint">inbound_payment_card_number_first</code> - поиск по первым 6 цифрам номера карты</li>
+<li><code class="prettyprint">inbound_payment_card_number_last</code> - поиск по последним 4 цифрам номера карты</li>
+<li><code class="prettyprint">inbound_payment_card_number_last</code> - поиск по последним 4 цифрам номера карты</li>
+<li><code class="prettyprint">inbound_payment_recurring</code> - фильтр по рекурентным платежам (true/false)</li>
+<li><code class="prettyprint">inbound_payment_card_type</code> - поиск по вендору карт (MASTER_CARD/VISA/..?)</li>
+<li><code class="prettyprint">inbound_payment_3ds</code> - поиск по 3ds статусу карты: unknown (ECI/SLI не получен ни на одном из шагов), attempted (06), skipped (07), successful (05)</li>
+<li><code class="prettyprint">inbound_payment_user_ip</code> - поиск по IP адресу плательщика</li>
+</ul>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user <span class="s2">"https://www.synq.ru/mserver2-dev/admin/payments?service_name=mts&amp;type=out&amp;status=created&amp;amount_from=0&amp;amount_to=100000&amp;date_from=2014-01-01T12:10:15.525Z&amp;date_to=2014-12-01T00:00:00.00Z&amp;order_by=amount&amp;order_direction=desc&amp;size=1"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"page"</span><span class="p">:{</span><span class="w">
+         </span><span class="s2">"total_elements"</span><span class="p">:</span><span class="mi">14</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1401089244704</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"client_payment_id"</span><span class="p">:</span><span class="s2">"409c1e06-5faa-11e4-a61c-b88d12284ddc"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"amount"</span><span class="p">:</span><span class="mi">12000</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"total"</span><span class="p">:</span><span class="mi">12070</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2014-10-29T20:29:16.495Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"created"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"out"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"service"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"MTS Украина"</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="s2">"parameters"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+               </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"phoneNumber"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"№ телефона (9-10 цифр)"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"value"</span><span class="p">:</span><span class="s2">"0509244512"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">],</span><span class="w">
+         </span><span class="s2">"outbound"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">35</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"tpr_out"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"ООО ТПР (провайдер)"</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="s2">"wallet"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"phone"</span><span class="p">:</span><span class="s2">"+79270000001"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">8496.32</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"verified"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ip"</span><span class="p">:</span><span class="s2">"37.110.42.197"</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Пример фильтра по кошельку и IP</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user <span class="s2">"https://www.synq.ru/mserver2-dev/admin/payments?wallet=%2B380935895452&amp;client_ip=127.0.0.1&amp;size=1"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"page"</span><span class="p">:{</span><span class="w">
+         </span><span class="s2">"total_elements"</span><span class="p">:</span><span class="mi">2</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1401089245266</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"client_payment_id"</span><span class="p">:</span><span class="s2">"96c280f4-8e2b-40a1-b250-806bb4a4b9f1"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"amount"</span><span class="p">:</span><span class="mi">10000</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"total"</span><span class="p">:</span><span class="mi">10000</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2014-11-04T13:02:09.409Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"processed_at"</span><span class="p">:</span><span class="s2">"2014-11-04T13:02:13.619Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"p2p"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"wallet"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"phone"</span><span class="p">:</span><span class="s2">"+380935895452"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Иван Иванов"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"verified"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ip"</span><span class="p">:</span><span class="s2">"127.0.0.1"</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="s2">"destination"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"phone"</span><span class="p">:</span><span class="s2">"+79555555555"</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="s2">"direction"</span><span class="p">:</span><span class="s2">"out"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"client_ip"</span><span class="p">:</span><span class="s2">"127.0.0.1"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Пример фильтра по inbound_payment_id (id платежа в IPSP)</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user <span class="s2">"https://www.synq.ru/mserver2-dev/admin/payments?inbound_payment_id=6143708"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"page"</span><span class="p">:{</span><span class="w">
+         </span><span class="s2">"total_elements"</span><span class="p">:</span><span class="mi">1</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1401089245752</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"client_payment_id"</span><span class="p">:</span><span class="s2">"6ea16c52-669e-11e4-86b1-3c07542cf2f2"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"amount"</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"total"</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2014-11-07T16:52:17.990Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"processed_at"</span><span class="p">:</span><span class="s2">"2014-11-07T16:52:21.791Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"in"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"inbound"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">62</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"ipsp_in"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"ООО ИПСП (агент)"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"payment"</span><span class="p">:{</span><span class="w">
+               </span><span class="s2">"amount"</span><span class="p">:</span><span class="mi">4200</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1401089245752</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"SALE"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"date"</span><span class="p">:</span><span class="s2">"2014-11-07T16:52:19.804Z"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"product_id"</span><span class="p">:</span><span class="mi">1721</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"currency"</span><span class="p">:</span><span class="s2">"RUB"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"card_holder_name"</span><span class="p">:</span><span class="s2">"TESTER TESTEROV"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"exp_year"</span><span class="p">:</span><span class="mi">2014</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"exp_month"</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"remote_ip"</span><span class="p">:</span><span class="s2">"81.95.134.13"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"user_ip"</span><span class="p">:</span><span class="s2">"81.95.134.13"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"card_number_mask"</span><span class="p">:</span><span class="s2">"541715******2399"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"card_type"</span><span class="p">:</span><span class="s2">"MASTER_CARD"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"recurring"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"steps"</span><span class="p">:[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                     </span><span class="s2">"date"</span><span class="p">:</span><span class="s2">"2014-11-07T16:52:19.867Z"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"PASSED_0"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"ANTIFRAUD"</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                     </span><span class="s2">"eci"</span><span class="p">:</span><span class="s2">"06"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"date"</span><span class="p">:</span><span class="s2">"2014-11-07T16:52:21.571Z"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"PASSED_0"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"BANK"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"auth_id_response"</span><span class="p">:</span><span class="s2">"411421"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"date_local_trans"</span><span class="p">:</span><span class="s2">"2014-11-07T13:52:21.000Z"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"response_code"</span><span class="p">:</span><span class="s2">"APPROVED_00"</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                     </span><span class="s2">"date"</span><span class="p">:</span><span class="s2">"2014-11-07T16:52:19.843Z"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"PASSED_0"</span><span class="p">,</span><span class="w">
+                     </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"PAYMENT_INPUT"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+               </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="s2">"card"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="s2">"used"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="s2">"541715******2399"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"MasterCard"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bin"</span><span class="p">:{</span><span class="w">
+               </span><span class="s2">"country"</span><span class="p">:</span><span class="s2">"Ukraine"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"bank"</span><span class="p">:</span><span class="s2">"JCB PrivatBank"</span><span class="p">,</span><span class="w">
+               </span><span class="s2">"type"</span><span class="p">:</span><span class="s2">"debit"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="s2">"wallet"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"phone"</span><span class="p">:</span><span class="s2">"+79270000001"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">7462.54</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"level"</span><span class="p">:</span><span class="s2">"anonymous"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="s2">"Пиэчпий Мбанков"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"verified"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"person_status"</span><span class="p">:</span><span class="s2">"data_verified"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"enabled"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"active"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"role"</span><span class="p">:</span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2014-10-29T16:33:14.045Z"</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="s2">"client_ip"</span><span class="p">:</span><span class="s2">"81.95.134.13"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h1 id="Отчет-об-остатке-кошельков-проекта-за-период">Отчет об остатке кошельков проекта за период</h1>
+
+<h3 id="Параметры">Параметры</h3>
+
+<ul>
+<li><code class="prettyprint">date_from</code>, <code class="prettyprint">date_to</code> - Временной промежуток</li>
+</ul>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uadmin:admin <span class="s2">"https://www.synq.ru/mserver2-dev/admin/wallets/balance?from=2014-07-11&amp;to=2014-07-13"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"tick"</span><span class="p">:</span><span class="s2">"2014-07-11"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">55572.14</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"tick"</span><span class="p">:</span><span class="s2">"2014-07-12"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">55572.14</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"tick"</span><span class="p">:</span><span class="s2">"2014-07-13"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">55572.14</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h1 id="Отчет-о-количестве-платежей-проекта-за-период">Отчет о количестве платежей проекта за период</h1>
+
+<h3 id="Параметры">Параметры</h3>
+
+<ul>
+<li><code class="prettyprint">date_from</code>, <code class="prettyprint">date_to</code> - (фильтр) временной промежуток, по-умолчанию 1 месяц с текущего момента</li>
+<li><code class="prettyprint">status</code> - (фильтр) created | processing | completed | declined - статус платежа</li>
+<li><code class="prettyprint">service_ids</code> - (фильтр) сервис или список идентификаторов сервисов через запятую и/или флаг p2p (11,23,45,p2p)</li>
+<li><code class="prettyprint">group_by</code> - параметр группировки</li>
+<li><code class="prettyprint">wallet</code> - фильтр по номеру кошелька (смотреть данные в разрезе кошелька)</li>
+<li><code class="prettyprint">type</code> - (in | out | inout | p2p) фильтр по типу транзакции</li>
+<li><code class="prettyprint">tick</code> (30m | 3h | day | month) - выбор разреза при группировке. По умолчанию - день (day).</li>
+</ul>
+
+<h3 id="Группировки">Группировки</h3>
+
+<ul>
+<li><code class="prettyprint">status</code> - для динамики проходимости платежей</li>
+<li><code class="prettyprint">service_ids</code> - для распределения платежей по сервисам, включая P2P как отдельный тип</li>
+<li><code class="prettyprint">service_ids,status</code> - по сервисам и статусам</li>
+<li><code class="prettyprint">provider_types</code> - по типу провайдеров, через которые проходили транзакции</li>
+</ul>
+
+<blockquote>
+<p>Подсчёт всех платежей за период</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uadmin:admin <span class="s2">"https://www.synq.ru/mserver2-dev/admin/payments/count?date_from=2014-07-11&amp;date_to=2014-07-12"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"tick"</span><span class="p">:</span><span class="s2">"2014-07-11"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+             </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">123</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"tick"</span><span class="p">:</span><span class="s2">"2014-07-12"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+             </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">98</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Пример с группировкой по статусу платежей</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uadmin:admin <span class="s2">"https://www.synq.ru/mserver2-dev/admin/payments/count?date_from=2014-07-11&amp;date_to=2014-07-11&amp;group_by=status&amp;tick=3h"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"tick"</span><span class="p">:</span><span class="s2">"2014-07-11T00:00:00"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">83</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created"</span><span class="p">:</span><span class="mi">24</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"processing"</span><span class="p">:</span><span class="mi">37</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"completed"</span><span class="p">:</span><span class="mi">21</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"declined"</span><span class="p">:</span><span class="mi">1</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"tick"</span><span class="p">:</span><span class="s2">"2014-07-11T00:03:00"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">83</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created"</span><span class="p">:</span><span class="mi">24</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"processing"</span><span class="p">:</span><span class="mi">37</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"completed"</span><span class="p">:</span><span class="mi">21</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"declined"</span><span class="p">:</span><span class="mi">1</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"tick"</span><span class="p">:</span><span class="s2">"2014-07-12T00:00:00"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">83</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created"</span><span class="p">:</span><span class="mi">24</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"processing"</span><span class="p">:</span><span class="mi">37</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"completed"</span><span class="p">:</span><span class="mi">21</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"declined"</span><span class="p">:</span><span class="mi">1</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Пример группировки по типу поставщика</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uadmin:admin <span class="s2">"https://www.synq.ru/mserver2-dev/admin/payments/count?date_from=2014-07-11&amp;date_to=2014-07-11&amp;group_by=provider_types&amp;tick=3h"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"tick"</span><span class="p">:</span><span class="s2">"2014-07-12T00:00:00"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">83</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"providers"</span><span class="p">:[</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"tpr_out"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Кредит Пилот"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"outbound"</span><span class="p">,</span><span class="w"> 
+                  </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ipsp_in"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ООО ИПСП (агент)"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"inbound"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Пример группировки по сервису</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uadmin:admin <span class="s2">"https://www.synq.ru/mserver2-dev/admin/payments/count?date_from=2014-07-11&amp;date_to=2014-07-11&amp;group_by=service_ids&amp;tick=3h"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"tick"</span><span class="p">:</span><span class="s2">"2014-07-12T00:00:00"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"count"</span><span class="p">:</span><span class="mi">83</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"services"</span><span class="p">:[</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"out"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">834</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"out"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"p2p"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Пример группировки по сервису и статусу</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uadmin:admin <span class="s2">"https://www.synq.ru/mserver2-dev/admin/payments/count?tick=month&amp;service_ids=1691&amp;group_by=service_ids,status"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"page"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"total_elements"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"count"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">66</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"declined"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"created"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"count"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">61</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"completed"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1691</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"out"</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"count"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"completed"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1691</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"inout"</span><span class="w">
+      </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"tick"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-02-28T22:00:00.000+0000"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"count"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"created"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"count"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"completed"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1691</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"out"</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"declined"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"count"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1691</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"inout"</span><span class="w">
+      </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"tick"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-03-31T21:00:00.000+0000"</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h1 id="Отчет-о-обороте-платежей-проекта-за-период">Отчет о обороте платежей проекта за период</h1>
+
+<h3 id="Параметры">Параметры</h3>
+
+<ul>
+<li><code class="prettyprint">date_from</code>, <code class="prettyprint">date_to</code> - (фильтр) временной промежуток, по-умолчанию 1 месяц с текущего момента</li>
+<li><code class="prettyprint">amount_from</code>, <code class="prettyprint">amount_to</code> - (фильтр) по сумме платежа</li>
+<li><code class="prettyprint">status</code> - (фильтр) created | processing | completed | declined - статус платежа</li>
+<li><code class="prettyprint">service_ids</code> - (фильтр) сервис или сервисок идентификаторов сервисов через запятую и/или флаг p2p (11,23,45,p2p) </li>
+<li><code class="prettyprint">group_by</code> - параметр группировки</li>
+<li><code class="prettyprint">wallet</code> - фильтр по номеру кошелька (смотреть данные в разрезе кошелька)</li>
+<li><code class="prettyprint">type</code> - (in | out | inout | p2p) фильтр по типу транзакции</li>
+<li><code class="prettyprint">tick</code> (30m | 3h | day | month) - выбор разреза при группировке. По умолчанию - день (day).</li>
+</ul>
+
+<h3 id="Группировки">Группировки</h3>
+
+<ul>
+<li><code class="prettyprint">status</code> - для динамики проходимости платежей</li>
+<li><code class="prettyprint">service_ids</code> - для распределения платежей по сервисам, включая P2P как отдельный тип</li>
+<li><code class="prettyprint">service_ids,status</code> - по сервисам и статусам</li>
+<li><code class="prettyprint">provider_types</code> - по типу провайдеров, через которые проходили транзакции</li>
+</ul>
+
+<blockquote>
+<p>Оборот всех платежей за период
+* <code class="prettyprint">date_from</code> и <code class="prettyprint">date_to</code> - границы диапазона дат создания платежей
+* <code class="prettyprint">ipsp_payment_id</code> - идентификатор платежа из IPSP
+* <code class="prettyprint">page</code> - номер (начиная с 0) страницы, которую запрашивает клиент, по умолчанию 0
+* <code class="prettyprint">size</code> - размер страницы, которую запрашивает клиент, по умолчанию 20
+* <code class="prettyprint">sort</code> - поле сортировки, через запятую может следовать направление</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uadmin:admin <span class="s2">"https://www.synq.ru/mserver2-dev/admin/payments/turnover?date_from=2014-07-11&amp;date_to=2014-07-12"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"tick"</span><span class="p">:</span><span class="s2">"2014-07-11"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+             </span><span class="s2">"amount"</span><span class="p">:</span><span class="mi">1233424</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"tick"</span><span class="p">:</span><span class="s2">"2014-07-12"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+             </span><span class="s2">"amount"</span><span class="p">:</span><span class="mi">98234342</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Пример с группировкой по статусу платежей</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uadmin:admin <span class="s2">"https://www.synq.ru/mserver2-dev/admin/payments/turnover?date_from=2014-07-11&amp;date_to=2014-07-11&amp;group_by=status&amp;tick=3h"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"tick"</span><span class="p">:</span><span class="s2">"2014-07-11T00:00:00"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="mi">83324324324</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created"</span><span class="p">:</span><span class="mi">2434234</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"processing"</span><span class="p">:</span><span class="mi">3723434</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"completed"</span><span class="p">:</span><span class="mi">2123423</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"declined"</span><span class="p">:</span><span class="mi">12</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Пример группировки по типу поставщика</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uadmin:admin <span class="s2">"https://www.synq.ru/mserver2-dev/admin/payments/turnover?date_from=2014-07-11&amp;date_to=2014-07-11&amp;group_by=provider_types&amp;tick=3h"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"tick"</span><span class="p">:</span><span class="s2">"2014-07-12T00:00:00"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="mi">83</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"providers"</span><span class="p">:[</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"tpr_out"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Кредит Пилот"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"outbound"</span><span class="p">,</span><span class="w"> 
+                  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">5043</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ipsp_in"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ООО ИПСП (агент)"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"inbound"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1293</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Пример группировки по сервису</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uadmin:admin <span class="s2">"https://www.synq.ru/mserver2-dev/admin/payments/turnover?date_from=2014-07-11&amp;date_to=2014-07-11&amp;group_by=service_ids&amp;tick=3h"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"tick"</span><span class="p">:</span><span class="s2">"2014-07-12T00:00:00"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="mi">83243</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"services"</span><span class="p">:[</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"out"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">834</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50234</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"out"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3012</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"p2p"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2033</span><span class="w">
+               </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Пример группировки по сервису и статусу</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uadmin:admin <span class="s2">"https://www.synq.ru/mserver2-dev/admin/payments/turnover?tick=month&amp;service_ids=1691&amp;group_by=service_ids,status"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"page"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"total_elements"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">154</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">144</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"declined"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"created"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">114</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"completed"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1691</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"out"</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"completed"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1691</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"inout"</span><span class="w">
+      </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"tick"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-02-28T22:00:00.000+0000"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">114</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"services"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"created"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"completed"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1691</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"out"</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"amount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"declined"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1691</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"inout"</span><span class="w">
+      </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"tick"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-03-31T21:00:00.000+0000"</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h1 id="Получение-списка-персональных-данных">Получение списка персональных данных</h1>
+
+<p>Информация выдаётся постранично.</p>
+
+<h3 id="Параметры-постраничного-запроса">Параметры постраничного запроса</h3>
+
+<p><code class="prettyprint">page</code> - номер страницы начиная с 0
+<code class="prettyprint">size</code> - размер страницы
+<code class="prettyprint">order_by</code> - сортировка по полю, имя поля указывается в snake_case стиле
+<code class="prettyprint">order_direction</code> - направление сортировки
+<code class="prettyprint">status</code> - фильтр по статусу сообщений. Например, для получения списка кошельков ожидающих идентификации</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user <span class="s2">"https://www.synq.ru/mserver2-dev/admin/persons?page=1&amp;size=2&amp;order_by=givenName&amp;order_direction=desc&amp;status=data_entered
+</span></code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"page"</span><span class="p">:{</span><span class="w">
+         </span><span class="s2">"total_elements"</span><span class="p">:</span><span class="mi">6</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"family_name"</span><span class="p">:</span><span class="s2">"Дергачёв"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"given_name"</span><span class="p">:</span><span class="s2">"Андрей"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"patronymic_name"</span><span class="p">:</span><span class="s2">"Петрович"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"passport_series_number"</span><span class="p">:</span><span class="s2">"45112456789"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"passport_issued_at"</span><span class="p">:</span><span class="s2">"2007-06-07"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"itn"</span><span class="p">:</span><span class="s2">"526317984689"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"data_entered"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"verified_at"</span><span class="p">:</span><span class="s2">"2014-10-30T11:11:52.401Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"changed_at"</span><span class="p">:</span><span class="s2">"2014-09-08T15:47:10.411Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"wallet"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"phone"</span><span class="p">:</span><span class="s2">"+380631345678"</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"family_name"</span><span class="p">:</span><span class="s2">"Арсеньев"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"given_name"</span><span class="p">:</span><span class="s2">"Алексей"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"patronymic_name"</span><span class="p">:</span><span class="s2">"Александрович"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"passport_series_number"</span><span class="p">:</span><span class="s2">"2202655111"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"passport_issued_at"</span><span class="p">:</span><span class="s2">"2012-02-02"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"itn"</span><span class="p">:</span><span class="s2">"330500938709"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"data_entered"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"changed_at"</span><span class="p">:</span><span class="s2">"2014-10-24T15:09:12.019Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"wallet"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"phone"</span><span class="p">:</span><span class="s2">"+380503839987"</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h1 id="Изменение-статуса-персональных-данных">Изменение статуса персональных данных</h1>
+
+<h3 id="Параметры">Параметры</h3>
+
+<ul>
+<li><code class="prettyprint">wallet</code> - номер телефона в международном формате</li>
+<li><code class="prettyprint">status</code> - <code class="prettyprint">data_entered</code> | <code class="prettyprint">data_verified</code> статус персональных данных</li>
+</ul>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl  -H <span class="s1">'Content-type:application/json'</span> -uuser:user -d <span class="s1">'{"status": "data_verified"}'</span> <span class="s2">"https://www.synq.ru/mserver2-dev/admin/persons/%2B79260000006/update_status"</span>
+</code></pre>
+
+<blockquote>
+<p>Результат содержит <code class="prettyprint">&quot;status&quot;: &quot;data_verified&quot;, &quot;verified_at&quot;: &quot;2014-10-22T10:26:12.035Z&quot;</code></p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"family_name"</span><span class="p">:</span><span class="s2">"Иванов"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"given_name"</span><span class="p">:</span><span class="s2">"Иван"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"patronymic_name"</span><span class="p">:</span><span class="s2">"Иванович"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"passport_series_number"</span><span class="p">:</span><span class="s2">"1122334455"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"passport_issued_at"</span><span class="p">:</span><span class="s2">"2012-12-20"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itn"</span><span class="p">:</span><span class="s2">"330500938709"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ssn"</span><span class="p">:</span><span class="s2">"11223344595"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"data_verified"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"verified_at"</span><span class="p">:</span><span class="s2">"2014-10-22T10:26:12.035Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"changed_at"</span><span class="p">:</span><span class="s2">"2014-10-22T10:26:10.604Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"wallet"</span><span class="p">:{</span><span class="w">
+         </span><span class="s2">"phone"</span><span class="p">:</span><span class="s2">"+380935895452"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h1 id="Удаление-кошелька">Удаление кошелька</h1>
+
+<aside class="warning">Команда работает только на dev сервере</aside>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user -X DELETE https://www.synq.ru/mserver2-dev/admin/wallets/+79260000006
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>
