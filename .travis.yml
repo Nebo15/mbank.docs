@@ -1,6 +1,6 @@
 rvm:
   - 2.0.0
-sudo: required
+# sudo: required
 # before_script:
   # - GEM_PATH="/home/user/project/vendor/bundle/gems/"
 script:
