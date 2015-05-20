@@ -1,7 +1,4 @@
 rvm:
   - 2.0.0
-script:
-  - rake build
-  - git subtree push --prefix build origin gh-pages
-  - git checkout gh-pages
-  - git push origin gh-pages
+after_script:
+  - rake publish
