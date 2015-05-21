@@ -344,7 +344,7 @@ curl  -X POST -u user:user http://sandbox.wallet.best/adm2/wallets/+12345334867/
 ##Получение списка пересекающихся кошельков
 
 ```shell
-curl -H 'X-Project-ID:mbank' -X GET -u user:user http://sandbox.wallet.best/adm2/wallet/+380631345678/intersecting
+curl -H 'X-Project-ID:mbank' -X GET -u user:user http://sandbox.wallet.best/adm2/wallets/+380631345678/intersecting
 ```
 
 ```json
