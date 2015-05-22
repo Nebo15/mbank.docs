@@ -468,6 +468,8 @@ $ curl -uuser:user -X POST "https://www.synq.ru/mserver2-dev/admin/wallets/%2B12
 
 ### Параметры (опциональные)
 
+* `id` - ID платежа
+* `check` - номер чека платежа
 * `wallet` - телефон кошелька, чьи платежи мы хотим видеть
 * `type` - тип платежа
 * `status`- статус платежа
