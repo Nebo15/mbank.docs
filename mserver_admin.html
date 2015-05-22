@@ -39,8 +39,7 @@
       <div class="dark-box"></div>
       <div class="content">
         
-          <h1 id="Аутентификация">Аутентификация</h1>
-
+          <h1 id='autentifikatsiya'>Аутентификация</h1>
 <p>На тестовой системе созданы 2 пользователя от имени которых возможен вызов административного API.</p>
 
 <table><thead>
@@ -61,37 +60,25 @@
 <td style="text-align: left">admin</td>
 </tr>
 </tbody></table>
-
-<h1 id="Многопроектность">Многопроектность</h1>
-
+<h1 id='mnogoproektnost'>Многопроектность</h1>
 <p>Во всех запросах можно указать относительного какого проекта производится запрос.</p>
 
 <ul>
 <li><code class="prettyprint">project_id</code> - ID проекта, в котором будет производиться поиск. Доступен только суперадминистраторам.</li>
 </ul>
-
-<h1 id="Постраничная-навиция">Постраничная навиция</h1>
-
+<h1 id='postranichnaya-navitsiya'>Постраничная навиция</h1>
 <ul>
 <li><code class="prettyprint">page</code> - номер (начиная с 0) страницы, которую запрашивает клиент, опционально, по умолчанию 0</li>
 <li><code class="prettyprint">size</code> - размер страницы, которую запрашивает клиент, опционально, по умолчанию 35</li>
 </ul>
-
-<h1 id="Поиск-по-кошелькам-проекта">Поиск по кошелькам проекта</h1>
-
-<h3 id="Постраничная-навиция">Постраничная навиция</h3>
-
+<h1 id='poisk-po-koshelkam-proekta'>Поиск по кошелькам проекта</h1><h3 id='postranichnaya-navitsiya'>Постраничная навиция</h3>
 <p>См. выше.</p>
-
-<h3 id="Параметры">Параметры</h3>
-
+<h3 id='parametry'>Параметры</h3>
 <ul>
 <li><code class="prettyprint">order_by</code> - поле для сортировки</li>
 <li><code class="prettyprint">order_direction</code> - направление сортировки: asc или desc (case insensitive)</li>
 </ul>
-
-<h3 id="Поля-ответа:">Поля ответа:</h3>
-
+<h3 id='polya-otveta'>Поля ответа:</h3>
 <ul>
 <li><code class="prettyprint">phone</code> - номер телефона, к которому привязан кошелек</li>
 <li><code class="prettyprint">amount</code> - остаток на балансе кошелька</li>
@@ -119,18 +106,14 @@
 <li><code class="prettyprint">statistics.cards.count</code> - количество привязанных и удаленных карт</li>
 <li><code class="prettyprint">statistics.cards.active_count</code> - количество привязанных активных карт</li>
 </ul>
-
-<h3 id="Поля-для-сортировки:">Поля для сортировки:</h3>
-
+<h3 id='polya-dlya-sortirovki'>Поля для сортировки:</h3>
 <ul>
 <li><code class="prettyprint">statistics.payments.lifetime.*</code> - по любому полю со статистики транзакций за все время</li>
 <li><code class="prettyprint">statistics.cards.*count</code> - по любому count полю со статистики количества карт</li>
 <li><code class="prettyprint">created_at</code> - по дате регистрации</li>
 <li><code class="prettyprint">amount</code> - по остаткам</li>
 </ul>
-
-<h3 id="Фильтры:">Фильтры:</h3>
-
+<h3 id='filtry'>Фильтры:</h3>
 <ul>
 <li><code class="prettyprint">ips</code> - по списку IP адресов разделённых запятой</li>
 <li><code class="prettyprint">created_before</code> и <code class="prettyprint">created_after</code> - по дате регистрации</li>
@@ -206,18 +189,12 @@
    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h1 id="Аналитика-по-кошелькам">Аналитика по кошелькам</h1>
-
-<h3 id="Параметры">Параметры</h3>
-
+<h1 id='analitika-po-koshelkam'>Аналитика по кошелькам</h1><h3 id='parametry'>Параметры</h3>
 <ul>
 <li><code class="prettyprint">group_by</code> - поле для группировки</li>
 <li><code class="prettyprint">tick</code> (day|month) - выбор разреза при группировке (день|месяц). По умолчанию - день.</li>
 </ul>
-
-<h3 id="Фильтры:">Фильтры:</h3>
-
+<h3 id='filtry'>Фильтры:</h3>
 <p>(См. &ldquo;Поиск по кошелькам&rdquo;)</p>
 
 <ul>
@@ -234,9 +211,7 @@
 <li><code class="prettyprint">active</code> - по статусу активации (true|false)</li>
 <li><code class="prettyprint">disabled</code> - по статусу блокировки (true|false)</li>
 </ul>
-
-<h3 id="Группировки:">Группировки:</h3>
-
+<h3 id='gruppirovki'>Группировки:</h3>
 <ul>
 <li><code class="prettyprint">created_at</code> - вернет количество новых регистрацией за каждый <code class="prettyprint">tick</code></li>
 </ul>
@@ -287,11 +262,7 @@
    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h1 id="Загрузка-кошелька">Загрузка кошелька</h1>
-
-<h3 id="Поля-ответа:">Поля ответа:</h3>
-
+<h1 id='zagruzka-koshelka'>Загрузка кошелька</h1><h3 id='polya-otveta'>Поля ответа:</h3>
 <ul>
 <li><code class="prettyprint">phone</code></li>
 <li><code class="prettyprint">amount</code></li>
@@ -433,9 +404,7 @@
    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h1 id="Загрузка-ip-адресов-кошелька">Загрузка IP адресов кошелька</h1>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user <span class="s2">"https://www.synq.ru/mserver2-dev/admin/wallets/%2B12345657367/ip"</span>
+<h1 id='zagruzka-ip-adresov-koshelka'>Загрузка IP адресов кошелька</h1><pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user <span class="s2">"https://www.synq.ru/mserver2-dev/admin/wallets/%2B12345657367/ip"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -447,9 +416,7 @@
   </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"::1"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h1 id="Получение-кода-активации-кошелька">Получение кода активации кошелька</h1>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user <span class="s2">"https://www.synq.ru/mserver2-dev/admin/wallets/%2B12345657367/security_code"</span>
+<h1 id='poluchenie-koda-aktivatsii-koshelka'>Получение кода активации кошелька</h1><pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user <span class="s2">"https://www.synq.ru/mserver2-dev/admin/wallets/%2B12345657367/security_code"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
@@ -460,11 +427,7 @@
    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h1 id="Блокировка-кошелька">Блокировка кошелька</h1>
-
-<h3 id="Параметры">Параметры</h3>
-
+<h1 id='blokirovka-koshelka'>Блокировка кошелька</h1><h3 id='parametry'>Параметры</h3>
 <ul>
 <li><code class="prettyprint">message</code> - сообщение для пользователя кошелька, объясняющее причину блокировки и как дальше жить</li>
 <li><code class="prettyprint">reason</code> - сообщение для сотрудников проекта о причине блокировки (не видно клиенту)</li>
@@ -488,9 +451,7 @@
    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h1 id="Разблокировка-кошелька">Разблокировка кошелька</h1>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user -X POST <span class="s2">"https://www.synq.ru/mserver2-dev/admin/wallets/%2B12345657367/enable"</span>
+<h1 id='razblokirovka-koshelka'>Разблокировка кошелька</h1><pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user -X POST <span class="s2">"https://www.synq.ru/mserver2-dev/admin/wallets/%2B12345657367/enable"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
@@ -506,11 +467,7 @@
    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h1 id="Поиск-по-платежам">Поиск по платежам</h1>
-
-<h3 id="Параметры-(опциональные)">Параметры (опциональные)</h3>
-
+<h1 id='poisk-po-platezham'>Поиск по платежам</h1><h3 id='parametry-optsionalnye'>Параметры (опциональные)</h3>
 <ul>
 <li><code class="prettyprint">id</code> - ID платежа</li>
 <li><code class="prettyprint">check</code> - номер чека платежа</li>
@@ -713,11 +670,7 @@
    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h1 id="Отчет-об-остатке-кошельков-проекта-за-период">Отчет об остатке кошельков проекта за период</h1>
-
-<h3 id="Параметры">Параметры</h3>
-
+<h1 id='otchet-ob-ostatke-koshelkov-proekta-za-period'>Отчет об остатке кошельков проекта за период</h1><h3 id='parametry'>Параметры</h3>
 <ul>
 <li><code class="prettyprint">date_from</code>, <code class="prettyprint">date_to</code> - Временной промежуток</li>
 </ul>
@@ -749,11 +702,7 @@
    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h1 id="Отчет-о-количестве-платежей-проекта-за-период">Отчет о количестве платежей проекта за период</h1>
-
-<h3 id="Параметры">Параметры</h3>
-
+<h1 id='otchet-o-kolichestve-platezhey-proekta-za-period'>Отчет о количестве платежей проекта за период</h1><h3 id='parametry'>Параметры</h3>
 <ul>
 <li><code class="prettyprint">date_from</code>, <code class="prettyprint">date_to</code> - (фильтр) временной промежуток, по-умолчанию 1 месяц с текущего момента</li>
 <li><code class="prettyprint">status</code> - (фильтр) created | processing | completed | declined - статус платежа</li>
@@ -763,9 +712,7 @@
 <li><code class="prettyprint">type</code> - (in | out | inout | p2p) фильтр по типу транзакции</li>
 <li><code class="prettyprint">tick</code> (30m | 3h | day | month) - выбор разреза при группировке. По умолчанию - день (day).</li>
 </ul>
-
-<h3 id="Группировки">Группировки</h3>
-
+<h3 id='gruppirovki'>Группировки</h3>
 <ul>
 <li><code class="prettyprint">status</code> - для динамики проходимости платежей</li>
 <li><code class="prettyprint">service_ids</code> - для распределения платежей по сервисам, включая P2P как отдельный тип</li>
@@ -976,11 +923,7 @@
   </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h1 id="Отчет-о-обороте-платежей-проекта-за-период">Отчет о обороте платежей проекта за период</h1>
-
-<h3 id="Параметры">Параметры</h3>
-
+<h1 id='otchet-o-oborote-platezhey-proekta-za-period'>Отчет о обороте платежей проекта за период</h1><h3 id='parametry'>Параметры</h3>
 <ul>
 <li><code class="prettyprint">date_from</code>, <code class="prettyprint">date_to</code> - (фильтр) временной промежуток, по-умолчанию 1 месяц с текущего момента</li>
 <li><code class="prettyprint">amount_from</code>, <code class="prettyprint">amount_to</code> - (фильтр) по сумме платежа</li>
@@ -991,9 +934,7 @@
 <li><code class="prettyprint">type</code> - (in | out | inout | p2p) фильтр по типу транзакции</li>
 <li><code class="prettyprint">tick</code> (30m | 3h | day | month) - выбор разреза при группировке. По умолчанию - день (day).</li>
 </ul>
-
-<h3 id="Группировки">Группировки</h3>
-
+<h3 id='gruppirovki'>Группировки</h3>
 <ul>
 <li><code class="prettyprint">status</code> - для динамики проходимости платежей</li>
 <li><code class="prettyprint">service_ids</code> - для распределения платежей по сервисам, включая P2P как отдельный тип</li>
@@ -1189,13 +1130,9 @@
   </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h1 id="Получение-списка-персональных-данных">Получение списка персональных данных</h1>
-
+<h1 id='poluchenie-spiska-personalnyh-dannyh'>Получение списка персональных данных</h1>
 <p>Информация выдаётся постранично.</p>
-
-<h3 id="Параметры-постраничного-запроса">Параметры постраничного запроса</h3>
-
+<h3 id='parametry-postranichnogo-zaprosa'>Параметры постраничного запроса</h3>
 <p><code class="prettyprint">page</code> - номер страницы начиная с 0
 <code class="prettyprint">size</code> - размер страницы
 <code class="prettyprint">order_by</code> - сортировка по полю, имя поля указывается в snake_case стиле
@@ -1241,11 +1178,7 @@
    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h1 id="Изменение-статуса-персональных-данных">Изменение статуса персональных данных</h1>
-
-<h3 id="Параметры">Параметры</h3>
-
+<h1 id='izmenenie-statusa-personalnyh-dannyh'>Изменение статуса персональных данных</h1><h3 id='parametry'>Параметры</h3>
 <ul>
 <li><code class="prettyprint">wallet</code> - номер телефона в международном формате</li>
 <li><code class="prettyprint">status</code> - <code class="prettyprint">data_entered</code> | <code class="prettyprint">data_verified</code> статус персональных данных</li>
@@ -1277,9 +1210,7 @@
    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h1 id="Удаление-кошелька">Удаление кошелька</h1>
-
+<h1 id='udalenie-koshelka'>Удаление кошелька</h1>
 <aside class="warning">Команда работает только на dev сервере</aside>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user -X DELETE https://www.synq.ru/mserver2-dev/admin/wallets/+79260000006
 </code></pre>

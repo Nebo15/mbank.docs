@@ -39,13 +39,10 @@
       <div class="dark-box"></div>
       <div class="content">
         
-          <h1 id="Введение">Введение</h1>
-
+          <h1 id='vvedenie'>Введение</h1>
 <p>API mserver использует подход <a href="http://wikipedia.org/wiki/REST">REST</a>. Клиенты API получают доступ к Кошельку, Сервисам, Платежам и Картам выполняя <code class="prettyprint">GET</code>, <code class="prettyprint">POST</code> и <code class="prettyprint">DELETE</code> запросы к соответствующим ресурсам <code class="prettyprint">/wallet</code>, <code class="prettyprint">/services</code>, <code class="prettyprint">/payments</code> и <code class="prettyprint">/cards</code>. 
 Вызовы API всегда возвращают JSON. Для возврата статуса запроса к API используется код состояния HTTP. </p>
-
-<h2 id="Аутентификация">Аутентификация</h2>
-
+<h2 id='autentifikatsiya'>Аутентификация</h2>
 <p>Используется <a href="http://wikipedia.org/wiki/Basic_access_authentication">BASIC аутентификация</a>. В качестве логина используется номер телефона Кошелька в международном формате.</p>
 
 <p>Возможны следующие коды ошибок, уточняющие HTTP статус 401:</p>
@@ -71,9 +68,7 @@
 </tbody></table>
 
 <p>Дополнительно реализован <a href="#oauth">протокол OAuth 2.0</a>.</p>
-
-<h2 id="Ошибки">Ошибки</h2>
-
+<h2 id='oshibki'>Ошибки</h2>
 <p>API использует HTTP статусы для возврата ошибок.</p>
 
 <table><thead>
@@ -128,9 +123,7 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h2 id="Коды-ошибок">Коды ошибок</h2>
-
+<h2 id='kody-oshibok'>Коды ошибок</h2>
 <table><thead>
 <tr>
 <th style="text-align: left">Код ошибки</th>
@@ -294,18 +287,12 @@
 <td style="text-align: left">недостаточно разрешений (scope) OAuth для выполнения запроса</td>
 </tr>
 </tbody></table>
-
-<h2 id="Коды-безопасности-и-контрольный-разряд">Коды безопасности и контрольный разряд</h2>
-
+<h2 id='kody-bezopasnosti-i-kontrolnyy-razryad'>Коды безопасности и контрольный разряд</h2>
 <p>Для активации созданного кошелька и для смены пароля используется 6-значный цифровой код безопасности, который генерируется случайным образом и отправляется СМС сообщением на телефон кошелька.
 Запросы на создание кошелька, на повторную отправку кода активации и на отправку кода для смены пароля возвращают в поле <code class="prettyprint">check_digit</code> контрольный разряд для сгенерированного кода безопасности, рассчитанный по <a href="http://en.wikipedia.org/wiki/Verhoeff_algorithm">алгоритму Верхуффа</a>. Клиентские приложения могут использовать контрольный разряд для обнаружения опечаток при вводе кода безопасности.</p>
-
-<h2 id="Постраничный-вывод-списков">Постраничный вывод списков</h2>
-
+<h2 id='postranichnyy-vyvod-spiskov'>Постраничный вывод списков</h2>
 <p>В ответах на запросы, возвращающие список элементов, сервер отдает полное количество элементов в поле <code class="prettyprint">meta.page.total_elements</code>.</p>
-
-<h2 id="Срочные-данные">Срочные данные</h2>
-
+<h2 id='srochnye-dannye'>Срочные данные</h2>
 <p>Часто изменяющиеся данные, в самых последних значениях которых заинтересован клиент, возвращаются в каждом ответе сервера в поле <code class="prettyprint">meta.urgent_data</code>. Например, для API кошельков, возвращается доступный остаток на счете кошелька:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">    
@@ -315,8 +302,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-          <h1 id="oauth">OAuth</h1>
-
+          <h1 id='oauth'>OAuth</h1>
 <p>mserver поддерживает <a href="http://oauth.net/2/">протокол OAuth 2.0</a>.
 Зарегистрированное клиентское приложение может получить <a href="#token-dostupa">токен доступа</a> (access token) по одному из поддерживаемых сценариев (flow):</p>
 
@@ -325,9 +311,7 @@
 <li>Мобильный клиент, который сейчас использует BASIC аутентификацию паролем может использовать сценарий с паролем пользователя 
 (<a href="http://tools.ietf.org/html/rfc6749#section-1.3.3">password flow</a>).</li>
 </ul>
-
-<h2 id="Токен-доступа">Токен доступа</h2>
-
+<h2 id='token-dostupa'>Токен доступа</h2>
 <p>После успешной OAuth авторизации клиентское приложение получает токен доступа вида 
 <code class="prettyprint">b48a991e-e010-4329-9817-f8389a774c45</code>, который может использовать для обращения к API от имени пользователя кошелька. </p>
 
@@ -371,9 +355,7 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h2 id="Сценарий-с-кодом-авторизации">Сценарий с кодом авторизации</h2>
-
+<h2 id='stsenariy-s-kodom-avtorizatsii'>Сценарий с кодом авторизации</h2>
 <ol>
 <li><p>Клиентское приложение перенаправляет клиента на URL авторизации вида <code class="prettyprint">https://www.synq.ru/mserver2-dev/oauth/authorize?response_type=code&amp;client_id=mbank_web&amp;scope=wallet.read payments.read&amp;redirect_uri=https://bestmt.ru/test?ok=1</code></p></li>
 <li><p>Происходит перенаправление на страницу логина https://www.synq.ru/mserver2-dev/login</p></li>
@@ -382,18 +364,14 @@
 <li><p>Происходит перенаправление на страницу с кодом авторизации https://bestmt.ru/test?ok=1&amp;code=QnHgkv</p></li>
 <li><p>Бэкэнд клиентского приложения обменивает код авторизации на <a href="#token-dostupa">токен доступа</a> POST запросом к сервису токенов mserver <code class="prettyprint">/oauth/token</code>.</p></li>
 </ol>
-
-<h3 id="Параметры-url-авторизации">Параметры URL авторизации</h3>
-
+<h3 id='parametry-url-avtorizatsii'>Параметры URL авторизации</h3>
 <ul>
 <li><code class="prettyprint">response_type</code> - обязательно, фиксированное значение, равное <code class="prettyprint">code</code></li>
 <li><code class="prettyprint">client_id</code> - обязательно, <a href="#testovye-prilozheniya">зарегистрированный</a> в mserver ID приложения, которое запрашивает доступ</li>
 <li><code class="prettyprint">scope</code> - опционально, перечень запрашиваемых <a href="#razresheniya">разрешений</a>, разделенный пробелами, если ничего не передано, то будут запрошены все разрешения</li>
 <li><code class="prettyprint">redirect_uri</code> - опционально, URI на который пользователь будет перенаправлен в случае успешной авторизации, должен быть <a href="#testovye-prilozheniya">зарегистрирован</a> в mserver</li>
 </ul>
-
-<h3 id="Параметры-запроса-к-сервису-токенов-для-authorization-code-flow">Параметры запроса к сервису токенов для authorization code flow</h3>
-
+<h3 id='parametry-zaprosa-k-servisu-tokenov-dlya-authorization-code-flow'>Параметры запроса к сервису токенов для authorization code flow</h3>
 <ul>
 <li><code class="prettyprint">grant_type</code> - обязательно, фиксированное значение <code class="prettyprint">authorization_code</code></li>
 <li>&lsquo;code&rsquo; - обязательно, код авторизации, полученный из URL перенаправления</li>
@@ -421,14 +399,10 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h2 id="Сценарий-с-передачей-пароля">Сценарий с передачей пароля</h2>
-
+<h2 id='stsenariy-s-peredachey-parolya'>Сценарий с передачей пароля</h2>
 <p>Для замены старой схемы аутентификации в мобильном приложении кошелька может быть использован сценарий password flow, при котором бэкэнд приложения обращается к mserver,
 чтобы обменять учетные данные приложения и пользователя кошелька (client_id, client_secret, username, password) на <a href="#token-dostupa">токен доступа</a>.</p>
-
-<h3 id="Параметры-запроса-к-сервису-токенов-для-password-flow">Параметры запроса к сервису токенов для password flow</h3>
-
+<h3 id='parametry-zaprosa-k-servisu-tokenov-dlya-password-flow'>Параметры запроса к сервису токенов для password flow</h3>
 <ul>
 <li><code class="prettyprint">grant_type</code> - обязательно, фиксированное значение <code class="prettyprint">password</code></li>
 <li><code class="prettyprint">scope</code> - опционально, перечень запрашиваемых <a href="#razresheniya">разрешений</a>, разделенный пробелами, если ничего не передано, то будут запрошены все разрешения</li>
@@ -455,9 +429,7 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h2 id="Разрешения">Разрешения</h2>
-
+<h2 id='razresheniya'>Разрешения</h2>
 <table><thead>
 <tr>
 <th style="text-align: left">Разрешение</th>
@@ -501,9 +473,7 @@
 <td style="text-align: left">POST /v1/payments</td>
 </tr>
 </tbody></table>
-
-<h2 id="Тестовые-приложения">Тестовые приложения</h2>
-
+<h2 id='testovye-prilozheniya'>Тестовые приложения</h2>
 <table><thead>
 <tr>
 <th style="text-align: left">client_id</th>
@@ -543,8 +513,7 @@
 </tr>
 </tbody></table>
 
-          <h1 id="Кошелек">Кошелек</h1>
-
+          <h1 id='koshelek'>Кошелек</h1>
 <p>Кошелек - учетная запись конечного пользователя в mserver. Позволяет получать информацию о доступном остатке на счете и персональных данных конечного пользователя.  </p>
 
 <blockquote>
@@ -567,9 +536,7 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h3 id="Поля">Поля</h3>
-
+<h3 id='polya'>Поля</h3>
 <ul>
 <li><code class="prettyprint">phone</code> - номер телефона в международном формате, уникальный идентификатор Кошелька (в пределах Проекта), также является логином</li>
 <li><code class="prettyprint">amount</code> - остаток на счете кошелька, в рублях</li>
@@ -578,13 +545,9 @@
 <li><code class="prettyprint">level</code> - <code class="prettyprint">anonymous</code> | <code class="prettyprint">identified</code> | <code class="prettyprint">personified</code> уровень идентификации пользователя</li>
 <li><code class="prettyprint">person_status</code> - <code class="prettyprint">no_data</code> | <code class="prettyprint">data_entered</code> | <code class="prettyprint">data_verified</code> статус персональных данных пользователя</li>
 </ul>
-
-<h2 id="Создание-кошелька">Создание кошелька</h2>
-
+<h2 id='sozdanie-koshelka'>Создание кошелька</h2>
 <aside class="notice">При создании кошелька на dev сервере на счет зачисляется 10000 рублей.</aside>
-
-<h3 id="Параметры">Параметры</h3>
-
+<h3 id='parametry'>Параметры</h3>
 <ul>
 <li><code class="prettyprint">phone</code> - номер телефона в международном формате</li>
 <li><code class="prettyprint">password</code> - пароль, не короче 6 символов</li>
@@ -606,9 +569,7 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h3 id="Коды-ошибок">Коды ошибок</h3>
-
+<h3 id='kody-oshibok'>Коды ошибок</h3>
 <ul>
 <li><code class="prettyprint">missing_phone</code> - не передан номер телефона</li>
 <li><code class="prettyprint">invalid_phone</code> - номер телефона не соответствует международному формату</li>
@@ -633,11 +594,7 @@
 </span></code></pre>
 
 <aside class="notice">На dev сервере код не отправляется в СМС и возвращается в ответе в поле `dev.security_code`</aside>
-
-<h2 id="Активация-кошелька">Активация кошелька</h2>
-
-<h3 id="Параметры">Параметры</h3>
-
+<h2 id='aktivatsiya-koshelka'>Активация кошелька</h2><h3 id='parametry'>Параметры</h3>
 <ul>
 <li><code class="prettyprint">phone</code> - номер телефона в международном формате</li>
 <li><code class="prettyprint">code</code> - код активации кошелька из СМС сообщения</li>
@@ -655,9 +612,7 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h3 id="Коды-ошибок">Коды ошибок</h3>
-
+<h3 id='kody-oshibok'>Коды ошибок</h3>
 <ul>
 <li><code class="prettyprint">missing_phone</code> - не передан номер телефона</li>
 <li><code class="prettyprint">invalid_phone</code> - номер телефона не соответствует международному формату</li>
@@ -667,13 +622,9 @@
 <li><code class="prettyprint">code_expired</code> - с момента создания кода активации прошло больше 15 минут, запросите код повторно</li>
 <li><code class="prettyprint">failure_limit_exceeded</code> - вы прислали неверный код активации больше 5 раз, обратитесь в поддержку</li>
 </ul>
-
-<h2 id="Запрос-повторной-отправки-кода-активации">Запрос повторной отправки кода активации</h2>
-
+<h2 id='zapros-povtornoy-otpravki-koda-aktivatsii'>Запрос повторной отправки кода активации</h2>
 <aside class="notice">На dev сервере код не отправляется в СМС и возвращается в ответе в поле `dev.security_code`</aside>
-
-<h3 id="Параметры">Параметры</h3>
-
+<h3 id='parametry'>Параметры</h3>
 <ul>
 <li><code class="prettyprint">phone</code> - номер телефона в международном формате</li>
 </ul>
@@ -694,9 +645,7 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h3 id="Коды-ошибок">Коды ошибок</h3>
-
+<h3 id='kody-oshibok'>Коды ошибок</h3>
 <ul>
 <li><code class="prettyprint">missing_phone</code> - не передан номер телефона</li>
 <li><code class="prettyprint">invalid_phone</code> - номер телефона не соответствует международному формату</li>
@@ -704,9 +653,7 @@
 <li><code class="prettyprint">failure_limit_exceeded</code> - вы прислали неверный код активации больше 5 раз, обратитесь в поддержку</li>
 <li><code class="prettyprint">resend_limit_exceeded</code> - mserver отправил отведенные 5 СМС сообщений с кодами активации, обратитесь в поддержку</li>
 </ul>
-
-<h2 id="Запрос-кода-для-смены-пароля">Запрос кода для смены пароля</h2>
-
+<h2 id='zapros-koda-dlya-smeny-parolya'>Запрос кода для смены пароля</h2>
 <aside class="notice">На dev сервере код не отправляется в СМС и возвращается в ответе в поле `dev.security_code`</aside>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> 
  -d <span class="s1">'{"phone": "+79261111111"}'</span>
@@ -725,16 +672,12 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h3 id="Коды-ошибок">Коды ошибок</h3>
-
+<h3 id='kody-oshibok'>Коды ошибок</h3>
 <ul>
 <li><code class="prettyprint">failure_limit_exceeded</code> - вы прислали неверный код смены пароля больше 5 раз, обратитесь в поддержку</li>
 <li><code class="prettyprint">resend_limit_exceeded</code> - mserver отправил отведенные 5 СМС сообщений с кодами смены пароля, обратитесь в поддержку</li>
 </ul>
-
-<h2 id="Смена-пароля">Смена пароля</h2>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> 
+<h2 id='smena-parolya'>Смена пароля</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> 
  -d <span class="s1">'{"code": "934879", "password": "PassWord", "phone": "+79261111111"}'</span> ttps://www.synq.ru/mserver2-dev/v1/wallet/reset_password
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -746,18 +689,14 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h3 id="Коды-ошибок">Коды ошибок</h3>
-
+<h3 id='kody-oshibok'>Коды ошибок</h3>
 <ul>
 <li><code class="prettyprint">missing_code</code> - не передан код смены пароля </li>
 <li><code class="prettyprint">invalid_code</code> - переданный код смены пароля не совпадает с присланным в СМС</li>
 <li><code class="prettyprint">code_expired</code> - с момента создания кода смены пароля прошло больше 15 минут, запросите код повторно</li>
 <li><code class="prettyprint">failure_limit_exceeded</code> - вы прислали неверный код смены пароля больше 5 раз, обратитесь в поддержку</li>
 </ul>
-
-<h2 id="Загрузка-кошелька">Загрузка кошелька</h2>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password https://www.synq.ru/mserver2-dev/v1/wallet
+<h2 id='zagruzka-koshelka'>Загрузка кошелька</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password https://www.synq.ru/mserver2-dev/v1/wallet
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -776,9 +715,7 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h2 id="Поиск-кошельков">Поиск кошельков</h2>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password -H <span class="s1">'Content-type:application/json'</span> 
+<h2 id='poisk-koshelkov'>Поиск кошельков</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password -H <span class="s1">'Content-type:application/json'</span> 
 -d <span class="s1">'{"phones": ["+79990000000", "+79260000001", "+79260000002"]}'</span> 
 https://www.synq.ru/mserver2-dev/v1/wallet/find
 </code></pre>
@@ -796,11 +733,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/find
   </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h2 id="Задание-персональных-данных-пользователя">Задание персональных данных пользователя</h2>
-
-<h3 id="Параметры">Параметры</h3>
-
+<h2 id='zadanie-personalnyh-dannyh-polzovatelya'>Задание персональных данных пользователя</h2><h3 id='parametry'>Параметры</h3>
 <ul>
 <li><code class="prettyprint">family_name</code> - фамилия</li>
 <li><code class="prettyprint">given_name</code> - имя</li>
@@ -837,9 +770,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h3 id="Коды-ошибок">Коды ошибок</h3>
-
+<h3 id='kody-oshibok'>Коды ошибок</h3>
 <ul>
 <li><code class="prettyprint">invalid_family_name</code> - фамилия длиннее 512 символов</li>
 <li><code class="prettyprint">invalid_given_name</code> - имя длиннее 512 символов</li>
@@ -849,9 +780,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
 <li><code class="prettyprint">invalid_ssn</code> - СНИЛС не соответствует формату</li>
 <li><code class="prettyprint">person_already_verified</code> - перcональные данные утверждены, изменение невозможно, обратитесь в поддержку</li>
 </ul>
-
-<h2 id="Загрузка-персональных-данных-пользователя">Загрузка персональных данных пользователя</h2>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password https://www.synq.ru/mserver2-dev/v1/wallet/person
+<h2 id='zagruzka-personalnyh-dannyh-polzovatelya'>Загрузка персональных данных пользователя</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password https://www.synq.ru/mserver2-dev/v1/wallet/person
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -874,9 +803,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h2 id="Статусы-персональных-данных">Статусы персональных данных</h2>
-
+<h2 id='statusy-personalnyh-dannyh'>Статусы персональных данных</h2>
 <table><thead>
 <tr>
 <th style="text-align: left">Код статуса ПД</th>
@@ -893,8 +820,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
 </tr>
 </tbody></table>
 
-          <h1 id="Сервисы">Сервисы</h1>
-
+          <h1 id='servisy'>Сервисы</h1>
 <p>Сервис - это назначение платежа. Сервис содержит описание параметров, которые должны быть переданы в платежном запросе конечным пользователем.</p>
 
 <blockquote>
@@ -917,9 +843,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
       </span><span class="s2">"items"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h3 id="Поля">Поля</h3>
-
+<h3 id='polya'>Поля</h3>
 <ul>
 <li><code class="prettyprint">id</code> - идентификатор сервиса, передается в платежном запросе в поле <code class="prettyprint">service</code> для указания назначения платежа</li>
 <li><code class="prettyprint">name</code> - человекочитаемое имя сервиса</li>
@@ -933,9 +857,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
 <li><code class="prettyprint">type</code> - numeric|text|enum тип параметра платежа, число/текст/перечисление</li>
 <li><code class="prettyprint">items</code> - возможные значения параметра платежа с типом enum</li>
 </ul>
-
-<h2 id="Загрузка-списка-сервисов">Загрузка списка сервисов</h2>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password https://www.synq.ru/mserver2-dev/v1/services?size<span class="o">=</span>1
+<h2 id='zagruzka-spiska-servisov'>Загрузка списка сервисов</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password https://www.synq.ru/mserver2-dev/v1/services?size<span class="o">=</span>1
 </code></pre>
 <pre class="highlight json"><code><span class="w"> </span><span class="p">{</span><span class="w">
    </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -972,9 +894,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
    </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
  </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h2 id="Загрузка-сервиса-по-идентификатору">Загрузка сервиса по идентификатору</h2>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password https://www.synq.ru/mserver2-dev/v1/services/1
+<h2 id='zagruzka-servisa-po-identifikatoru'>Загрузка сервиса по идентификатору</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password https://www.synq.ru/mserver2-dev/v1/services/1
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1003,9 +923,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h2 id="Сервисы-по-группам">Сервисы по группам</h2>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password https://www.synq.ru/mserver2-dev/v1/services/groups?size<span class="o">=</span>1
+<h2 id='servisy-po-gruppam'>Сервисы по группам</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password https://www.synq.ru/mserver2-dev/v1/services/groups?size<span class="o">=</span>1
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1046,11 +964,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
   </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h2 id="Поиск-подходящего-сервиса-по-номеру-карты-или-телефона">Поиск подходящего сервиса по номеру карты или телефона</h2>
-
-<h3 id="Поля">Поля</h3>
-
+<h2 id='poisk-podhodyaschego-servisa-po-nomeru-karty-ili-telefona'>Поиск подходящего сервиса по номеру карты или телефона</h2><h3 id='polya'>Поля</h3>
 <ul>
 <li><code class="prettyprint">type</code> - phone | card тип поиска</li>
 <li><code class="prettyprint">input</code> - номер карты или телефона</li>
@@ -1097,8 +1011,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-          <h1 id="Платежи">Платежи</h1>
-
+          <h1 id='platezhi'>Платежи</h1>
 <p>Платеж - это операция движения денежных средств между счетами mserver выполняемая по распоряжению пользователя. Платежи различаются по типу:</p>
 
 <table><thead>
@@ -1124,9 +1037,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
 <td style="text-align: left">Транзит средств от ИПСП в пользу КредитПилот</td>
 </tr>
 </tbody></table>
-
-<h3 id="Поля,-общие-для-всех-типов-платежей">Поля, общие для всех типов платежей</h3>
-
+<h3 id='polya-obschie-dlya-vseh-tipov-platezhey'>Поля, общие для всех типов платежей</h3>
 <ul>
 <li><code class="prettyprint">type</code> - in|out|p2p|inout тип Платежа</li>
 <li><code class="prettyprint">client_payment_id</code> - клиентский идентификатор (UUID)</li>
@@ -1137,31 +1048,23 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
 <li><code class="prettyprint">status</code> - состояние</li>
 <li><code class="prettyprint">decline_reason</code> - причина отказа в проведении</li>
 </ul>
-
-<h3 id="Поля-для-платежей-типа-out-/-inout-(вывод-денег-/-транзит)">Поля для платежей типа <code class="prettyprint">out</code> / <code class="prettyprint">inout</code> (вывод денег / транзит)</h3>
-
+<h3 id='polya-dlya-platezhey-tipa-code-classprettyprintoutcode--code-classprettyprintinoutcode-vyvod-deneg--tranzit'>Поля для платежей типа <code class="prettyprint">out</code> / <code class="prettyprint">inout</code> (вывод денег / транзит)</h3>
 <ul>
 <li><code class="prettyprint">service</code> - назначение платежа</li>
 <li><code class="prettyprint">outbound</code> - провайдер, на счет которого были отправлены деньги со счете кошелька</li>
 <li><code class="prettyprint">parameters</code> - параметры платежа, например номер карты/телефона</li>
 </ul>
-
-<h3 id="Поля-для-типа-in-/-inout-(ввод-денег-/-транзит)">Поля для типа <code class="prettyprint">in</code> / <code class="prettyprint">inout</code> (ввод денег / транзит)</h3>
-
+<h3 id='polya-dlya-tipa-code-classprettyprintincode--code-classprettyprintinoutcode-vvod-deneg--tranzit'>Поля для типа <code class="prettyprint">in</code> / <code class="prettyprint">inout</code> (ввод денег / транзит)</h3>
 <ul>
 <li><code class="prettyprint">inbound</code> - провайдер, со счета которого деньги пришли на счет кошелька</li>
 <li><code class="prettyprint">card</code> - карта с которой прошло пополнение</li>
 </ul>
-
-<h3 id="Поля-для-типа-p2p-(перевод-между-кошельками)">Поля для типа <code class="prettyprint">p2p</code> (перевод между кошельками)</h3>
-
+<h3 id='polya-dlya-tipa-code-classprettyprintp2pcode-perevod-mezhdu-koshelkami'>Поля для типа <code class="prettyprint">p2p</code> (перевод между кошельками)</h3>
 <ul>
 <li><code class="prettyprint">destination</code> - кошелек назначения перевода</li>
 <li><code class="prettyprint">message</code> - сообщение адресату перевода</li>
 </ul>
-
-<h2 id="Статусы-платежа">Статусы платежа</h2>
-
+<h2 id='statusy-platezha'>Статусы платежа</h2>
 <table><thead>
 <tr>
 <th style="text-align: left">Код статуса платежа</th>
@@ -1185,9 +1088,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
 <td style="text-align: left">Платеж отклонен, с уточнением причины в поле <code class="prettyprint">decline_reason</code></td>
 </tr>
 </tbody></table>
-
-<h2 id="Причины-отказа-в-проведении-платежа">Причины отказа в проведении платежа</h2>
-
+<h2 id='prichiny-otkaza-v-provedenii-platezha'>Причины отказа в проведении платежа</h2>
 <table><thead>
 <tr>
 <th style="text-align: left">Код причины отказа</th>
@@ -1207,21 +1108,15 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
 <td style="text-align: left">Что-то пошло не так, обратитесь в поддержку</td>
 </tr>
 </tbody></table>
-
-<h2 id="Клиентский-идентификатор-платежа">Клиентский идентификатор платежа</h2>
-
+<h2 id='klientskiy-identifikator-platezha'>Клиентский идентификатор платежа</h2>
 <p>Клиент может генерировать <a href="http://wikipedia.org/wiki/UUID">UUID</a> для каждого отдельного платежа и передавать его в поле <code class="prettyprint">client_payment_id</code> платежного запроса. Если в процессе создания платежа такой клиент получил ошибку I/O, он должен повторять запрос создания платежа с тем же самым <code class="prettyprint">client_payment_id</code> до получения ответа. Гарантируется, что платеж с данным <code class="prettyprint">client_payment_id</code> будет создан не более 1 раза.</p>
-
-<h2 id="Проведение-платежа">Проведение платежа</h2>
-
+<h2 id='provedenie-platezha'>Проведение платежа</h2>
 <p>Для передачи mserver платежа на исполнение клиент следует общепринятому в платежной индустрии двухфазному протоколу. В первой фазе, подготовительной, клиент создает в mserver Платеж с необходимыми параметрами. 
 По завершении подготовительной фазы клиент получает от mserver информацию о полной стоимости платежа (поле <code class="prettyprint">total</code>) и предъявляет полную стоимость платежа пользователю кошелька. 
 В случае согласия пользователя с условиями исполнения платежа клиент от имени пользователя инициирует исполнение подготовленного платежа (вторая фаза, платежная).</p>
 
 <p><img alt="проведение платежа" src="http://www.websequencediagrams.com/cgi-bin/cdraw?lz=dGl0bGUg0JTQstGD0YXRhNCw0LfQvdGL0Lkg0L_Qu9Cw0YLQtdC2AAoJ0YDQvtGC0L7QutC-0LsgbXNlcnZlcgoKbm90ZSBvdmVyIGNsaWVudCwAEwg6INCf0L7QtNCzADIHstC4AE8Fu9GM0LDRjyAAbQewCgoANAYtPgAxCVBPU1QgL3BheW1lbnRzIHtwYXJhbXN9AGcGcmlnaHQgb2YAYAkKAIEGCCDRgdC-0LfQtNCw0LXRggCBPA0sCiDRgNCw0YHRgdGH0LjRgtGL0LIAIAi60L7QvNC40YHRgdC40Y4KINC90LjQutGC0L4AAwiD0LTQsCDQtdGJ0LUg0L3QtQCCHQq40YIKZW5kIG5vdGUKCgCCEwctPgCCCgY6IHtpZDogMTIzLCBhbW91bnQ6IDEwMCwgdG90YWw6IDExMCwgbmV4dF9hY3Rpb246IHBheX0AglEHbGVmAIFlBQBEBwog0LrQu9C40LXQvQCBWQa-0LrQsNC3AIFADL_QvgCCXgW3AIJuBQCDQQa70Y4gCgAUB9C90YPRjiDRgQCDSQW40LzQvtGB0YLRjACDag6wIDExMCDRgAoAOheMAIJnBrMAhCYFgdC10L0AggQN0YwAgggLAIQGHgCEYQsAg2ouLzEyMy9wYXkAg3YhAFQFh9C40L0AhBAJ0YAAhQ0FvtC0AIEoBgCFaA0AgloO0YMAhXkGtdC00LvQsNCzAIRYBtGB0Y8g0L4AhhUFsNGI0LgAgmgG0YwKAIUCBQCCWgbRjwCERQUAhCILAIJXBQCEJQoAhBwSAIN_DWdldH0Ahg0TR0UAgXgPAIRjE3N0YXR1czogY29tcGxldGVkAIY4BwCEMSO70YPRhwCGPQcAgSshIAoAWQogKNC40YEAhGAI0LXQvSkKIFlheSEAhhcJ&amp;s=modern-blue" /></p>
-
-<h2 id="Получение-истории-платежей">Получение истории платежей</h2>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password <span class="s2">"https://www.synq.ru/mserver2-dev/v1/payments?page=0&amp;size=35&amp;type=out,in&amp;status=completed,declined"</span>
+<h2 id='poluchenie-istorii-platezhey'>Получение истории платежей</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password <span class="s2">"https://www.synq.ru/mserver2-dev/v1/payments?page=0&amp;size=35&amp;type=out,in&amp;status=completed,declined"</span>
 </code></pre>
 
 <p>Параметры <code class="prettyprint">page</code> и <code class="prettyprint">size</code> в запросе позволяют задать номер (начиная с 0) и размер страницы, которую запрашивает клиент. По умолчанию номер страницы - 0 и размер страницы - 35 платежей.
@@ -1420,9 +1315,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
   </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h2 id="Уведомления-об-изменении-статуса-платежа">Уведомления об изменении статуса платежа</h2>
-
+<h2 id='uvedomleniya-ob-izmenenii-statusa-platezha'>Уведомления об изменении статуса платежа</h2>
 <p>Для уведомления внешней системы об изменениях статуса платежа mserver выполняет POST запрос на URL /payments/status. Уведомление передается в теле POST запроса в виде объекта платежной операции сериализованного в JSON. Например:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"created_at"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-08-02T14:37:20.102Z"</span><span class="p">,</span><span class="w">
@@ -1451,9 +1344,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
   </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"complete"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h3 id="Поля">Поля</h3>
-
+<h3 id='polya'>Поля</h3>
 <ul>
 <li><code class="prettyprint">created_at</code> - момент времени совершения платежной операции</li>
 <li><code class="prettyprint">payment</code> - стандартное представление объекта платежа описанное выше</li>
@@ -1461,9 +1352,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
 <li><code class="prettyprint">to</code> - конечный статус платежа</li>
 <li><code class="prettyprint">type</code> - тип платежной операции, см. ниже</li>
 </ul>
-
-<h3 id="Типы-платежных-операций">Типы платежных операций</h3>
-
+<h3 id='tipy-platezhnyh-operatsiy'>Типы платежных операций</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Тип</th>
@@ -1488,10 +1377,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
 </tr>
 </tbody></table>
 
-          <h1 id="Платеж-со-счета-кошелька">Платеж со счета кошелька</h1>
-
-<h3 id="Параметры">Параметры</h3>
-
+          <h1 id='platezh-so-scheta-koshelka'>Платеж со счета кошелька</h1><h3 id='parametry'>Параметры</h3>
 <ul>
 <li><code class="prettyprint">type</code> = out - тип платежа</li>
 <li><code class="prettyprint">client_payment_id</code> - клиентский идентификатор платежа (опциональный)</li>
@@ -1554,9 +1440,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h3 id="Коды-ошибок">Коды ошибок</h3>
-
+<h3 id='kody-oshibok'>Коды ошибок</h3>
 <ul>
 <li><code class="prettyprint">missing_type</code> - отсутствует обязательный параметр type</li>
 <li><code class="prettyprint">missing_client_payment_id</code> - отсутствует обязательный параметр client_payment_id</li>
@@ -1567,10 +1451,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
 <li><code class="prettyprint">missing_parameters</code> - не передан обязательный параметр parameters</li>
 </ul>
 
-          <h1 id="Перевод-между-кошельками">Перевод между кошельками</h1>
-
-<h3 id="Параметры">Параметры</h3>
-
+          <h1 id='perevod-mezhdu-koshelkami'>Перевод между кошельками</h1><h3 id='parametry'>Параметры</h3>
 <ul>
 <li><code class="prettyprint">type</code> = p2p - тип платежа</li>
 <li><code class="prettyprint">client_payment_id</code> - клиентский идентификатор платежа</li>
@@ -1605,9 +1486,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h3 id="Коды-ошибок">Коды ошибок</h3>
-
+<h3 id='kody-oshibok'>Коды ошибок</h3>
 <ul>
 <li><code class="prettyprint">missing_type</code> - отсутствует обязательный параметр type</li>
 <li><code class="prettyprint">missing_client_payment_id</code> - отсутствует обязательный параметр client_payment_id</li>
@@ -1621,8 +1500,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
 <li><code class="prettyprint">destination_wallet_not_identified</code> - получатель p2p перевода не идентифицирован</li>
 </ul>
 
-          <h1 id="Пополнение-кошелька">Пополнение кошелька</h1>
-
+          <h1 id='popolnenie-koshelka'>Пополнение кошелька</h1>
 <p>Пополнение кошелька пользователя через запросы к API возможно с использованием пластиковых карт. Существуют 3 сценария пополнения кошелька с карты:</p>
 
 <ul>
@@ -1630,9 +1508,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
 <li>однократное пополнение с сохранением данных карты для последующего использования (&ldquo;привязка карты&rdquo;)</li>
 <li>пополнение с сохраненной ранее карты (&ldquo;рекарринг&rdquo;)</li>
 </ul>
-
-<h3 id="Параметры">Параметры</h3>
-
+<h3 id='parametry'>Параметры</h3>
 <ul>
 <li><code class="prettyprint">type</code> = in - тип платежа</li>
 <li><code class="prettyprint">client_payment_id</code> - клиентский идентификатор платежа</li>
@@ -1640,9 +1516,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
 <li><code class="prettyprint">store_card</code> - <code class="prettyprint">true</code> | <code class="prettyprint">false</code> - сохранить карту, чтобы использовать ее для платежей в дальнейшем (опциональный)</li>
 <li><code class="prettyprint">card</code> - идентификатор сохраненной карты с которой будут списаны деньги (опциональный)</li>
 </ul>
-
-<h2 id="Однократное">Однократное</h2>
-
+<h2 id='odnokratnoe'>Однократное</h2>
 <blockquote>
 <p>Создаем платеж:</p>
 </blockquote>
@@ -1717,9 +1591,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
 <blockquote>
 <p>далее следует перенаправить пользователя на платежную страницу по ссылке из поля <code class="prettyprint">card.payment_page_url</code>.</p>
 </blockquote>
-
-<h2 id="С-сохранением-данных-карты">С сохранением данных карты</h2>
-
+<h2 id='s-sohraneniem-dannyh-karty'>С сохранением данных карты</h2>
 <blockquote>
 <p>Создаем платеж:</p>
 </blockquote>
@@ -1831,9 +1703,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h2 id="c-сохраненной-карты">C сохраненной карты</h2>
-
+<h2 id='c-sohranennoy-karty'>C сохраненной карты</h2>
 <blockquote>
 <p>Используем карту #21 сохраненную в предыдущем примере.</p>
 
@@ -1912,8 +1782,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-          <h1 id="Транзитный-платеж">Транзитный платеж</h1>
-
+          <h1 id='tranzitnyy-platezh'>Транзитный платеж</h1>
 <p>Транзитный платеж соединяет в одном действии зачисление денег на кошелек через поставщика ввода средств (в настоящее время ИПСП) и списание денег со счета кошелька в пользу поставщика вывода средств (в настоящее время КредитПилот).</p>
 
 <p>По аналогии с пополнением кошелька возможны следующие варианты транзитного платежа:</p>
@@ -1923,9 +1792,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
 <li>однократное списание с карты с сохранением данных карты для последующего использования (&ldquo;привязка карты&rdquo;)</li>
 <li>списание средств с сохраненной ранее карты (&ldquo;рекарринг&rdquo;)</li>
 </ul>
-
-<h3 id="Параметры">Параметры</h3>
-
+<h3 id='parametry'>Параметры</h3>
 <ul>
 <li><code class="prettyprint">type</code> = inout - тип платежа</li>
 <li><code class="prettyprint">client_payment_id</code> - клиентский идентификатор платежа (опциональный)</li>
@@ -1935,9 +1802,7 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
 <li><code class="prettyprint">service</code> - назначение платежа, идентификатор Сервиса</li>
 <li><code class="prettyprint">parameters</code> - параметры платежного запроса в соответствии с /services/{service}</li>
 </ul>
-
-<h2 id="Однократное-списание-с-карты">Однократное списание с карты</h2>
-
+<h2 id='odnokratnoe-spisanie-s-karty'>Однократное списание с карты</h2>
 <blockquote>
 <p>Создаем платеж:</p>
 </blockquote>
@@ -2102,9 +1967,7 @@ https://www.synq.ru/mserver2-dev/v1/payments/18357
 <blockquote>
 <p>Платеж успешен.</p>
 </blockquote>
-
-<h2 id="С-сохранением-данных-карты">С сохранением данных карты</h2>
-
+<h2 id='s-sohraneniem-dannyh-karty'>С сохранением данных карты</h2>
 <p>Сценарий ничем не отличается от предыдущего, кроме передачи флага &ldquo;store_card&rdquo;: true при создании платежа. 
 Идентификатор карты, возвращенный в <code class="prettyprint">data.card.id</code> можно впоследствии использовать для пополнения счета кошелька 
 или выполнения транзитных платежей с сохраненной карты.</p>
@@ -2275,9 +2138,7 @@ https://www.synq.ru/mserver2-dev/v1/payments/18387/pay
 <blockquote>
 <p>Платеж успешен. Карта с ID 7222 успешно сохранена (имеет статус <code class="prettyprint">active</code>).</p>
 </blockquote>
-
-<h2 id="c-сохраненной-карты">C сохраненной карты</h2>
-
+<h2 id='c-sohranennoy-karty'>C сохраненной карты</h2>
 <p>Транзитный платеж с сохраненной карты отличается от платежа с однократным списанием только указанием идентификатора карты в поле <code class="prettyprint">card</code> при создании платежа.</p>
 
 <blockquote>
@@ -2446,9 +2307,7 @@ https://www.synq.ru/mserver2-dev/v1/payments/18388/pay
 <blockquote>
 <p>Платеж успешен. </p>
 </blockquote>
-
-<h2 id="Отложенный-выбор-типа-платежа">Отложенный выбор типа платежа</h2>
-
+<h2 id='otlozhennyy-vybor-tipa-platezha'>Отложенный выбор типа платежа</h2>
 <p>Пользователь может отложить выбор типа платежа между <code class="prettyprint">out</code> и <code class="prettyprint">inout</code> до подтверждения платежа.
 Платеж может быть создан, как платеж со счета кошелька <code class="prettyprint">out</code>, затем, если клиент передумал и решил заплатить картой, 
 при подтверждении платежа вызовом </p>
@@ -2456,9 +2315,7 @@ https://www.synq.ru/mserver2-dev/v1/payments/18388/pay
 <p><code class="prettyprint">POST</code> /payments/{:id}/pay </p>
 
 <p>нужно передать в теле запроса следующие поля:</p>
-
-<h3 id="Поля-запроса-подтверждения-платежа-для-смены-типа-in--&gt;-inout">Поля запроса подтверждения платежа для смены типа in -&gt; inout</h3>
-
+<h3 id='polya-zaprosa-podtverzhdeniya-platezha-dlya-smeny-tipa-in--gt-inout'>Поля запроса подтверждения платежа для смены типа in -&gt; inout</h3>
 <ul>
 <li><code class="prettyprint">type</code> = inout - тип платежа</li>
 <li><code class="prettyprint">store_card</code> - <code class="prettyprint">true</code> | <code class="prettyprint">false</code> - сохранить карту, чтобы использовать ее для платежей в дальнейшем (опциональный)</li>
@@ -2623,21 +2480,16 @@ https://www.synq.ru/mserver2-dev/v1/payments/19493/pay
 <p>Платеж успешен. </p>
 </blockquote>
 
-          <h1 id="Карты">Карты</h1>
-
+          <h1 id='karty'>Карты</h1>
 <p>Карта - это сохраненный в mserver токен, с помощью которого пользователь кошелька может пополнять счет без ввода данных пластиковой карты.</p>
-
-<h3 id="Поля">Поля</h3>
-
+<h3 id='polya'>Поля</h3>
 <ul>
 <li><code class="prettyprint">id</code> - уникальный идентификатор карты</li>
 <li><code class="prettyprint">state</code> - состояние карты, см. ниже</li>
 <li><code class="prettyprint">title</code> - название карты, в качестве названия сейчас используется маскированный номер карты</li>
 <li><code class="prettyprint">type</code> - бренд карты: Visa/MasterCard/&hellip;</li>
 </ul>
-
-<h3 id="Состояния-карты">Состояния карты</h3>
-
+<h3 id='sostoyaniya-karty'>Состояния карты</h3>
 <table><thead>
 <tr>
 <th style="text-align: left">Код состояния карты</th>
@@ -2669,18 +2521,12 @@ https://www.synq.ru/mserver2-dev/v1/payments/19493/pay
 <td style="text-align: left">Карта удалена</td>
 </tr>
 </tbody></table>
-
-<h2 id="Создание-карты">Создание карты</h2>
-
-<h3 id="Параметры">Параметры</h3>
-
+<h2 id='sozdanie-karty'>Создание карты</h2><h3 id='parametry'>Параметры</h3>
 <ul>
 <li><code class="prettyprint">card_success_url</code> - URL на который пользователь будет перенаправлен в случае успешного сохранения карты, опционально</li>
 <li><code class="prettyprint">card_failure_url</code> - URL на который пользователь будет перенаправлен в случае неуспешного сохранения карты, опционально</li>
 </ul>
-
-<h3 id="Коды-ошибок">Коды ошибок</h3>
-
+<h3 id='kody-oshibok'>Коды ошибок</h3>
 <ul>
 <li><code class="prettyprint">active_cards_limit</code> - превышено максимально возможное количество активных карт</li>
 </ul>
@@ -2699,9 +2545,7 @@ https://www.synq.ru/mserver2-dev/v1/payments/19493/pay
 </span></code></pre>
 
 <p>После создания карты следует перенаправить пользователя на платежную страницу по ссылке из поля <code class="prettyprint">payment_page_url</code>. После ввода пользователем данных карты на платежной странице  и получения mserver уведомления от IPSP об успехе или неуспехе карточной транзакции карта перейдет в состояние <code class="prettyprint">active</code> или <code class="prettyprint">failed</code>.</p>
-
-<h2 id="Загрузка-карты">Загрузка карты</h2>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password -H <span class="s1">'Content-type:application/json'</span> https://www.synq.ru/mserver2-dev/v1/cards/62
+<h2 id='zagruzka-karty'>Загрузка карты</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password -H <span class="s1">'Content-type:application/json'</span> https://www.synq.ru/mserver2-dev/v1/cards/62
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2717,9 +2561,7 @@ https://www.synq.ru/mserver2-dev/v1/payments/19493/pay
 </span></code></pre>
 
 <p>Как видно, карта успешно сохранена и может быть использована для пополнения счета кошелька.</p>
-
-<h2 id="Получение-списка-карт">Получение списка карт</h2>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password -H <span class="s1">'Content-type:application/json'</span> https://www.synq.ru/mserver2-dev/v1/cards?state<span class="o">=</span>active,pending
+<h2 id='poluchenie-spiska-kart'>Получение списка карт</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password -H <span class="s1">'Content-type:application/json'</span> https://www.synq.ru/mserver2-dev/v1/cards?state<span class="o">=</span>active,pending
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2738,9 +2580,7 @@ https://www.synq.ru/mserver2-dev/v1/payments/19493/pay
 </span></code></pre>
 
 <p>Опциональный параметр <code class="prettyprint">state</code> позволяет фильтровать карты по состоянию.</p>
-
-<h2 id="Удаление-карты">Удаление карты</h2>
-<pre class="highlight shell"><code><span class="gp">$ </span>сurl -u+79261111111:password -H <span class="s1">'Content-type:application/json'</span> 
+<h2 id='udalenie-karty'>Удаление карты</h2><pre class="highlight shell"><code><span class="gp">$ </span>сurl -u+79261111111:password -H <span class="s1">'Content-type:application/json'</span> 
  -X DELETE https://www.synq.ru/mserver2-dev/v1/cards/62
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -2749,9 +2589,7 @@ https://www.synq.ru/mserver2-dev/v1/payments/19493/pay
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h2 id="Уведомления-об-изменении-статуса-привязки-карты">Уведомления об изменении статуса привязки карты</h2>
-
+<h2 id='uvedomleniya-ob-izmenenii-statusa-privyazki-karty'>Уведомления об изменении статуса привязки карты</h2>
 <p>Для уведомления внешней системы об изменениях статуса карты mserver выполняет POST запрос на URL /cards/status. Уведомление передается в теле POST запроса в виде объекта карты сериализованного в JSON. Например:</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">62</span><span class="p">,</span><span class="w">
@@ -2763,9 +2601,7 @@ https://www.synq.ru/mserver2-dev/v1/payments/19493/pay
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-
-<h2 id="Данные-тестовых-карт">Данные тестовых карт</h2>
-
+<h2 id='dannye-testovyh-kart'>Данные тестовых карт</h2>
 <table><thead>
 <tr>
 <th style="text-align: left">Номер карты</th>
