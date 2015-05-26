@@ -95,17 +95,20 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h2 id='poluchenie-opisaniya-vseh-oshibok-api'>Получение описания всех ошибок API</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl http://sandbox.wallet.best/v1/errors
-</code></pre>
+<h2 id='poluchenie-opisaniya-vseh-oshibok-api'>Получение описания всех ошибок API</h2>
+<p>Поля:</p>
 
-<p>Поля
-* <code class="prettyprint">code</code> - идентификатор ошибки
-* <code class="prettyprint">title</code> - словарь с локализированными ошибками</p>
+<ul>
+<li><code class="prettyprint">code</code> - идентификатор ошибки</li>
+<li><code class="prettyprint">title</code> - словарь с локализированными ошибками</li>
+</ul>
 
-<p>Поле <code class="prettyprint">title</code> может быть с динамическими данными, например {{ object.meta.code }} при получении реальной ошибки отдаст http код состояния</p>
+<p>Поле <code class="prettyprint">title</code> может быть с динамическими данными, например <code class="prettyprint">{{ object.meta.code }}</code> при получении реальной ошибки отдаст http код состояния</p>
 
 <p>В ответе в <em>meta</em> присутствует параметр <strong>request_time</strong> со значением UNIX timestamp.
 Если делать запрос с параметром <strong>If-Modified-Since</strong> в котором будет указан timestamp предыдущего запроса, то ответ может быть с HTTP кодом 304</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl http://sandbox.wallet.best/v1/errors
+</code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"request_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1432652055</span><span class="p">,</span><span class="w">
