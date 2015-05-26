@@ -55,13 +55,13 @@ $ curl http://sandbox.wallet.best/v1/errors
                 "ru_RU": "кошелек не существует"
             }
         },
-        "code": "invalid_phone",
+        {
+            "code": "invalid_phone",
             "title": {
                 "ru_RU": "требуется номер телефона в международном формате",
                 "en_US": "invalid phone {{ object.meta.code }}"
             }
         }
-        ...
     ]
 }
 ```
