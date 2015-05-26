@@ -95,6 +95,39 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<h2 id='poluchenie-opisaniya-vseh-oshibok-api'>Получение описания всех ошибок API</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl http://sandbox.wallet.best/v1/errors
+</code></pre>
+
+<p>Поля
+* <code class="prettyprint">code</code> - идентификатор ошибки
+* <code class="prettyprint">title</code> - словарь с локализированными ошибками</p>
+
+<p>Поле <code class="prettyprint">title</code> может быть с динамическими данными, например {{ object.meta.code }} при получении реальной ошибки отдаст http код состояния</p>
+
+<p>В ответе в <em>meta</em> присутствует параметр <strong>request_time</strong> со значением UNIX timestamp.
+Если делать запрос с параметром <strong>If-Modified-Since</strong> в котором будет указан timestamp предыдущего запроса, то ответ может быть с HTTP кодом 304</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"request_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1432652055</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wallet_not_found"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"ru_RU"</span><span class="p">:</span><span class="w"> </span><span class="s2">"кошелек не существует"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"code"</span><span class="err">:</span><span class="w"> </span><span class="s2">"invalid_phone"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"ru_RU"</span><span class="p">:</span><span class="w"> </span><span class="s2">"требуется номер телефона в международном формате"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid phone {{ object.meta.code }}"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="err">}</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <p>Справочники возможных значений error для каждого вызова API описаны ниже.</p>
 <h2 id='meta'>Meta</h2>
@@ -120,7 +153,8 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h2 id='autentifikatsiya'>Аутентификация</h2>
-<p>Используется <a href="http://wikipedia.org/wiki/Basic_access_authentication">BASIC аутентификация</a>. В качестве логина используется номер телефона Кошелька в международном формате. В случае, если кошелек не прошел аутентификацию, сервер вернет HTTP статус 401.</p>
+<p>Используется <a href="http://nebo15.github.io/mbank.docs/mserver.html#oauth">OAuth аутентификация</a>. 
+В качестве логина используется номер телефона Кошелька в международном формате. В случае, если кошелек не прошел аутентификацию, сервер вернет HTTP статус 401.</p>
 
 <p>Коды ошибок</p>
 
@@ -128,7 +162,7 @@
 <li><code class="prettyprint">wallet_not_active</code> - кошелек не активирован</li>
 <li><code class="prettyprint">wallet_disabled</code> - заблокирован администрацией</li>
 </ul>
-<h1 id='nastroyki-prilozheniya'>Настройки приложения</h1><pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:p@ssw0rD http://api.mbank.dnebo15.me/v1/options
+<h1 id='nastroyki-prilozheniya'>Настройки приложения</h1><pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:p@ssw0rD http://sandbox.wallet.best/v1/options
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -598,7 +632,7 @@ http://sandbox.wallet.best/v1/wallet/person
 <p>Список отдается с постраничной навигацией. Если существует следующая страница с сервисами - в <em>meta</em> параметр <strong>has_next_page</strong> будет true, в ином случае - false.</p>
 
 <p>В ответе в <em>meta</em> присутствует параметр <strong>request_time</strong> со значением UNIX timestamp.
-Если делать запрос с параметром If-Modified-Since в котором будет указан timestamp предыдущего запроса, то ответ может быть с HTTP кодом 304</p>
+Если делать запрос с параметром <strong>If-Modified-Since</strong> в котором будет указан timestamp предыдущего запроса, то ответ может быть с HTTP кодом 304</p>
 
 <p>Параметры:</p>
 
@@ -667,7 +701,7 @@ http://sandbox.wallet.best/v1/wallet/person
 </span></code></pre>
 <h2 id='zagruzka-spiska-grupp'>Загрузка списка групп</h2>
 <p>Поле <code class="prettyprint">amount</code> содержит количество включенных сервисов в группе. В ответе в meta присутствует параметр request_time со значением UNIX timestamp.
-Если делать запрос с параметром If-Modified-Since в котором будет указан timestamp предыдущего запроса, то ответ может быть с HTTP кодом 304</p>
+Если делать запрос с параметром <strong>If-Modified-Since</strong> в котором будет указан timestamp предыдущего запроса, то ответ может быть с HTTP кодом 304</p>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:p@ssw0rD http://sandbox.wallet.best/v1/groups
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -709,7 +743,7 @@ http://sandbox.wallet.best/v1/wallet/person
 </span></code></pre>
 <h2 id='zagruzka-spiska-servisov-po-gruppam'>Загрузка списка сервисов по группам</h2>
 <p>В ответе в meta присутствует параметр request_time со значением UNIX timestamp.
-Если делать запрос с параметром If-Modified-Since в котором будет указан timestamp предыдущего запроса, то ответ может быть с HTTP кодом 304.</p>
+Если делать запрос с параметром <strong>If-Modified-Since</strong> в котором будет указан timestamp предыдущего запроса, то ответ может быть с HTTP кодом 304.</p>
 
 <p>В метаданных есть поле <code class="prettyprint">suggestion_rules</code> c массивом <strong>код оператора в международном формате</strong> : <strong>ID сервиса</strong>
 <code class="prettyprint">shell
