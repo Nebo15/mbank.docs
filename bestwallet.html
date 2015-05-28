@@ -585,15 +585,8 @@ http://sandbox.wallet.best/v1/wallet/person
 <li><code class="prettyprint">status</code> - <strong>online | offline</strong> статус доступности сервиса для совершения платежей</li>
 <li><code class="prettyprint">verification_required</code> - требуется ли идентификация плательщика для проведения платежа,</li>
 <li><code class="prettyprint">parameters</code> - массив параметров для платежа, содержит в себе объекты со свойствами, которые описаны ниже.</li>
-<li><code class="prettyprint">category</code> - объект со следующими свойствами:
-
-<ul>
-<li><code class="prettyprint">id</code> - идентификатор категории (MongoID)</li>
-<li><code class="prettyprint">name</code> - человекочитаемое название категории</li>
-<li><code class="prettyprint">group</code> - группа категории</li>
-<li><code class="prettyprint">icon_url_32x32</code> - иконка категории</li>
-<li><code class="prettyprint">amount</code> - кол-во сервисов в группе</li>
-</ul></li>
+<li><code class="prettyprint">category</code> - объект со следующими свойствами (DEPRECATED):</li>
+<li><code class="prettyprint">groups</code> - массив групп (категорий) к которым относится сервис</li>
 </ul>
 
 <p>Параметры:</p>
@@ -667,10 +660,12 @@ http://sandbox.wallet.best/v1/wallet/person
             </span><span class="s2">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https:\/\/api.mbank.ru\/img\/providers\/dev_834.png"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="s2">"verification_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53359fb2255c741a749f0c4b"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Интернет провайдеры"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53359fb2255c741a749f0c4b"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Интернет провайдеры"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
             </span><span class="s2">"geo"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">[</span><span class="w">
                     </span><span class="s2">"Москва"</span><span class="p">,</span><span class="w">
@@ -694,10 +689,12 @@ http://sandbox.wallet.best/v1/wallet/person
             </span><span class="s2">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https:\/\/api.mbank.ru\/img\/providers\/dev_1000.png"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="s2">"verification_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53359fb2255c741a749f0c59"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Мобильная связь зарубежья"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
+            </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53359fb2255c741a749f0c59"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Мобильная связь зарубежья"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -722,7 +719,7 @@ http://sandbox.wallet.best/v1/wallet/person
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Мобильная связь"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cellular"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"icon_url_32x32"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cellular"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
@@ -730,7 +727,7 @@ http://sandbox.wallet.best/v1/wallet/person
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Мобильная связь зарубежья"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"icon_url_32x32"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
@@ -738,7 +735,7 @@ http://sandbox.wallet.best/v1/wallet/person
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Игры и социальные сети"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"icon_url_32x32"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
@@ -772,7 +769,7 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/groups
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Мобильная связь"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cellular"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"icon_url_32x32"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/sandbox.wallet.best\/img\/services\/category_phone.png"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cellular"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="err">{</span><span class="w">
                     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
@@ -796,7 +793,7 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/groups
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Игры и социальные сети"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"icon_url_32x32"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/sandbox.wallet.best\/img\/services\/category_social.png"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="s2">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="err">{</span><span class="w">
                     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1066</span><span class="p">,</span><span class="w">
@@ -878,9 +875,20 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/groups
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"549c92fb56c35f660ecd341f"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Мобильная связь"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cellular"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"icon_url_32x32"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/sandbox.wallet.best\/img\/services\/category_phone.png"</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="err">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cellular"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53359fb2255c741a749f0c42"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Мобильная связь"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cellular"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cellular"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"services_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
