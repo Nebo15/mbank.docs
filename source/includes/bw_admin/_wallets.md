@@ -167,7 +167,7 @@ curl -H 'X-Project-ID:mbank' -uuser:user http://sandbox.wallet.best/adm2/wallets
 * `email_send_frequency` - ?
 * `contacts_count` - кол-во контактов
 * `projects` - к каким проектам относится
-
+* `lock_reason` - причина блокировки (если заблокирован) 
 ##Удаление кошелька
 
 ```shell
