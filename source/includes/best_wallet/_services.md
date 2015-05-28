@@ -15,12 +15,8 @@
 * `status` - **online | offline** статус доступности сервиса для совершения платежей
 * `verification_required` - требуется ли идентификация плательщика для проведения платежа,
 * `parameters` - массив параметров для платежа, содержит в себе объекты со свойствами, которые описаны ниже.
-* `category` - объект со следующими свойствами:
- * `id` - идентификатор категории (MongoID)
- * `name` - человекочитаемое название категории
- * `group` - группа категории
- * `icon_url_32x32` - иконка категории
- * `amount` - кол-во сервисов в группе
+* `category` - объект со следующими свойствами (DEPRECATED):
+* `groups` - массив групп (категорий) к которым относится сервис
 
 Параметры:
 
@@ -91,10 +87,12 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services
             "icon_url": "https:\/\/api.mbank.ru\/img\/providers\/dev_834.png",
             "limit": "",
             "verification_required": true,
-            "group": {
-                "id": "53359fb2255c741a749f0c4b",
-                "name": "Интернет провайдеры"
-            },
+            "groups": [
+                {
+                    "id": "53359fb2255c741a749f0c4b",
+                    "name": "Интернет провайдеры"
+                }
+            ],
             "geo": [
                 [
                     "Москва",
@@ -118,10 +116,12 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services
             "icon_url": "https:\/\/api.mbank.ru\/img\/providers\/dev_1000.png",
             "limit": "",
             "verification_required": false,
-            "group": {
-                "id": "53359fb2255c741a749f0c59",
-                "name": "Мобильная связь зарубежья"
-            }
+            "groups": [
+                {
+                    "id": "53359fb2255c741a749f0c59",
+                    "name": "Мобильная связь зарубежья"
+                }
+            ]
         }
     ]
 }
@@ -152,7 +152,7 @@ $ curl -u +79261111111:p@ssw0rD http://sandbox.wallet.best/v1/groups
             "name": "Мобильная связь",
             "keywords": "",
             "group": "cellular",
-            "icon_url_32x32": "",
+            "type": "cellular",
             "amount": 8
         },
         {
@@ -160,7 +160,7 @@ $ curl -u +79261111111:p@ssw0rD http://sandbox.wallet.best/v1/groups
             "name": "Мобильная связь зарубежья",
             "keywords": "",
             "group": "",
-            "icon_url_32x32": "",
+            "type": "",
             "amount": 20
         },
         {
@@ -168,7 +168,7 @@ $ curl -u +79261111111:p@ssw0rD http://sandbox.wallet.best/v1/groups
             "name": "Игры и социальные сети",
             "keywords": "",
             "group": "",
-            "icon_url_32x32": "",
+            "type": "",
             "amount": 4
         }
     ]
@@ -206,7 +206,7 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/groups
             "id": 3,
             "name": "Мобильная связь",
             "group": "Cellular",
-            "icon_url_32x32": "http:\/\/sandbox.wallet.best\/img\/services\/category_phone.png",
+            "type": "Cellular",
             "services": {
                 {
                     "id": 1000,
@@ -230,7 +230,7 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/groups
             "id": 12,
             "name": "Игры и социальные сети",
             "group": "",
-            "icon_url_32x32": "http:\/\/sandbox.wallet.best\/img\/services\/category_social.png",
+            "type": "",
             "services": {
                 {
                     "id": 1066,
@@ -318,9 +318,20 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/42
             "id": "549c92fb56c35f660ecd341f",
             "name": "Мобильная связь",
             "group": "Cellular",
-            "icon_url_32x32": "http:\/\/sandbox.wallet.best\/img\/services\/category_phone.png"
+            "type": "Cellular",
             "amount": 3
-        }
+        },
+        "groups": [
+            {
+                "id": "53359fb2255c741a749f0c42",
+                "name": "Мобильная связь",
+                "group": "cellular",
+                "type": "cellular",
+                "keywords": "",
+                "amount": 0,
+                "services_count": 9
+            }
+        ]
     }
 }
 ```
