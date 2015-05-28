@@ -2635,8 +2635,10 @@
 <li><code class="prettyprint">email_send_frequency</code> - ?</li>
 <li><code class="prettyprint">contacts_count</code> - кол-во контактов</li>
 <li><code class="prettyprint">projects</code> - к каким проектам относится</li>
+<li><code class="prettyprint">lock_reason</code> - причина блокировки (если заблокирован) 
+##Удаление кошелька</li>
 </ul>
-<h2 id='udalenie-koshelka'>Удаление кошелька</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X DELETE -u user:user <span class="s2">"http://sandbox.wallet.best/adm2/wallets/+123457643395"</span>
+<pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X DELETE -u user:user <span class="s2">"http://sandbox.wallet.best/adm2/wallets/+123457643395"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
