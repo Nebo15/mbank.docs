@@ -628,7 +628,9 @@ http://sandbox.wallet.best/v1/wallet/person
 <p>Список отдается с постраничной навигацией. Если существует следующая страница с сервисами - в <em>meta</em> параметр <strong>has_next_page</strong> будет true, в ином случае - false.</p>
 
 <p>В ответе в <em>meta</em> присутствует параметр <strong>request_time</strong> со значением UNIX timestamp.
-Если делать запрос с параметром <strong>If-Modified-Since</strong> в котором будет указан timestamp предыдущего запроса, то ответ может быть с HTTP кодом 304</p>
+Если делать запрос с параметром <strong>If-Modified-Since</strong> в котором будет указан timestamp предыдущего запроса, то ответ может быть с HTTP кодом 304.</p>
+
+<p>В <em>meta</em> возвращаются <em>suggestions</em> в количестве до 5 с учетом <em>geo</em> и <em>project_id</em>. Это сервисы отсортированные по количеству платежей за месяц в обратном порядке.</p>
 
 <p>Параметры:</p>
 
@@ -649,7 +651,48 @@ http://sandbox.wallet.best/v1/wallet/person
         </span><span class="s2">"urgent_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2370</span><span class="p">,</span><span class="w">
             </span><span class="s2">"unseen_payments"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"suggestions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Теле2"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/api.mbank.dev\/img\/services\/53359fb2255c741a749f0c44.png?1432896868"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Лимитов нет"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"verification_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53359fb2255c741a749f0c42"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Мобильная связь"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1161</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Steam"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/api.mbank.dev\/img\/services\/53a6f8f456c35f166462c6c8.png?1432896868"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"verification_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53359fb2255c741a749f0c47"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Игры и социальные сети"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">834</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"МегаФон"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/api.mbank.dev\/img\/services\/542949a556c35f205de5a52d.png?1432896868"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"verification_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53359fb2255c741a749f0c42"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Мобильная связь"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
