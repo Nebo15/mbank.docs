@@ -53,7 +53,9 @@
 Список отдается с постраничной навигацией. Если существует следующая страница с сервисами - в *meta* параметр **has_next_page** будет true, в ином случае - false.
 
 В ответе в *meta* присутствует параметр **request_time** со значением UNIX timestamp.
-Если делать запрос с параметром **If-Modified-Since** в котором будет указан timestamp предыдущего запроса, то ответ может быть с HTTP кодом 304
+Если делать запрос с параметром **If-Modified-Since** в котором будет указан timestamp предыдущего запроса, то ответ может быть с HTTP кодом 304.
+
+В *meta* возвращаются *suggestions* в количестве до 5 с учетом *geo* и *project_id*. Это сервисы отсортированные по количеству платежей за месяц в обратном порядке.
 
 Параметры:
 
@@ -76,7 +78,48 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services
         "urgent_data": {
             "amount": 2370,
             "unseen_payments": 1
-        }
+        },
+        "suggestions": [
+            {
+                "id": 1000,
+                "name": "Теле2",
+                "keywords": "",
+                "status": "online",
+                "icon_url": "http:\/\/api.mbank.dev\/img\/services\/53359fb2255c741a749f0c44.png?1432896868",
+                "limit": "Лимитов нет",
+                "verification_required": false,
+                "group": {
+                    "id": "53359fb2255c741a749f0c42",
+                    "name": "Мобильная связь"
+                }
+            },
+            {
+                "id": 1161,
+                "name": "Steam",
+                "keywords": "",
+                "status": "online",
+                "icon_url": "http:\/\/api.mbank.dev\/img\/services\/53a6f8f456c35f166462c6c8.png?1432896868",
+                "limit": "",
+                "verification_required": false,
+                "group": {
+                    "id": "53359fb2255c741a749f0c47",
+                    "name": "Игры и социальные сети"
+                }
+            },
+            {
+                "id": 834,
+                "name": "МегаФон",
+                "keywords": "",
+                "status": "online",
+                "icon_url": "http:\/\/api.mbank.dev\/img\/services\/542949a556c35f205de5a52d.png?1432896868",
+                "limit": "",
+                "verification_required": false,
+                "group": {
+                    "id": "53359fb2255c741a749f0c42",
+                    "name": "Мобильная связь"
+                }
+            }
+        ]
     },
     "data": [
         {
