@@ -2589,6 +2589,74 @@ $ curl -u +79261111111:password -H &#39;Content-type:application/json&#39; http:
 
 <p>Пароль 3D-Secure: 123456.</p>
 
+          <h1 id='poluchenie-spiska-geotochek-locations'>Получение списка геоточек {#locations}</h1>
+<p>Список геоточек с возможностью фильтрации. Параметры запроса:</p>
+
+<ul>
+<li><code class="prettyprint">group</code> - фильтр по группе</li>
+<li><code class="prettyprint">point</code> - координаты для получения точек в радиусе, формат: <strong>longitude,latitude</strong>. Пример:
+<code class="prettyprint">shell
+curl -u +12345675578:password http://sandbox.wallet.best/v1/locations?point=57.415033,51.446833
+</code></li>
+<li><code class="prettyprint">distance</code> - радиус площади в метрах, по-умолчанию 500. Работает только вместе с <strong>point</strong>. </li>
+<li><code class="prettyprint">square</code> - получение точек в прямоугольном полигоне. Передать нужно две координаты - левую верхнюю и правую нижнюю точки в формате: <strong>longitude,latitude-longitude,latitude</strong>. Пример:<br>
+<code class="prettyprint">shell
+curl -u +12345675578:password http://sandbox.wallet.best/v1/locations?square=57.279764,51.512689-57.415033,51.446833
+</code></li>
+</ul>
+<h5 id='vnimanie-vsegda-peredavayte-kooridnaty-v-posledovatelnosti-stronglongitudelatitudestrong-a-ne-naoborot'>Внимание! Всегда передавайте коориднаты в последовательности <strong>longitude,latitude</strong>, а не наоборот</h5>
+<p>Поля:</p>
+
+<ul>
+<li><code class="prettyprint">id</code> - уникальный идентификатор точки</li>
+<li><code class="prettyprint">name</code> - наименование точки</li>
+<li><code class="prettyprint">type</code> - <strong>офис | терминал | касса</strong></li>
+<li><code class="prettyprint">group</code> - <strong>replenishment | verification | money_transfer</strong></li>
+<li><code class="prettyprint">worktime</code> - время работы</li>
+<li><code class="prettyprint">address</code> - адрес точки</li>
+<li><code class="prettyprint">latitude</code> - широта точки</li>
+<li><code class="prettyprint">longitude</code> - долгота точки</li>
+</ul>
+
+<p>Ошибки:</p>
+
+<ul>
+<li><code class="prettyprint">invalid_location_group</code> - неправильная группа</li>
+<li><code class="prettyprint">missed_location_point_comma</code> - нет разделительной запятой между долготой и широтой для точки координат</li>
+<li><code class="prettyprint">missed_location_square_comma</code> - нет разделительной запятой между долготой и широтой для координат в полигоне</li>
+<li><code class="prettyprint">missed_location_square_dash</code> - нет разделительного тире между двумя координатами в полигоне</li>
+</ul>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +12345675578:password http://sandbox.wallet.best/v1/locations
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54635060279871e2098b4567"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Точка пополнения 'Денег нет'"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Банкомат: Инвестбанк ОАО АКБ"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"replenishment"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"worktime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"пн-пт: 09:00-20:00, сб: 10:00-16:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Москва ул. Ворошилова 169-171"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">55.616371</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">37.211893</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54635060279871e2098b4568"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"За Казмадан!"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Касса: СЛАВИНВЕСТБАНК ООО"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"verification"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"worktime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"круглосуточно"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Москва ул. маршала Жукова 1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">55.676006</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">37.252398</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
           <h1 id='limity'>Лимиты</h1><h2 id='limity-platezhey'>Лимиты платежей</h2><pre class="highlight shell"><code><span class="gp">$ </span>сurl -u+79261111111:p@ssw0rD -H <span class="s1">'Content-type:application/json'</span> http://sandbox.wallet.best/v1/limits
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
