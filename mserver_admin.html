@@ -39,7 +39,7 @@
       <div class="dark-box"></div>
       <div class="content">
         
-          <h1 id='autentifikatsiya'>Аутентификация</h1>
+          <h1 id='vvedenie'>Введение</h1><h2 id='autentifikatsiya'>Аутентификация</h2>
 <p>На тестовой системе созданы 2 пользователя от имени которых возможен вызов административного API.</p>
 
 <table><thead>
@@ -60,18 +60,19 @@
 <td style="text-align: left">admin</td>
 </tr>
 </tbody></table>
-<h1 id='mnogoproektnost'>Многопроектность</h1>
+<h2 id='mnogoproektnost'>Многопроектность</h2>
 <p>Во всех запросах можно указать относительного какого проекта производится запрос.</p>
 
 <ul>
 <li><code class="prettyprint">project_id</code> - ID проекта, в котором будет производиться поиск. Доступен только суперадминистраторам.</li>
 </ul>
-<h1 id='postranichnaya-navitsiya'>Постраничная навиция</h1>
+<h2 id='postranichnaya-navitsiya'>Постраничная навиция</h2>
 <ul>
 <li><code class="prettyprint">page</code> - номер (начиная с 0) страницы, которую запрашивает клиент, опционально, по умолчанию 0</li>
 <li><code class="prettyprint">size</code> - размер страницы, которую запрашивает клиент, опционально, по умолчанию 35</li>
 </ul>
-<h1 id='poisk-po-koshelkam-proekta'>Поиск по кошелькам проекта</h1><h3 id='postranichnaya-navitsiya'>Постраничная навиция</h3>
+
+          <h1 id='koshelki'>Кошельки</h1><h2 id='poisk-po-koshelkam-proekta'>Поиск по кошелькам проекта</h2><h3 id='postranichnaya-navitsiya'>Постраничная навиция</h3>
 <p>См. выше.</p>
 <h3 id='parametry'>Параметры</h3>
 <ul>
@@ -189,7 +190,7 @@
    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h1 id='analitika-po-koshelkam'>Аналитика по кошелькам</h1><h3 id='parametry'>Параметры</h3>
+<h2 id='analitika-po-koshelkam'>Аналитика по кошелькам</h2><h3 id='parametry'>Параметры</h3>
 <ul>
 <li><code class="prettyprint">group_by</code> - поле для группировки</li>
 <li><code class="prettyprint">tick</code> (day|month) - выбор разреза при группировке (день|месяц). По умолчанию - день.</li>
@@ -262,7 +263,7 @@
    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h1 id='zagruzka-koshelka'>Загрузка кошелька</h1><h3 id='polya-otveta'>Поля ответа:</h3>
+<h2 id='zagruzka-koshelka'>Загрузка кошелька</h2><h3 id='polya-otveta'>Поля ответа:</h3>
 <ul>
 <li><code class="prettyprint">phone</code></li>
 <li><code class="prettyprint">amount</code></li>
@@ -404,7 +405,7 @@
    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h1 id='zagruzka-ip-adresov-koshelka'>Загрузка IP адресов кошелька</h1><pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user <span class="s2">"https://www.synq.ru/mserver2-dev/admin/wallets/%2B12345657367/ip"</span>
+<h2 id='zagruzka-ip-adresov-koshelka'>Загрузка IP адресов кошелька</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user <span class="s2">"https://www.synq.ru/mserver2-dev/admin/wallets/%2B12345657367/ip"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -416,7 +417,7 @@
   </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"127.0.0.1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"::1"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h1 id='poluchenie-koda-aktivatsii-koshelka'>Получение кода активации кошелька</h1><pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user <span class="s2">"https://www.synq.ru/mserver2-dev/admin/wallets/%2B12345657367/security_code"</span>
+<h2 id='poluchenie-koda-aktivatsii-koshelka'>Получение кода активации кошелька</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user <span class="s2">"https://www.synq.ru/mserver2-dev/admin/wallets/%2B12345657367/security_code"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
@@ -427,7 +428,7 @@
    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h1 id='blokirovka-koshelka'>Блокировка кошелька</h1><h3 id='parametry'>Параметры</h3>
+<h2 id='blokirovka-koshelka'>Блокировка кошелька</h2><h3 id='parametry'>Параметры</h3>
 <ul>
 <li><code class="prettyprint">message</code> - сообщение для пользователя кошелька, объясняющее причину блокировки и как дальше жить</li>
 <li><code class="prettyprint">reason</code> - сообщение для сотрудников проекта о причине блокировки (не видно клиенту)</li>
@@ -451,7 +452,7 @@
    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h1 id='razblokirovka-koshelka'>Разблокировка кошелька</h1><pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user -X POST <span class="s2">"https://www.synq.ru/mserver2-dev/admin/wallets/%2B12345657367/enable"</span>
+<h2 id='razblokirovka-koshelka'>Разблокировка кошелька</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user -X POST <span class="s2">"https://www.synq.ru/mserver2-dev/admin/wallets/%2B12345657367/enable"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
    </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
@@ -467,7 +468,192 @@
    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h1 id='poisk-po-platezham'>Поиск по платежам</h1><h3 id='parametry-optsionalnye'>Параметры (опциональные)</h3>
+<h2 id='poluchenie-spiska-personalnyh-dannyh'>Получение списка персональных данных</h2>
+<p>Информация выдаётся постранично.</p>
+<h3 id='parametry-postranichnogo-zaprosa'>Параметры постраничного запроса</h3>
+<p><code class="prettyprint">page</code> - номер страницы начиная с 0
+<code class="prettyprint">size</code> - размер страницы
+<code class="prettyprint">order_by</code> - сортировка по полю, имя поля указывается в snake_case стиле
+<code class="prettyprint">order_direction</code> - направление сортировки
+<code class="prettyprint">status</code> - фильтр по статусу сообщений. Например, для получения списка кошельков ожидающих идентификации</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user <span class="s2">"https://www.synq.ru/mserver2-dev/admin/persons?page=1&amp;size=2&amp;order_by=givenName&amp;order_direction=desc&amp;status=data_entered
+</span></code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"page"</span><span class="p">:{</span><span class="w">
+         </span><span class="s2">"total_elements"</span><span class="p">:</span><span class="mi">6</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"family_name"</span><span class="p">:</span><span class="s2">"Дергачёв"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"given_name"</span><span class="p">:</span><span class="s2">"Андрей"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"patronymic_name"</span><span class="p">:</span><span class="s2">"Петрович"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"passport_series_number"</span><span class="p">:</span><span class="s2">"45112456789"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"passport_issued_at"</span><span class="p">:</span><span class="s2">"2007-06-07"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"itn"</span><span class="p">:</span><span class="s2">"526317984689"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"data_entered"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"verified_at"</span><span class="p">:</span><span class="s2">"2014-10-30T11:11:52.401Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"changed_at"</span><span class="p">:</span><span class="s2">"2014-09-08T15:47:10.411Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"wallet"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"phone"</span><span class="p">:</span><span class="s2">"+380631345678"</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"family_name"</span><span class="p">:</span><span class="s2">"Арсеньев"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"given_name"</span><span class="p">:</span><span class="s2">"Алексей"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"patronymic_name"</span><span class="p">:</span><span class="s2">"Александрович"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"passport_series_number"</span><span class="p">:</span><span class="s2">"2202655111"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"passport_issued_at"</span><span class="p">:</span><span class="s2">"2012-02-02"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"itn"</span><span class="p">:</span><span class="s2">"330500938709"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"data_entered"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"changed_at"</span><span class="p">:</span><span class="s2">"2014-10-24T15:09:12.019Z"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"wallet"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"phone"</span><span class="p">:</span><span class="s2">"+380503839987"</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h2 id='izmenenie-statusa-personalnyh-dannyh'>Изменение статуса персональных данных</h2><h3 id='parametry'>Параметры</h3>
+<ul>
+<li><code class="prettyprint">wallet</code> - номер телефона в международном формате</li>
+<li><code class="prettyprint">status</code> - <code class="prettyprint">data_entered</code> | <code class="prettyprint">data_verified</code> статус персональных данных</li>
+</ul>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl  -H <span class="s1">'Content-type:application/json'</span> -uuser:user -d <span class="s1">'{"status": "data_verified"}'</span> <span class="s2">"https://www.synq.ru/mserver2-dev/admin/persons/%2B79260000006/update_status"</span>
+</code></pre>
+
+<blockquote>
+<p>Результат содержит <code class="prettyprint">&quot;status&quot;: &quot;data_verified&quot;, &quot;verified_at&quot;: &quot;2014-10-22T10:26:12.035Z&quot;</code></p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"family_name"</span><span class="p">:</span><span class="s2">"Иванов"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"given_name"</span><span class="p">:</span><span class="s2">"Иван"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"patronymic_name"</span><span class="p">:</span><span class="s2">"Иванович"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"passport_series_number"</span><span class="p">:</span><span class="s2">"1122334455"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"passport_issued_at"</span><span class="p">:</span><span class="s2">"2012-12-20"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"itn"</span><span class="p">:</span><span class="s2">"330500938709"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ssn"</span><span class="p">:</span><span class="s2">"11223344595"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"data_verified"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"verified_at"</span><span class="p">:</span><span class="s2">"2014-10-22T10:26:12.035Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"changed_at"</span><span class="p">:</span><span class="s2">"2014-10-22T10:26:10.604Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"wallet"</span><span class="p">:{</span><span class="w">
+         </span><span class="s2">"phone"</span><span class="p">:</span><span class="s2">"+380935895452"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h2 id='otchet-ob-ostatke-koshelkov-proekta-za-period'>Отчет об остатке кошельков проекта за период</h2><h3 id='parametry'>Параметры</h3>
+<ul>
+<li><code class="prettyprint">date_from</code>, <code class="prettyprint">date_to</code> - Временной промежуток</li>
+</ul>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uadmin:admin <span class="s2">"https://www.synq.ru/mserver2-dev/admin/wallets/balance?from=2014-07-11&amp;to=2014-07-13"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"tick"</span><span class="p">:</span><span class="s2">"2014-07-11"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">55572.14</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"tick"</span><span class="p">:</span><span class="s2">"2014-07-12"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">55572.14</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="s2">"tick"</span><span class="p">:</span><span class="s2">"2014-07-13"</span><span class="p">,</span><span class="w">
+         </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">55572.14</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h2 id='udalenie-koshelka'>Удаление кошелька</h2>
+<aside class="warning">Команда работает только на dev сервере</aside>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user -X DELETE https://www.synq.ru/mserver2-dev/admin/wallets/+79260000006
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+          <h1 id='servisy'>Сервисы</h1><h2 id='zagruzka-spiska-servisov'>Загрузка списка сервисов</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -uadmin:admin https://www.synq.ru/mserver2-dev/admin/services
+</code></pre>
+<pre class="highlight json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"page"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"total_elements"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">391</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1670</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CityLink (Королёв)"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"min"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"max"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"verification_required"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"parameters"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"phoneNumber"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"min_length"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"max_length"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Логин"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"^.{6,7}$"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern_description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Логин"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"rate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"fix"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"percent"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h2 id='zagruzka-servisa-po-identifikatoru'>Загрузка сервиса по идентификатору</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -uadmin:admin https://www.synq.ru/mserver2-dev/admin/services/834
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">834</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Мегафон"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"min"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"max"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"verification_required"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"parameters"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"phoneNumber"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"min_length"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"max_length"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"№ Телефона"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"^((6|9)\\d{9}|\\d{10})$"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"numeric"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern_description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"№ Телефона"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"rate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"fix"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"percent"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+          <h1 id='platezhi'>Платежи</h1><h2 id='poisk-po-platezham'>Поиск по платежам</h2><h3 id='parametry-optsionalnye'>Параметры (опциональные)</h3>
 <ul>
 <li><code class="prettyprint">id</code> - ID платежа</li>
 <li><code class="prettyprint">check</code> - номер чека платежа</li>
@@ -670,39 +856,7 @@
    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h1 id='otchet-ob-ostatke-koshelkov-proekta-za-period'>Отчет об остатке кошельков проекта за период</h1><h3 id='parametry'>Параметры</h3>
-<ul>
-<li><code class="prettyprint">date_from</code>, <code class="prettyprint">date_to</code> - Временной промежуток</li>
-</ul>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -uadmin:admin <span class="s2">"https://www.synq.ru/mserver2-dev/admin/wallets/balance?from=2014-07-11&amp;to=2014-07-13"</span>
-</code></pre>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
-      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
-   </span><span class="p">},</span><span class="w">
-   </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-         </span><span class="s2">"tick"</span><span class="p">:</span><span class="s2">"2014-07-11"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">55572.14</span><span class="w">
-         </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-         </span><span class="s2">"tick"</span><span class="p">:</span><span class="s2">"2014-07-12"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">55572.14</span><span class="w">
-         </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-         </span><span class="s2">"tick"</span><span class="p">:</span><span class="s2">"2014-07-13"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="mf">55572.14</span><span class="w">
-         </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-   </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h1 id='otchet-o-kolichestve-platezhey-proekta-za-period'>Отчет о количестве платежей проекта за период</h1><h3 id='parametry'>Параметры</h3>
+<h2 id='otchet-o-kolichestve-platezhey-proekta-za-period'>Отчет о количестве платежей проекта за период</h2><h3 id='parametry'>Параметры</h3>
 <ul>
 <li><code class="prettyprint">date_from</code>, <code class="prettyprint">date_to</code> - (фильтр) временной промежуток, по-умолчанию 1 месяц с текущего момента</li>
 <li><code class="prettyprint">status</code> - (фильтр) created | processing | completed | declined - статус платежа</li>
@@ -923,7 +1077,7 @@
   </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h1 id='otchet-o-oborote-platezhey-proekta-za-period'>Отчет о обороте платежей проекта за период</h1><h3 id='parametry'>Параметры</h3>
+<h2 id='otchet-o-oborote-platezhey-proekta-za-period'>Отчет о обороте платежей проекта за период</h2><h3 id='parametry'>Параметры</h3>
 <ul>
 <li><code class="prettyprint">date_from</code>, <code class="prettyprint">date_to</code> - (фильтр) временной промежуток, по-умолчанию 1 месяц с текущего момента</li>
 <li><code class="prettyprint">amount_from</code>, <code class="prettyprint">amount_to</code> - (фильтр) по сумме платежа</li>
@@ -1128,96 +1282,6 @@
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"tick"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-03-31T21:00:00.000+0000"</span><span class="w">
   </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h1 id='poluchenie-spiska-personalnyh-dannyh'>Получение списка персональных данных</h1>
-<p>Информация выдаётся постранично.</p>
-<h3 id='parametry-postranichnogo-zaprosa'>Параметры постраничного запроса</h3>
-<p><code class="prettyprint">page</code> - номер страницы начиная с 0
-<code class="prettyprint">size</code> - размер страницы
-<code class="prettyprint">order_by</code> - сортировка по полю, имя поля указывается в snake_case стиле
-<code class="prettyprint">order_direction</code> - направление сортировки
-<code class="prettyprint">status</code> - фильтр по статусу сообщений. Например, для получения списка кошельков ожидающих идентификации</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user <span class="s2">"https://www.synq.ru/mserver2-dev/admin/persons?page=1&amp;size=2&amp;order_by=givenName&amp;order_direction=desc&amp;status=data_entered
-</span></code></pre>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
-      </span><span class="s2">"page"</span><span class="p">:{</span><span class="w">
-         </span><span class="s2">"total_elements"</span><span class="p">:</span><span class="mi">6</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
-   </span><span class="p">},</span><span class="w">
-   </span><span class="s2">"data"</span><span class="p">:[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-         </span><span class="s2">"family_name"</span><span class="p">:</span><span class="s2">"Дергачёв"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"given_name"</span><span class="p">:</span><span class="s2">"Андрей"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"patronymic_name"</span><span class="p">:</span><span class="s2">"Петрович"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"passport_series_number"</span><span class="p">:</span><span class="s2">"45112456789"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"passport_issued_at"</span><span class="p">:</span><span class="s2">"2007-06-07"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"itn"</span><span class="p">:</span><span class="s2">"526317984689"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"data_entered"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"verified_at"</span><span class="p">:</span><span class="s2">"2014-10-30T11:11:52.401Z"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"changed_at"</span><span class="p">:</span><span class="s2">"2014-09-08T15:47:10.411Z"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"wallet"</span><span class="p">:{</span><span class="w">
-            </span><span class="s2">"phone"</span><span class="p">:</span><span class="s2">"+380631345678"</span><span class="w">
-         </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-         </span><span class="s2">"family_name"</span><span class="p">:</span><span class="s2">"Арсеньев"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"given_name"</span><span class="p">:</span><span class="s2">"Алексей"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"patronymic_name"</span><span class="p">:</span><span class="s2">"Александрович"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"passport_series_number"</span><span class="p">:</span><span class="s2">"2202655111"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"passport_issued_at"</span><span class="p">:</span><span class="s2">"2012-02-02"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"itn"</span><span class="p">:</span><span class="s2">"330500938709"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"data_entered"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"changed_at"</span><span class="p">:</span><span class="s2">"2014-10-24T15:09:12.019Z"</span><span class="p">,</span><span class="w">
-         </span><span class="s2">"wallet"</span><span class="p">:{</span><span class="w">
-            </span><span class="s2">"phone"</span><span class="p">:</span><span class="s2">"+380503839987"</span><span class="w">
-         </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-   </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h1 id='izmenenie-statusa-personalnyh-dannyh'>Изменение статуса персональных данных</h1><h3 id='parametry'>Параметры</h3>
-<ul>
-<li><code class="prettyprint">wallet</code> - номер телефона в международном формате</li>
-<li><code class="prettyprint">status</code> - <code class="prettyprint">data_entered</code> | <code class="prettyprint">data_verified</code> статус персональных данных</li>
-</ul>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl  -H <span class="s1">'Content-type:application/json'</span> -uuser:user -d <span class="s1">'{"status": "data_verified"}'</span> <span class="s2">"https://www.synq.ru/mserver2-dev/admin/persons/%2B79260000006/update_status"</span>
-</code></pre>
-
-<blockquote>
-<p>Результат содержит <code class="prettyprint">&quot;status&quot;: &quot;data_verified&quot;, &quot;verified_at&quot;: &quot;2014-10-22T10:26:12.035Z&quot;</code></p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
-      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
-   </span><span class="p">},</span><span class="w">
-   </span><span class="s2">"data"</span><span class="p">:{</span><span class="w">
-      </span><span class="s2">"family_name"</span><span class="p">:</span><span class="s2">"Иванов"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"given_name"</span><span class="p">:</span><span class="s2">"Иван"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"patronymic_name"</span><span class="p">:</span><span class="s2">"Иванович"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"passport_series_number"</span><span class="p">:</span><span class="s2">"1122334455"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"passport_issued_at"</span><span class="p">:</span><span class="s2">"2012-12-20"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"itn"</span><span class="p">:</span><span class="s2">"330500938709"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"ssn"</span><span class="p">:</span><span class="s2">"11223344595"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"data_verified"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"verified_at"</span><span class="p">:</span><span class="s2">"2014-10-22T10:26:12.035Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"changed_at"</span><span class="p">:</span><span class="s2">"2014-10-22T10:26:10.604Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"wallet"</span><span class="p">:{</span><span class="w">
-         </span><span class="s2">"phone"</span><span class="p">:</span><span class="s2">"+380935895452"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-   </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h1 id='udalenie-koshelka'>Удаление кошелька</h1>
-<aside class="warning">Команда работает только на dev сервере</aside>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user -X DELETE https://www.synq.ru/mserver2-dev/admin/wallets/+79260000006
-</code></pre>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-   </span><span class="s2">"meta"</span><span class="p">:{</span><span class="w">
-      </span><span class="s2">"code"</span><span class="p">:</span><span class="mi">200</span><span class="w">
-   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
