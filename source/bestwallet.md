@@ -13,6 +13,7 @@ includes:
   - best_wallet/services
   - best_wallet/payments
   - best_wallet/cards
+  - best_wallet/locations
   - best_wallet/limits
   - best_wallet/invoices
   - best_wallet/templates
