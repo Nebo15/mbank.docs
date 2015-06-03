@@ -20,7 +20,7 @@ $ curl -uuser:user "http://sandbox.wallet.best/adm2/categories/"
             "group": "",
             "keywords": "",
             "position": 13,
-            "services_count": 3,
+            "amount": 3,
             "localized_fields": [
                 "name"
             ]
@@ -34,7 +34,7 @@ $ curl -uuser:user "http://sandbox.wallet.best/adm2/categories/"
 * `name` - локализированное название категории
 * `group` - группа, к которой относится категория
 * `position` - позиция категории в списке
-* `services_count` - кол-во привязанных к категории сервисов
+* `amount` - кол-во привязанных к категории сервисов
 * `localized_fields` - массив с локализированными полями
 
 
@@ -59,7 +59,7 @@ $ curl -H 'Content-type:application/json' -X POST -u user:user -d '{"name":"some
         "group": "some_group",
         "keywords": "",
         "position": 1,
-        "services_count": 0,
+        "amount": 0,
         "localized_fields": [
             "name"
         ]
@@ -93,7 +93,7 @@ $ curl -H 'Content-type:application/json' -X POST -u user:user -d '{"name":{"ru_
         "group": "some_group",
         "keywords":"one,two,three",
         "position": 1,
-        "services_count": 0,
+        "amount": 0,
         "localized_fields": [
             "name"
         ]

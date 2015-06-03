@@ -45,7 +45,7 @@ $curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/ad
                 "regex_unmap_value": ""
             },
             "items": [],
-            "services_count": 3,
+            "services_amount": 3,
             "localized_fields": [
                 "title",
                 "pattern_desc"
@@ -70,7 +70,7 @@ $curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/ad
 * `is_pattern` - является ли шиблоном
 * `patterns` - валидаторы
 * `items` - значения
-* `services_count` - кол-во сервисов, параметры которых привязанны к этому шаблону
+* `services_amount` - кол-во сервисов, параметры которых привязанны к этому шаблону
 * `localized_fields` - локализированные поля
 
 ##Загрузка шаблона по id
@@ -191,7 +191,7 @@ $ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/a
 * `is_pattern` - является ли шиблоном
 * `patterns` - валидаторы
 * `items` - значения
-* `services_count` - кол-во сервисов, параметры которых привязанны к этому шаблону
+* `services_amount` - кол-во сервисов, параметры которых привязанны к этому шаблону
 * `localized_fields` - локализированные поля
 
 ##Создание шаблона
