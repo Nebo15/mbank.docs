@@ -379,6 +379,80 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/42
 }
 ```
 
+## Поиск сервиса по MNP
+
+Параметры (все обязательны):
+
+* `provider_id`
+* `provider_region_code`
+
+```shell
+$ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/mnp?provider_id=beline&provider_region_code=ru
+```
+
+```json
+{
+    "meta": {
+        "code": 200
+    },
+    "data": {
+        "id": 770,
+        "name": "Билайн",
+        "keywords": "",
+        "icon_url": "http:\/\/api.mbank.dev\/img\/services\/53359fb2255c741a749f0c45.png?1433497473",
+        "limit": "",
+        "minsum": 2,
+        "maxsum": 15000,
+        "rate": {
+            "fix": 0,
+            "percent": 0
+        },
+        "status": "online",
+        "verification_required": false,
+        "parameters": [
+            {
+                "id": "phoneNumber",
+                "is_disabled": false,
+                "is_hidden": false,
+                "is_required": true,
+                "min_length": 12,
+                "max_length": 12,
+                "range_start": 0,
+                "range_end": 0,
+                "patterns": [
+                    {
+                        "pattern": "",
+                        "description": ""
+                    },
+                    {
+                        "pattern": "^\\+7[0-9]{10}$",
+                        "description": {
+                            "ru_RU": "Номер телефона РФ начиная с +7 (в международном формате). Например, +79261112233"
+                        }
+                    }
+                ],
+                "pattern": "^\\+7[0-9]{10}$",
+                "pattern_desc": "Номер телефона РФ начиная с +7 (в международном формате). Например, +79261112233",
+                "type": "phone",
+                "title": "Номер телефона, начиная с +7",
+                "default_value": null,
+                "suggested_values": [],
+                "items": null
+            }
+        ],
+        "category": {
+            "id": "53359fb2255c741a749f0c42",
+            "mserver_id": "53359fb2255c741a749f0c42",
+            "name": "Мобильная связь",
+            "group": "cellular",
+            "keywords": "",
+            "icon_url_32x32": "",
+            "amount": 0
+        }
+    }
+}
+```
+
 ## Определение ОПСОСа по номеру телефона
 
 ```shell
