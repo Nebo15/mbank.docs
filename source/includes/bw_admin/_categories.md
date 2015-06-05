@@ -12,7 +12,6 @@ $ curl -uuser:user "http://sandbox.wallet.best/adm2/categories/"
     "data": [
         {
             "id": "549c92fb56c35f660ecd341f",
-            "mserver_id": 978,
             "name": {
                 "ru_RU": "Денежные переводы",
                 "en_US": null
@@ -30,7 +29,6 @@ $ curl -uuser:user "http://sandbox.wallet.best/adm2/categories/"
 }
 ```
 * `id` - id категории
-* `mserver_id` - id категории на mserver
 * `name` - локализированное название категории
 * `group` - группа, к которой относится категория
 * `position` - позиция категории в списке
@@ -51,7 +49,6 @@ $ curl -H 'Content-type:application/json' -X POST -u user:user -d '{"name":"some
     },
     "data": {
         "id": "55421733cccc904a990041a8",
-        "mserver_id": 0,
         "name": {
             "ru_RU": "some_name",
             "en_US": null
@@ -85,7 +82,6 @@ $ curl -H 'Content-type:application/json' -X POST -u user:user -d '{"name":{"ru_
     },
     "data": {
         "id": "55421733cccc904a990041a8",
-        "mserver_id": 0,
         "name": {
             "ru_RU": "some_name_edited",
             "en_US": "some_en_name"
