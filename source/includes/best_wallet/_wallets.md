@@ -81,6 +81,8 @@ $ curl -u admin_level_login:password -X DELETE http://sandbox.wallet.best/v1/wal
 
 ## Внесение персональных данных пользователя
 
+Проверяются на дубликат по `family_name, given_name, patronymic_name, passport_series_number`.
+
 Параметры
 
 * `family_name` - **обязательный параметр** - фамилия
@@ -127,6 +129,7 @@ http://sandbox.wallet.best/v1/wallet/person
 * `invalid_itn` - ИНН не соответствует формату
 * `invalid_ssn` - СНИЛС не соответствует формату
 * `person_already_verified` - перcональные данные утверждены, изменение невозможно, обратитесь в поддержку
+* `duplicate_person` - указанные персональные данные уже были использованы для идентификации другого кошелька
 
 ## Загрузка персональных данных пользователя
 ```shell
