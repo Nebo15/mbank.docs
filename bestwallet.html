@@ -240,6 +240,8 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h2 id='vnesenie-personalnyh-dannyh-polzovatelya'>Внесение персональных данных пользователя</h2>
+<p>Проверяются на дубликат по <code class="prettyprint">family_name, given_name, patronymic_name, passport_series_number</code>.</p>
+
 <p>Параметры</p>
 
 <ul>
@@ -285,6 +287,7 @@ http://sandbox.wallet.best/v1/wallet/person
 <li><code class="prettyprint">invalid_itn</code> - ИНН не соответствует формату</li>
 <li><code class="prettyprint">invalid_ssn</code> - СНИЛС не соответствует формату</li>
 <li><code class="prettyprint">person_already_verified</code> - перcональные данные утверждены, изменение невозможно, обратитесь в поддержку</li>
+<li><code class="prettyprint">duplicate_person</code> - указанные персональные данные уже были использованы для идентификации другого кошелька</li>
 </ul>
 <h2 id='zagruzka-personalnyh-dannyh-polzovatelya'>Загрузка персональных данных пользователя</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/wallet/person
 </code></pre>
