@@ -8,6 +8,9 @@ toc_footers:
   - <a href='bw_admin.html'>BestWallet Admin API</a>
 
 includes:
-  - mserver/admin
+  - mserver_admin/intro
+  - mserver_admin/wallets
+  - mserver_admin/services
+  - mserver_admin/payments
 search: true
 ---

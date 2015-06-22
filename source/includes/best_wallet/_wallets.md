@@ -15,181 +15,23 @@
 
 ## Создание кошелька
 
-*При создании кошелька на dev сервере на счет зачисляется 10000 рублей.*
-
-Параметры:
-
-* `phone` - номер телефона в международном формате
-* `password` - пароль, не короче 6 символов, допустимые символы: a-zA-Z0-9`-/:;()$&@".,?!'[]{}#%^*+=_\|~<>€£¥•
-
-```shell
-$ curl -H 'Content-type:application/json'
- -d '{"phone": "+79261111111", "password": "p@ssw0rD"}'
- http://sandbox.wallet.best/v1/wallet
-```
-
-```json
-{
-  "meta" : {
-    "code" : 200
-  },
-  "data" : {
-    "phone" : "+79261111111"
-  },
-  "dev" : {
-    "activation_code" : "242321"
-  }
-}
-```
-
-Коды ошибок
-
-* `missing_phone` - не передан номер телефона
-* `invalid_phone` - номер телефона не соответствует международному формату
-* `missing_password` - не передан пароль
-* `invalid_password` - пароль короче 6 символов
-* `phone_already_exists` - кошелек с таким номером телефона уже существует
-
-После создания кошелька требуется активация (подтверждение номера телефона) кодом, который отправлен в СМС сообщении. До выполнения активации
-аутентифицироваться на mserver учетными данными кошелька будет нельзя.
-
-*На dev сервере код не отправляется в СМС и возвращается в ответе в поле `dev.activation_code`*
+Mserver: http://nebo15.github.io/mbank.docs/mserver.html#sozdanie-koshelka
 
 ##Активация кошелька
 
-Параметры:
-
-* `phone` - номер телефона в международном формате
-* `code` - код активации кошелька из СМС сообщения
-
-```shell
-$ curl -H 'Content-type:application/json'  
- -d '{"phone": "+79261111111", "code": "242321"}'
- http://sandbox.wallet.best/v1/wallet/activate
-```
-
-```json
-{
-  "meta" : {
-    "code" : 200
-  },
-  "data" : {
-    "phone" : "+79261111111"
-  }
-}
-```
-
-Коды ошибок
-
-* `missing_phone` - не передан номер телефона
-* `invalid_phone` - номер телефона не соответствует международному формату
-* `missing_code` - не передан код активации
-* `already_active` - кошелек с телефоном `phone` уже активирован
-* `invalid_code` - переданный код активации не совпадает с присланным в СМС
-* `code_expired` - с момента создания кода активации прошло больше 15 минут, запросите код повторно
-* `failure_limit_exceeded` - вы прислали неверный код активации больше 5 раз, обратитесь в поддержку
+Mserver: http://nebo15.github.io/mbank.docs/mserver.html#aktivatsiya-koshelka
 
 ## Запрос повторной отправки кода активации
 
-*На dev сервере код не отправляется в СМС и возвращается в ответе в поле `dev.activation_code`*
-
-Параметры:
-
-* `phone` - номер телефона в международном формате
-
-```shell
-curl -H 'Content-type:application/json'
- -d '{"phone": "+79261111111"}'
- http://sandbox.wallet.best/v1/wallet/resend_code
-```
-
-```json
-{
-  "meta" : {
-    "code" : 200
-  },
-  "data" : {
-    "phone" : "+79261111111"
-  },
-  "dev" : {
-    "activation_code" : "482721"
-  }
-}
-```
-Если не передать телефон, то код ответа будет 404
-
-Коды ошибок:
-
-* `invalid_phone` - номер телефона не соответствует международному формату
-* `already_active` - кошелек с телефоном `phone` уже активирован
-* `failure_limit_exceeded` - вы прислали неверный код активации больше 5 раз, обратитесь в поддержку
-* `resend_limit_exceeded` - mserver отправил отведенные 5 СМС сообщений с кодами активации, обратитесь в поддержку
+Mserver: http://nebo15.github.io/mbank.docs/mserver.html#zapros-povtornoy-otpravki-koda-aktivatsii
 
 ## Запрос кода для смены пароля
 
-*На dev сервере код не отправляется в СМС и возвращается в ответе в поле dev.password_reset_code*
-
-Параметры:
-
-* `phone` - номер телефона в международном формате
-
-
-```shell
-$ curl -H 'Content-type:application/json' -d '{"phone": "+79261111111"}'  http://sandbox.wallet.best/v1/wallet/send_password_reset_code
-```
-
-```json
-{
-    "meta": {
-        "code": 200,
-        "time": 0.267815
-    },
-    "data": {
-        "phone": "+79261111111",
-        "check_digit": "7"
-    },
-    "dev": {
-        "password_reset_code": "368499"
-    }
-}
-```
-Если не передать телефон, то код ответа будет 404
-
-Коды ошибок:
-
-* `invalid_phone` - номер телефона не соответствует международному формату
-* `failure_limit_exceeded` - вы прислали неверный код активации больше 5 раз, обратитесь в поддержку
-* `resend_limit_exceeded` - mserver отправил отведенные 5 СМС сообщений с кодами смены пароля, обратитесь в поддержку
+Mserver: http://nebo15.github.io/mbank.docs/mserver.html#zapros-koda-dlya-smeny-parolya
 
 ## Смена пароля
 
-* `phone` - номер телефона в международном формате
-* `code` - код, полученый в результате запроса к `/v1/wallet/send_password_reset_code`
-* `password` - новый пароль, не короче 6 символов, допустимые символы: a-zA-Z0-9`-/:;()$&@".,?!'[]{}#%^*+=_\|~<>€£¥•
-
-```shell
-$ curl -H 'Content-type:application/json' -d '{"phone": "+79261111111", "code": "934879", "password": "p@ssw0rD"}' http://sandbox.wallet.best/v1/wallet/reset_password
-```
-
-```json
-{
-    "meta": {
-        "code": 200,
-        "time": 0.398676
-    },
-    "data": {
-        "phone": "+79261111111"
-    }
-}
-```
-Если не передать телефон, то код ответа будет 404
-
-Коды ошибок:
-
-* `invalid_code` - переданный код смены пароля не совпадает с присланным в СМС
-* `invalid_password` - пароль короче 6 символов
-* `code_expired` - с момента создания кода смены пароля прошло больше 15 минут, запросите код повторно
-* `failure_limit_exceeded` - вы прислали неверный код смены пароля больше 5 раз, обратитесь в поддержку
+Mserver: http://nebo15.github.io/mbank.docs/mserver.html#smena-parolya
 
 ## Загрузка кошелька
 
@@ -239,6 +81,8 @@ $ curl -u admin_level_login:password -X DELETE http://sandbox.wallet.best/v1/wal
 
 ## Внесение персональных данных пользователя
 
+Проверяются на дубликат по `family_name, given_name, patronymic_name, passport_series_number`.
+
 Параметры
 
 * `family_name` - **обязательный параметр** - фамилия
@@ -285,6 +129,7 @@ http://sandbox.wallet.best/v1/wallet/person
 * `invalid_itn` - ИНН не соответствует формату
 * `invalid_ssn` - СНИЛС не соответствует формату
 * `person_already_verified` - перcональные данные утверждены, изменение невозможно, обратитесь в поддержку
+* `duplicate_person` - указанные персональные данные уже были использованы для идентификации другого кошелька
 
 ## Загрузка персональных данных пользователя
 ```shell
