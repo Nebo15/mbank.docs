@@ -430,6 +430,12 @@ http://sandbox.wallet.best/v1/wallet/person
 <li><code class="prettyprint">parameters</code> - массив параметров для платежа, содержит в себе объекты со свойствами, которые описаны ниже.</li>
 <li><code class="prettyprint">category</code> - объект со следующими свойствами (DEPRECATED):</li>
 <li><code class="prettyprint">groups</code> - массив групп (категорий) к которым относится сервис</li>
+<li><code class="prettyprint">rate</code> - комиссия в формате массива со значениями:
+
+<ul>
+<li><code class="prettyprint">fix</code> - фиксированная</li>
+<li><code class="prettyprint">percent</code> - процент от суммы</li>
+</ul></li>
 </ul>
 
 <p>Параметры:</p>
@@ -503,6 +509,10 @@ http://sandbox.wallet.best/v1/wallet/person
                 </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/api.mbank.dev\/img\/services\/53359fb2255c741a749f0c44.png?1432896868"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Лимитов нет"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"fix"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                </span><span class="p">},</span><span class="w">
                 </span><span class="s2">"verification_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53359fb2255c741a749f0c42"</span><span class="p">,</span><span class="w">
@@ -516,6 +526,10 @@ http://sandbox.wallet.best/v1/wallet/person
                 </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/api.mbank.dev\/img\/services\/53a6f8f456c35f166462c6c8.png?1432896868"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"fix"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                </span><span class="p">},</span><span class="w">
                 </span><span class="s2">"verification_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53359fb2255c741a749f0c47"</span><span class="p">,</span><span class="w">
@@ -529,6 +543,10 @@ http://sandbox.wallet.best/v1/wallet/person
                 </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/api.mbank.dev\/img\/services\/542949a556c35f205de5a52d.png?1432896868"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"fix"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                </span><span class="p">},</span><span class="w">
                 </span><span class="s2">"verification_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53359fb2255c741a749f0c42"</span><span class="p">,</span><span class="w">
@@ -545,6 +563,10 @@ http://sandbox.wallet.best/v1/wallet/person
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https:\/\/api.mbank.ru\/img\/providers\/dev_834.png"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"fix"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">},</span><span class="w">
             </span><span class="s2">"verification_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
             </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
@@ -574,6 +596,10 @@ http://sandbox.wallet.best/v1/wallet/person
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"offline"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https:\/\/api.mbank.ru\/img\/providers\/dev_1000.png"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"fix"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">},</span><span class="w">
             </span><span class="s2">"verification_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
@@ -663,6 +689,10 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/groups
                     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https:\/\/api.mbank.ru\/img\/providers\/dev_1000.png"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"fix"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
                     </span><span class="s2">"verification_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="err">{</span><span class="w">
@@ -671,6 +701,10 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/groups
                     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https:\/\/api.mbank.ru\/img\/providers\/dev_770.png"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"fix"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
                     </span><span class="s2">"verification_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
                 </span><span class="p">}</span><span class="w">
             </span><span class="p">}</span><span class="w">
@@ -687,7 +721,11 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/groups
                     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https:\/\/api.mbank.ru\/img\/providers\/dev_1068.png"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
-                    </span><span class="s2">"verification_required"</span><span class="err">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+                    </span><span class="s2">"rate"</span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"fix"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"verification_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
                 </span><span class="p">}</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="err">}</span><span class="w">
@@ -706,6 +744,10 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/groups
         </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"билайн, белайн, белаин, пчелайн"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https:\/\/api.mbank.ru\/img\/providers\/dev_770.png"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"fix"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
         </span><span class="s2">"minsum"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
         </span><span class="s2">"maxsum"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w">
         </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
@@ -859,6 +901,10 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/groups
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"МегаФон"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://sandbox.wallet.best/img/providers/dev_834.png"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"fix"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="s2">"minsum"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"maxsum"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w">
     </span><span class="s2">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
