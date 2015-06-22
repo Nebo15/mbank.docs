@@ -17,6 +17,9 @@
 * `parameters` - массив параметров для платежа, содержит в себе объекты со свойствами, которые описаны ниже.
 * `category` - объект со следующими свойствами (DEPRECATED):
 * `groups` - массив групп (категорий) к которым относится сервис
+* `rate` - комиссия в формате массива со значениями:
+ * `fix` - фиксированная
+ * `percent` - процент от суммы
 
 Параметры:
 
@@ -87,6 +90,10 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services
                 "status": "online",
                 "icon_url": "http:\/\/api.mbank.dev\/img\/services\/53359fb2255c741a749f0c44.png?1432896868",
                 "limit": "Лимитов нет",
+                "rate": {
+                    "fix": 0,
+                    "percent": 0
+                },
                 "verification_required": false,
                 "group": {
                     "id": "53359fb2255c741a749f0c42",
@@ -100,6 +107,10 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services
                 "status": "online",
                 "icon_url": "http:\/\/api.mbank.dev\/img\/services\/53a6f8f456c35f166462c6c8.png?1432896868",
                 "limit": "",
+                "rate": {
+                    "fix": 0,
+                    "percent": 0
+                },
                 "verification_required": false,
                 "group": {
                     "id": "53359fb2255c741a749f0c47",
@@ -113,6 +124,10 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services
                 "status": "online",
                 "icon_url": "http:\/\/api.mbank.dev\/img\/services\/542949a556c35f205de5a52d.png?1432896868",
                 "limit": "",
+                "rate": {
+                    "fix": 0,
+                    "percent": 0
+                },
                 "verification_required": false,
                 "group": {
                     "id": "53359fb2255c741a749f0c42",
@@ -129,6 +144,10 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services
             "status": "online",
             "icon_url": "https:\/\/api.mbank.ru\/img\/providers\/dev_834.png",
             "limit": "",
+            "rate": {
+                "fix": 0,
+                "percent": 0
+            },
             "verification_required": true,
             "groups": [
                 {
@@ -158,6 +177,10 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services
             "status": "offline",
             "icon_url": "https:\/\/api.mbank.ru\/img\/providers\/dev_1000.png",
             "limit": "",
+            "rate": {
+                "fix": 0,
+                "percent": 0
+            },
             "verification_required": false,
             "groups": [
                 {
@@ -257,6 +280,10 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/groups
                     "status": "online",
                     "icon_url": "https:\/\/api.mbank.ru\/img\/providers\/dev_1000.png",
                     "limit": "",
+                    "rate": {
+                        "fix": 0,
+                        "percent": 0
+                    },
                     "verification_required": true
                 },
                 {
@@ -265,6 +292,10 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/groups
                     "status": "online",
                     "icon_url": "https:\/\/api.mbank.ru\/img\/providers\/dev_770.png",
                     "limit": "",
+                    "rate": {
+                        "fix": 0,
+                        "percent": 0
+                    },
                     "verification_required": true
                 }
             }
@@ -281,6 +312,10 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/groups
                     "status": "online",
                     "icon_url": "https:\/\/api.mbank.ru\/img\/providers\/dev_1068.png",
                     "limit": ""
+                    "rate": {
+                        "fix": 0,
+                        "percent": 0
+                    },
                     "verification_required": true
                 }
             }
@@ -306,6 +341,10 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/42
         "keywords": "билайн, белайн, белаин, пчелайн",
         "icon_url": "https:\/\/api.mbank.ru\/img\/providers\/dev_770.png",
         "limit": "",
+        "rate": {
+            "fix": 0,
+            "percent": 0
+        },
         "minsum": 2,
         "maxsum": 15000,
         "status": "online",
@@ -395,6 +434,10 @@ $ curl http://sandbox.wallet.best/v1/services/mobile/79261111111
     "name": "МегаФон",
     "icon_url": "http://sandbox.wallet.best/img/providers/dev_834.png",
     "limit": "",
+    "rate": {
+        "fix": 0,
+        "percent": 0
+    },
     "minsum": 1,
     "maxsum": 15000,
     "parameters": [
