@@ -1047,6 +1047,10 @@
                 </span><span class="s2">"is_hidden"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"is_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
             </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"fix"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">},</span><span class="w">
             </span><span class="s2">"localized_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"group"</span><span class="w">
@@ -1083,6 +1087,14 @@
 <li><code class="prettyprint">labels.in_mserver</code> - Существует в мсервере</li>
 <li><code class="prettyprint">labels.is_hidden</code> - Скрыт</li>
 <li><code class="prettyprint">labels.is_enabled</code> - Включен</li>
+<li><code class="prettyprint">rate</code> - комиссия в формате массива со значениями:
+
+<ul>
+<li><code class="prettyprint">fix</code> - фиксированная</li>
+<li><code class="prettyprint">percent</code> - процент от суммы</li>
+<li><code class="prettyprint">min</code> - минимальный размер комиссии, опционально</li>
+<li><code class="prettyprint">max</code> - максимальный размер комиссии, опционально</li>
+</ul></li>
 </ul>
 <h2 id='zagruzka-servisa-po-id'>Загрузка сервиса по id</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user <span class="s2">"http://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c44"</span>
 </code></pre>
@@ -1193,6 +1205,10 @@
             </span><span class="s2">"offline"</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"fix"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
         </span><span class="s2">"localized_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">,</span><span class="w">
@@ -1230,6 +1246,14 @@
 <li><code class="prettyprint">status</code> - Статус сервиса (online|offline)</li>
 <li><code class="prettyprint">service_statuses</code> - перечень возможных стутусов сервиса</li>
 <li><code class="prettyprint">keywords</code> - Ключевые слова (необходимы при поиске)</li>
+<li><code class="prettyprint">rate</code> - комиссия в формате массива со значениями:
+
+<ul>
+<li><code class="prettyprint">fix</code> - фиксированная</li>
+<li><code class="prettyprint">percent</code> - процент от суммы</li>
+<li><code class="prettyprint">min</code> - минимальный размер комиссии, опционально</li>
+<li><code class="prettyprint">max</code> - максимальный размер комиссии, опционально</li>
+</ul></li>
 <li><code class="prettyprint">localized_fields</code> - локализированные поля</li>
 </ul>
 <h2 id='redaktirovanie-servisa'>Редактирование сервиса</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:aplication/json'</span> -X POST -u user:user -d <span class="s1">'{"name": { "ru_RU": "Теле2", "en_US" "Tele2" }, "keywords": "", "mserver_id": 1000, "category_id": "53359fb2255c741a749f0c42", "limit_html": { "ru_RU": "Лимитов нет", "en_US": "There are no limits at this time" }, "icon_url": "http:\/\/sandbox.wallet.best\/img\/services\/53359fb2255c741a749f0c44.png?1422632666", "maxsum": 15000, "minsum": 1, "trans_title": { "ru_RU": "{{ payment.service.name }}", "en_US": "{{ payment.service.name }}" }, "trans_subtitle": { "ru_RU": "Пополнение", "en_US": "Refill" }, "trans_description": { "ru_RU": "По номеру {{ payment.parameters.phoneNumber }}", "en_US": "Phone number: {{ payment.parameters.phoneNumber }}" }, "verification_required" : true, "autopayment_service" : false, "status": "online" }'</span>  <span class="s2">"http://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c44"</span>
