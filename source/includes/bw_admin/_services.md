@@ -40,6 +40,10 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/adm
                 "is_hidden": false,
                 "is_enabled": true
             },
+            "rate": {
+                "fix": 0,
+                "percent": 0
+            },
             "localized_fields": [
                 "name",
                 "group"
@@ -75,6 +79,11 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/adm
 * `labels.in_mserver` - Существует в мсервере
 * `labels.is_hidden` - Скрыт
 * `labels.is_enabled` - Включен
+* `rate` - комиссия в формате массива со значениями:
+ * `fix` - фиксированная
+ * `percent` - процент от суммы
+ * `min` - минимальный размер комиссии, опционально
+ * `max` - максимальный размер комиссии, опционально
 
 ##Загрузка сервиса по id
 
@@ -190,6 +199,10 @@ $ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/a
             "offline"
         ],
         "keywords": "",
+        "rate": {
+            "fix": 0,
+            "percent": 0
+        },
         "localized_fields": [
             "name",
             "description",
@@ -226,6 +239,11 @@ $ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/a
 * `status` - Статус сервиса (online|offline)
 * `service_statuses` - перечень возможных стутусов сервиса
 * `keywords` - Ключевые слова (необходимы при поиске)
+* `rate` - комиссия в формате массива со значениями:
+ * `fix` - фиксированная
+ * `percent` - процент от суммы
+ * `min` - минимальный размер комиссии, опционально
+ * `max` - максимальный размер комиссии, опционально
 * `localized_fields` - локализированные поля
 
 ##Редактирование сервиса
