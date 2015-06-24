@@ -39,7 +39,7 @@
       <div class="dark-box"></div>
       <div class="content">
         
-          <h1 id='kategorii'>Категории</h1><h2 id='zagruzka-spiska-kategoriy'>Загрузка списка категорий</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user <span class="s2">"http://sandbox.wallet.best/adm2/categories/"</span>
+          <h1 id='kategorii'>Категории</h1><h2 id='zagruzka-spiska-kategoriy'>Загрузка списка категорий</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user <span class="s2">"http://sandbox.wallet.best/adm2/groups/"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -73,7 +73,7 @@
 <li><code class="prettyprint">amount</code> - кол-во привязанных к категории сервисов</li>
 <li><code class="prettyprint">localized_fields</code> - массив с локализированными полями</li>
 </ul>
-<h2 id='dobavlenie-kategorii'>Добавление категории</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"name":"some_name","group":"some_group","position":1,"projects":["mbank","bov"]}'</span> http://sandbox.wallet.best/adm2/categories/
+<h2 id='dobavlenie-kategorii'>Добавление категории</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"name":"some_name","group":"some_group","position":1,"projects":["mbank","bov"]}'</span> http://sandbox.wallet.best/adm2/groups/
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -102,7 +102,7 @@
 <li><code class="prettyprint">position</code> - позиция категории в списке</li>
 <li><code class="prettyprint">projects</code> - список проектов, к которым эта категория относится</li>
 </ul>
-<h2 id='redaktirovanie-kategorii'>Редактирование категории</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"name":{"ru_RU":"some_name_edited", "en_US":"some_en_name"},"group":"some_group","position":1,"projects":["mbank","bov"], "keywords":"one,two,three"}'</span> http://sandbox.wallet.best/adm2/categories/55421733cccc904a990041a8
+<h2 id='redaktirovanie-kategorii'>Редактирование категории</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"name":{"ru_RU":"some_name_edited", "en_US":"some_en_name"},"group":"some_group","position":1,"projects":["mbank","bov"], "keywords":"one,two,three"}'</span> http://sandbox.wallet.best/adm2/groups/55421733cccc904a990041a8
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -126,7 +126,7 @@
 </span></code></pre>
 
 <p>При редактировании категории передаются те же самые поля, что и при создании</p>
-<h2 id='udalenie-kategorii'>Удаление категории</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -X DELETE -uuser:user http://sandbox.wallet.best/adm2/categories/55421733cccc904a990041a8
+<h2 id='udalenie-kategorii'>Удаление категории</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -X DELETE -uuser:user http://sandbox.wallet.best/adm2/groups/55421733cccc904a990041a8
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -135,11 +135,11 @@
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h2 id='sortirovka-kategoriy'>Сортировка категорий</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -X POST -u user:user -d <span class="s1">'{"projects":["mbank"],"categories_ids":["53359fb2255c741a749f0c5d","537e28f756c35f87701cddf5",
+<h2 id='sortirovka-kategoriy'>Сортировка категорий</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -X POST -u user:user -d <span class="s1">'{"projects":["mbank"],"groups_ids":["53359fb2255c741a749f0c5d","537e28f756c35f87701cddf5",
 "53359fb2255c741a749f0c47","53359fb2255c741a749f0c5b",
 "53359fb2255c741a749f0c4b","549c92fb56c35f660ecd341f","53a1ca0656c35fe0767b8a93","53359fb2255c741a749f0c50",
 "53359fb2255c741a749f0c42","53359fb2255c741a749f0c58",
-"53359fb2255c741a749f0c4d","545abac556c35fcc2848c11f","53359fb2255c741a749f0c59"]}'</span> http://sandbox.wallet.best/adm2/categories/sort
+"53359fb2255c741a749f0c4d","545abac556c35fcc2848c11f","53359fb2255c741a749f0c59"]}'</span> http://sandbox.wallet.best/adm2/groups/sort
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1031,10 +1031,22 @@
                 </span><span class="s2">"ru_RU"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Теле2"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tele2"</span><span class="w">
             </span><span class="p">},</span><span class="w">
-            </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"ru_RU"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Мобильная связь"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cellular providers"</span><span class="w">
-            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53359fb2255c741a749f0c42"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"ru_RU"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Мобильная связь"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cellular providers"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cellular"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"localized_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"name"</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
             </span><span class="s2">"image_exists"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
             </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/sandbox.wallet.best\/img\/services\/53359fb2255c741a749f0c44.png?1422632666"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"online"</span><span class="p">,</span><span class="w">
@@ -1063,7 +1075,7 @@
 <ul>
 <li><code class="prettyprint">page</code> - номер (начиная с 0) страницы, которую запрашивает клиент, по умолчанию 0</li>
 <li><code class="prettyprint">size</code> - размер страницы, которую запрашивает клиент, по умолчанию 20</li>
-<li><code class="prettyprint">category_id</code> - id категории, к которой привязан сервис</li>
+<li><code class="prettyprint">group_id</code> - id группы, к которой привязан сервис</li>
 <li><code class="prettyprint">name</code> - имя сервиса (поиск)</li>
 <li><code class="prettyprint">status</code> - статус сервиса [online|offline]</li>
 <li><code class="prettyprint">mserver_ids</code> - фильтр по mserver_id (через запятую)</li>
@@ -1109,13 +1121,22 @@
             </span><span class="s2">"ru_RU"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Теле2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tele2"</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53359fb2255c741a749f0c42"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"ru_RU"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Мобильная связь"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cellular providers"</span><span class="w">
+        </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53359fb2255c741a749f0c42"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"ru_RU"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Мобильная связь"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cellular providers"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cellular"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"localized_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="w">
+                </span><span class="p">]</span><span class="w">
             </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
+        </span><span class="p">],</span><span class="w">
         </span><span class="s2">"image_exists"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/sandbox.wallet.best\/img\/services\/53359fb2255c741a749f0c44.png?1422632666"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1300,10 +1321,22 @@
             </span><span class="s2">"ru_RU"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Теле2"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tele2"</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"ru_RU"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Мобильная связь"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cellular providers"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53359fb2255c741a749f0c42"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"ru_RU"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Мобильная связь"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cellular providers"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cellular"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"localized_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">        
         </span><span class="s2">"image_exists"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/sandbox.wallet.best\/img\/services\/53359fb2255c741a749f0c44.png?1422632666"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"offline"</span><span class="p">,</span><span class="w">
@@ -1336,7 +1369,7 @@
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h2 id='zagruzka-servisov-po-mserver_id'>Загрузка сервисов по mserver_id</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user <span class="s2">"api.mbank.dev/adm2/services/mserver/1013,1001"</span>
+<h2 id='zagruzka-servisov-po-mserver_id'>Загрузка сервисов по mserver_id</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user <span class="s2">"sandbox.wallet.best/adm2/services/mserver/1013,1001"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1404,7 +1437,7 @@
 <code class="prettyprint">min</code> - минамильная сумма пополения
 <code class="prettyprint">max</code> - максимальная сумма пополнения
 <code class="prettyprint">verification</code> - локализированные поля</p>
-<h2 id='dobavlenie-servisa'>Добавление сервиса</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X POST -u user:user -d <span class="s1">'{"mserver_id":"1562"}'</span> http://sandbox.wallet.best/adm2/services
+<h2 id='dobavlenie-servisa'>Добавление сервиса</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X POST -u user:user -d <span class="s1">'{"mserver_id":"1562"}'</span> http://sandbox.wallet.best/adm2/services/
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1416,10 +1449,9 @@
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"ru_RU"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Континент ТВ"</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+
+        </span><span class="p">],</span><span class="w"> 
         </span><span class="s2">"image_exists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"icon_exists"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/sandbox.wallet.best\/img\/services\/554b662dcccc9058050041e5.png?0"</span><span class="p">,</span><span class="w">
@@ -1535,13 +1567,22 @@
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"ru_RU"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Цезарь Сателлит"</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"537e28f756c35f87701cddf5"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"ru_RU"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Охранные службы"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="s2">"groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"537e28f756c35f87701cddf5"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"ru_RU"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Охранные службы"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"en_US"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cellular"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"localized_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="w">
+                </span><span class="p">]</span><span class="w">
             </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
+        </span><span class="p">],</span><span class="w"> 
         </span><span class="s2">"image_exists"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\/\/sandbox.wallet.best\/img\/services\/537e27a956c35f87703a3fa7.png?1422632666"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"labels"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
