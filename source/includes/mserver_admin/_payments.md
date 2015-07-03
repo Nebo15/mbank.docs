@@ -37,8 +37,6 @@
 * `service` - по сервису
 * `processed_at` - по дате обработки
 
-
-
 ```shell
 $ curl -uuser:user "https://www.synq.ru/mserver2-dev/admin/payments?service_name=mts&type=out&status=created&amount_from=0&amount_to=100000&date_from=2014-01-01T12:10:15.525Z&date_to=2014-12-01T00:00:00.00Z&order_by=amount&order_direction=desc&size=1"
 ```
