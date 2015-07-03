@@ -675,11 +675,18 @@
 <li><code class="prettyprint">inbound_payment_date_from</code> и <code class="prettyprint">inbound_payment_date_to</code> - границы диапазона дат создания платежей IPSP</li>
 <li><code class="prettyprint">inbound_payment_card_number_first</code> - поиск по первым 6 цифрам номера карты</li>
 <li><code class="prettyprint">inbound_payment_card_number_last</code> - поиск по последним 4 цифрам номера карты</li>
-<li><code class="prettyprint">inbound_payment_card_number_last</code> - поиск по последним 4 цифрам номера карты</li>
 <li><code class="prettyprint">inbound_payment_recurring</code> - фильтр по рекурентным платежам (true/false)</li>
 <li><code class="prettyprint">inbound_payment_card_type</code> - поиск по вендору карт (MASTER_CARD/VISA/..?)</li>
 <li><code class="prettyprint">inbound_payment_3ds</code> - поиск по 3ds статусу карты: unknown (ECI/SLI не получен ни на одном из шагов), attempted (06), skipped (07), successful (05)</li>
 <li><code class="prettyprint">inbound_payment_user_ip</code> - поиск по IP адресу плательщика</li>
+</ul>
+<h3 id='polya-dlya-sortirovki'>Поля для сортировки:</h3>
+<ul>
+<li><code class="prettyprint">created_at</code> - по дате создания</li>
+<li><code class="prettyprint">status</code> - по статусу</li>
+<li><code class="prettyprint">type</code> - по типу</li>
+<li><code class="prettyprint">service</code> - по сервису</li>
+<li><code class="prettyprint">processed_at</code> - по дате обработки</li>
 </ul>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user <span class="s2">"https://www.synq.ru/mserver2-dev/admin/payments?service_name=mts&amp;type=out&amp;status=created&amp;amount_from=0&amp;amount_to=100000&amp;date_from=2014-01-01T12:10:15.525Z&amp;date_to=2014-12-01T00:00:00.00Z&amp;order_by=amount&amp;order_direction=desc&amp;size=1"</span>
 </code></pre>
