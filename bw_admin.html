@@ -1063,6 +1063,8 @@
                 </span><span class="s2">"fix"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
             </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"mnp_provider_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"mnp_provider_region_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="s2">"localized_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"group"</span><span class="w">
@@ -1107,6 +1109,8 @@
 <li><code class="prettyprint">min</code> - минимальный размер комиссии, опционально</li>
 <li><code class="prettyprint">max</code> - максимальный размер комиссии, опционально</li>
 </ul></li>
+<li><code class="prettyprint">mnp_provider_id</code> - mnp_provider_id</li>
+<li><code class="prettyprint">mnp_provider_region_code</code> - mnp_provider_region_code</li>
 </ul>
 <h2 id='zagruzka-servisa-po-id'>Загрузка сервиса по id</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user <span class="s2">"http://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c44"</span>
 </code></pre>
@@ -1230,6 +1234,8 @@
             </span><span class="s2">"fix"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="s2">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
         </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"mnp_provider_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mnp_provider_region_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"localized_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">,</span><span class="w">
@@ -1301,6 +1307,8 @@
 <li><code class="prettyprint">autopayments_service</code> - относится ли сервис к автоплатежу</li>
 <li><code class="prettyprint">status</code> - статус сервиса</li>
 <li><code class="prettyprint">geo_id</code> - id гео-точки (если передается - точка добавляется)</li>
+<li><code class="prettyprint">mnp_provider_id</code> - mnp_provider_id</li>
+<li><code class="prettyprint">mnp_provider_region_code</code> - mnp_provider_region_code</li>
 </ul>
 <h2 id='dobavlenie-ikonki-servisa'>Добавление иконки сервиса</h2><pre class="highlight shell"><code>curl -uuser:user -H <span class="s1">'Content-Type: multipart/form-data'</span> -X POST -F <span class="s2">"file=@path_to_file/replenishment_points.csv"</span> http://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c44/icon
 </code></pre>
@@ -1348,6 +1356,8 @@
             </span><span class="s2">"is_hidden"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
             </span><span class="s2">"is_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
         </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"mnp_provider_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mnp_provider_region_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"localized_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"group"</span><span class="w">
@@ -1521,6 +1531,8 @@
             </span><span class="s2">"offline"</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mnp_provider_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mnp_provider_region_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"localized_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">,</span><span class="w">
@@ -1642,6 +1654,8 @@
             </span><span class="s2">"offline"</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mnp_provider_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"mnp_provider_region_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"localized_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"description"</span><span class="p">,</span><span class="w">
