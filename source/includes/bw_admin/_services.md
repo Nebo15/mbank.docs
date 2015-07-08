@@ -56,6 +56,8 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/adm
                 "fix": 0,
                 "percent": 0
             },
+            "mnp_provider_id": null,
+            "mnp_provider_region_code": null,
             "localized_fields": [
                 "name",
                 "group"
@@ -96,6 +98,8 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/adm
  * `percent` - процент от суммы
  * `min` - минимальный размер комиссии, опционально
  * `max` - максимальный размер комиссии, опционально
+* `mnp_provider_id` - mnp_provider_id
+* `mnp_provider_region_code` - mnp_provider_region_code
 
 ##Загрузка сервиса по id
 
@@ -224,6 +228,8 @@ $ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/a
             "fix": 0,
             "percent": 0
         },
+        "mnp_provider_id": null,
+        "mnp_provider_region_code": null,
         "localized_fields": [
             "name",
             "description",
@@ -295,6 +301,8 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:aplication/json' -X POST -u user:u
 * `autopayments_service` - относится ли сервис к автоплатежу
 * `status` - статус сервиса
 * `geo_id` - id гео-точки (если передается - точка добавляется)
+* `mnp_provider_id` - mnp_provider_id
+* `mnp_provider_region_code` - mnp_provider_region_code
 
 ##Добавление иконки сервиса
 
@@ -353,6 +361,8 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:aplication/json' -X POST -u user:u
             "is_hidden": true,
             "is_enabled": false
         },
+        "mnp_provider_id": null,
+        "mnp_provider_region_code": null,
         "localized_fields": [
             "name",
             "group"
@@ -552,6 +562,8 @@ curl -H 'X-Project-ID:mbank' -X POST -u user:user -d '{"mserver_id":"1562"}' htt
             "offline"
         ],
         "keywords": "",
+        "mnp_provider_id": null,
+        "mnp_provider_region_code": null,
         "localized_fields": [
             "name",
             "description",
@@ -681,6 +693,8 @@ curl  -X POST -u user:user -d '{"geo_id":"54be73b7b7f47bef9100b64c"}' http://san
             "offline"
         ],
         "keywords": "",
+        "mnp_provider_id": null,
+        "mnp_provider_region_code": null,
         "localized_fields": [
             "name",
             "description",
