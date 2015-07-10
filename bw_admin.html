@@ -2908,6 +2908,26 @@
 <li><code class="prettyprint">by_udid</code> - по пересечению устройств</li>
 <li><code class="prettyprint">by_contacts</code> - степень похожести телефонной книги составляет &gt;= 20%</li>
 </ul>
+<h2 id='razoslat-push-uvedomleniya-spisku-koshelkov'>Разослать PUSH уведомления списку кошельков</h2><pre class="highlight shell"><code>curl  -X POST -u user:user -d <span class="s1">'{"event":"some_event", "message":"test", "phones":["+79107653522","+79633963636", "+7123"]}'</span> <span class="s2">"http://sandbox.wallet.best/adm2/wallets/pushes"</span>
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"+79107653522"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"+79633963636"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Уведомления будут разосланы только тем кошелькам, которые есть у нас</p>
+
+<ul>
+<li><code class="prettyprint">message</code> - Сообщение, которое увидит пользователь</li>
+<li><code class="prettyprint">event</code> - Евент уведомления</li>
+<li><code class="prettyprint">phones</code> - Массив номеров телефонов</li>
+</ul>
 
       </div>
       <div class="dark-box">
