@@ -24,11 +24,18 @@
 * `inbound_payment_date_from` и `inbound_payment_date_to` - границы диапазона дат создания платежей IPSP
 * `inbound_payment_card_number_first` - поиск по первым 6 цифрам номера карты
 * `inbound_payment_card_number_last` - поиск по последним 4 цифрам номера карты
-* `inbound_payment_card_number_last` - поиск по последним 4 цифрам номера карты
 * `inbound_payment_recurring` - фильтр по рекурентным платежам (true/false)
 * `inbound_payment_card_type` - поиск по вендору карт (MASTER_CARD/VISA/..?)
 * `inbound_payment_3ds` - поиск по 3ds статусу карты: unknown (ECI/SLI не получен ни на одном из шагов), attempted (06), skipped (07), successful (05)
 * `inbound_payment_user_ip` - поиск по IP адресу плательщика
+
+### Поля для сортировки:
+
+* `created_at` - по дате создания
+* `status` - по статусу
+* `type` - по типу
+* `service` - по сервису
+* `processed_at` - по дате обработки
 
 ```shell
 $ curl -uuser:user "https://www.synq.ru/mserver2-dev/admin/payments?service_name=mts&type=out&status=created&amount_from=0&amount_to=100000&date_from=2014-01-01T12:10:15.525Z&date_to=2014-12-01T00:00:00.00Z&order_by=amount&order_direction=desc&size=1"

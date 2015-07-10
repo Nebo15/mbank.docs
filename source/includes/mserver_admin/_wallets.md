@@ -59,7 +59,7 @@
 * `card_id` - по ID карты в IPSP
 * `amount_from` и `amount_to` - по сумме остатка на кошельке
 * `active` - по статусу активации (true|false)
-* `disabled` - по статусу блокировки (true|false)
+* `enabled` - по статусу блокировки (true|false)
 
 ```shell
 $ curl -uadmin:admin "https://www.synq.ru/mserver2-dev/admin/wallets?family_name=арсен&active=true&order_by=payment_count&order_direction=desc"

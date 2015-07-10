@@ -393,6 +393,13 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user http://sandbox.wallet.best/adm2
                 }
             ]
         },
+        "by_udid": [
+            {
+                "phone": "+12345284106",
+                "created_at": "2015-07-09T10:03:17+00:00",
+                "active": true
+            }
+        ],
         "by_contacts": []
     }
 }
@@ -405,4 +412,5 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user http://sandbox.wallet.best/adm2
 * `by_identification_data`
 * * `by_person` - совпадают идентификационные данные;
 * * `by_passport` - совпадают паспортные данные
+* `by_udid` - по пересечению устройств
 * `by_contacts` - степень похожести телефонной книги составляет >= 20%

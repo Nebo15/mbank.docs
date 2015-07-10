@@ -2,7 +2,7 @@
 
 ## Загрузка списка категорий
 ```shell
-$ curl -uuser:user "http://sandbox.wallet.best/adm2/categories/"
+$ curl -uuser:user "http://sandbox.wallet.best/adm2/groups/"
 ```
 ```json
 {
@@ -39,7 +39,7 @@ $ curl -uuser:user "http://sandbox.wallet.best/adm2/categories/"
 ## Добавление категории
 
 ```shell
-$ curl -H 'Content-type:application/json' -X POST -u user:user -d '{"name":"some_name","group":"some_group","position":1,"projects":["mbank","bov"]}' http://sandbox.wallet.best/adm2/categories/
+$ curl -H 'Content-type:application/json' -X POST -u user:user -d '{"name":"some_name","group":"some_group","position":1,"projects":["mbank","bov"]}' http://sandbox.wallet.best/adm2/groups/
 ```
 
 ```json
@@ -72,7 +72,7 @@ $ curl -H 'Content-type:application/json' -X POST -u user:user -d '{"name":"some
 
 ## Редактирование категории
 ```shell
-$ curl -H 'Content-type:application/json' -X POST -u user:user -d '{"name":{"ru_RU":"some_name_edited", "en_US":"some_en_name"},"group":"some_group","position":1,"projects":["mbank","bov"], "keywords":"one,two,three"}' http://sandbox.wallet.best/adm2/categories/55421733cccc904a990041a8
+$ curl -H 'Content-type:application/json' -X POST -u user:user -d '{"name":{"ru_RU":"some_name_edited", "en_US":"some_en_name"},"group":"some_group","position":1,"projects":["mbank","bov"], "keywords":"one,two,three"}' http://sandbox.wallet.best/adm2/groups/55421733cccc904a990041a8
 ```
 
 ```json
@@ -101,7 +101,7 @@ $ curl -H 'Content-type:application/json' -X POST -u user:user -d '{"name":{"ru_
 ## Удаление категории
 
 ```shell
-$ curl -X DELETE -uuser:user http://sandbox.wallet.best/adm2/categories/55421733cccc904a990041a8
+$ curl -X DELETE -uuser:user http://sandbox.wallet.best/adm2/groups/55421733cccc904a990041a8
 ```
 
 ```json
@@ -117,11 +117,11 @@ $ curl -X DELETE -uuser:user http://sandbox.wallet.best/adm2/categories/55421733
 ## Сортировка категорий
 
 ```shell
-$ curl -X POST -u user:user -d '{"projects":["mbank"],"categories_ids":["53359fb2255c741a749f0c5d","537e28f756c35f87701cddf5",
+$ curl -X POST -u user:user -d '{"projects":["mbank"],"groups_ids":["53359fb2255c741a749f0c5d","537e28f756c35f87701cddf5",
 "53359fb2255c741a749f0c47","53359fb2255c741a749f0c5b",
 "53359fb2255c741a749f0c4b","549c92fb56c35f660ecd341f","53a1ca0656c35fe0767b8a93","53359fb2255c741a749f0c50",
 "53359fb2255c741a749f0c42","53359fb2255c741a749f0c58",
-"53359fb2255c741a749f0c4d","545abac556c35fcc2848c11f","53359fb2255c741a749f0c59"]}' http://sandbox.wallet.best/adm2/categories/sort
+"53359fb2255c741a749f0c4d","545abac556c35fcc2848c11f","53359fb2255c741a749f0c59"]}' http://sandbox.wallet.best/adm2/groups/sort
 ```
 
 ```json

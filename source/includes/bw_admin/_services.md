@@ -24,10 +24,22 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/adm
                 "ru_RU": "Теле2",
                 "en_US": "Tele2"
             },
-            "group": {
-                "ru_RU": "Мобильная связь",
-                "en_US": "Cellular providers"
-            },
+            "groups": [
+                {
+                    "id": "53359fb2255c741a749f0c42",
+                    "name": {
+                        "ru_RU": "Мобильная связь",
+                        "en_US": "Cellular providers"
+                    },
+                    "type": "cellular",
+                    "keywords": "",
+                    "position": 8,
+                    "amount": 0,
+                    "localized_fields": [
+                        "name"
+                    ]
+                }
+            ],
             "image_exists": true,
             "image_url": "http:\/\/sandbox.wallet.best\/img\/services\/53359fb2255c741a749f0c44.png?1422632666",
             "status": "online",
@@ -40,6 +52,12 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/adm
                 "is_hidden": false,
                 "is_enabled": true
             },
+            "rate": {
+                "fix": 0,
+                "percent": 0
+            },
+            "mnp_provider_id": null,
+            "mnp_provider_region_code": null,
             "localized_fields": [
                 "name",
                 "group"
@@ -51,7 +69,7 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/adm
 ### Параметры (опциональные)
 * `page` - номер (начиная с 0) страницы, которую запрашивает клиент, по умолчанию 0
 * `size` - размер страницы, которую запрашивает клиент, по умолчанию 20
-* `category_id` - id категории, к которой привязан сервис
+* `group_id` - id группы, к которой привязан сервис
 * `name` - имя сервиса (поиск)
 * `status` - статус сервиса [online|offline]
 * `mserver_ids` - фильтр по mserver_id (через запятую)
@@ -75,6 +93,13 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/adm
 * `labels.in_mserver` - Существует в мсервере
 * `labels.is_hidden` - Скрыт
 * `labels.is_enabled` - Включен
+* `rate` - комиссия в формате массива со значениями:
+ * `fix` - фиксированная
+ * `percent` - процент от суммы
+ * `min` - минимальный размер комиссии, опционально
+ * `max` - максимальный размер комиссии, опционально
+* `mnp_provider_id` - mnp_provider_id
+* `mnp_provider_region_code` - mnp_provider_region_code
 
 ##Загрузка сервиса по id
 
@@ -94,13 +119,22 @@ $ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/a
             "ru_RU": "Теле2",
             "en_US": "Tele2"
         },
-        "category": {
-            "id": "53359fb2255c741a749f0c42",
-            "name": {
-                "ru_RU": "Мобильная связь",
-                "en_US": "Cellular providers"
+        "groups": [
+            {
+                "id": "53359fb2255c741a749f0c42",
+                "name": {
+                    "ru_RU": "Мобильная связь",
+                    "en_US": "Cellular providers"
+                },
+                "type": "cellular",
+                "keywords": "",
+                "position": 8,
+                "amount": 0,
+                "localized_fields": [
+                    "name"
+                ]
             }
-        },
+        ],
         "image_exists": true,
         "icon_url": "http:\/\/sandbox.wallet.best\/img\/services\/53359fb2255c741a749f0c44.png?1422632666",
         "labels": {
@@ -190,6 +224,12 @@ $ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/a
             "offline"
         ],
         "keywords": "",
+        "rate": {
+            "fix": 0,
+            "percent": 0
+        },
+        "mnp_provider_id": null,
+        "mnp_provider_region_code": null,
         "localized_fields": [
             "name",
             "description",
@@ -226,6 +266,11 @@ $ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/a
 * `status` - Статус сервиса (online|offline)
 * `service_statuses` - перечень возможных стутусов сервиса
 * `keywords` - Ключевые слова (необходимы при поиске)
+* `rate` - комиссия в формате массива со значениями:
+ * `fix` - фиксированная
+ * `percent` - процент от суммы
+ * `min` - минимальный размер комиссии, опционально
+ * `max` - максимальный размер комиссии, опционально
 * `localized_fields` - локализированные поля
 
 ##Редактирование сервиса
@@ -256,6 +301,8 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:aplication/json' -X POST -u user:u
 * `autopayments_service` - относится ли сервис к автоплатежу
 * `status` - статус сервиса
 * `geo_id` - id гео-точки (если передается - точка добавляется)
+* `mnp_provider_id` - mnp_provider_id
+* `mnp_provider_region_code` - mnp_provider_region_code
 
 ##Добавление иконки сервиса
 
@@ -287,10 +334,22 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:aplication/json' -X POST -u user:u
             "ru_RU": "Теле2",
             "en_US": "Tele2"
         },
-        "group": {
-            "ru_RU": "Мобильная связь",
-            "en_US": "Cellular providers"
-        },
+        "groups": [
+            {
+                "id": "53359fb2255c741a749f0c42",
+                "name": {
+                    "ru_RU": "Мобильная связь",
+                    "en_US": "Cellular providers"
+                },
+                "type": "cellular",
+                "keywords": "",
+                "position": 8,
+                "amount": 0,
+                "localized_fields": [
+                    "name"
+                ]
+            }
+        ],        
         "image_exists": true,
         "image_url": "http:\/\/sandbox.wallet.best\/img\/services\/53359fb2255c741a749f0c44.png?1422632666",
         "status": "offline",
@@ -302,6 +361,8 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:aplication/json' -X POST -u user:u
             "is_hidden": true,
             "is_enabled": false
         },
+        "mnp_provider_id": null,
+        "mnp_provider_region_code": null,
         "localized_fields": [
             "name",
             "group"
@@ -333,7 +394,7 @@ curl -H 'X-Project-ID:mbank' -X DELETE -u user:user http://sandbox.wallet.best/a
 ##Загрузка сервисов по mserver_id
 
 ```shell
-curl -H 'X-Project-ID:mbank' -X GET -u user:user "api.mbank.dev/adm2/services/mserver/1013,1001"
+curl -H 'X-Project-ID:mbank' -X GET -u user:user "sandbox.wallet.best/adm2/services/mserver/1013,1001"
 ```
 
 ```json
@@ -415,7 +476,7 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/adm
 ##Добавление сервиса
 
 ```shell
-curl -H 'X-Project-ID:mbank' -X POST -u user:user -d '{"mserver_id":"1562"}' http://sandbox.wallet.best/adm2/services
+curl -H 'X-Project-ID:mbank' -X POST -u user:user -d '{"mserver_id":"1562"}' http://sandbox.wallet.best/adm2/services/
 ```
 
 ```json
@@ -429,10 +490,9 @@ curl -H 'X-Project-ID:mbank' -X POST -u user:user -d '{"mserver_id":"1562"}' htt
         "name": {
             "ru_RU": "Континент ТВ"
         },
-        "category": {
-            "id": null,
-            "name": {}
-        },
+        "groups": [
+            
+        ], 
         "image_exists": false,
         "icon_exists": false,
         "icon_url": "http:\/\/sandbox.wallet.best\/img\/services\/554b662dcccc9058050041e5.png?0",
@@ -502,6 +562,8 @@ curl -H 'X-Project-ID:mbank' -X POST -u user:user -d '{"mserver_id":"1562"}' htt
             "offline"
         ],
         "keywords": "",
+        "mnp_provider_id": null,
+        "mnp_provider_region_code": null,
         "localized_fields": [
             "name",
             "description",
@@ -556,13 +618,22 @@ curl  -X POST -u user:user -d '{"geo_id":"54be73b7b7f47bef9100b64c"}' http://san
         "name": {
             "ru_RU": "Цезарь Сателлит"
         },
-        "category": {
-            "id": "537e28f756c35f87701cddf5",
-            "name": {
-                "ru_RU": "Охранные службы",
-                "en_US": null
+        "groups": [
+            {
+                "id": "537e28f756c35f87701cddf5",
+                "name": {
+                    "ru_RU": "Охранные службы",
+                    "en_US": "null"
+                },
+                "type": "cellular",
+                "keywords": "",
+                "position": 8,
+                "amount": 0,
+                "localized_fields": [
+                    "name"
+                ]
             }
-        },
+        ], 
         "image_exists": true,
         "icon_url": "http:\/\/sandbox.wallet.best\/img\/services\/537e27a956c35f87703a3fa7.png?1422632666",
         "labels": {
@@ -622,6 +693,8 @@ curl  -X POST -u user:user -d '{"geo_id":"54be73b7b7f47bef9100b64c"}' http://san
             "offline"
         ],
         "keywords": "",
+        "mnp_provider_id": null,
+        "mnp_provider_region_code": null,
         "localized_fields": [
             "name",
             "description",
