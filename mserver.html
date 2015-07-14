@@ -819,6 +819,15 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
 <td style="text-align: left">Персональные данные проверены, дальнейшее изменение ПД невозможно</td>
 </tr>
 </tbody></table>
+<h2 id='zapros-personalnyh-dannyh-klienta-denezhnye-perevody-best'>Запрос персональных данных клиента Денежные переводы БЭСТ</h2><h3 id='parametry'>Параметры</h3>
+<ul>
+<li><code class="prettyprint">card_number</code> - номер карты клиента БЭСТ</li>
+<li><code class="prettyprint">pin</code> - PIN код</li>
+</ul>
+<h3 id='zapros-po-nomeru-telefona-koshelka'>Запрос по номеру телефона кошелька</h3><pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password https://www.synq.ru/mserver2-dev/v1/wallet/client
+</code></pre>
+<h3 id='zapros-po-nomeru-karty-klienta-best'>Запрос по номеру карты клиента БЭСТ</h3><pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password https://www.synq.ru/mserver2-dev/v1/wallet/client?card_number<span class="o">=</span>8003330316000271&amp;pin<span class="o">=</span>1234
+</code></pre>
 
           <h1 id='servisy'>Сервисы</h1>
 <p>Сервис - это назначение платежа. Сервис содержит описание параметров, которые должны быть переданы в платежном запросе конечным пользователем.</p>
