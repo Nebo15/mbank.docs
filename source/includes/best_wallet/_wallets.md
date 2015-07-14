@@ -81,14 +81,14 @@ $ curl -u admin_level_login:password -X DELETE http://sandbox.wallet.best/v1/wal
 
 ## Внесение персональных данных пользователя
 
-Проверяются на дубликат по `family_name, given_name, patronymic_name, passport_series_number`.
+Проверяются на дубликат по `passport_series_number`.
 
 Параметры
 
 * `family_name` - **обязательный параметр** - фамилия
 * `given_name` - **обязательный параметр** - имя
+* `passport_series_number` - **обязательный параметр** - серия и номер паспорта, 10 цифр
 * `patronymic_name` - отчество
-* `passport_series_number` - серия и номер паспорта, 10 цифр
 * `passport_issued_at` - дата в формате гггг-мм-дд
 * `itn` - ИНН, 12 цифр
 * `ssn` - СНИЛС, 11 цифр
