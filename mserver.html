@@ -819,7 +819,10 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
 <td style="text-align: left">Персональные данные проверены, дальнейшее изменение ПД невозможно</td>
 </tr>
 </tbody></table>
-<h2 id='zapros-personalnyh-dannyh-klienta-denezhnye-perevody-best'>Запрос персональных данных клиента Денежные переводы БЭСТ</h2><h3 id='parametry'>Параметры</h3>
+<h2 id='zapros-personalnyh-dannyh-klienta-sistemy-best'>Запрос персональных данных клиента системы БЭСТ</h2>
+<p>Возвращает список наборов персональных данных клиента системы денежных переводов БЭСТ полученный поиском по номеру телефона кошелька, либо по номеру карты клиента БЭСТ.
+Одному номеру телефона в системе БЭСТ может соответствовать более одного набора персональных данных.</p>
+<h3 id='parametry'>Параметры</h3>
 <ul>
 <li><code class="prettyprint">card_number</code> - номер карты клиента БЭСТ</li>
 <li><code class="prettyprint">pin</code> - PIN код</li>
@@ -828,6 +831,52 @@ https://www.synq.ru/mserver2-dev/v1/wallet/person
 </code></pre>
 <h3 id='zapros-po-nomeru-karty-klienta-best'>Запрос по номеру карты клиента БЭСТ</h3><pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password https://www.synq.ru/mserver2-dev/v1/wallet/client?card_number<span class="o">=</span>8003330316000271&amp;pin<span class="o">=</span>1234
 </code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"urgent_data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">18.51</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"page"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"total_elements"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"lastname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Арсеньев"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"firstname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Алексей"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"patronymic"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Александрович"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"isresident"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id_card"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"8003330316000271"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id_client"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">147</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"house"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"house_block"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"house_building"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"flat"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"79261111111"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data_extended"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"inn"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"birth_day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1982-01-01T21:00:00.000+0000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"birth_place"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Город Орёл Орловской области"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"migration_card_number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"identification"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Паспорт гражданина Российской Федерации_"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"series"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2202"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"655885"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"issuer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Отделом УФМС России по гор Орёл"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"issue_date"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-02-06T20:00:00.000+0000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dep_code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
           <h1 id='servisy'>Сервисы</h1>
 <p>Сервис - это назначение платежа. Сервис содержит описание параметров, которые должны быть переданы в платежном запросе конечным пользователем.</p>
