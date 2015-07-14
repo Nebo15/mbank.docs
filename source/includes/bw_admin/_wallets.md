@@ -414,3 +414,27 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user http://sandbox.wallet.best/adm2
 * * `by_passport` - совпадают паспортные данные
 * `by_udid` - по пересечению устройств
 * `by_contacts` - степень похожести телефонной книги составляет >= 20%
+
+##Разослать PUSH уведомления списку кошельков
+
+```shell
+curl  -X POST -u user:user -d '{"event":"some_event", "message":"test", "phones":["+79107653522","+79633963636", "+7123"]}' "http://sandbox.wallet.best/adm2/wallets/pushes"
+```
+
+```json
+{
+    "meta": {
+        "code": 200
+    },
+    "data": [
+        "+79107653522",
+        "+79633963636"
+    ]
+}
+```
+
+Уведомления будут разосланы только тем кошелькам, которые есть у нас
+
+* `message` - Сообщение, которое увидит пользователь
+* `event` - Евент уведомления
+* `phones` - Массив номеров телефонов
