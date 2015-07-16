@@ -1292,6 +1292,99 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
+          <h1 id='integratsiya-s-best'>Интеграция с БЭСТ</h1><h2 id='poisk-perevodov-klienta-best'>Поиск переводов клиента БЭСТ</h2>
+<p>Запрос на поиск переводов по идентификатору клиента денежных переводов БЭСТ. Запрос возвращает токен, который позволяет забрать результаты поиска в случае готовности.
+После того, как результаты поиска получены, они не будут доступны.</p>
+<h3 id='parametry'>Параметры</h3>
+<ul>
+<li><code class="prettyprint">type</code> - тип перевода, возможные значения:
+<code class="prettyprint">out</code> – переводы, отправленные клиентом;
+<code class="prettyprint">in</code> – переводы, полученные клиентом или отправленные ему, но еще не полученные;
+<code class="prettyprint">processing</code> – переводы, отправленные клиенту, но еще не полученные.</li>
+</ul>
+<pre class="highlight shell"><code>curl -uadmin:test -X POST https://www.synq.ru/mserver2-dev/admin/best/client/147/transfer/search?type<span class="o">=</span>out
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"735796@656055620"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h2 id='poluchenie-rezultatov-poiska-perevodov'>Получение результатов поиска переводов</h2>
+<p>Имея токен, идентифицирующий результат поиска можно получить список найденных переводов клиента БЭСТ.</p>
+<pre class="highlight shell"><code>curl -uadmin:test https://www.synq.ru/mserver2-dev/admin/best/client/transfer/search/735796@656055620
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"page"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"total_elements"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"sender"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"country"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"numeric"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"643"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"lastname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Арсеньев"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"firstname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Алексей"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"patronymic"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Александрович"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isresident"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"79261111111"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"data_extended"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"birth_day"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1982-01-01T21:00:00.000+0000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"birth_place"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Город Орёл Орловской области"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"identification"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"series"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2202"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"655885"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"issuer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Отделом УФМС России по гор Орёл"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"issue_date"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2013-02-06T20:00:00.000+0000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"dep_code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"770-105"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"receiver"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"country"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"numeric"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"643"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"lastname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Арсеньев"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"firstname"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Алексей"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"patronymic"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Александрович"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"isresident"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"data_extended"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"identification"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">413258621</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency_alpha"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"RUR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"note"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"test payment"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"smstosender"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"smstoreceiver"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"checknumber"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"33977399"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"creating_date"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-12-24T21:00:00.000+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fee"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">30.00</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount_charge"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency_charge"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"RUR"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"rate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id='kody-oshibok'>Коды ошибок</h3>
+<ul>
+<li><code class="prettyprint">report_in_progress</code> - данные ещё не готовы, повторите запрос позже</li>
+</ul>
+
+<p>Рекомендуется опрашивать готовность данных поиска не чаще чем раз в 10 секунд.</p>
+
       </div>
       <div class="dark-box">
       </div>
