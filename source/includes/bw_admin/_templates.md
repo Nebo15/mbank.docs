@@ -44,7 +44,6 @@ $curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/ad
                 "regex_unmap": "",
                 "regex_unmap_value": ""
             },
-            "items": [],
             "services_amount": 3,
             "localized_fields": [
                 "title",
@@ -69,7 +68,6 @@ $curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/ad
 * `is_required` - Поле обязательно к заполнению
 * `is_pattern` - является ли шиблоном
 * `patterns` - валидаторы
-* `items` - значения
 * `services_amount` - кол-во сервисов, параметры которых привязанны к этому шаблону
 * `localized_fields` - локализированные поля
 
@@ -190,7 +188,6 @@ $ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/a
 * `is_required` - Поле обязательно к заполнению
 * `is_pattern` - является ли шиблоном
 * `patterns` - валидаторы
-* `items` - значения
 * `services_amount` - кол-во сервисов, параметры которых привязанны к этому шаблону
 * `localized_fields` - локализированные поля
 
@@ -231,7 +228,6 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:
             "regex_unmap": "",
             "regex_unmap_value": ""
         },
-        "items": [],
         "localized_fields": [
             "title",
             "pattern_desc"
@@ -279,7 +275,6 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -u user:user -X 
             "regex_unmap": "33",
             "regex_unmap_value": "44"
         },
-        "items": [],
         "parameters": [],
         "localized_fields": [
             "title",
