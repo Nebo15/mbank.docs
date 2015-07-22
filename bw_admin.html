@@ -1713,8 +1713,6 @@
 <ul>
 <li><code class="prettyprint">page</code> - номер (начиная с 0) страницы, которую запрашивает клиент, по умолчанию 0</li>
 <li><code class="prettyprint">size</code> - размер страницы, которую запрашивает клиент, по умолчанию 20</li>
-<li><code class="prettyprint">code</code> - поиск по коду ошибки</li>
-<li><code class="prettyprint">title</code> - поиск по описанию ошибки</li>
 </ul>
 <h2 id='zagruzka-spiska-oshibok'>Загрузка списка ошибок</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user <span class="s2">"sandbox.wallet.best/adm2/errors/?size=2"</span>
 </code></pre>
@@ -1764,6 +1762,8 @@
 <ul>
 <li><code class="prettyprint">page</code> - номер (начиная с 0) страницы, которую запрашивает клиент, по умолчанию 0</li>
 <li><code class="prettyprint">size</code> - размер страницы, которую запрашивает клиент, по умолчанию 20</li>
+<li><code class="prettyprint">title</code> - описание ошибки</li>
+<li><code class="prettyprint">localized_fields</code> - локализированные поля</li>
 </ul>
 <h2 id='zagruzka-oshibki-po-id'>Загрузка ошибки по id</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user <span class="s2">"sandbox.wallet.best/adm2/errors/5494486da60ad61b110041ba"</span>
 </code></pre>
