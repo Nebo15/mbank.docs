@@ -25,6 +25,7 @@
 
 * `card_success_url` - URL на который пользователь будет перенаправлен в случае успешного сохранения карты, опционально
 * `card_failure_url` - URL на который пользователь будет перенаправлен в случае неуспешного сохранения карты, опционально
+* `iframe` - опциональный параметр [true|false], который будет передаваться в payment_page_url 
 
 ```shell
 $ curl -u+79261111111:p@ssw0rD -H 'Content-type:application/json' -d '{"card_success_url": "http://ya.ru", "card_failure_url": "http://google.com"}' http://sandbox.wallet.best/v1/cards
