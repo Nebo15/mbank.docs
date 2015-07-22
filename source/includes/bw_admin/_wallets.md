@@ -358,24 +358,28 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user http://sandbox.wallet.best/adm2
             {
                 "phone": "+12345031449",
                 "created_at": "2015-03-02T13:39:49+00:00",
-                "active": true
+                "active": true,
+                "enabled": true
             },
             {
                 "phone": "+12345040280",
                 "created_at": "2015-01-13T16:08:45+00:00",
-                "active": true
+                "active": true,
+                "enabled": true
             }
         ],
         "by_card": [
             {
                 "phone": "+79260000122",
                 "created_at": "2015-01-14T15:29:47+00:00",
-                "active": true
+                "active": true,
+                "enabled": true
             },
             {
                 "phone": "+380931254212",
                 "created_at": "2015-03-03T10:24:13+00:00",
-                "active": true
+                "active": true,,
+                "enabled": true
             }
         ],
         "by_identification_data": {
@@ -384,12 +388,15 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user http://sandbox.wallet.best/adm2
                 {
                     "phone": "+79261111111",
                     "created_at": "2015-01-14T14:38:45+00:00",
-                    "active": true
+                    "active": true,
+                    "enabled": false
                 },
                 {
                     "phone": "+380503839001",
                     "created_at": "2015-01-14T14:40:30+00:00",
-                    "active": true
+                    "active": true,
+                    "enabled": true
+                    
                 }
             ]
         },
@@ -397,7 +404,8 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user http://sandbox.wallet.best/adm2
             {
                 "phone": "+12345284106",
                 "created_at": "2015-07-09T10:03:17+00:00",
-                "active": true
+                "active": true,
+                "enabled": true
             }
         ],
         "by_contacts": []
