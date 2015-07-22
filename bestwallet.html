@@ -2450,6 +2450,7 @@ $ curl -u +79261111111:password -H &#39;Content-type:application/json&#39; http:
 <ul>
 <li><code class="prettyprint">card_success_url</code> - URL на который пользователь будет перенаправлен в случае успешного сохранения карты, опционально</li>
 <li><code class="prettyprint">card_failure_url</code> - URL на который пользователь будет перенаправлен в случае неуспешного сохранения карты, опционально</li>
+<li><code class="prettyprint">iframe</code> - опциональный параметр [true|false], который будет передаваться в payment_page_url </li>
 </ul>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:p@ssw0rD -H <span class="s1">'Content-type:application/json'</span> -d <span class="s1">'{"card_success_url": "http://ya.ru", "card_failure_url": "http://google.com"}'</span> http://sandbox.wallet.best/v1/cards
 </code></pre>
