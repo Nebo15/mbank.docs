@@ -39,7 +39,7 @@ $ curl -uuser:user "http://sandbox.wallet.best/adm2/groups/"
 ## Добавление категории
 
 ```shell
-$ curl -H 'Content-type:application/json' -X POST -u user:user -d '{"name":"some_name","group":"some_group","position":1,"projects":["mbank","bov"]}' http://sandbox.wallet.best/adm2/groups/
+$ curl -H 'Content-type:application/json' -X POST -u user:user -d '{"name":"some_name","type":"some_group","position":1,"projects":["mbank","bov"]}' http://sandbox.wallet.best/adm2/groups/
 ```
 
 ```json
@@ -53,7 +53,7 @@ $ curl -H 'Content-type:application/json' -X POST -u user:user -d '{"name":"some
             "ru_RU": "some_name",
             "en_US": null
         },
-        "group": "some_group",
+        "type": "some_group",
         "keywords": "",
         "position": 1,
         "amount": 0,
