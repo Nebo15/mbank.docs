@@ -157,7 +157,7 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/wallet/person
 
 ## Загрузка картинки
 
-Форматы: JPEG, PNG. На сервере делается auto-rotate.
+Форматы: JPEG, PNG. На сервере делается auto-rotate. Размер файла до 10 мегабайт.
 
 ```shell
 $ curl -u +79261111111:p@ssw0rD -X POST -F "file=@/path/to/image.jpg" http://sandbox.wallet.best/v1/wallet/picture
