@@ -2165,6 +2165,9 @@ $ curl -u +79261111111:password -H &#39;Content-type:application/json&#39; http:
 </code></p>
 
 <p>Параметры <code class="prettyprint">page</code> и <code class="prettyprint">size</code> в запросе позволяют задать номер (начиная с 0) и размер страницы, которую запрашивает клиент. По умолчанию номер страницы - 0 и размер страницы - 35 платежей. Опциона��ьные параметры <code class="prettyprint">type</code> и <code class="prettyprint">status</code> позволяют фильтровать платежи по типу и статусу. По умолчанию, платежи со статусом <code class="prettyprint">created</code> не попадают в список, чтобы их увидеть, необходимо задать этот статус явно. Статусы и типы можно перечислять через запятую, например: <code class="prettyprint">status=created,completed</code>.</p>
+
+<p>Если платеж еще не был просмотрен, у него будет поле <code class="prettyprint">unseen</code> со зачением <strong>true</strong>
+Просмотренным платеж считается, когда он вернулся в списке. Если же платеж присутствует на второй странице выписки, а она не была запрошена - платеж будет считаться непросмотренным </p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
@@ -2209,7 +2212,8 @@ $ curl -u +79261111111:password -H &#39;Content-type:application/json&#39; http:
             </span><span class="s2">"remote_check"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1414678875803"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
             </span><span class="s2">"subtitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unseen"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1401089244494</span><span class="p">,</span><span class="w">
@@ -2333,6 +2337,20 @@ $ curl -u +79261111111:password -H &#39;Content-type:application/json&#39; http:
             </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h2 id='sbros-schetchika-neprosmotrennyh-platezhey'>Сброс счетчика непросмотренных платежей</h2>
+<p>Возможно обнулить счетчик непросмотренных платежей</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:password -H <span class="s1">'Content-type:application/json'</span> http://sandbox.wallet.best/v1/payments/reset_unseen
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"urgent_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">9862</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h2 id='uvedomleniya-ob-izmenenii-statusa-platezha'>Уведомления об изменении статуса платежа</h2>
