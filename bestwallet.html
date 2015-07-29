@@ -309,7 +309,7 @@ http://sandbox.wallet.best/v1/wallet/person
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h2 id='zagruzka-kartinki'>Загрузка картинки</h2>
-<p>Формат JPEG.</p>
+<p>Форматы: JPEG, PNG. На сервере делается auto-rotate. Размер файла до 10 мегабайт.</p>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:p@ssw0rD -X POST -F <span class="s2">"file=@/path/to/image.jpg"</span> http://sandbox.wallet.best/v1/wallet/picture
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
