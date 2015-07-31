@@ -2579,9 +2579,9 @@ $ curl -u +79261111111:password -H &#39;Content-type:application/json&#39; http:
 curl -u +12345675578:password http://sandbox.wallet.best/v1/locations?point=57.415033,51.446833
 </code></li>
 <li><code class="prettyprint">distance</code> - радиус площади в метрах, по-умолчанию 500. Работает только вместе с <strong>point</strong>. </li>
-<li><code class="prettyprint">square</code> - получение точек в прямоугольном полигоне. Передать нужно две координаты - левую верхнюю и правую нижнюю точки в формате: <strong>longitude,latitude-longitude,latitude</strong>. Пример:<br>
+<li><code class="prettyprint">square</code> - получение точек в прямоугольном полигоне. Передать нужно две координаты - сначала левую верхнюю, затем правую нижнюю точки в формате: <strong>longitude,latitude,longitude,latitude</strong>. Пример:<br>
 <code class="prettyprint">shell
-curl -u +12345675578:password http://sandbox.wallet.best/v1/locations?square=57.279764,51.512689-57.415033,51.446833
+curl -u +12345675578:password http://sandbox.wallet.best/v1/locations?square=57.279764,51.512689,57.415033,51.446833
 </code></li>
 </ul>
 <h5 id='vnimanie-vsegda-peredavayte-kooridnaty-v-posledovatelnosti-stronglongitudelatitudestrong-a-ne-naoborot'>Внимание! Всегда передавайте коориднаты в последовательности <strong>longitude,latitude</strong>, а не наоборот</h5>
@@ -2604,7 +2604,7 @@ curl -u +12345675578:password http://sandbox.wallet.best/v1/locations?square=57.
 <li><code class="prettyprint">invalid_location_group</code> - неправильная группа</li>
 <li><code class="prettyprint">missed_location_point_comma</code> - нет разделительной запятой между долготой и широтой для точки координат</li>
 <li><code class="prettyprint">missed_location_square_comma</code> - нет разделительной запятой между долготой и широтой для координат в полигоне</li>
-<li><code class="prettyprint">missed_location_square_dash</code> - нет разделительного тире между двумя координатами в полигоне</li>
+<li><code class="prettyprint">wrong_location_square_points_amount</code> - координат в полигоне должно быть ровно 4</li>
 </ul>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl -u +12345675578:password http://sandbox.wallet.best/v1/locations
 </code></pre>
