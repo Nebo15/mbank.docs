@@ -676,6 +676,8 @@
 <ul>
 <li><code class="prettyprint">failure_limit_exceeded</code> - вы прислали неверный код смены пароля больше 5 раз, обратитесь в поддержку</li>
 <li><code class="prettyprint">resend_limit_exceeded</code> - mserver отправил отведенные 5 СМС сообщений с кодами смены пароля, обратитесь в поддержку</li>
+<li><code class="prettyprint">wallet_not_active</code> - кошелек не активирован</li>
+<li><code class="prettyprint">wallet_disabled</code> - кошелек заблокирован</li>
 </ul>
 <h2 id='smena-parolya'>Смена пароля</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> 
  -d <span class="s1">'{"code": "934879", "password": "PassWord", "phone": "+79261111111"}'</span> ttps://www.synq.ru/mserver2-dev/v1/wallet/reset_password
@@ -695,6 +697,8 @@
 <li><code class="prettyprint">invalid_code</code> - переданный код смены пароля не совпадает с присланным в СМС</li>
 <li><code class="prettyprint">code_expired</code> - с момента создания кода смены пароля прошло больше 15 минут, запросите код повторно</li>
 <li><code class="prettyprint">failure_limit_exceeded</code> - вы прислали неверный код смены пароля больше 5 раз, обратитесь в поддержку</li>
+<li><code class="prettyprint">wallet_not_active</code> - кошелек не активирован</li>
+<li><code class="prettyprint">wallet_disabled</code> - кошелек заблокирован</li>
 </ul>
 <h2 id='zagruzka-koshelka'>Загрузка кошелька</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password https://www.synq.ru/mserver2-dev/v1/wallet
 </code></pre>
