@@ -520,8 +520,9 @@
 <ul>
 <li><code class="prettyprint">wallet</code> - номер телефона в международном формате</li>
 <li><code class="prettyprint">status</code> - <code class="prettyprint">data_entered</code> | <code class="prettyprint">data_verified</code> статус персональных данных</li>
+<li><code class="prettyprint">level</code> - <code class="prettyprint">anonymous</code> | <code class="prettyprint">identified</code> | <code class="prettyprint">personified</code> уровень пользователя (опционально, по умолчанию <code class="prettyprint">identified</code>)</li>
 </ul>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl  -H <span class="s1">'Content-type:application/json'</span> -uuser:user -d <span class="s1">'{"status": "data_verified"}'</span> <span class="s2">"https://www.synq.ru/mserver2-dev/admin/persons/%2B79260000006/update_status"</span>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl  -H <span class="s1">'Content-type:application/json'</span> -uuser:user -d <span class="s1">'{"status": "data_verified", "level": "identified"}'</span> <span class="s2">"https://www.synq.ru/mserver2-dev/admin/persons/%2B79260000006/update_status"</span>
 </code></pre>
 
 <blockquote>
