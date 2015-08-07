@@ -1290,3 +1290,22 @@ $ curl -u +79261111111:password -H 'Content-type:application/json' http://sandbo
 | `decline`             | Платеж отклонен                                                                     |
 | `undo`                | Отмена ранее успешного платежа (сторно)                                             |
 | `redo`                | Ранее отмененный платеж сделан успешным (сторно сторно and we need to go deeper)    |
+
+
+### Webhook для логирования переводов Бэста
+
+```shell
+$ curl 'http://sandbox.wallet.best/v1/payments/best/p2p' -X POST -H 'Content-type:application/json' -d '{"payment_id": 12345678, "sender": {"id":7777777, "phone": "+79250101212"}, "recipient": {"id":88888888, "phone": "+79110992233"}}'
+```
+
+```json
+{
+    "meta": {
+        "code": 200
+    }
+}
+```
+
+Коды ошибок
+
+* `empty_request` - в запросе отсутствуют данные для логирования
