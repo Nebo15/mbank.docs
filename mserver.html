@@ -1918,8 +1918,12 @@ https://www.synq.ru/mserver2-dev/v1/payments
 </span></code></pre>
 <h3 id='parametry'>Параметры</h3>
 <ul>
-<li><code class="prettyprint">card_success_url</code> - страница, на которую будет перенаправлен пользователь при успешном платеже</li>
-<li><code class="prettyprint">card_failure_url</code> - страница, на которую будет перенаправлен пользователь при ошибке во время оплаты</li>
+<li><code class="prettyprint">card_success_url</code> - URL на который пользователь будет перенаправлен в случае успешного сохранения карты, опционально</li>
+<li><code class="prettyprint">card_failure_url</code> - URL на который пользователь будет перенаправлен в случае неуспешного сохранения карты, опционально</li>
+</ul>
+<h3 id='kody-oshibok'>Коды ошибок</h3>
+<ul>
+<li><code class="prettyprint">active_cards_limit</code> - превышено максимально возможное количество активных карт</li>
 </ul>
 
 <blockquote>
@@ -2091,6 +2095,15 @@ https://www.synq.ru/mserver2-dev/v1/payments
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<h3 id='parametry'>Параметры</h3>
+<ul>
+<li><code class="prettyprint">card_success_url</code> - URL на который пользователь будет перенаправлен в случае успешного сохранения карты, опционально</li>
+<li><code class="prettyprint">card_failure_url</code> - URL на который пользователь будет перенаправлен в случае неуспешного сохранения карты, опционально</li>
+</ul>
+<h3 id='kody-oshibok'>Коды ошибок</h3>
+<ul>
+<li><code class="prettyprint">active_cards_limit</code> - превышено максимально возможное количество активных карт</li>
+</ul>
 
 <blockquote>
 <p>Платим:</p>
