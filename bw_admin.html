@@ -2744,8 +2744,10 @@
 <h3 id='izmenyaemye-polya'>Изменяемые поля</h3>
 <ul>
 <li><code class="prettyprint">person_status</code> - Изменить статус верификации (см. Изменение статуса персональных данныхv)</li>
+<li><code class="prettyprint">level</code> - <code class="prettyprint">anonymous</code> | <code class="prettyprint">identified</code> | <code class="prettyprint">personified</code> уровень пользователя (опционально, по умолчанию <code class="prettyprint">identified</code>)
+##Заставить сменить пароль</li>
 </ul>
-<h2 id='zastavit-smenit-parol'>Заставить сменить пароль</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"password_reset":true}'</span> http://sandbox.wallet.best/adm2/wallets/+12345842117/password/reset
+<pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"password_reset":true}'</span> http://sandbox.wallet.best/adm2/wallets/+12345842117/password/reset
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
