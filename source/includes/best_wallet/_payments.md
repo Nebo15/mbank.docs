@@ -1318,7 +1318,7 @@ $ curl -u +79261111111:password -H 'Content-type:application/json' http://sandbo
 ### Webhook для логирования переводов Бэста
 
 ```shell
-$ curl 'http://sandbox.wallet.best/v1/payments/best/p2p' -X POST -H 'Content-type:application/json' -d '{"payment_id": 12345678, "sender": {"id":7777777, "phone": "+79250101212"}, "recipient": {"id":88888888, "phone": "+79110992233"}}'
+$ curl 'https://sandbox.wallet.best/v1/payments/best/p2p' -X POST -H 'Content-type:application/json' -d '{"payment_id": 12345678, "sender": {"id":7777777, "phone": "+79250101212"}, "recipient": {"id":88888888, "phone": "+79110992233"}}'
 ```
 
 ```json
