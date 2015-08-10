@@ -19,7 +19,7 @@
 * `message` - произвольный текст, необязательное поле
 
 ```shell
-$ curl -u +12345675578:password -H 'Content-type:application/json' -d '{"payer": "+12345678102", "amount": 350, "message": "Test invoice"}' http://sandbox.wallet.best/v1/invoices
+$ curl -u +12345675578:password -H 'Content-type:application/json' -d '{"payer": "+12345678102", "amount": 350, "message": "Test invoice"}' https://sandbox.wallet.best/v1/invoices
 ```
 
 ```json
@@ -40,7 +40,7 @@ $ curl -u +12345675578:password -H 'Content-type:application/json' -d '{"payer":
 ## Список инвойсов выставленных пользователю
 
 ```shell
-$ curl -u +12345675578:password http://sandbox.wallet.best/v1/invoices
+$ curl -u +12345675578:password https://sandbox.wallet.best/v1/invoices
 ```
 
 ```json
@@ -83,7 +83,7 @@ $ curl -u +12345675578:password http://sandbox.wallet.best/v1/invoices
 ## Список инвойсов, которые выставил пользователь
 
 ```shell
-$ curl -u +12345675578:password http://sandbox.wallet.best/v1/invoices/created
+$ curl -u +12345675578:password https://sandbox.wallet.best/v1/invoices/created
 ```
 
 ```json
@@ -117,7 +117,7 @@ $ curl -u +12345675578:password http://sandbox.wallet.best/v1/invoices/created
 ## Повторить (продублировать) инвойс
 
 ```shell
-$ curl -u +12345675578:password http://sandbox.wallet.best/v1/invoices/5422cf7cb7f47b54010041a7/duplicate
+$ curl -u +12345675578:password https://sandbox.wallet.best/v1/invoices/5422cf7cb7f47b54010041a7/duplicate
 ```
 
 ```json
@@ -144,7 +144,7 @@ $ curl -u +12345675578:password http://sandbox.wallet.best/v1/invoices/5422cf7cb
 ## Отменить инвойс
 
 ```shell
-$ curl -u +12345675578:password http://sandbox.wallet.best/v1/invoices/5422cebeb7f47b53010041a7/cancel
+$ curl -u +12345675578:password https://sandbox.wallet.best/v1/invoices/5422cebeb7f47b53010041a7/cancel
 ```
 
 ```json
@@ -166,7 +166,7 @@ $ curl -u +12345675578:password http://sandbox.wallet.best/v1/invoices/5422cebeb
 ## Оплатить инвойс
 
 ```shell
-$ curl -u +12345675578:password -X POST http://sandbox.wallet.best/v1/invoices/5422dd02b7f47b52010041a9/pay
+$ curl -u +12345675578:password -X POST https://sandbox.wallet.best/v1/invoices/5422dd02b7f47b52010041a9/pay
 ```
 
 ```json

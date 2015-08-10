@@ -2,7 +2,7 @@
 
 ##Загрузка списка точек пополения
 ```shell
-curl -uuser:user http://sandbox.wallet.best/adm2/locations/?size=1
+curl -uuser:user https://sandbox.wallet.best/adm2/locations/?size=1
 ```
 
 ```json
@@ -63,7 +63,7 @@ curl -uuser:user http://sandbox.wallet.best/adm2/locations/?size=1
 ##Получение точки пополнения по id
 
 ```shell
-$ curl -uuser:user http://sandbox.wallet.best/adm2/locations/554ce380cccc9082250041f2
+$ curl -uuser:user https://sandbox.wallet.best/adm2/locations/554ce380cccc9082250041f2
 ```
 
 ```json
@@ -105,7 +105,7 @@ $ curl -uuser:user http://sandbox.wallet.best/adm2/locations/554ce380cccc9082250
 ##Добавление точки пополнения (руками)
 
 ```shell
-curl -H 'Content-type:application/json' -uuser:user -d '{"type":"Type?Oo","worktime":"Worktime","name":"Some name","address":"Some address string","group":"Some group","source_id":"admin","latitude":151413.123,"longitude":100500.123,"projects":"mbank"}' http://sandbox.wallet.best/adm2/locations/
+curl -H 'Content-type:application/json' -uuser:user -d '{"type":"Type?Oo","worktime":"Worktime","name":"Some name","address":"Some address string","group":"Some group","source_id":"admin","latitude":151413.123,"longitude":100500.123,"projects":"mbank"}' https://sandbox.wallet.best/adm2/locations/
 ```
 
 ```json
@@ -157,7 +157,7 @@ curl -H 'Content-type:application/json' -uuser:user -d '{"type":"Type?Oo","workt
 ##Изменение точки пополнения
 
 ```shell
-curl -H 'Content-type:application/json' -X POST -uuser:user -d '{"type":{"ru_RU":"Type","en_US":"Type english"},"worktime":{"ru_RU":"Worktime","en_US":null},"address":{"ru_RU":"Address ru","en_US":"Address en"},"latitude":1514113.123,"longitude":1005100.123,"name":"Some name","group":"verification","source_id":"admin"}' http://sandbox.wallet.best/adm2/locations/554ce621cccc9093300041b3
+curl -H 'Content-type:application/json' -X POST -uuser:user -d '{"type":{"ru_RU":"Type","en_US":"Type english"},"worktime":{"ru_RU":"Worktime","en_US":null},"address":{"ru_RU":"Address ru","en_US":"Address en"},"latitude":1514113.123,"longitude":1005100.123,"name":"Some name","group":"verification","source_id":"admin"}' https://sandbox.wallet.best/adm2/locations/554ce621cccc9093300041b3
 ```
 
 ```json
@@ -201,7 +201,7 @@ curl -H 'Content-type:application/json' -X POST -uuser:user -d '{"type":{"ru_RU"
 ##Добавление точек пополнения из файла
 
 ```shell
-curl -uuser:user -H 'Content-Type: multipart/form-data' -X POST -F "file=/Users/Samorai/www/mbank.api/tests/data/csv/replenishment_points.csv" http://sandbox.wallet.best/adm2/locations/file
+curl -uuser:user -H 'Content-Type: multipart/form-data' -X POST -F "file=/Users/Samorai/www/mbank.api/tests/data/csv/replenishment_points.csv" https://sandbox.wallet.best/adm2/locations/file
 ```
 
 ```json

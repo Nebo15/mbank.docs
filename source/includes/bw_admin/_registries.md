@@ -2,7 +2,7 @@
 
 ##Загрузка списка реестров
 ```shell
-curl -uuser:user http://sandbox.wallet.best/adm2/registries/?size=2
+curl -uuser:user https://sandbox.wallet.best/adm2/registries/?size=2
 ```
 
 ```json
@@ -60,7 +60,7 @@ curl -uuser:user http://sandbox.wallet.best/adm2/registries/?size=2
 * 'application/gzip'
 
 ```shell
-$ curl -H 'Content-type:application/json' -uuser:user -d '{"date":"2015-04-11","type":"testType4"}' http://sandbox.wallet.best/adm2/registries/
+$ curl -H 'Content-type:application/json' -uuser:user -d '{"date":"2015-04-11","type":"testType4"}' https://sandbox.wallet.best/adm2/registries/
 ```
 
 ```json
@@ -77,7 +77,7 @@ $ curl -H 'Content-type:application/json' -uuser:user -d '{"date":"2015-04-11","
 > После первого запроса на полученный url нужно загрузить файл
 
 ```shell
-$ curl -uuser:user -H 'Content-Type: multipart/form-data' -X POST -F "file=@path_to_file/test.xls" http://sandbox.wallet.best/adm2/registries/55424de7cccc9049990041b1
+$ curl -uuser:user -H 'Content-Type: multipart/form-data' -X POST -F "file=@path_to_file/test.xls" https://sandbox.wallet.best/adm2/registries/55424de7cccc9049990041b1
 ```
 
 ```json
@@ -99,7 +99,7 @@ $ curl -uuser:user -H 'Content-Type: multipart/form-data' -X POST -F "file=@path
 ##Загрузка реестра по id
 
 ```shell
-curl -uuser:user http://sandbox.wallet.best/adm2/registries/55423dafcccc9048990041ac
+curl -uuser:user https://sandbox.wallet.best/adm2/registries/55423dafcccc9048990041ac
 ```
 
 ```json

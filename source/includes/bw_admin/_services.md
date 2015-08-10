@@ -3,7 +3,7 @@
 ##Загрузка списка сервисов
 
 ```shell
-curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/adm2/services/?size=1"
+curl -H 'X-Project-ID:mbank' -X GET -u user:user "https://sandbox.wallet.best/adm2/services/?size=1"
 ```
 
 ```json
@@ -104,7 +104,7 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/adm
 ##Загрузка сервиса по id
 
 ```shell
-$ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c44"
+$ curl -H 'X-Project-ID:mbank' -X GET -u user:user "https://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c44"
 ```
 
 ```json
@@ -276,7 +276,7 @@ $ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/a
 ##Редактирование сервиса
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:aplication/json' -X POST -u user:user -d '{"name": { "ru_RU": "Теле2", "en_US" "Tele2" }, "keywords": "", "mserver_id": 1000, "category_id": "53359fb2255c741a749f0c42", "limit_html": { "ru_RU": "Лимитов нет", "en_US": "There are no limits at this time" }, "icon_url": "http:\/\/sandbox.wallet.best\/img\/services\/53359fb2255c741a749f0c44.png?1422632666", "maxsum": 15000, "minsum": 1, "trans_title": { "ru_RU": "{{ payment.service.name }}", "en_US": "{{ payment.service.name }}" }, "trans_subtitle": { "ru_RU": "Пополнение", "en_US": "Refill" }, "trans_description": { "ru_RU": "По номеру {{ payment.parameters.phoneNumber }}", "en_US": "Phone number: {{ payment.parameters.phoneNumber }}" }, "verification_required" : true, "autopayment_service" : false, "status": "online" }'  "http://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c44"
+curl -H 'X-Project-ID:mbank' -H 'Content-type:aplication/json' -X POST -u user:user -d '{"name": { "ru_RU": "Теле2", "en_US" "Tele2" }, "keywords": "", "mserver_id": 1000, "category_id": "53359fb2255c741a749f0c42", "limit_html": { "ru_RU": "Лимитов нет", "en_US": "There are no limits at this time" }, "icon_url": "http:\/\/sandbox.wallet.best\/img\/services\/53359fb2255c741a749f0c44.png?1422632666", "maxsum": 15000, "minsum": 1, "trans_title": { "ru_RU": "{{ payment.service.name }}", "en_US": "{{ payment.service.name }}" }, "trans_subtitle": { "ru_RU": "Пополнение", "en_US": "Refill" }, "trans_description": { "ru_RU": "По номеру {{ payment.parameters.phoneNumber }}", "en_US": "Phone number: {{ payment.parameters.phoneNumber }}" }, "verification_required" : true, "autopayment_service" : false, "status": "online" }'  "https://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c44"
 
 ```
 
@@ -307,7 +307,7 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:aplication/json' -X POST -u user:u
 ##Добавление иконки сервиса
 
 ```shell
-curl -uuser:user -H 'Content-Type: multipart/form-data' -X POST -F "file=@path_to_file/replenishment_points.csv" http://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c44/icon
+curl -uuser:user -H 'Content-Type: multipart/form-data' -X POST -F "file=@path_to_file/replenishment_points.csv" https://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c44/icon
 ```
 
 ```json
@@ -319,7 +319,7 @@ curl -uuser:user -H 'Content-Type: multipart/form-data' -X POST -F "file=@path_t
 ##Изменение статуса сервиса
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:aplication/json' -X POST -u user:user -d '{"status":"offline","is_enabled":false}' http://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c44/status
+curl -H 'X-Project-ID:mbank' -H 'Content-type:aplication/json' -X POST -u user:user -d '{"status":"offline","is_enabled":false}' https://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c44/status
 ```
 
 ```json
@@ -379,7 +379,7 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:aplication/json' -X POST -u user:u
 ##Удаление сервиса
 
 ```shell
-curl -H 'X-Project-ID:mbank' -X DELETE -u user:user http://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c44
+curl -H 'X-Project-ID:mbank' -X DELETE -u user:user https://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c44
 ```
 
 ```json
@@ -437,7 +437,7 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user "sandbox.wallet.best/adm2/servi
 ##Загрузка списка новых сервисов
 
 ```shell
-curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/adm2/services/new"
+curl -H 'X-Project-ID:mbank' -X GET -u user:user "https://sandbox.wallet.best/adm2/services/new"
 ```
 
 ```json
@@ -476,7 +476,7 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/adm
 ##Добавление сервиса
 
 ```shell
-curl -H 'X-Project-ID:mbank' -X POST -u user:user -d '{"mserver_id":"1562"}' http://sandbox.wallet.best/adm2/services/
+curl -H 'X-Project-ID:mbank' -X POST -u user:user -d '{"mserver_id":"1562"}' https://sandbox.wallet.best/adm2/services/
 ```
 
 ```json
@@ -604,7 +604,7 @@ curl -H 'X-Project-ID:mbank' -XGET -u user:user "sandbox.wallet.best/adm2/geo/"
 ##Привязка гео-точки к сервису
 
 ```shell
-curl  -X POST -u user:user -d '{"geo_id":"54be73b7b7f47bef9100b64c"}' http://sandbox.wallet.best/adm2/services/537e27a956c35f87703a3fa7/geo
+curl  -X POST -u user:user -d '{"geo_id":"54be73b7b7f47bef9100b64c"}' https://sandbox.wallet.best/adm2/services/537e27a956c35f87703a3fa7/geo
 ```
 
 ```json
@@ -711,7 +711,7 @@ curl  -X POST -u user:user -d '{"geo_id":"54be73b7b7f47bef9100b64c"}' http://san
 ##Удаление привязки гео-точки от сервиса
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u user:user http://sandbox.wallet.best/adm2/services/537e27a956c35f87703a3fa7/geo/54be73b7b7f47bef9100b64c
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u user:user https://sandbox.wallet.best/adm2/services/537e27a956c35f87703a3fa7/geo/54be73b7b7f47bef9100b64c
 ```
 
 ```json

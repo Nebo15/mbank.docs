@@ -2,7 +2,7 @@
 ##Загрузка кошелька
 
 ```shell
-curl -H 'X-Project-ID:mbank' -uuser:user http://sandbox.wallet.best/adm2/wallets/+380631345678
+curl -H 'X-Project-ID:mbank' -uuser:user https://sandbox.wallet.best/adm2/wallets/+380631345678
 ```
 
 ```json
@@ -172,7 +172,7 @@ curl -H 'X-Project-ID:mbank' -uuser:user http://sandbox.wallet.best/adm2/wallets
 ##Удаление кошелька
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u user:user "http://sandbox.wallet.best/adm2/wallets/+123457643395"
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u user:user "https://sandbox.wallet.best/adm2/wallets/+123457643395"
 ```
 
 ```json
@@ -190,7 +190,7 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u use
 ##Изменение email кошелька
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"email":"test@testdt.com"}' http://sandbox.wallet.best/adm2/wallets/+12345842116/email
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"email":"test@testdt.com"}' https://sandbox.wallet.best/adm2/wallets/+12345842116/email
 ```
 
 ```json
@@ -206,7 +206,7 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:
 ##Изменение person/status кошелька
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"person_status":"data_entered"}' http://sandbox.wallet.best/adm2/wallets/+12345842117/person/status
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"person_status":"data_entered"}' https://sandbox.wallet.best/adm2/wallets/+12345842117/person/status
 ```
 
 ```json
@@ -226,7 +226,7 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:
 ##Заставить сменить пароль
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"password_reset":true}' http://sandbox.wallet.best/adm2/wallets/+12345842117/password/reset
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"password_reset":true}' https://sandbox.wallet.best/adm2/wallets/+12345842117/password/reset
 ```
 
 ```json
@@ -245,7 +245,7 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:
 ##Удаление аватарки пользователя
 
 ```shell
-$curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u user:user http://sandbox.wallet.best/adm2/wallets/+123457443658/icon
+$curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u user:user https://sandbox.wallet.best/adm2/wallets/+123457443658/icon
 ```
 
 ```json
@@ -261,7 +261,7 @@ $curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u us
 ##Получение списка устройств кошелька
 
 ```shell
-curl -H 'X-Project-ID:mbank' -X GET -u user:user http://sandbox.wallet.best/adm2/wallets/+12345471665/devices
+curl -H 'X-Project-ID:mbank' -X GET -u user:user https://sandbox.wallet.best/adm2/wallets/+12345471665/devices
 
 ```
 
@@ -310,7 +310,7 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user http://sandbox.wallet.best/adm2
 ##Блокировка кошелька
 
 ```shell
-curl  -X POST -u user:user -d '{"message":"message","reason":"reason"}' http://sandbox.wallet.best/adm2/wallets/+12345334867/disable
+curl  -X POST -u user:user -d '{"message":"message","reason":"reason"}' https://sandbox.wallet.best/adm2/wallets/+12345334867/disable
 ```
 
 ```json
@@ -329,7 +329,7 @@ curl  -X POST -u user:user -d '{"message":"message","reason":"reason"}' http://s
 ##Разблокировка кошелька
 
 ```shell
-curl  -X POST -u user:user http://sandbox.wallet.best/adm2/wallets/+12345334867/enable
+curl  -X POST -u user:user https://sandbox.wallet.best/adm2/wallets/+12345334867/enable
 ```
 
 ```json
@@ -345,7 +345,7 @@ curl  -X POST -u user:user http://sandbox.wallet.best/adm2/wallets/+12345334867/
 ##Получение списка пересекающихся кошельков
 
 ```shell
-curl -H 'X-Project-ID:mbank' -X GET -u user:user http://sandbox.wallet.best/adm2/wallets/+380631345678/intersecting
+curl -H 'X-Project-ID:mbank' -X GET -u user:user https://sandbox.wallet.best/adm2/wallets/+380631345678/intersecting
 ```
 
 ```json
@@ -426,7 +426,7 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user http://sandbox.wallet.best/adm2
 ##Разослать PUSH уведомления списку кошельков
 
 ```shell
-curl  -X POST -u user:user -d '{"event":"some_event", "message":"test", "phones":["+79107653522","+79633963636", "+7123"]}' "http://sandbox.wallet.best/adm2/wallets/pushes"
+curl  -X POST -u user:user -d '{"event":"some_event", "message":"test", "phones":["+79107653522","+79633963636", "+7123"]}' "https://sandbox.wallet.best/adm2/wallets/pushes"
 ```
 
 ```json

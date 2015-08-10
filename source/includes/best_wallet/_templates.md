@@ -18,7 +18,7 @@
 $ curl -H "Authorization: Bearer b48a991e-e010-4329-9817-f8389a774c45" -H 'Content-type:application/json'
 -d '{"name": "Template", "amount": 350, "type": "public", "service_id": 1000,
 "parameters": {"phoneNumber": "+380509990088"}, "disabled": ["phoneNumber"]}'
-http://sandbox.wallet.best/v1/payments/templates
+https://sandbox.wallet.best/v1/payments/templates
 ```
 
 ```json
@@ -53,7 +53,7 @@ http://sandbox.wallet.best/v1/payments/templates
 Если же нужно получить список по другим кошелькам - используйте тип **public**
 
 ```shell
-$ curl -H "Authorization: Bearer b48a991e-e010-4329-9817-f8389a774c45" http://sandbox.wallet.best/v1/payments/templates
+$ curl -H "Authorization: Bearer b48a991e-e010-4329-9817-f8389a774c45" https://sandbox.wallet.best/v1/payments/templates
 ```
 ```json
 {
@@ -126,7 +126,7 @@ $ curl -H "Authorization: Bearer b48a991e-e010-4329-9817-f8389a774c45" http://sa
 
 ```shell
 $ curl -H "Authorization: Bearer b48a991e-e010-4329-9817-f8389a774c45"
-http://sandbox.wallet.best/v1/payments/templates/5422dd02b7f47b52010041a9
+https://sandbox.wallet.best/v1/payments/templates/5422dd02b7f47b52010041a9
 ```
 ```json
 {
@@ -191,7 +191,7 @@ http://sandbox.wallet.best/v1/payments/templates/5422dd02b7f47b52010041a9
 $ curl -H "Authorization: Bearer b48a991e-e010-4329-9817-f8389a774c45" -H 'Content-type:application/json'
 -d '{"name": "Template", "amount": 350, "type": "public", "service_id": 1000,
 "params": {"phoneNumber": "+380509990088"}, "disabled": ["phoneNumber"]}'
-http://sandbox.wallet.best/v1/payments/templates/5422dd02b7f47b52010041a9
+https://sandbox.wallet.best/v1/payments/templates/5422dd02b7f47b52010041a9
 ```
 
 ```json
@@ -207,7 +207,7 @@ http://sandbox.wallet.best/v1/payments/templates/5422dd02b7f47b52010041a9
 Удалить можно только свои шаблоны
 ```shell
 $ curl -H "Authorization: Bearer b48a991e-e010-4329-9817-f8389a774c45" -X DELETE
-http://sandbox.wallet.best/v1/payments/templates/5422dd02b7f47b52010041a9
+https://sandbox.wallet.best/v1/payments/templates/5422dd02b7f47b52010041a9
 ```
 
 ```json
