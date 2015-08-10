@@ -2420,7 +2420,7 @@ $ curl -u +79261111111:password -H &#39;Content-type:application/json&#39; http:
 <td style="text-align: left">Ранее отмененный платеж сделан успешным (сторно сторно and we need to go deeper)</td>
 </tr>
 </tbody></table>
-<h3 id='webhook-dlya-logirovaniya-perevodov-besta'>Webhook для логирования переводов Бэста</h3><pre class="highlight shell"><code><span class="gp">$ </span>curl <span class="s1">'http://sandbox.wallet.best/v1/payments/best/p2p'</span> -X POST -H <span class="s1">'Content-type:application/json'</span> -d <span class="s1">'{"payment_id": 12345678, "sender": {"id":7777777, "phone": "+79250101212"}, "recipient": {"id":88888888, "phone": "+79110992233"}}'</span>
+<h3 id='webhook-dlya-logirovaniya-perevodov-besta'>Webhook для логирования переводов Бэста</h3><pre class="highlight shell"><code><span class="gp">$ </span>curl <span class="s1">'https://sandbox.wallet.best/v1/payments/best/p2p'</span> -X POST -H <span class="s1">'Content-type:application/json'</span> -d <span class="s1">'{"payment_id": 12345678, "sender": {"id":7777777, "phone": "+79250101212"}, "recipient": {"id":88888888, "phone": "+79110992233"}}'</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
