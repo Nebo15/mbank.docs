@@ -107,7 +107,7 @@
 
 <p>В ответе в <em>meta</em> присутствует параметр <strong>request_time</strong> со значением UNIX timestamp.
 Если делать запрос с параметром <strong>If-Modified-Since</strong> в котором будет указан timestamp предыдущего запроса, то ответ может быть с HTTP кодом 304</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl http://sandbox.wallet.best/v1/errors
+<pre class="highlight shell"><code><span class="gp">$ </span>curl https://sandbox.wallet.best/v1/errors
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -165,7 +165,7 @@
 <li><code class="prettyprint">wallet_not_active</code> - кошелек не активирован</li>
 <li><code class="prettyprint">wallet_disabled</code> - заблокирован администрацией</li>
 </ul>
-<h1 id='nastroyki-prilozheniya'>Настройки приложения</h1><pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:p@ssw0rD http://sandbox.wallet.best/v1/options
+<h1 id='nastroyki-prilozheniya'>Настройки приложения</h1><pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:p@ssw0rD https://sandbox.wallet.best/v1/options
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -205,7 +205,7 @@
 <p>Mserver: http://nebo15.github.io/mbank.docs/mserver.html#zapros-koda-dlya-smeny-parolya</p>
 <h2 id='smena-parolya'>Смена пароля</h2>
 <p>Mserver: http://nebo15.github.io/mbank.docs/mserver.html#smena-parolya</p>
-<h2 id='zagruzka-koshelka'>Загрузка кошелька</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/wallet
+<h2 id='zagruzka-koshelka'>Загрузка кошелька</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:p@ssw0rD https://sandbox.wallet.best/v1/wallet
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -231,7 +231,7 @@
 </span></code></pre>
 <h2 id='udalenie-koshelka'>Удаление кошелька</h2>
 <p><em>Метод не работает на prod.</em></p>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u admin_level_login:password -X DELETE http://sandbox.wallet.best/v1/wallet/%2B79261111111
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -u admin_level_login:password -X DELETE https://sandbox.wallet.best/v1/wallet/%2B79261111111
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -257,7 +257,7 @@
 -d <span class="s1">'{"family_name": "Арсеньев", "given_name": "Алексей", "patronymic_name": "Александрович",
 "passport_series_number": "2202655885", "passport_issued_at" : "2012-02-27",
 "itn": "330500938709", "ssn": "11223344595"}'</span>
-http://sandbox.wallet.best/v1/wallet/person
+https://sandbox.wallet.best/v1/wallet/person
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -289,7 +289,7 @@ http://sandbox.wallet.best/v1/wallet/person
 <li><code class="prettyprint">person_already_verified</code> - перcональные данные утверждены, изменение невозможно, обратитесь в поддержку</li>
 <li><code class="prettyprint">duplicate_person</code> - указанные персональные данные уже были использованы для идентификации другого кошелька</li>
 </ul>
-<h2 id='zagruzka-personalnyh-dannyh-polzovatelya'>Загрузка персональных данных пользователя</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/wallet/person
+<h2 id='zagruzka-personalnyh-dannyh-polzovatelya'>Загрузка персональных данных пользователя</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:p@ssw0rD https://sandbox.wallet.best/v1/wallet/person
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -310,7 +310,7 @@ http://sandbox.wallet.best/v1/wallet/person
 </span></code></pre>
 <h2 id='zagruzka-kartinki'>Загрузка картинки</h2>
 <p>Форматы: JPEG, PNG. На сервере делается auto-rotate. Размер файла до 10 мегабайт.</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:p@ssw0rD -X POST -F <span class="s2">"file=@/path/to/image.jpg"</span> http://sandbox.wallet.best/v1/wallet/picture
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:p@ssw0rD -X POST -F <span class="s2">"file=@/path/to/image.jpg"</span> https://sandbox.wallet.best/v1/wallet/picture
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -318,7 +318,7 @@ http://sandbox.wallet.best/v1/wallet/person
     </span><span class="p">},</span><span class="w">
 </span><span class="err">}</span><span class="w">
 </span></code></pre>
-<h2 id='udalenie-kartinki'>Удаление картинки</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:p@ssw0rD -X DELETE http://sandbox.wallet.best/v1/wallet/picture
+<h2 id='udalenie-kartinki'>Удаление картинки</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:p@ssw0rD -X DELETE https://sandbox.wallet.best/v1/wallet/picture
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -334,7 +334,7 @@ http://sandbox.wallet.best/v1/wallet/person
 </ul>
 
 <p>Если искомый кошелек не активирован, то он не найдется.</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +12345675578:password -H <span class="s1">'Content-type:application/json'</span> -d <span class="s1">'{"contacts": [ {"phone": "+79990000000"}, {"phone": "+79260000001"}, {"phone": "+79260000002"} ]}'</span> http://sandbox.wallet.best/v1/wallet/find
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +12345675578:password -H <span class="s1">'Content-type:application/json'</span> -d <span class="s1">'{"contacts": [ {"phone": "+79990000000"}, {"phone": "+79260000001"}, {"phone": "+79260000002"} ]}'</span> https://sandbox.wallet.best/v1/wallet/find
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -346,7 +346,7 @@ http://sandbox.wallet.best/v1/wallet/person
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h2 id='poluchenie-spiska-tochek-popolnenya'>Получение списка точек пополненя</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u +12345675578:password http://sandbox.wallet.best/v1/wallet/replenishment_points
+<h2 id='poluchenie-spiska-tochek-popolnenya'>Получение списка точек пополненя</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u +12345675578:password https://sandbox.wallet.best/v1/wallet/replenishment_points
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -379,7 +379,7 @@ http://sandbox.wallet.best/v1/wallet/person
 <li><code class="prettyprint">email</code> - электронная почта получателя выписки</li>
 <li><code class="prettyprint">email_send_frequency</code> - <strong>never | after_payment | daily | monthly</strong> периодичность отправки на почту лога транзакций</li>
 </ul>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +12345675578:password -d <span class="s1">'{"email" : "test@wallet.best", "email_send_frequency" : "daily"}'</span> http://sandbox.wallet.best/v1/wallet/settings
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +12345675578:password -d <span class="s1">'{"email" : "test@wallet.best", "email_send_frequency" : "daily"}'</span> https://sandbox.wallet.best/v1/wallet/settings
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="err">{</span><span class="w">
@@ -399,7 +399,7 @@ http://sandbox.wallet.best/v1/wallet/person
 <li><code class="prettyprint">verified</code> - true</li>
 <li><code class="prettyprint">personified</code> - true</li>
 </ul>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -d <span class="s1">'{"phone": "+12345675578", "verified": true}'</span> http://sandbox.wallet.best/v1/wallet/status?webhook_client_id<span class="o">=</span>mserver&amp;webhook_client_token<span class="o">=</span>token
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -d <span class="s1">'{"phone": "+12345675578", "verified": true}'</span> https://sandbox.wallet.best/v1/wallet/status?webhook_client_id<span class="o">=</span>mserver&amp;webhook_client_token<span class="o">=</span>token
 
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -492,7 +492,7 @@ http://sandbox.wallet.best/v1/wallet/person
 <li><code class="prettyprint">name</code> - подстрока, входящая (в любом месте) в название сервиса или в keywords. Не обязательно.</li>
 <li><code class="prettyprint">geo_id</code> - Не обязательно.</li>
 </ul>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:p@ssw0rD https://sandbox.wallet.best/v1/services
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -616,7 +616,7 @@ http://sandbox.wallet.best/v1/wallet/person
 <h2 id='zagruzka-spiska-grupp'>Загрузка списка групп</h2>
 <p>Поле <code class="prettyprint">amount</code> содержит количество включенных сервисов в группе. В ответе в meta присутствует параметр request_time со значением UNIX timestamp.
 Если делать запрос с параметром <strong>If-Modified-Since</strong> в котором будет указан timestamp предыдущего запроса, то ответ может быть с HTTP кодом 304</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:p@ssw0rD http://sandbox.wallet.best/v1/groups
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:p@ssw0rD https://sandbox.wallet.best/v1/groups
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -661,7 +661,7 @@ http://sandbox.wallet.best/v1/wallet/person
 
 <p>В метаданных есть поле <code class="prettyprint">suggestion_rules</code> c массивом <strong>код оператора в международном формате</strong> : <strong>ID сервиса</strong>
 <code class="prettyprint">shell
-$ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/groups
+$ curl -u+79261111111:p@ssw0rD https://sandbox.wallet.best/v1/services/groups
 </code></p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -734,7 +734,7 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/groups
     </span><span class="err">}</span><span class="w">
 </span><span class="err">}</span><span class="w">
 </span></code></pre>
-<h2 id='informatsiya-o-servise-po-id'>Информация о сервисе по id</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/42
+<h2 id='informatsiya-o-servise-po-id'>Информация о сервисе по id</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:p@ssw0rD https://sandbox.wallet.best/v1/services/42
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -829,7 +829,7 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/groups
 <li><code class="prettyprint">provider_id</code></li>
 <li><code class="prettyprint">provider_region_code</code></li>
 </ul>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/mnp?provider_id<span class="o">=</span>beline&amp;provider_region_code<span class="o">=</span>ru
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:p@ssw0rD https://sandbox.wallet.best/v1/services/mnp?provider_id<span class="o">=</span>beline&amp;provider_region_code<span class="o">=</span>ru
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -892,7 +892,7 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/groups
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h2 id='opredelenie-opsosa-po-nomeru-telefona'>Определение ОПСОСа по номеру телефона</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl http://sandbox.wallet.best/v1/services/mobile/79261111111
+<h2 id='opredelenie-opsosa-po-nomeru-telefona'>Определение ОПСОСа по номеру телефона</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl https://sandbox.wallet.best/v1/services/mobile/79261111111
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -901,7 +901,7 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/groups
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">834</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"МегаФон"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://sandbox.wallet.best/img/providers/dev_834.png"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"icon_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://sandbox.wallet.best/img/providers/dev_834.png"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"fix"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -933,7 +933,7 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/groups
 </ul>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl -X POST -H <span class="s1">'Content-type:application/json'</span>
 -u+79261111111:p@ssw0rD -d <span class="s1">'{"title" : "%SERVICE TITLE%" }'</span>
-http://sandbox.wallet.best/v1/services/order
+https://sandbox.wallet.best/v1/services/order
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -991,7 +991,7 @@ http://sandbox.wallet.best/v1/services/order
 <li><code class="prettyprint">filter_by</code> - использовать фильтр, поддерживается: <code class="prettyprint">title</code>. Не обязательно.</li>
 <li><code class="prettyprint">title</code> - подстрока, входящая (в любом месте) в название населенного пункта, работает вместе с <code class="prettyprint">filter_by=title</code>. Не обязательно.</li>
 </ul>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:p@ssw0rD http://sandbox.wallet.best/v1/geo?filter_by<span class="o">=</span>title<span class="se">\&amp;</span><span class="nv">title</span><span class="o">=</span>%D0%BC%D0%BE%D1%81%D0%BA%D0%B2
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:p@ssw0rD https://sandbox.wallet.best/v1/geo?filter_by<span class="o">=</span>title<span class="se">\&amp;</span><span class="nv">title</span><span class="o">=</span>%D0%BC%D0%BE%D1%81%D0%BA%D0%B2
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1231,7 +1231,7 @@ http://sandbox.wallet.best/v1/services/order
  -d <span class="s1">'{"type": "out", "client_payment_id": "e731a7e2-c553-4295-867e-1023359bee28",
  "amount": 100, "service": 61, "parameters": {"phoneNumber": "9267101283",
  "BIK": "044583151", "Name": "name", "SName": "sname", "Fam": "fam"}}'</span>
- http://sandbox.wallet.best/v1/payments
+ https://sandbox.wallet.best/v1/payments
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1380,7 +1380,7 @@ http://sandbox.wallet.best/v1/services/order
 <pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password -H <span class="s1">'Content-type:application/json'</span>
  -d <span class="s1">'{"type": "p2p", "client_payment_id": "071c6d23-7508-4e35-ad92-852308a47677", "amont": 100,
  "destination": "+79261111112", "message": "Съешь ещё этих мягких французских булок, да выпей чаю"}'</span>
- http://sandbox.wallet.best/v1/payments
+ https://sandbox.wallet.best/v1/payments
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1437,7 +1437,7 @@ http://sandbox.wallet.best/v1/services/order
 <p>Пример однократного пополнения</p>
 
 <p>Создаем платеж:</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:password -H <span class="s1">'Content-type:application/json'</span> -d <span class="s1">'{"type": "in", "client_payment_id": "071c6d23-7508-4e35-ad92-852308a47678", "amount": 100}'</span> http://sandbox.wallet.best/v1/payments
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:password -H <span class="s1">'Content-type:application/json'</span> -d <span class="s1">'{"type": "in", "client_payment_id": "071c6d23-7508-4e35-ad92-852308a47678", "amount": 100}'</span> https://sandbox.wallet.best/v1/payments
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1465,7 +1465,7 @@ http://sandbox.wallet.best/v1/services/order
 </span></code></pre>
 
 <p>Платим:</p>
-<pre class="highlight shell"><code><span class="nv">$curl</span> -u +79261111111:password -H <span class="s1">'Content-type:application/json'</span> -X POST http://sandbox.wallet.best/v1/payments/1401089237212/pay
+<pre class="highlight shell"><code><span class="nv">$curl</span> -u +79261111111:password -H <span class="s1">'Content-type:application/json'</span> -X POST https://sandbox.wallet.best/v1/payments/1401089237212/pay
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1498,7 +1498,7 @@ http://sandbox.wallet.best/v1/services/order
 <p>Пример однократного пополнения с сохранением данных карты</p>
 
 <p>Создаем платеж:</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:password -H <span class="s1">'Content-type:application/json'</span> -d <span class="s1">'{"type": "in", "client_payment_id": "071c6d23-7508-4e35-ad92-852308a47679", "amount": 100, "store_card": true}'</span> http://sandbox.wallet.best/v1/payments
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:password -H <span class="s1">'Content-type:application/json'</span> -d <span class="s1">'{"type": "in", "client_payment_id": "071c6d23-7508-4e35-ad92-852308a47679", "amount": 100, "store_card": true}'</span> https://sandbox.wallet.best/v1/payments
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1527,7 +1527,7 @@ http://sandbox.wallet.best/v1/services/order
 </span></code></pre>
 
 <p>Платим:</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:password -H <span class="s1">'Content-type:application/json'</span> -X POST http://sandbox.wallet.best/v1/payments/1401089237231/pay
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:password -H <span class="s1">'Content-type:application/json'</span> -X POST https://sandbox.wallet.best/v1/payments/1401089237231/pay
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1559,7 +1559,7 @@ http://sandbox.wallet.best/v1/services/order
 <p>далее следует перенаправить пользователя на платежную страницу по ссылке из поля <code class="prettyprint">card.payment_page_url</code>.</p>
 
 <p>Убедимся, что платеж успешен и карта сохранена:</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:password http://sandbox.wallet.best/v1/payments/1401089237231
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:password https://sandbox.wallet.best/v1/payments/1401089237231
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1594,7 +1594,7 @@ http://sandbox.wallet.best/v1/services/order
 <p>Используем карту #21 сохраненную в предыдущем примере.</p>
 
 <p>Создаем платеж:</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:password -H <span class="s1">'Content-type:application/json'</span> -d <span class="s1">'{"type": "in", "client_payment_id": "071c6d23-7508-4e35-ad92-852308a47689", "amount": 100, "card": 21}'</span> http://sandbox.wallet.best/v1/payments
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:password -H <span class="s1">'Content-type:application/json'</span> -d <span class="s1">'{"type": "in", "client_payment_id": "071c6d23-7508-4e35-ad92-852308a47689", "amount": 100, "card": 21}'</span> https://sandbox.wallet.best/v1/payments
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1625,7 +1625,7 @@ http://sandbox.wallet.best/v1/services/order
 </span></code></pre>
 
 <p>Платим:</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password -H <span class="s1">'Content-type:application/json'</span> -X POST http://sandbox.wallet.best/v1/payments/1401089237232/pay
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password -H <span class="s1">'Content-type:application/json'</span> -X POST https://sandbox.wallet.best/v1/payments/1401089237232/pay
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1681,7 +1681,7 @@ http://sandbox.wallet.best/v1/services/order
 <pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:password -H <span class="s1">'Content-type:application/json'</span>
 -d <span class="s1">'{"type": "inout", "client_payment_id": "021c6d23-7508-4e35-ad92-852308a47689", "amount": 100, "service": 834,
 "parameters": {"phoneNumber": "9267101283"}}'</span>
-http://sandbox.wallet.best/v1/payments
+https://sandbox.wallet.best/v1/payments
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1752,7 +1752,7 @@ http://sandbox.wallet.best/v1/payments
 
 <p>Платим:
 <code class="prettyprint">shell
-curl -u+79261111111:password -H &#39;Content-type:application/json&#39; -X POST http://sandbox.wallet.best/v1/payments/25818/pay
+curl -u+79261111111:password -H &#39;Content-type:application/json&#39; -X POST https://sandbox.wallet.best/v1/payments/25818/pay
 </code></p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1810,7 +1810,7 @@ curl -u+79261111111:password -H &#39;Content-type:application/json&#39; -X POST 
 $ curl -u+79261111111:password -H &#39;Content-type:application/json&#39;
 -d &#39;{&quot;type&quot;: &quot;inout&quot;, &quot;client_payment_id&quot;: &quot;021c6d23-7508-4e35-ad92-852308a47689&quot;, &quot;amount&quot;: 100, &quot;store_card&quot;: true,
 &quot;service&quot;: 834, &quot;parameters&quot;: {&quot;phoneNumber&quot;: &quot;9267101283&quot;}}&#39;
-http://sandbox.wallet.best/v1/payments
+https://sandbox.wallet.best/v1/payments
 </code></p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1881,7 +1881,7 @@ http://sandbox.wallet.best/v1/payments
 
 <p>Платим:
 <code class="prettyprint">shell
-curl -u+79261111111:password -H &#39;Content-type:application/json&#39; -X POST http://sandbox.wallet.best/v1/payments/25818/pay
+curl -u+79261111111:password -H &#39;Content-type:application/json&#39; -X POST https://sandbox.wallet.best/v1/payments/25818/pay
 </code></p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1938,7 +1938,7 @@ curl -u+79261111111:password -H &#39;Content-type:application/json&#39; -X POST 
 $ curl -u+79261111111:password -H &#39;Content-type:application/json&#39;
 -d &#39;{&quot;type&quot;: &quot;inout&quot;, &quot;client_payment_id&quot;: &quot;021c6d23-7508-4e35-ad92-852308a47689&quot;, &quot;amount&quot;: 100, &quot;card&quot;: 21, &quot;service&quot;: 834,
 &quot;parameters&quot;: {&quot;phoneNumber&quot;: &quot;9267101283&quot;}}&#39;
-http://sandbox.wallet.best/v1/payments
+https://sandbox.wallet.best/v1/payments
 </code></p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2027,7 +2027,7 @@ http://sandbox.wallet.best/v1/payments
 <p>Создаем платеж используя кошелек как источник средств:</p>
 <pre class="highlight shell"><code>curl -u+79261111111:password -H <span class="s1">'Content-type:application/json'</span>
 -d <span class="s1">'{"type": "out", "amount": 100, "client_payment_id": "021c6d23-7508-4e35-ad92-852308a47689", "service": 834, "parameters": {"phoneNumber": "9267101283"}}'</span>
-http://sandbox.wallet.best/v1/payments
+https://sandbox.wallet.best/v1/payments
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2091,7 +2091,7 @@ http://sandbox.wallet.best/v1/payments
 <p>Решаем заплатить сохраненной картой с ID 7222:</p>
 <pre class="highlight shell"><code>curl -u+79261111111:password -H <span class="s1">'Content-type:application/json'</span>
 -d <span class="s1">'{"type": "inout", "card": 7222}'</span>
-http://sandbox.wallet.best/v1/payments/25832/pay
+https://sandbox.wallet.best/v1/payments/25832/pay
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2161,7 +2161,7 @@ http://sandbox.wallet.best/v1/payments/25832/pay
 <h2 id='poluchenie-istorii-platezhey'>Получение истории платежей</h2>
 <p>Сервис может быть выключеным, но в момент проведения транзакции был активен. Такой сервис будет помечен флагом <code class="prettyprint">is_disabled</code>
 <code class="prettyprint">shell
-$ curl -u +79261111111:password -H &#39;Content-type:application/json&#39; http://sandbox.wallet.best/v1/payments?page=0&amp;size=35
+$ curl -u +79261111111:password -H &#39;Content-type:application/json&#39; https://sandbox.wallet.best/v1/payments?page=0&amp;size=35
 </code></p>
 
 <p>Параметры <code class="prettyprint">page</code> и <code class="prettyprint">size</code> в запросе позволяют задать номер (начиная с 0) и размер страницы, которую запрашивает клиент. По умолчанию номер страницы - 0 и размер страницы - 35 платежей. Опциона��ьные параметры <code class="prettyprint">type</code> и <code class="prettyprint">status</code> позволяют фильтровать платежи по типу и статусу. По умолчанию, платежи со статусом <code class="prettyprint">created</code> не попадают в список, чтобы их увидеть, необходимо задать этот статус явно. Статусы и типы можно перечислять через запятую, например: <code class="prettyprint">status=created,completed</code>.</p>
@@ -2341,7 +2341,7 @@ $ curl -u +79261111111:password -H &#39;Content-type:application/json&#39; http:
 </span></code></pre>
 <h2 id='sbros-schetchika-neprosmotrennyh-platezhey'>Сброс счетчика непросмотренных платежей</h2>
 <p>Возможно обнулить счетчик непросмотренных платежей</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:password -H <span class="s1">'Content-type:application/json'</span> http://sandbox.wallet.best/v1/payments/reset_unseen
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:password -H <span class="s1">'Content-type:application/json'</span> https://sandbox.wallet.best/v1/payments/reset_unseen
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2484,7 +2484,7 @@ $ curl -u +79261111111:password -H &#39;Content-type:application/json&#39; http:
 <li><code class="prettyprint">card_failure_url</code> - URL на который пользователь будет перенаправлен в случае неуспешного сохранения карты, опционально</li>
 <li><code class="prettyprint">iframe</code> - опциональный параметр [true|false], который будет передаваться в payment_page_url </li>
 </ul>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:p@ssw0rD -H <span class="s1">'Content-type:application/json'</span> -d <span class="s1">'{"card_success_url": "http://ya.ru", "card_failure_url": "http://google.com"}'</span> http://sandbox.wallet.best/v1/cards
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:p@ssw0rD -H <span class="s1">'Content-type:application/json'</span> -d <span class="s1">'{"card_success_url": "http://ya.ru", "card_failure_url": "http://google.com"}'</span> https://sandbox.wallet.best/v1/cards
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2505,7 +2505,7 @@ $ curl -u +79261111111:password -H &#39;Content-type:application/json&#39; http:
 <ul>
 <li><code class="prettyprint">active_cards_limit</code> - превышено максимально возможное количество активных карт</li>
 </ul>
-<h2 id='zagruzka-karty'>Загрузка карты</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:p@ssw0rD -H <span class="s1">'Content-type:application/json'</span> http://sandbox.wallet.best/v1/cards/62
+<h2 id='zagruzka-karty'>Загрузка карты</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:p@ssw0rD -H <span class="s1">'Content-type:application/json'</span> https://sandbox.wallet.best/v1/cards/62
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2523,7 +2523,7 @@ $ curl -u +79261111111:password -H &#39;Content-type:application/json&#39; http:
 <p>Как видно, карта успешно сохранена и может быть использована для пополнения счета кошелька.</p>
 <h2 id='poluchenie-spiska-kart'>Получение списка карт</h2>
 <p>Опциональный параметр <code class="prettyprint">state</code> позволяет фильтровать карты по состоянию.</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:p@ssw0rD -H <span class="s1">'Content-type:application/json'</span> http://sandbox.wallet.best/v1/cards?state<span class="o">=</span>active,pending
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -u+79261111111:p@ssw0rD -H <span class="s1">'Content-type:application/json'</span> https://sandbox.wallet.best/v1/cards?state<span class="o">=</span>active,pending
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2538,7 +2538,7 @@ $ curl -u +79261111111:password -H &#39;Content-type:application/json&#39; http:
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h2 id='udalenie-karty'>Удаление карты</h2><pre class="highlight shell"><code><span class="gp">$ </span>сurl -u+79261111111:p@ssw0rD -H <span class="s1">'Content-type:application/json'</span>
- -X DELETE http://sandbox.wallet.best/v1/cards/62
+ -X DELETE https://sandbox.wallet.best/v1/cards/62
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2590,12 +2590,12 @@ $ curl -u +79261111111:password -H &#39;Content-type:application/json&#39; http:
 <li><code class="prettyprint">group</code> - фильтр по группе</li>
 <li><code class="prettyprint">point</code> - координаты для получения точек в радиусе, формат: <strong>longitude,latitude</strong>. Пример:
 <code class="prettyprint">shell
-curl -u +12345675578:password http://sandbox.wallet.best/v1/locations?point=57.415033,51.446833
+curl -u +12345675578:password https://sandbox.wallet.best/v1/locations?point=57.415033,51.446833
 </code></li>
 <li><code class="prettyprint">distance</code> - радиус площади в метрах, по-умолчанию 500. Работает только вместе с <strong>point</strong>. </li>
 <li><code class="prettyprint">square</code> - получение точек в прямоугольном полигоне. Передать нужно две координаты - сначала левую верхнюю, затем правую нижнюю точки в формате: <strong>longitude,latitude,longitude,latitude</strong>. Пример:<br>
 <code class="prettyprint">shell
-curl -u +12345675578:password http://sandbox.wallet.best/v1/locations?square=57.279764,51.512689,57.415033,51.446833
+curl -u +12345675578:password https://sandbox.wallet.best/v1/locations?square=57.279764,51.512689,57.415033,51.446833
 </code></li>
 </ul>
 <h5 id='vnimanie-vsegda-peredavayte-kooridnaty-v-posledovatelnosti-stronglongitudelatitudestrong-a-ne-naoborot'>Внимание! Всегда передавайте коориднаты в последовательности <strong>longitude,latitude</strong>, а не наоборот</h5>
@@ -2620,7 +2620,7 @@ curl -u +12345675578:password http://sandbox.wallet.best/v1/locations?square=57.
 <li><code class="prettyprint">missed_location_square_comma</code> - нет разделительной запятой между долготой и широтой для координат в полигоне</li>
 <li><code class="prettyprint">wrong_location_square_points_amount</code> - координат в полигоне должно быть ровно 4</li>
 </ul>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +12345675578:password http://sandbox.wallet.best/v1/locations
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +12345675578:password https://sandbox.wallet.best/v1/locations
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2651,7 +2651,7 @@ curl -u +12345675578:password http://sandbox.wallet.best/v1/locations?square=57.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-          <h1 id='limity'>Лимиты</h1><h2 id='limity-platezhey'>Лимиты платежей</h2><pre class="highlight shell"><code><span class="gp">$ </span>сurl -u+79261111111:p@ssw0rD -H <span class="s1">'Content-type:application/json'</span> http://sandbox.wallet.best/v1/limits
+          <h1 id='limity'>Лимиты</h1><h2 id='limity-platezhey'>Лимиты платежей</h2><pre class="highlight shell"><code><span class="gp">$ </span>сurl -u+79261111111:p@ssw0rD -H <span class="s1">'Content-type:application/json'</span> https://sandbox.wallet.best/v1/limits
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2723,7 +2723,7 @@ curl -u +12345675578:password http://sandbox.wallet.best/v1/locations?square=57.
 <li><code class="prettyprint">amount</code> - сумма к оплате, обязательное поле</li>
 <li><code class="prettyprint">message</code> - произвольный текст, необязательное поле</li>
 </ul>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +12345675578:password -H <span class="s1">'Content-type:application/json'</span> -d <span class="s1">'{"payer": "+12345678102", "amount": 350, "message": "Test invoice"}'</span> http://sandbox.wallet.best/v1/invoices
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +12345675578:password -H <span class="s1">'Content-type:application/json'</span> -d <span class="s1">'{"payer": "+12345678102", "amount": 350, "message": "Test invoice"}'</span> https://sandbox.wallet.best/v1/invoices
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2740,7 +2740,7 @@ curl -u +12345675578:password http://sandbox.wallet.best/v1/locations?square=57.
 <li><code class="prettyprint">invalid_payer</code> - нельзя выставлять счет самому себе</li>
 <li><code class="prettyprint">missing_amount</code> - не указана сумма</li>
 </ul>
-<h2 id='spisok-invoysov-vystavlennyh-polzovatelyu'>Список инвойсов выставленных пользователю</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u +12345675578:password http://sandbox.wallet.best/v1/invoices
+<h2 id='spisok-invoysov-vystavlennyh-polzovatelyu'>Список инвойсов выставленных пользователю</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u +12345675578:password https://sandbox.wallet.best/v1/invoices
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2777,7 +2777,7 @@ curl -u +12345675578:password http://sandbox.wallet.best/v1/locations?square=57.
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h2 id='spisok-invoysov-kotorye-vystavil-polzovatel'>Список инвойсов, которые выставил пользователь</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u +12345675578:password http://sandbox.wallet.best/v1/invoices/created
+<h2 id='spisok-invoysov-kotorye-vystavil-polzovatel'>Список инвойсов, которые выставил пользователь</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u +12345675578:password https://sandbox.wallet.best/v1/invoices/created
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2805,7 +2805,7 @@ curl -u +12345675578:password http://sandbox.wallet.best/v1/locations?square=57.
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h2 id='povtorit-produblirovat-invoys'>Повторить (продублировать) инвойс</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u +12345675578:password http://sandbox.wallet.best/v1/invoices/5422cf7cb7f47b54010041a7/duplicate
+<h2 id='povtorit-produblirovat-invoys'>Повторить (продублировать) инвойс</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u +12345675578:password https://sandbox.wallet.best/v1/invoices/5422cf7cb7f47b54010041a7/duplicate
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2828,7 +2828,7 @@ curl -u +12345675578:password http://sandbox.wallet.best/v1/locations?square=57.
 <ul>
 <li><code class="prettyprint">invalid_invoice</code> - нет такого инвойса</li>
 </ul>
-<h2 id='otmenit-invoys'>Отменить инвойс</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u +12345675578:password http://sandbox.wallet.best/v1/invoices/5422cebeb7f47b53010041a7/cancel
+<h2 id='otmenit-invoys'>Отменить инвойс</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u +12345675578:password https://sandbox.wallet.best/v1/invoices/5422cebeb7f47b53010041a7/cancel
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2846,7 +2846,7 @@ curl -u +12345675578:password http://sandbox.wallet.best/v1/locations?square=57.
 <li><code class="prettyprint">invoice_cancelling_error</code> - что-то пошло не так, при отмене инвойса</li>
 <li><code class="prettyprint">invoice_not_found</code> - нет такого инвойса</li>
 </ul>
-<h2 id='oplatit-invoys'>Оплатить инвойс</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u +12345675578:password -X POST http://sandbox.wallet.best/v1/invoices/5422dd02b7f47b52010041a9/pay
+<h2 id='oplatit-invoys'>Оплатить инвойс</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u +12345675578:password -X POST https://sandbox.wallet.best/v1/invoices/5422dd02b7f47b52010041a9/pay
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2905,7 +2905,7 @@ curl -u +12345675578:password http://sandbox.wallet.best/v1/locations?square=57.
 <h2 id='sozdanie-shablonov'>Создание шаблонов</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s2">"Authorization: Bearer b48a991e-e010-4329-9817-f8389a774c45"</span> -H <span class="s1">'Content-type:application/json'</span>
 -d <span class="s1">'{"name": "Template", "amount": 350, "type": "public", "service_id": 1000,
 "parameters": {"phoneNumber": "+380509990088"}, "disabled": ["phoneNumber"]}'</span>
-http://sandbox.wallet.best/v1/payments/templates
+https://sandbox.wallet.best/v1/payments/templates
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2935,7 +2935,7 @@ http://sandbox.wallet.best/v1/payments/templates
 а переданный телефон в параметре <em>phone</em> будет проигнорирован</p>
 
 <p>Если же нужно получить список по другим кошелькам - используйте тип <strong>public</strong></p>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s2">"Authorization: Bearer b48a991e-e010-4329-9817-f8389a774c45"</span> http://sandbox.wallet.best/v1/payments/templates
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s2">"Authorization: Bearer b48a991e-e010-4329-9817-f8389a774c45"</span> https://sandbox.wallet.best/v1/payments/templates
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3003,7 +3003,7 @@ http://sandbox.wallet.best/v1/payments/templates
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h2 id='polucheniya-shablona-po-id'>Получения шаблона по id</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s2">"Authorization: Bearer b48a991e-e010-4329-9817-f8389a774c45"</span>
-http://sandbox.wallet.best/v1/payments/templates/5422dd02b7f47b52010041a9
+https://sandbox.wallet.best/v1/payments/templates/5422dd02b7f47b52010041a9
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3063,7 +3063,7 @@ http://sandbox.wallet.best/v1/payments/templates/5422dd02b7f47b52010041a9
 <h2 id='izmenenie-shablona'>Изменение шаблона</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s2">"Authorization: Bearer b48a991e-e010-4329-9817-f8389a774c45"</span> -H <span class="s1">'Content-type:application/json'</span>
 -d <span class="s1">'{"name": "Template", "amount": 350, "type": "public", "service_id": 1000,
 "params": {"phoneNumber": "+380509990088"}, "disabled": ["phoneNumber"]}'</span>
-http://sandbox.wallet.best/v1/payments/templates/5422dd02b7f47b52010041a9
+https://sandbox.wallet.best/v1/payments/templates/5422dd02b7f47b52010041a9
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3075,7 +3075,7 @@ http://sandbox.wallet.best/v1/payments/templates/5422dd02b7f47b52010041a9
 <p>Удалить можно только свои шаблоны
 <code class="prettyprint">shell
 $ curl -H &quot;Authorization: Bearer b48a991e-e010-4329-9817-f8389a774c45&quot; -X DELETE
-http://sandbox.wallet.best/v1/payments/templates/5422dd02b7f47b52010041a9
+https://sandbox.wallet.best/v1/payments/templates/5422dd02b7f47b52010041a9
 </code></p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">

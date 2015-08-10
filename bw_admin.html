@@ -39,7 +39,7 @@
       <div class="dark-box"></div>
       <div class="content">
         
-          <h1 id='kategorii'>Категории</h1><h2 id='zagruzka-spiska-kategoriy'>Загрузка списка категорий</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user <span class="s2">"http://sandbox.wallet.best/adm2/groups/"</span>
+          <h1 id='kategorii'>Категории</h1><h2 id='zagruzka-spiska-kategoriy'>Загрузка списка категорий</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user <span class="s2">"https://sandbox.wallet.best/adm2/groups/"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -73,7 +73,7 @@
 <li><code class="prettyprint">amount</code> - кол-во привязанных к категории сервисов</li>
 <li><code class="prettyprint">localized_fields</code> - массив с локализированными полями</li>
 </ul>
-<h2 id='dobavlenie-kategorii'>Добавление категории</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"name":"some_name","type":"some_group","position":1,"projects":["mbank","bov"]}'</span> http://sandbox.wallet.best/adm2/groups/
+<h2 id='dobavlenie-kategorii'>Добавление категории</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"name":"some_name","type":"some_group","position":1,"projects":["mbank","bov"]}'</span> https://sandbox.wallet.best/adm2/groups/
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -102,7 +102,7 @@
 <li><code class="prettyprint">position</code> - позиция категории в списке</li>
 <li><code class="prettyprint">projects</code> - список проектов, к которым эта категория относится</li>
 </ul>
-<h2 id='redaktirovanie-kategorii'>Редактирование категории</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"name":{"ru_RU":"some_name_edited", "en_US":"some_en_name"},"group":"some_group","position":1,"projects":["mbank","bov"], "keywords":"one,two,three"}'</span> http://sandbox.wallet.best/adm2/groups/55421733cccc904a990041a8
+<h2 id='redaktirovanie-kategorii'>Редактирование категории</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"name":{"ru_RU":"some_name_edited", "en_US":"some_en_name"},"group":"some_group","position":1,"projects":["mbank","bov"], "keywords":"one,two,three"}'</span> https://sandbox.wallet.best/adm2/groups/55421733cccc904a990041a8
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -126,7 +126,7 @@
 </span></code></pre>
 
 <p>При редактировании категории передаются те же самые поля, что и при создании</p>
-<h2 id='udalenie-kategorii'>Удаление категории</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -X DELETE -uuser:user http://sandbox.wallet.best/adm2/groups/55421733cccc904a990041a8
+<h2 id='udalenie-kategorii'>Удаление категории</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -X DELETE -uuser:user https://sandbox.wallet.best/adm2/groups/55421733cccc904a990041a8
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -139,7 +139,7 @@
 "53359fb2255c741a749f0c47","53359fb2255c741a749f0c5b",
 "53359fb2255c741a749f0c4b","549c92fb56c35f660ecd341f","53a1ca0656c35fe0767b8a93","53359fb2255c741a749f0c50",
 "53359fb2255c741a749f0c42","53359fb2255c741a749f0c58",
-"53359fb2255c741a749f0c4d","545abac556c35fcc2848c11f","53359fb2255c741a749f0c59"]}'</span> http://sandbox.wallet.best/adm2/groups/sort
+"53359fb2255c741a749f0c4d","545abac556c35fcc2848c11f","53359fb2255c741a749f0c59"]}'</span> https://sandbox.wallet.best/adm2/groups/sort
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -150,7 +150,7 @@
 
 <p>Необходимо передать проекты, для которых будет менять сортировка и массив idшников категорий, в том порядке, в котором они должны быть отсортированны</p>
 
-          <h1 id='platezhi'>Платежи</h1><h2 id='zagruzka-spiska-platezhey'>Загрузка списка платежей</h2><pre class="highlight shell"><code>curl -uuser:user http://sandbox.wallet.best/adm2/payments/?size<span class="o">=</span>2
+          <h1 id='platezhi'>Платежи</h1><h2 id='zagruzka-spiska-platezhey'>Загрузка списка платежей</h2><pre class="highlight shell"><code>curl -uuser:user https://sandbox.wallet.best/adm2/payments/?size<span class="o">=</span>2
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -346,7 +346,7 @@
 <li><code class="prettyprint">inbound_payment_user_ip</code> - поиск по IP адресу плательщика</li>
 </ul>
 
-          <h1 id='reestry'>Реестры</h1><h2 id='zagruzka-spiska-reestrov'>Загрузка списка реестров</h2><pre class="highlight shell"><code>curl -uuser:user http://sandbox.wallet.best/adm2/registries/?size<span class="o">=</span>2
+          <h1 id='reestry'>Реестры</h1><h2 id='zagruzka-spiska-reestrov'>Загрузка списка реестров</h2><pre class="highlight shell"><code>curl -uuser:user https://sandbox.wallet.best/adm2/registries/?size<span class="o">=</span>2
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -403,7 +403,7 @@
 <li>&#39;application/zip&rsquo;,</li>
 <li>&#39;application/gzip&rsquo;</li>
 </ul>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -uuser:user -d <span class="s1">'{"date":"2015-04-11","type":"testType4"}'</span> http://sandbox.wallet.best/adm2/registries/
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -uuser:user -d <span class="s1">'{"date":"2015-04-11","type":"testType4"}'</span> https://sandbox.wallet.best/adm2/registries/
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -418,7 +418,7 @@
 <blockquote>
 <p>После первого запроса на полученный url нужно загрузить файл</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user -H <span class="s1">'Content-Type: multipart/form-data'</span> -X POST -F <span class="s2">"file=@path_to_file/test.xls"</span> http://sandbox.wallet.best/adm2/registries/55424de7cccc9049990041b1
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user -H <span class="s1">'Content-Type: multipart/form-data'</span> -X POST -F <span class="s2">"file=@path_to_file/test.xls"</span> https://sandbox.wallet.best/adm2/registries/55424de7cccc9049990041b1
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -434,7 +434,7 @@
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h2 id='zagruzka-reestra-po-id'>Загрузка реестра по id</h2><pre class="highlight shell"><code>curl -uuser:user http://sandbox.wallet.best/adm2/registries/55423dafcccc9048990041ac
+<h2 id='zagruzka-reestra-po-id'>Загрузка реестра по id</h2><pre class="highlight shell"><code>curl -uuser:user https://sandbox.wallet.best/adm2/registries/55423dafcccc9048990041ac
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -455,7 +455,7 @@
 
 <p>При загрузке - Вы получите те же саммые данные, что и при списке</p>
 
-          <h1 id='tochki-popolneniya'>Точки пополнения</h1><h2 id='zagruzka-spiska-tochek-popoleniya'>Загрузка списка точек пополения</h2><pre class="highlight shell"><code>curl -uuser:user http://sandbox.wallet.best/adm2/locations/?size<span class="o">=</span>1
+          <h1 id='tochki-popolneniya'>Точки пополнения</h1><h2 id='zagruzka-spiska-tochek-popoleniya'>Загрузка списка точек пополения</h2><pre class="highlight shell"><code>curl -uuser:user https://sandbox.wallet.best/adm2/locations/?size<span class="o">=</span>1
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -513,7 +513,7 @@
 <li><code class="prettyprint">latitude</code> - широта</li>
 <li><code class="prettyprint">localized_fields</code> - массив с локализированными полями</li>
 </ul>
-<h2 id='poluchenie-tochki-popolneniya-po-id'>Получение точки пополнения по id</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user http://sandbox.wallet.best/adm2/locations/554ce380cccc9082250041f2
+<h2 id='poluchenie-tochki-popolneniya-po-id'>Получение точки пополнения по id</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -uuser:user https://sandbox.wallet.best/adm2/locations/554ce380cccc9082250041f2
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -549,7 +549,7 @@
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h2 id='dobavlenie-tochki-popolneniya-rukami'>Добавление точки пополнения (руками)</h2><pre class="highlight shell"><code>curl -H <span class="s1">'Content-type:application/json'</span> -uuser:user -d <span class="s1">'{"type":"Type?Oo","worktime":"Worktime","name":"Some name","address":"Some address string","group":"Some group","source_id":"admin","latitude":151413.123,"longitude":100500.123,"projects":"mbank"}'</span> http://sandbox.wallet.best/adm2/locations/
+<h2 id='dobavlenie-tochki-popolneniya-rukami'>Добавление точки пополнения (руками)</h2><pre class="highlight shell"><code>curl -H <span class="s1">'Content-type:application/json'</span> -uuser:user -d <span class="s1">'{"type":"Type?Oo","worktime":"Worktime","name":"Some name","address":"Some address string","group":"Some group","source_id":"admin","latitude":151413.123,"longitude":100500.123,"projects":"mbank"}'</span> https://sandbox.wallet.best/adm2/locations/
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -596,7 +596,7 @@
 <li><code class="prettyprint">longitude</code> - долгота</li>
 <li><code class="prettyprint">latitude</code> - широта</li>
 </ul>
-<h2 id='izmenenie-tochki-popolneniya'>Изменение точки пополнения</h2><pre class="highlight shell"><code>curl -H <span class="s1">'Content-type:application/json'</span> -X POST -uuser:user -d <span class="s1">'{"type":{"ru_RU":"Type","en_US":"Type english"},"worktime":{"ru_RU":"Worktime","en_US":null},"address":{"ru_RU":"Address ru","en_US":"Address en"},"latitude":1514113.123,"longitude":1005100.123,"name":"Some name","group":"verification","source_id":"admin"}'</span> http://sandbox.wallet.best/adm2/locations/554ce621cccc9093300041b3
+<h2 id='izmenenie-tochki-popolneniya'>Изменение точки пополнения</h2><pre class="highlight shell"><code>curl -H <span class="s1">'Content-type:application/json'</span> -X POST -uuser:user -d <span class="s1">'{"type":{"ru_RU":"Type","en_US":"Type english"},"worktime":{"ru_RU":"Worktime","en_US":null},"address":{"ru_RU":"Address ru","en_US":"Address en"},"latitude":1514113.123,"longitude":1005100.123,"name":"Some name","group":"verification","source_id":"admin"}'</span> https://sandbox.wallet.best/adm2/locations/554ce621cccc9093300041b3
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -634,7 +634,7 @@
 </span></code></pre>
 
 <p>Аналогичный запрос, как и при добавлении</p>
-<h2 id='dobavlenie-tochek-popolneniya-iz-fayla'>Добавление точек пополнения из файла</h2><pre class="highlight shell"><code>curl -uuser:user -H <span class="s1">'Content-Type: multipart/form-data'</span> -X POST -F <span class="s2">"file=/Users/Samorai/www/mbank.api/tests/data/csv/replenishment_points.csv"</span> http://sandbox.wallet.best/adm2/locations/file
+<h2 id='dobavlenie-tochek-popolneniya-iz-fayla'>Добавление точек пополнения из файла</h2><pre class="highlight shell"><code>curl -uuser:user -H <span class="s1">'Content-Type: multipart/form-data'</span> -X POST -F <span class="s2">"file=/Users/Samorai/www/mbank.api/tests/data/csv/replenishment_points.csv"</span> https://sandbox.wallet.best/adm2/locations/file
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -740,7 +740,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-          <h1 id='parametry-servisov'>Параметры сервисов</h1><h2 id='dobavlenie-parametra'>Добавление параметра</h2><pre class="highlight shell"><code>curl -H <span class="s1">'Content-type:application/json'</span> -H <span class="s1">'X-Project-ID:mbank'</span> -X POST -u user:user -d <span class="s1">'{"id":"some_parameter_name","type":"5548d11acccc90702f0041b9","title":{"ru_RU":"parameter title"},"range_start":100500,"range_end":100501,"pattern":"\/\\d{4}\/","pattern_desc":{"ru_RU":"pattern_desc title"},"default_value":"{{last_value}}","regex_values":[111,222,333],"regex_descriptions":[{"ru_RU":"regex_description_111"},{"ru_RU":"regex_description_222"},{"ru_RU":"regex_description_333"}],"is_disabled":false,"is_hidden":false,"is_required":true}'</span> http://sandbox.wallet.best/adm2/services/53a70ca256c35f1664f64b20/parameters
+          <h1 id='parametry-servisov'>Параметры сервисов</h1><h2 id='dobavlenie-parametra'>Добавление параметра</h2><pre class="highlight shell"><code>curl -H <span class="s1">'Content-type:application/json'</span> -H <span class="s1">'X-Project-ID:mbank'</span> -X POST -u user:user -d <span class="s1">'{"id":"some_parameter_name","type":"5548d11acccc90702f0041b9","title":{"ru_RU":"parameter title"},"range_start":100500,"range_end":100501,"pattern":"\/\\d{4}\/","pattern_desc":{"ru_RU":"pattern_desc title"},"default_value":"{{last_value}}","regex_values":[111,222,333],"regex_descriptions":[{"ru_RU":"regex_description_111"},{"ru_RU":"regex_description_222"},{"ru_RU":"regex_description_333"}],"is_disabled":false,"is_hidden":false,"is_required":true}'</span> https://sandbox.wallet.best/adm2/services/53a70ca256c35f1664f64b20/parameters
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -873,7 +873,7 @@
 <li><code class="prettyprint">is_required</code> - Поле обязательно к заполнению</li>
 <li><code class="prettyprint">is_dynamic</code> - Динамичный параметр</li>
 </ul>
-<h3 id='v-otvete-vy-poluchite-polnyy-servis-k-kotoromu-dobavlyali-parametr'>В ответе Вы получите полный сервис, к которому добавляли параметр</h3><h2 id='izmenenie-parametra'>Изменение параметра</h2><pre class="highlight shell"><code>curl -H <span class="s1">'Content-type:application/json'</span> -H <span class="s1">'X-Project-ID:mbank'</span> -X POST -u user:user -d <span class="s1">'{"id":"some_parameter_name","type":"5548d11acccc90702f0041b9","title":{"ru_RU":"parameter title"},"range_start":100500,"range_end":100501,"pattern":"\/\\d{4}\/","pattern_desc":{"ru_RU":"pattern_desc title"},"default_value":"{{last_value}}_edited","regex_values":[111,222,333],"regex_descriptions":[{"ru_RU":"regex_description_333"},{"ru_RU":"regex_description_333"},{"ru_RU":"regex_description_333"}],"is_disabled":false,"is_hidden":false,"is_required":true}'</span> http://sandbox.wallet.best/adm2/services/53a70ca256c35f1664f64b20/parameters/some_parameter_name
+<h3 id='v-otvete-vy-poluchite-polnyy-servis-k-kotoromu-dobavlyali-parametr'>В ответе Вы получите полный сервис, к которому добавляли параметр</h3><h2 id='izmenenie-parametra'>Изменение параметра</h2><pre class="highlight shell"><code>curl -H <span class="s1">'Content-type:application/json'</span> -H <span class="s1">'X-Project-ID:mbank'</span> -X POST -u user:user -d <span class="s1">'{"id":"some_parameter_name","type":"5548d11acccc90702f0041b9","title":{"ru_RU":"parameter title"},"range_start":100500,"range_end":100501,"pattern":"\/\\d{4}\/","pattern_desc":{"ru_RU":"pattern_desc title"},"default_value":"{{last_value}}_edited","regex_values":[111,222,333],"regex_descriptions":[{"ru_RU":"regex_description_333"},{"ru_RU":"regex_description_333"},{"ru_RU":"regex_description_333"}],"is_disabled":false,"is_hidden":false,"is_required":true}'</span> https://sandbox.wallet.best/adm2/services/53a70ca256c35f1664f64b20/parameters/some_parameter_name
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"Cм. Добавление параметра"</span><span class="w">
@@ -881,7 +881,7 @@
 </span></code></pre>
 
 <p>При редакторовании параметра запрос такой-же, как и при добавлении</p>
-<h2 id='udalenie-parametra'>Удаление параметра</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X DELETE -u user:user http://sandbox.wallet.best/adm2/services/53a70ca256c35f1664f64b20/parameters/some_parameter_name
+<h2 id='udalenie-parametra'>Удаление параметра</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X DELETE -u user:user https://sandbox.wallet.best/adm2/services/53a70ca256c35f1664f64b20/parameters/some_parameter_name
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -948,7 +948,7 @@
 </span></code></pre>
 
 <p>В ответе Вы получите сервис, к которому относится этот параметр без параметра.</p>
-<h2 id='zagruzka-parametra'>Загрузка параметра</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user http://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c4c/parameters/phoneNumber
+<h2 id='zagruzka-parametra'>Загрузка параметра</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user https://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c4c/parameters/phoneNumber
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -995,7 +995,7 @@
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h2 id='sinhronizatsiya-parametrov-nashego-servisa-s-parametrami-servisa-na-mserver'>Синхронизация параметров нашего сервиса с параметрами сервиса на MServer</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X POST -u user:user http://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c4a/parameters/phoneNumber/sync
+<h2 id='sinhronizatsiya-parametrov-nashego-servisa-s-parametrami-servisa-na-mserver'>Синхронизация параметров нашего сервиса с параметрами сервиса на MServer</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X POST -u user:user https://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c4a/parameters/phoneNumber/sync
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"Cм. Изменение параметра"</span><span class="w">
@@ -1003,7 +1003,7 @@
 </span></code></pre>
 
 <p>При выполении данного запроса поля параметра сервиса, которые отличаются от полей параметра сервиса мсервера заменяются</p>
-<h2 id='sinhronizatsiya-items-u-parametrov'>Синхронизация items у параметров</h2><pre class="highlight shell"><code>curl  -X POST -u user:user http://sandbox.wallet.best/adm2/services/53a70d2456c35f58640fdd47/parameters/phoneNumber/items/sync
+<h2 id='sinhronizatsiya-items-u-parametrov'>Синхронизация items у параметров</h2><pre class="highlight shell"><code>curl  -X POST -u user:user https://sandbox.wallet.best/adm2/services/53a70d2456c35f58640fdd47/parameters/phoneNumber/items/sync
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"Cм. Изменение параметра"</span><span class="w">
@@ -1012,7 +1012,7 @@
 
 <p>Тоже самое, что и при синхронизации параметра, только затрагивает поле items</p>
 
-          <h1 id='servisy'>Сервисы</h1><h2 id='zagruzka-spiska-servisov'>Загрузка списка сервисов</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user <span class="s2">"http://sandbox.wallet.best/adm2/services/?size=1"</span>
+          <h1 id='servisy'>Сервисы</h1><h2 id='zagruzka-spiska-servisov'>Загрузка списка сервисов</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user <span class="s2">"https://sandbox.wallet.best/adm2/services/?size=1"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1112,7 +1112,7 @@
 <li><code class="prettyprint">mnp_provider_id</code> - mnp_provider_id</li>
 <li><code class="prettyprint">mnp_provider_region_code</code> - mnp_provider_region_code</li>
 </ul>
-<h2 id='zagruzka-servisa-po-id'>Загрузка сервиса по id</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user <span class="s2">"http://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c44"</span>
+<h2 id='zagruzka-servisa-po-id'>Загрузка сервиса по id</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user <span class="s2">"https://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c44"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1283,7 +1283,7 @@
 </ul></li>
 <li><code class="prettyprint">localized_fields</code> - локализированные поля</li>
 </ul>
-<h2 id='redaktirovanie-servisa'>Редактирование сервиса</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:aplication/json'</span> -X POST -u user:user -d <span class="s1">'{"name": { "ru_RU": "Теле2", "en_US" "Tele2" }, "keywords": "", "mserver_id": 1000, "category_id": "53359fb2255c741a749f0c42", "limit_html": { "ru_RU": "Лимитов нет", "en_US": "There are no limits at this time" }, "icon_url": "http:\/\/sandbox.wallet.best\/img\/services\/53359fb2255c741a749f0c44.png?1422632666", "maxsum": 15000, "minsum": 1, "trans_title": { "ru_RU": "{{ payment.service.name }}", "en_US": "{{ payment.service.name }}" }, "trans_subtitle": { "ru_RU": "Пополнение", "en_US": "Refill" }, "trans_description": { "ru_RU": "По номеру {{ payment.parameters.phoneNumber }}", "en_US": "Phone number: {{ payment.parameters.phoneNumber }}" }, "verification_required" : true, "autopayment_service" : false, "status": "online" }'</span>  <span class="s2">"http://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c44"</span>
+<h2 id='redaktirovanie-servisa'>Редактирование сервиса</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:aplication/json'</span> -X POST -u user:user -d <span class="s1">'{"name": { "ru_RU": "Теле2", "en_US" "Tele2" }, "keywords": "", "mserver_id": 1000, "category_id": "53359fb2255c741a749f0c42", "limit_html": { "ru_RU": "Лимитов нет", "en_US": "There are no limits at this time" }, "icon_url": "http:\/\/sandbox.wallet.best\/img\/services\/53359fb2255c741a749f0c44.png?1422632666", "maxsum": 15000, "minsum": 1, "trans_title": { "ru_RU": "{{ payment.service.name }}", "en_US": "{{ payment.service.name }}" }, "trans_subtitle": { "ru_RU": "Пополнение", "en_US": "Refill" }, "trans_description": { "ru_RU": "По номеру {{ payment.parameters.phoneNumber }}", "en_US": "Phone number: {{ payment.parameters.phoneNumber }}" }, "verification_required" : true, "autopayment_service" : false, "status": "online" }'</span>  <span class="s2">"https://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c44"</span>
 
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -1310,13 +1310,13 @@
 <li><code class="prettyprint">mnp_provider_id</code> - mnp_provider_id</li>
 <li><code class="prettyprint">mnp_provider_region_code</code> - mnp_provider_region_code</li>
 </ul>
-<h2 id='dobavlenie-ikonki-servisa'>Добавление иконки сервиса</h2><pre class="highlight shell"><code>curl -uuser:user -H <span class="s1">'Content-Type: multipart/form-data'</span> -X POST -F <span class="s2">"file=@path_to_file/replenishment_points.csv"</span> http://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c44/icon
+<h2 id='dobavlenie-ikonki-servisa'>Добавление иконки сервиса</h2><pre class="highlight shell"><code>curl -uuser:user -H <span class="s1">'Content-Type: multipart/form-data'</span> -X POST -F <span class="s2">"file=@path_to_file/replenishment_points.csv"</span> https://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c44/icon
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"См. загрузка сервиса по id"</span><span class="w">
 </span><span class="err">}</span><span class="w">
 </span></code></pre>
-<h2 id='izmenenie-statusa-servisa'>Изменение статуса сервиса</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:aplication/json'</span> -X POST -u user:user -d <span class="s1">'{"status":"offline","is_enabled":false}'</span> http://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c44/status
+<h2 id='izmenenie-statusa-servisa'>Изменение статуса сервиса</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:aplication/json'</span> -X POST -u user:user -d <span class="s1">'{"status":"offline","is_enabled":false}'</span> https://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c44/status
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1370,7 +1370,7 @@
 <li><code class="prettyprint">status</code> - статус сервиса (online|offline)</li>
 <li><code class="prettyprint">is_enabled</code> - статус сервиса вкл/выкл (true|false)</li>
 </ul>
-<h2 id='udalenie-servisa'>Удаление сервиса</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X DELETE -u user:user http://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c44
+<h2 id='udalenie-servisa'>Удаление сервиса</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X DELETE -u user:user https://sandbox.wallet.best/adm2/services/53359fb2255c741a749f0c44
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1415,7 +1415,7 @@
 <code class="prettyprint">mserver_id</code> - id сервиса на mserver
 <code class="prettyprint">name</code> - имя сервиса
 <code class="prettyprint">localized_fields</code> - локализированные поля</p>
-<h2 id='zagruzka-spiska-novyh-servisov'>Загрузка списка новых сервисов</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user <span class="s2">"http://sandbox.wallet.best/adm2/services/new"</span>
+<h2 id='zagruzka-spiska-novyh-servisov'>Загрузка списка новых сервисов</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user <span class="s2">"https://sandbox.wallet.best/adm2/services/new"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1447,7 +1447,7 @@
 <code class="prettyprint">min</code> - минамильная сумма пополения
 <code class="prettyprint">max</code> - максимальная сумма пополнения
 <code class="prettyprint">verification</code> - локализированные поля</p>
-<h2 id='dobavlenie-servisa'>Добавление сервиса</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X POST -u user:user -d <span class="s1">'{"mserver_id":"1562"}'</span> http://sandbox.wallet.best/adm2/services/
+<h2 id='dobavlenie-servisa'>Добавление сервиса</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X POST -u user:user -d <span class="s1">'{"mserver_id":"1562"}'</span> https://sandbox.wallet.best/adm2/services/
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1567,7 +1567,7 @@
 <ul>
 <li><code class="prettyprint">term</code> - поиск по title</li>
 </ul>
-<h2 id='privyazka-geo-tochki-k-servisu'>Привязка гео-точки к сервису</h2><pre class="highlight shell"><code>curl  -X POST -u user:user -d <span class="s1">'{"geo_id":"54be73b7b7f47bef9100b64c"}'</span> http://sandbox.wallet.best/adm2/services/537e27a956c35f87703a3fa7/geo
+<h2 id='privyazka-geo-tochki-k-servisu'>Привязка гео-точки к сервису</h2><pre class="highlight shell"><code>curl  -X POST -u user:user -d <span class="s1">'{"geo_id":"54be73b7b7f47bef9100b64c"}'</span> https://sandbox.wallet.best/adm2/services/537e27a956c35f87703a3fa7/geo
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1668,7 +1668,7 @@
 </span></code></pre>
 
 <p>При добавлении, в ответе Вы получите полный сервис, такой-же, как и при запросе сервиса по id</p>
-<h2 id='udalenie-privyazki-geo-tochki-ot-servisa'>Удаление привязки гео-точки от сервиса</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X DELETE -u user:user http://sandbox.wallet.best/adm2/services/537e27a956c35f87703a3fa7/geo/54be73b7b7f47bef9100b64c
+<h2 id='udalenie-privyazki-geo-tochki-ot-servisa'>Удаление привязки гео-точки от сервиса</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X DELETE -u user:user https://sandbox.wallet.best/adm2/services/537e27a956c35f87703a3fa7/geo/54be73b7b7f47bef9100b64c
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"См. Добавление Гео Точки."</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
@@ -1784,7 +1784,7 @@
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h2 id='dobavlenie-oshibki'>Добавление ошибки</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span>  -X POST -u user:user -d <span class="s1">'{"code":"some_code","title":{"en_EN":"some_en_name","ru_RU":"some_ru_name"}}'</span> http://sandbox.wallet.best/adm2/errors/
+<h2 id='dobavlenie-oshibki'>Добавление ошибки</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span>  -X POST -u user:user -d <span class="s1">'{"code":"some_code","title":{"en_EN":"some_en_name","ru_RU":"some_ru_name"}}'</span> https://sandbox.wallet.best/adm2/errors/
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1808,7 +1808,7 @@
 <li><code class="prettyprint">code</code> - код ошибки</li>
 <li><code class="prettyprint">title</code> - описание ошибки</li>
 </ul>
-<h2 id='izmenenie-oshibki'>Изменение ошибки</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span>  -X POST -u user:user -d <span class="s1">'{"code":"some_code_edited","title":{"en_EN":"some_en_name_edited","ru_RU":"some_ru_name_edited"}}'</span> http://sandbox.wallet.best/adm2/errors/55490aa1cccc90f621004246
+<h2 id='izmenenie-oshibki'>Изменение ошибки</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span>  -X POST -u user:user -d <span class="s1">'{"code":"some_code_edited","title":{"en_EN":"some_en_name_edited","ru_RU":"some_ru_name_edited"}}'</span> https://sandbox.wallet.best/adm2/errors/55490aa1cccc90f621004246
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1832,7 +1832,7 @@
 <li><code class="prettyprint">code</code> - код ошибки</li>
 <li><code class="prettyprint">title</code> - описание ошибки</li>
 </ul>
-<h2 id='udalenie-oshibki'>Удаление ошибки</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X DELETE -u user:user http://sandbox.wallet.best/adm2/errors/55490aa1cccc90f621004246
+<h2 id='udalenie-oshibki'>Удаление ошибки</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X DELETE -u user:user https://sandbox.wallet.best/adm2/errors/55490aa1cccc90f621004246
 
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -1841,7 +1841,7 @@
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h2 id='zagruzka-spiska-obschih-nastroek'>Загрузка списка общих настроек</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user <span class="s2">"http://sandbox.wallet.best/adm2/settings/common/"</span>
+<h2 id='zagruzka-spiska-obschih-nastroek'>Загрузка списка общих настроек</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user <span class="s2">"https://sandbox.wallet.best/adm2/settings/common/"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1948,7 +1948,7 @@
 * <code class="prettyprint">type</code> - тип поля [checkbox|localized|input]
 * <code class="prettyprint">value</code> - значение поля
 * <code class="prettyprint">values</code> - значения поля для типа checkbox</p>
-<h2 id='izmeneniya-spiska-obschih-nastroek'>Изменения списка общих настроек</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"settings":{"support_phone":{"ru_RU":"edited_name_ru"},"autopayments_sms_payment_fail":{"ru_RU":"edited_name_ru"}}}'</span> http://sandbox.wallet.best/adm2/settings/common/
+<h2 id='izmeneniya-spiska-obschih-nastroek'>Изменения списка общих настроек</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"settings":{"support_phone":{"ru_RU":"edited_name_ru"},"autopayments_sms_payment_fail":{"ru_RU":"edited_name_ru"}}}'</span> https://sandbox.wallet.best/adm2/settings/common/
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"См. Загрузка списка общих настроек"</span><span class="w">
@@ -1956,7 +1956,7 @@
 </span></code></pre>
 
 <p>При изменении нужно передавать ключ ошибки и ее значение</p>
-<h2 id='zagruzka-spiska-limitov'>Загрузка списка лимитов</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user <span class="s2">"http://sandbox.wallet.best/adm2/settings/limits/"</span>
+<h2 id='zagruzka-spiska-limitov'>Загрузка списка лимитов</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user <span class="s2">"https://sandbox.wallet.best/adm2/settings/limits/"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2008,7 +2008,7 @@
 <li><code class="prettyprint">position</code> - Позиция в списке</li>
 <li><code class="prettyprint">localized_fields</code> - локализированные поля</li>
 </ul>
-<h2 id='zagruzka-limita-po-id'>Загрузка лимита по id</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user <span class="s2">"http://sandbox.wallet.best/adm2/settings/limits/53dfa37456c35f7375ebdc44"</span>
+<h2 id='zagruzka-limita-po-id'>Загрузка лимита по id</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user <span class="s2">"https://sandbox.wallet.best/adm2/settings/limits/53dfa37456c35f7375ebdc44"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2047,7 +2047,7 @@
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h2 id='sortirovka-limitov'>Сортировка лимитов</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"limits_order":"53dfa35f56c35f737578012e,53dfa37456c35f7375ebdc44,53dfa38a56c35f7375e1a14c,53dfa34856c35f737505a834,54b3cc0c56c35f744758bfd0,53dfa3ac56c35f7375481acc"}'</span> http://sandbox.wallet.best/adm2/settings/limits/sort
+<h2 id='sortirovka-limitov'>Сортировка лимитов</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"limits_order":"53dfa35f56c35f737578012e,53dfa37456c35f7375ebdc44,53dfa38a56c35f7375e1a14c,53dfa34856c35f737505a834,54b3cc0c56c35f744758bfd0,53dfa3ac56c35f7375481acc"}'</span> https://sandbox.wallet.best/adm2/settings/limits/sort
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2058,7 +2058,7 @@
 </span></code></pre>
 
 <p>Массив idшников лимитов, в том порядке, в котором они должны быть отсортированны</p>
-<h2 id='dobavlenie-limita'>Добавление лимита</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"title":{"ru_RU":"Название","en_US":"test title"},"description":{"ru_RU":"Описание","en_US":"test description"},"limit":{"anonymous":111,"verified":222,"personified":333},"status":{"anonymous":0,"verified":1,"personified":2}}'</span> http://sandbox.wallet.best/adm2/settings/limits/
+<h2 id='dobavlenie-limita'>Добавление лимита</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"title":{"ru_RU":"Название","en_US":"test title"},"description":{"ru_RU":"Описание","en_US":"test description"},"limit":{"anonymous":111,"verified":222,"personified":333},"status":{"anonymous":0,"verified":1,"personified":2}}'</span> https://sandbox.wallet.best/adm2/settings/limits/
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2104,7 +2104,7 @@
 <li><code class="prettyprint">limit</code> - Значения лимитов для статусов</li>
 <li><code class="prettyprint">status</code> - К каким статусам относится</li>
 </ul>
-<h2 id='izmenenie-limita'>Изменение лимита</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"title":{"ru_RU":"Название","en_US":"test title edited"},"description":{"ru_RU":"Описание","en_US":"test description edited"}, "limit":{"anonymous":111,"verified":222,"personified":333},"status":{"anonymous":0,"verified":1,"personified":2}}'</span> http://sandbox.wallet.best/adm2/settings/limits/554cb2d6cccc9080250041a8
+<h2 id='izmenenie-limita'>Изменение лимита</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"title":{"ru_RU":"Название","en_US":"test title edited"},"description":{"ru_RU":"Описание","en_US":"test description edited"}, "limit":{"anonymous":111,"verified":222,"personified":333},"status":{"anonymous":0,"verified":1,"personified":2}}'</span> https://sandbox.wallet.best/adm2/settings/limits/554cb2d6cccc9080250041a8
 
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -2146,7 +2146,7 @@
 </span></code></pre>
 
 <p>При редактировании лимит передаются те же самые поля, что и при добалении</p>
-<h2 id='udalenie-limita'>Удаление лимита</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X DELETE -u user:user http://sandbox.wallet.best/adm2/settings/limits/554cb2d6cccc9080250041a8
+<h2 id='udalenie-limita'>Удаление лимита</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X DELETE -u user:user https://sandbox.wallet.best/adm2/settings/limits/554cb2d6cccc9080250041a8
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2156,7 +2156,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-          <h1 id='shablony'>Шаблоны</h1><h2 id='zagruzka-spiska-shablonov'>Загрузка списка шаблонов</h2><pre class="highlight shell"><code><span class="nv">$curl</span> -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user <span class="s2">"http://sandbox.wallet.best/adm2/templates/"</span>
+          <h1 id='shablony'>Шаблоны</h1><h2 id='zagruzka-spiska-shablonov'>Загрузка списка шаблонов</h2><pre class="highlight shell"><code><span class="nv">$curl</span> -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user <span class="s2">"https://sandbox.wallet.best/adm2/templates/"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="w">
 </span><span class="p">{</span><span class="w">
@@ -2224,7 +2224,7 @@
 <li><code class="prettyprint">services_amount</code> - кол-во сервисов, параметры которых привязанны к этому шаблону</li>
 <li><code class="prettyprint">localized_fields</code> - локализированные поля</li>
 </ul>
-<h2 id='zagruzka-shablona-po-id'>Загрузка шаблона по id</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user <span class="s2">"http://sandbox.wallet.best/adm2/templates/5429887756c35f625da94314"</span>
+<h2 id='zagruzka-shablona-po-id'>Загрузка шаблона по id</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user <span class="s2">"https://sandbox.wallet.best/adm2/templates/5429887756c35f625da94314"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2340,7 +2340,7 @@
 <li><code class="prettyprint">services_amount</code> - кол-во сервисов, параметры которых привязанны к этому шаблону</li>
 <li><code class="prettyprint">localized_fields</code> - локализированные поля</li>
 </ul>
-<h2 id='sozdanie-shablona'>Создание шаблона</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"service_id":"54293c0e56c35ff85dcf6ee8","parameter_id":"phoneNumber","items":null,"type":"54293c0e56c35ff85dcf6ee8","title":{"ru_RU":"Пополнение Steam"},"range_start":"","range_end":"","pattern":"^[a-zA-Z0-9_]{3,64}$","pattern_desc":{"ru_RU":"Какой-то там логин в стим"},"default_value":null,"regex_values":[],"regex_description":[],"is_required":true}'</span> http://sandbox.wallet.best/adm2/templates/
+<h2 id='sozdanie-shablona'>Создание шаблона</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"service_id":"54293c0e56c35ff85dcf6ee8","parameter_id":"phoneNumber","items":null,"type":"54293c0e56c35ff85dcf6ee8","title":{"ru_RU":"Пополнение Steam"},"range_start":"","range_end":"","pattern":"^[a-zA-Z0-9_]{3,64}$","pattern_desc":{"ru_RU":"Какой-то там логин в стим"},"default_value":null,"regex_values":[],"regex_description":[],"is_required":true}'</span> https://sandbox.wallet.best/adm2/templates/
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2382,7 +2382,7 @@
 
 <p>Создание шаблона с параметра сервиса (mserver_id)
 Тело запроса на создание шаблона аналогично с телом запроса на изменение параметра</p>
-<h2 id='izmenenie-shablona'>Изменение шаблона</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -u user:user -X POST -d <span class="s1">'{"items":null,"type":"54293c0e56c35ff85dcf6ee8","title":{"ru_RU":"Пополнение Steam"},"range_start":"","range_end":"","pattern":"^[a-zA-Z0-9_]{3,64}$","pattern_desc":{"ru_RU":"Какой-то там логин в стим"},"default_value":"{{last_value}}","regex_values":[],"regex_description":[],"is_required":true}'</span> http://sandbox.wallet.best/adm2/templates/55499bbdcccc902022004238
+<h2 id='izmenenie-shablona'>Изменение шаблона</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -u user:user -X POST -d <span class="s1">'{"items":null,"type":"54293c0e56c35ff85dcf6ee8","title":{"ru_RU":"Пополнение Steam"},"range_start":"","range_end":"","pattern":"^[a-zA-Z0-9_]{3,64}$","pattern_desc":{"ru_RU":"Какой-то там логин в стим"},"default_value":"{{last_value}}","regex_values":[],"regex_description":[],"is_required":true}'</span> https://sandbox.wallet.best/adm2/templates/55499bbdcccc902022004238
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2422,7 +2422,7 @@
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h2 id='udalenie-shablona'>Удаление шаблона</h2><pre class="highlight shell"><code><span class="nv">$curl</span> -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X DELETE -u user:user http://sandbox.wallet.best/adm2/templates/55522103cccc902a550041d9
+<h2 id='udalenie-shablona'>Удаление шаблона</h2><pre class="highlight shell"><code><span class="nv">$curl</span> -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X DELETE -u user:user https://sandbox.wallet.best/adm2/templates/55522103cccc902a550041d9
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2432,7 +2432,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-          <h1 id='tipy'>Типы</h1><h2 id='poluchenie-spiska-tipov'>Получение списка типов</h2><pre class="highlight shell"><code>curl -uuser:user http://sandbox.wallet.best/adm2/types/
+          <h1 id='tipy'>Типы</h1><h2 id='poluchenie-spiska-tipov'>Получение списка типов</h2><pre class="highlight shell"><code>curl -uuser:user https://sandbox.wallet.best/adm2/types/
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2471,7 +2471,7 @@
 <li><code class="prettyprint">regex_unmap</code> - Регулярное выражения поиска (Правило преобразования Client&rarr;MServer)</li>
 <li><code class="prettyprint">regex_unmap_value</code> - Значение для замены (Значение преобразования Client&rarr;MServer)</li>
 </ul>
-<h2 id='poluchenie-tipa-po-id'>Получение типа по id</h2><pre class="highlight shell"><code>curl  -H <span class="s1">'X-Project-ID:mbank'</span> -uuser:user http://sandbox.wallet.best/adm2/types/5542652ecccc90abb20041b8
+<h2 id='poluchenie-tipa-po-id'>Получение типа по id</h2><pre class="highlight shell"><code>curl  -H <span class="s1">'X-Project-ID:mbank'</span> -uuser:user https://sandbox.wallet.best/adm2/types/5542652ecccc90abb20041b8
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2488,7 +2488,7 @@
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h2 id='dobavlenie-tipa'>Добавление типа</h2><pre class="highlight shell"><code>curl  -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -uuser:user -X POST -d <span class="s1">'{"title":"new_title","description":"description_for_new_title","regex_map":"\/^$\/$","regex_map_value":"\/^$\/$","regex_unmap":"100500","regex_unmap_value":"100500"}'</span> http://sandbox.wallet.best/adm2/types/
+<h2 id='dobavlenie-tipa'>Добавление типа</h2><pre class="highlight shell"><code>curl  -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -uuser:user -X POST -d <span class="s1">'{"title":"new_title","description":"description_for_new_title","regex_map":"\/^$\/$","regex_map_value":"\/^$\/$","regex_unmap":"100500","regex_unmap_value":"100500"}'</span> https://sandbox.wallet.best/adm2/types/
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2514,7 +2514,7 @@
 <li><code class="prettyprint">regex_unmap</code> - Регулярное выражения поиска (Правило преобразования Client&rarr;MServer)</li>
 <li><code class="prettyprint">regex_unmap_value</code> - Значение для замены (Значение преобразования Client&rarr;MServer)</li>
 </ul>
-<h2 id='izmenenie-tipa'>Изменение типа</h2><pre class="highlight shell"><code>curl  -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -uuser:user -X POST -d <span class="s1">'{"title":"edited title","description":"edited description","regex_map":"\/^$\/$","regex_map_value":"\/^$\/$","regex_unmap":"100500","regex_unmap_value":"100500"}'</span> http://sandbox.wallet.best/adm2/types/5549b733cccc904b09004261
+<h2 id='izmenenie-tipa'>Изменение типа</h2><pre class="highlight shell"><code>curl  -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -uuser:user -X POST -d <span class="s1">'{"title":"edited title","description":"edited description","regex_map":"\/^$\/$","regex_map_value":"\/^$\/$","regex_unmap":"100500","regex_unmap_value":"100500"}'</span> https://sandbox.wallet.best/adm2/types/5549b733cccc904b09004261
 
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -2534,7 +2534,7 @@
 </span></code></pre>
 
 <p>Запрос на изменение типа аналогичен с запросом на создание типа, только с передачей идентификатора типа</p>
-<h2 id='udalenie-tipa'>Удаление типа</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X DELETE -u user:user http://sandbox.wallet.best/adm2/types/5549b733cccc904b09004261
+<h2 id='udalenie-tipa'>Удаление типа</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X DELETE -u user:user https://sandbox.wallet.best/adm2/types/5549b733cccc904b09004261
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2544,7 +2544,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-          <h1 id='koshelki'>Кошельки</h1><h2 id='zagruzka-koshelka'>Загрузка кошелька</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -uuser:user http://sandbox.wallet.best/adm2/wallets/+380631345678
+          <h1 id='koshelki'>Кошельки</h1><h2 id='zagruzka-koshelka'>Загрузка кошелька</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -uuser:user https://sandbox.wallet.best/adm2/wallets/+380631345678
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2709,7 +2709,7 @@
 <li><code class="prettyprint">projects</code> - к каким проектам относится</li>
 <li><code class="prettyprint">lock_reason</code> - причина блокировки (если заблокирован) </li>
 </ul>
-<h2 id='udalenie-koshelka'>Удаление кошелька</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X DELETE -u user:user <span class="s2">"http://sandbox.wallet.best/adm2/wallets/+123457643395"</span>
+<h2 id='udalenie-koshelka'>Удаление кошелька</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X DELETE -u user:user <span class="s2">"https://sandbox.wallet.best/adm2/wallets/+123457643395"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2721,7 +2721,7 @@
 </span></code></pre>
 
 <p>Работает только на DEV сервере</p>
-<h2 id='izmenenie-email-koshelka'>Изменение email кошелька</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"email":"test@testdt.com"}'</span> http://sandbox.wallet.best/adm2/wallets/+12345842116/email
+<h2 id='izmenenie-email-koshelka'>Изменение email кошелька</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"email":"test@testdt.com"}'</span> https://sandbox.wallet.best/adm2/wallets/+12345842116/email
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2731,7 +2731,7 @@
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h2 id='izmenenie-personstatus-koshelka'>Изменение person/status кошелька</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"person_status":"data_entered"}'</span> http://sandbox.wallet.best/adm2/wallets/+12345842117/person/status
+<h2 id='izmenenie-personstatus-koshelka'>Изменение person/status кошелька</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"person_status":"data_entered"}'</span> https://sandbox.wallet.best/adm2/wallets/+12345842117/person/status
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2747,7 +2747,7 @@
 <li><code class="prettyprint">level</code> - <code class="prettyprint">anonymous</code> | <code class="prettyprint">identified</code> | <code class="prettyprint">personified</code> уровень пользователя (опционально, по умолчанию <code class="prettyprint">identified</code>)
 ##Заставить сменить пароль</li>
 </ul>
-<pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"password_reset":true}'</span> http://sandbox.wallet.best/adm2/wallets/+12345842117/password/reset
+<pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X POST -u user:user -d <span class="s1">'{"password_reset":true}'</span> https://sandbox.wallet.best/adm2/wallets/+12345842117/password/reset
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2761,7 +2761,7 @@
 <ul>
 <li><code class="prettyprint">password_reset</code> - (true|false) - заставить сменить пароль</li>
 </ul>
-<h2 id='udalenie-avatarki-polzovatelya'>Удаление аватарки пользователя</h2><pre class="highlight shell"><code><span class="nv">$curl</span> -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X DELETE -u user:user http://sandbox.wallet.best/adm2/wallets/+123457443658/icon
+<h2 id='udalenie-avatarki-polzovatelya'>Удаление аватарки пользователя</h2><pre class="highlight shell"><code><span class="nv">$curl</span> -H <span class="s1">'X-Project-ID:mbank'</span> -H <span class="s1">'Content-type:application/json'</span> -X DELETE -u user:user https://sandbox.wallet.best/adm2/wallets/+123457443658/icon
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2770,7 +2770,7 @@
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h2 id='poluchenie-spiska-ustroystv-koshelka'>Получение списка устройств кошелька</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user http://sandbox.wallet.best/adm2/wallets/+12345471665/devices
+<h2 id='poluchenie-spiska-ustroystv-koshelka'>Получение списка устройств кошелька</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user https://sandbox.wallet.best/adm2/wallets/+12345471665/devices
 
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
@@ -2813,7 +2813,7 @@
 </span></code></pre>
 
 <p>Список устройств, с которых пользователь заходил в приложения</p>
-<h2 id='blokirovka-koshelka'>Блокировка кошелька</h2><pre class="highlight shell"><code>curl  -X POST -u user:user -d <span class="s1">'{"message":"message","reason":"reason"}'</span> http://sandbox.wallet.best/adm2/wallets/+12345334867/disable
+<h2 id='blokirovka-koshelka'>Блокировка кошелька</h2><pre class="highlight shell"><code>curl  -X POST -u user:user -d <span class="s1">'{"message":"message","reason":"reason"}'</span> https://sandbox.wallet.best/adm2/wallets/+12345334867/disable
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2828,7 +2828,7 @@
 <li><code class="prettyprint">message</code> - Сообщение, которое увидит пользователь</li>
 <li><code class="prettyprint">reason</code> - Причина блокировки</li>
 </ul>
-<h2 id='razblokirovka-koshelka'>Разблокировка кошелька</h2><pre class="highlight shell"><code>curl  -X POST -u user:user http://sandbox.wallet.best/adm2/wallets/+12345334867/enable
+<h2 id='razblokirovka-koshelka'>Разблокировка кошелька</h2><pre class="highlight shell"><code>curl  -X POST -u user:user https://sandbox.wallet.best/adm2/wallets/+12345334867/enable
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2838,7 +2838,7 @@
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h2 id='poluchenie-spiska-peresekayuschihsya-koshelkov'>Получение списка пересекающихся кошельков</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user http://sandbox.wallet.best/adm2/wallets/+380631345678/intersecting
+<h2 id='poluchenie-spiska-peresekayuschihsya-koshelkov'>Получение списка пересекающихся кошельков</h2><pre class="highlight shell"><code>curl -H <span class="s1">'X-Project-ID:mbank'</span> -X GET -u user:user https://sandbox.wallet.best/adm2/wallets/+380631345678/intersecting
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2915,7 +2915,7 @@
 <li><code class="prettyprint">by_udid</code> - по пересечению устройств</li>
 <li><code class="prettyprint">by_contacts</code> - степень похожести телефонной книги составляет &gt;= 20%</li>
 </ul>
-<h2 id='razoslat-push-uvedomleniya-spisku-koshelkov'>Разослать PUSH уведомления списку кошельков</h2><pre class="highlight shell"><code>curl  -X POST -u user:user -d <span class="s1">'{"event":"some_event", "message":"test", "phones":["+79107653522","+79633963636", "+7123"]}'</span> <span class="s2">"http://sandbox.wallet.best/adm2/wallets/pushes"</span>
+<h2 id='razoslat-push-uvedomleniya-spisku-koshelkov'>Разослать PUSH уведомления списку кошельков</h2><pre class="highlight shell"><code>curl  -X POST -u user:user -d <span class="s1">'{"event":"some_event", "message":"test", "phones":["+79107653522","+79633963636", "+7123"]}'</span> <span class="s2">"https://sandbox.wallet.best/adm2/wallets/pushes"</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
