@@ -423,6 +423,7 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:
 
 * `person_status` - Изменить статус верификации (см. Изменение статуса персональных данныхv)
 * `level` - `anonymous` | `identified` | `personified` уровень пользователя (опционально, по умолчанию `identified`)
+
 ##Заставить сменить пароль
 
 ```shell
