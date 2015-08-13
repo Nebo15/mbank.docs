@@ -245,10 +245,13 @@ $ curl -u +79261111111:p@ssw0rD https://sandbox.wallet.best/v1/groups
 
 ## Загрузка списка сервисов по группам
 
+*Это устаревший метод, который будет удален в будущих релизах*
+
 В ответе в meta присутствует параметр request_time со значением UNIX timestamp.
 Если делать запрос с параметром **If-Modified-Since** в котором будет указан timestamp предыдущего запроса, то ответ может быть с HTTP кодом 304.
 
 В метаданных есть поле `suggestion_rules` c массивом **код оператора в международном формате** : **ID сервиса**
+
 ```shell
 $ curl -u+79261111111:p@ssw0rD https://sandbox.wallet.best/v1/services/groups
 ```
