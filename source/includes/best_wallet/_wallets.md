@@ -88,8 +88,9 @@ $ curl -u admin_level_login:password -X DELETE http://sandbox.wallet.best/v1/wal
 * `family_name` - **обязательный параметр** - фамилия
 * `given_name` - **обязательный параметр** - имя
 * `passport_series_number` - **обязательный параметр** - серия и номер паспорта, 10 цифр
-* `patronymic_name` - отчество
 * `passport_issued_at` - дата в формате гггг-мм-дд
+* `patronymic_name` - отчество
+* `birth_date` - дата рождения в формате гггг-мм-дд
 * `itn` - ИНН, 12 цифр
 * `ssn` - СНИЛС, 11 цифр
 
@@ -114,7 +115,7 @@ http://sandbox.wallet.best/v1/wallet/person
     "passport_issued_at" : "2012-02-27",
     "itn" : "330500938709",
     "ssn" : "11223344595",
-    "status" : "data_entered"
+    "status" : "data_entered",
     "changed_at" : "2014-11-14T13:15:42.213Z"
   }
 }
