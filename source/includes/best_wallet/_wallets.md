@@ -36,7 +36,7 @@ Mserver: http://nebo15.github.io/mbank.docs/mserver.html#smena-parolya
 ## Загрузка кошелька
 
 ```shell
-$ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/wallet
+$ curl -u+79261111111:p@ssw0rD https://sandbox.wallet.best/v1/wallet
 ```
 
 ```json
@@ -68,7 +68,7 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/wallet
 *Метод не работает на prod.*
 
 ```shell
-$ curl -u admin_level_login:password -X DELETE http://sandbox.wallet.best/v1/wallet/%2B79261111111
+$ curl -u admin_level_login:password -X DELETE https://sandbox.wallet.best/v1/wallet/%2B79261111111
 ```
 
 ```json
@@ -99,7 +99,7 @@ $ curl -u+79261111111:password -H 'Content-type:application/json'
 -d '{"family_name": "Арсеньев", "given_name": "Алексей", "patronymic_name": "Александрович",
 "passport_series_number": "2202655885", "passport_issued_at" : "2012-02-27",
 "itn": "330500938709", "ssn": "11223344595"}'
-http://sandbox.wallet.best/v1/wallet/person
+https://sandbox.wallet.best/v1/wallet/person
 ```
 
 ```json
@@ -134,7 +134,7 @@ http://sandbox.wallet.best/v1/wallet/person
 
 ## Загрузка персональных данных пользователя
 ```shell
-$ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/wallet/person
+$ curl -u+79261111111:p@ssw0rD https://sandbox.wallet.best/v1/wallet/person
 ```
 
 ```json
@@ -161,7 +161,7 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/wallet/person
 Форматы: JPEG, PNG. На сервере делается auto-rotate. Размер файла до 10 мегабайт.
 
 ```shell
-$ curl -u +79261111111:p@ssw0rD -X POST -F "file=@/path/to/image.jpg" http://sandbox.wallet.best/v1/wallet/picture
+$ curl -u +79261111111:p@ssw0rD -X POST -F "file=@/path/to/image.jpg" https://sandbox.wallet.best/v1/wallet/picture
 ```
 
 ```json
@@ -175,7 +175,7 @@ $ curl -u +79261111111:p@ssw0rD -X POST -F "file=@/path/to/image.jpg" http://san
 ## Удаление картинки
 
 ```shell
-$ curl -u +79261111111:p@ssw0rD -X DELETE http://sandbox.wallet.best/v1/wallet/picture
+$ curl -u +79261111111:p@ssw0rD -X DELETE https://sandbox.wallet.best/v1/wallet/picture
 ```
 
 ```json
@@ -195,7 +195,7 @@ $ curl -u +79261111111:p@ssw0rD -X DELETE http://sandbox.wallet.best/v1/wallet/p
 Если искомый кошелек не активирован, то он не найдется.
 
 ```shell
-$ curl -u +12345675578:password -H 'Content-type:application/json' -d '{"contacts": [ {"phone": "+79990000000"}, {"phone": "+79260000001"}, {"phone": "+79260000002"} ]}' http://sandbox.wallet.best/v1/wallet/find
+$ curl -u +12345675578:password -H 'Content-type:application/json' -d '{"contacts": [ {"phone": "+79990000000"}, {"phone": "+79260000001"}, {"phone": "+79260000002"} ]}' https://sandbox.wallet.best/v1/wallet/find
 ```
 
 ```json
@@ -213,7 +213,7 @@ $ curl -u +12345675578:password -H 'Content-type:application/json' -d '{"contact
 ## Получение списка точек пополненя
 
 ```shell
-$ curl -u +12345675578:password http://sandbox.wallet.best/v1/wallet/replenishment_points
+$ curl -u +12345675578:password https://sandbox.wallet.best/v1/wallet/replenishment_points
 ```
 
 ```json
@@ -250,7 +250,7 @@ $ curl -u +12345675578:password http://sandbox.wallet.best/v1/wallet/replenishme
 * `email_send_frequency` - **never | after_payment | daily | monthly** периодичность отправки на почту лога транзакций
 
 ```shell
-$ curl -u +12345675578:password -d '{"email" : "test@wallet.best", "email_send_frequency" : "daily"}' http://sandbox.wallet.best/v1/wallet/settings
+$ curl -u +12345675578:password -d '{"email" : "test@wallet.best", "email_send_frequency" : "daily"}' https://sandbox.wallet.best/v1/wallet/settings
 ```
 ```json
 {
@@ -273,7 +273,7 @@ $ curl -u +12345675578:password -d '{"email" : "test@wallet.best", "email_send_f
 * `personified` - true
 
 ```shell
-$ curl -H 'Content-type:application/json' -d '{"phone": "+12345675578", "verified": true}' http://sandbox.wallet.best/v1/wallet/status?webhook_client_id=mserver&webhook_client_token=token
+$ curl -H 'Content-type:application/json' -d '{"phone": "+12345675578", "verified": true}' https://sandbox.wallet.best/v1/wallet/status?webhook_client_id=mserver&webhook_client_token=token
 
 ```
 ```json

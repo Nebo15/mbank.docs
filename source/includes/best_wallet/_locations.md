@@ -5,12 +5,12 @@
 * `group` - фильтр по группе
 * `point` - координаты для получения точек в радиусе, формат: **longitude,latitude**. Пример:
 ```shell
-curl -u +12345675578:password http://sandbox.wallet.best/v1/locations?point=57.415033,51.446833
+curl -u +12345675578:password https://sandbox.wallet.best/v1/locations?point=57.415033,51.446833
 ```
 * `distance` - радиус площади в метрах, по-умолчанию 500. Работает только вместе с **point**. 
 * `square` - получение точек в прямоугольном полигоне. Передать нужно две координаты - сначала левую верхнюю, затем правую нижнюю точки в формате: **longitude,latitude,longitude,latitude**. Пример:  
 ```shell
-curl -u +12345675578:password http://sandbox.wallet.best/v1/locations?square=57.279764,51.512689,57.415033,51.446833
+curl -u +12345675578:password https://sandbox.wallet.best/v1/locations?square=57.279764,51.512689,57.415033,51.446833
 ```
 
 ##### Внимание! Всегда передавайте коориднаты в последовательности **longitude,latitude**, а не наоборот
@@ -34,7 +34,7 @@ curl -u +12345675578:password http://sandbox.wallet.best/v1/locations?square=57.
 * `wrong_location_square_points_amount` - координат в полигоне должно быть ровно 4
 
 ```shell
-$ curl -u +12345675578:password http://sandbox.wallet.best/v1/locations
+$ curl -u +12345675578:password https://sandbox.wallet.best/v1/locations
 ```
 
 ```json

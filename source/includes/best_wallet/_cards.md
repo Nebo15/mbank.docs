@@ -28,7 +28,7 @@
 * `iframe` - опциональный параметр [true|false], который будет передаваться в payment_page_url 
 
 ```shell
-$ curl -u+79261111111:p@ssw0rD -H 'Content-type:application/json' -d '{"card_success_url": "http://ya.ru", "card_failure_url": "http://google.com"}' http://sandbox.wallet.best/v1/cards
+$ curl -u+79261111111:p@ssw0rD -H 'Content-type:application/json' -d '{"card_success_url": "http://ya.ru", "card_failure_url": "http://google.com"}' https://sandbox.wallet.best/v1/cards
 ```
 
 ```json
@@ -53,7 +53,7 @@ $ curl -u+79261111111:p@ssw0rD -H 'Content-type:application/json' -d '{"card_suc
 ## Загрузка карты
 
 ```shell
-$ curl -u+79261111111:p@ssw0rD -H 'Content-type:application/json' http://sandbox.wallet.best/v1/cards/62
+$ curl -u+79261111111:p@ssw0rD -H 'Content-type:application/json' https://sandbox.wallet.best/v1/cards/62
 ```
 
 ```json
@@ -77,7 +77,7 @@ $ curl -u+79261111111:p@ssw0rD -H 'Content-type:application/json' http://sandbox
 Опциональный параметр `state` позволяет фильтровать карты по состоянию.
 
 ```shell
-$ curl -u+79261111111:p@ssw0rD -H 'Content-type:application/json' http://sandbox.wallet.best/v1/cards?state=active,pending
+$ curl -u+79261111111:p@ssw0rD -H 'Content-type:application/json' https://sandbox.wallet.best/v1/cards?state=active,pending
 ```
 
 ```json
@@ -98,7 +98,7 @@ $ curl -u+79261111111:p@ssw0rD -H 'Content-type:application/json' http://sandbox
 
 ```shell
 $ сurl -u+79261111111:p@ssw0rD -H 'Content-type:application/json'
- -X DELETE http://sandbox.wallet.best/v1/cards/62
+ -X DELETE https://sandbox.wallet.best/v1/cards/62
 ```
 
 ```json

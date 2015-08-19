@@ -39,7 +39,7 @@ HTTP статус дублируется в поле `meta.status` ответа 
 Если делать запрос с параметром **If-Modified-Since** в котором будет указан timestamp предыдущего запроса, то ответ может быть с HTTP кодом 304
 
 ```shell
-$ curl http://sandbox.wallet.best/v1/errors
+$ curl https://sandbox.wallet.best/v1/errors
 ```
 
 ```json
@@ -103,7 +103,7 @@ $ curl http://sandbox.wallet.best/v1/errors
 #Настройки приложения
 
 ```shell
-$ curl -u +79261111111:p@ssw0rD http://sandbox.wallet.best/v1/options
+$ curl -u +79261111111:p@ssw0rD https://sandbox.wallet.best/v1/options
 ```
 
 ```json

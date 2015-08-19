@@ -3,7 +3,7 @@
 ## Лимиты платежей
 
 ```shell
-$ сurl -u+79261111111:p@ssw0rD -H 'Content-type:application/json' http://sandbox.wallet.best/v1/limits
+$ сurl -u+79261111111:p@ssw0rD -H 'Content-type:application/json' https://sandbox.wallet.best/v1/limits
 ```
 
 ```json

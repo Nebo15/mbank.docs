@@ -81,7 +81,7 @@ $ curl -u+79261111111:password -H 'Content-type:application/json'
  -d '{"type": "out", "client_payment_id": "e731a7e2-c553-4295-867e-1023359bee28",
  "amount": 100, "service": 61, "parameters": {"phoneNumber": "9267101283",
  "BIK": "044583151", "Name": "name", "SName": "sname", "Fam": "fam"}}'
- http://sandbox.wallet.best/v1/payments
+ https://sandbox.wallet.best/v1/payments
 ```
 
 ```json
@@ -232,7 +232,7 @@ $ curl -u+79261111111:password -H 'Content-type:application/json'
 $ curl -u+79261111111:password -H 'Content-type:application/json'
  -d '{"type": "p2p", "client_payment_id": "071c6d23-7508-4e35-ad92-852308a47677", "amont": 100,
  "destination": "+79261111112", "message": "Съешь ещё этих мягких французских булок, да выпей чаю"}'
- http://sandbox.wallet.best/v1/payments
+ https://sandbox.wallet.best/v1/payments
 ```
 
 ```json
@@ -290,7 +290,7 @@ $ curl -u+79261111111:password -H 'Content-type:application/json'
 Создаем платеж:
 
 ```shell
-$ curl -u +79261111111:password -H 'Content-type:application/json' -d '{"type": "in", "client_payment_id": "071c6d23-7508-4e35-ad92-852308a47678", "amount": 100}' http://sandbox.wallet.best/v1/payments
+$ curl -u +79261111111:password -H 'Content-type:application/json' -d '{"type": "in", "client_payment_id": "071c6d23-7508-4e35-ad92-852308a47678", "amount": 100}' https://sandbox.wallet.best/v1/payments
 ```
 
 ```json
@@ -322,7 +322,7 @@ $ curl -u +79261111111:password -H 'Content-type:application/json' -d '{"type": 
 Платим:
 
 ```shell
-$curl -u +79261111111:password -H 'Content-type:application/json' -X POST http://sandbox.wallet.best/v1/payments/1401089237212/pay
+$curl -u +79261111111:password -H 'Content-type:application/json' -X POST https://sandbox.wallet.best/v1/payments/1401089237212/pay
 ```
 
 ```json
@@ -358,7 +358,7 @@ $curl -u +79261111111:password -H 'Content-type:application/json' -X POST http:/
 Создаем платеж:
 
 ```shell
-$ curl -u +79261111111:password -H 'Content-type:application/json' -d '{"type": "in", "client_payment_id": "071c6d23-7508-4e35-ad92-852308a47679", "amount": 100, "store_card": true}' http://sandbox.wallet.best/v1/payments
+$ curl -u +79261111111:password -H 'Content-type:application/json' -d '{"type": "in", "client_payment_id": "071c6d23-7508-4e35-ad92-852308a47679", "amount": 100, "store_card": true}' https://sandbox.wallet.best/v1/payments
 ```
 
 ```json
@@ -391,7 +391,7 @@ $ curl -u +79261111111:password -H 'Content-type:application/json' -d '{"type": 
 Платим:
 
 ```shell
-$ curl -u +79261111111:password -H 'Content-type:application/json' -X POST http://sandbox.wallet.best/v1/payments/1401089237231/pay
+$ curl -u +79261111111:password -H 'Content-type:application/json' -X POST https://sandbox.wallet.best/v1/payments/1401089237231/pay
 ```
 
 ```json
@@ -427,7 +427,7 @@ $ curl -u +79261111111:password -H 'Content-type:application/json' -X POST http:
 Убедимся, что платеж успешен и карта сохранена:
 
 ```shell
-$ curl -u +79261111111:password http://sandbox.wallet.best/v1/payments/1401089237231
+$ curl -u +79261111111:password https://sandbox.wallet.best/v1/payments/1401089237231
 ```
 
 ```json
@@ -466,7 +466,7 @@ $ curl -u +79261111111:password http://sandbox.wallet.best/v1/payments/140108923
 Создаем платеж:
 
 ```shell
-$ curl -u +79261111111:password -H 'Content-type:application/json' -d '{"type": "in", "client_payment_id": "071c6d23-7508-4e35-ad92-852308a47689", "amount": 100, "card": 21}' http://sandbox.wallet.best/v1/payments
+$ curl -u +79261111111:password -H 'Content-type:application/json' -d '{"type": "in", "client_payment_id": "071c6d23-7508-4e35-ad92-852308a47689", "amount": 100, "card": 21}' https://sandbox.wallet.best/v1/payments
 ```
 
 ```json
@@ -501,7 +501,7 @@ $ curl -u +79261111111:password -H 'Content-type:application/json' -d '{"type": 
 Платим:
 
 ```shell
-$ curl -u+79261111111:password -H 'Content-type:application/json' -X POST http://sandbox.wallet.best/v1/payments/1401089237232/pay
+$ curl -u+79261111111:password -H 'Content-type:application/json' -X POST https://sandbox.wallet.best/v1/payments/1401089237232/pay
 ```
 
 ```json
@@ -561,7 +561,7 @@ $ curl -u+79261111111:password -H 'Content-type:application/json' -X POST http:/
 $ curl -u+79261111111:password -H 'Content-type:application/json'
 -d '{"type": "inout", "client_payment_id": "021c6d23-7508-4e35-ad92-852308a47689", "amount": 100, "service": 834,
 "parameters": {"phoneNumber": "9267101283"}}'
-http://sandbox.wallet.best/v1/payments
+https://sandbox.wallet.best/v1/payments
 ```
 
 ```json
@@ -634,7 +634,7 @@ http://sandbox.wallet.best/v1/payments
 
 Платим:
 ```shell
-curl -u+79261111111:password -H 'Content-type:application/json' -X POST http://sandbox.wallet.best/v1/payments/25818/pay
+curl -u+79261111111:password -H 'Content-type:application/json' -X POST https://sandbox.wallet.best/v1/payments/25818/pay
 ```
 
 ```json
@@ -696,7 +696,7 @@ curl -u+79261111111:password -H 'Content-type:application/json' -X POST http://s
 $ curl -u+79261111111:password -H 'Content-type:application/json'
 -d '{"type": "inout", "client_payment_id": "021c6d23-7508-4e35-ad92-852308a47689", "amount": 100, "store_card": true,
 "service": 834, "parameters": {"phoneNumber": "9267101283"}}'
-http://sandbox.wallet.best/v1/payments
+https://sandbox.wallet.best/v1/payments
 ```
 
 ```json
@@ -768,7 +768,7 @@ http://sandbox.wallet.best/v1/payments
 ```
 Платим:
 ```shell
-curl -u+79261111111:password -H 'Content-type:application/json' -X POST http://sandbox.wallet.best/v1/payments/25818/pay
+curl -u+79261111111:password -H 'Content-type:application/json' -X POST https://sandbox.wallet.best/v1/payments/25818/pay
 ```
 
 ```json
@@ -829,7 +829,7 @@ curl -u+79261111111:password -H 'Content-type:application/json' -X POST http://s
 $ curl -u+79261111111:password -H 'Content-type:application/json'
 -d '{"type": "inout", "client_payment_id": "021c6d23-7508-4e35-ad92-852308a47689", "amount": 100, "card": 21, "service": 834,
 "parameters": {"phoneNumber": "9267101283"}}'
-http://sandbox.wallet.best/v1/payments
+https://sandbox.wallet.best/v1/payments
 ```
 
 ```json
@@ -922,7 +922,7 @@ http://sandbox.wallet.best/v1/payments
 ```shell
 curl -u+79261111111:password -H 'Content-type:application/json'
 -d '{"type": "out", "amount": 100, "client_payment_id": "021c6d23-7508-4e35-ad92-852308a47689", "service": 834, "parameters": {"phoneNumber": "9267101283"}}'
-http://sandbox.wallet.best/v1/payments
+https://sandbox.wallet.best/v1/payments
 ```
 ```json
 {
@@ -989,7 +989,7 @@ http://sandbox.wallet.best/v1/payments
 ```shell
 curl -u+79261111111:password -H 'Content-type:application/json'
 -d '{"type": "inout", "card": 7222}'
-http://sandbox.wallet.best/v1/payments/25832/pay
+https://sandbox.wallet.best/v1/payments/25832/pay
 ```
 ```json
 {
@@ -1062,7 +1062,7 @@ http://sandbox.wallet.best/v1/payments/25832/pay
 
 Сервис может быть выключеным, но в момент проведения транзакции был активен. Такой сервис будет помечен флагом `is_disabled`
 ```shell
-$ curl -u +79261111111:password -H 'Content-type:application/json' http://sandbox.wallet.best/v1/payments?page=0&size=35
+$ curl -u +79261111111:password -H 'Content-type:application/json' https://sandbox.wallet.best/v1/payments?page=0&size=35
 ```
 
 Параметры `page` и `size` в запросе позволяют задать номер (начиная с 0) и размер страницы, которую запрашивает клиент. По умолчанию номер страницы - 0 и размер страницы - 35 платежей. Опциона��ьные параметры `type` и `status` позволяют фильтровать платежи по типу и статусу. По умолчанию, платежи со статусом `created` не попадают в список, чтобы их увидеть, необходимо задать этот статус явно. Статусы и типы можно перечислять через запятую, например: `status=created,completed`.
@@ -1248,7 +1248,7 @@ $ curl -u +79261111111:password -H 'Content-type:application/json' http://sandbo
 Возможно обнулить счетчик непросмотренных платежей
 
 ```shell
-$ curl -u +79261111111:password -H 'Content-type:application/json' http://sandbox.wallet.best/v1/payments/reset_unseen
+$ curl -u +79261111111:password -H 'Content-type:application/json' https://sandbox.wallet.best/v1/payments/reset_unseen
 ```
 ```json
 {
@@ -1313,3 +1313,21 @@ $ curl -u +79261111111:password -H 'Content-type:application/json' http://sandbo
 | `decline`             | Платеж отклонен                                                                     |
 | `undo`                | Отмена ранее успешного платежа (сторно)                                             |
 | `redo`                | Ранее отмененный платеж сделан успешным (сторно сторно and we need to go deeper)    |
+
+
+## Webhook для логирования переводов Бэста
+
+```shell
+$ curl 'https://sandbox.wallet.best/v1/payments/best/p2p' -X POST -H 'Content-type:application/json' -d '{"payment_id": 12345678, "sender": {"id":7777777, "phone": "+79250101212"}, "recipient": {"id":88888888, "phone": "+79110992233"}}'
+```
+```json
+{
+    "meta": {
+        "code": 200
+    }
+}
+```
+
+Коды ошибок
+
+* `empty_request` - в запросе отсутствуют данные для логирования

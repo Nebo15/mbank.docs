@@ -71,7 +71,7 @@
 * `geo_id` - Не обязательно.
 
 ```shell
-$ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services
+$ curl -u+79261111111:p@ssw0rD https://sandbox.wallet.best/v1/services
 ```
 
 ```json
@@ -201,7 +201,7 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services
 Если делать запрос с параметром **If-Modified-Since** в котором будет указан timestamp предыдущего запроса, то ответ может быть с HTTP кодом 304
 
 ```shell
-$ curl -u +79261111111:p@ssw0rD http://sandbox.wallet.best/v1/groups
+$ curl -u +79261111111:p@ssw0rD https://sandbox.wallet.best/v1/groups
 ```
 
 ```json
@@ -245,12 +245,15 @@ $ curl -u +79261111111:p@ssw0rD http://sandbox.wallet.best/v1/groups
 
 ## Загрузка списка сервисов по группам
 
+*Это устаревший метод, который будет удален в будущих релизах*
+
 В ответе в meta присутствует параметр request_time со значением UNIX timestamp.
 Если делать запрос с параметром **If-Modified-Since** в котором будет указан timestamp предыдущего запроса, то ответ может быть с HTTP кодом 304.
 
 В метаданных есть поле `suggestion_rules` c массивом **код оператора в международном формате** : **ID сервиса**
+
 ```shell
-$ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/groups
+$ curl -u+79261111111:p@ssw0rD https://sandbox.wallet.best/v1/services/groups
 ```
 
 ```json
@@ -329,7 +332,7 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/groups
 ## Информация о сервисе по id
 
 ```shell
-$ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/42
+$ curl -u+79261111111:p@ssw0rD https://sandbox.wallet.best/v1/services/42
 ```
 
 ```json
@@ -428,7 +431,7 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/42
 * `provider_region_code`
 
 ```shell
-$ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/mnp?provider_id=beline&provider_region_code=ru
+$ curl -u+79261111111:p@ssw0rD https://sandbox.wallet.best/v1/services/mnp?provider_id=beline&provider_region_code=ru
 ```
 
 ```json
@@ -497,7 +500,7 @@ $ curl -u+79261111111:p@ssw0rD http://sandbox.wallet.best/v1/services/mnp?provid
 ## Определение ОПСОСа по номеру телефона
 
 ```shell
-$ curl http://sandbox.wallet.best/v1/services/mobile/79261111111
+$ curl https://sandbox.wallet.best/v1/services/mobile/79261111111
 ```
 
 ```json
@@ -508,7 +511,7 @@ $ curl http://sandbox.wallet.best/v1/services/mobile/79261111111
   "data": {
     "id": 834,
     "name": "МегаФон",
-    "icon_url": "http://sandbox.wallet.best/img/providers/dev_834.png",
+    "icon_url": "https://sandbox.wallet.best/img/providers/dev_834.png",
     "limit": "",
     "rate": {
         "fix": 0,
@@ -542,7 +545,7 @@ $ curl http://sandbox.wallet.best/v1/services/mobile/79261111111
 ```shell
 $ curl -X POST -H 'Content-type:application/json'
 -u+79261111111:p@ssw0rD -d '{"title" : "%SERVICE TITLE%" }'
-http://sandbox.wallet.best/v1/services/order
+https://sandbox.wallet.best/v1/services/order
 ```
 
 ```json
@@ -603,7 +606,7 @@ http://sandbox.wallet.best/v1/services/order
 * `title` - подстрока, входящая (в любом месте) в название населенного пункта, работает вместе с `filter_by=title`. Не обязательно.
 
 ```shell
-$ curl -u +79261111111:p@ssw0rD http://sandbox.wallet.best/v1/geo?filter_by=title\&title=%D0%BC%D0%BE%D1%81%D0%BA%D0%B2
+$ curl -u +79261111111:p@ssw0rD https://sandbox.wallet.best/v1/geo?filter_by=title\&title=%D0%BC%D0%BE%D1%81%D0%BA%D0%B2
 ```
 
 ```json

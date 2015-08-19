@@ -3,7 +3,7 @@
 ## Загрузка списка платежей
 
 ```shell
-curl -uuser:user http://sandbox.wallet.best/adm2/payments/?size=2
+curl -uuser:user https://sandbox.wallet.best/adm2/payments/?size=2
 ```
 
 ```json
@@ -200,3 +200,454 @@ curl -uuser:user http://sandbox.wallet.best/adm2/payments/?size=2
 * `inbound_payment_card_type` - поиск по вендору карт (MASTER_CARD/VISA/..?)
 * `inbound_payment_3ds` - поиск по 3ds статусу карты: unknown (ECI/SLI не получен ни на одном из шагов), attempted (06), skipped (07), successful (05)
 * `inbound_payment_user_ip` - поиск по IP адресу плательщика
+
+
+
+## Отчет о количестве платежей проекта за период
+
+> Подсчёт всех платежей за период
+
+```shell
+$ curl -uadmin:admin "https://sandbox.wallet.best/adm2/payments/count?date_from=2014-07-11&date_to=2014-07-12"
+```
+
+```json
+{
+   "meta":{
+      "code":200
+   },
+   "data":[
+      {
+         "tick":"2014-07-11",
+         "data": {
+             "count":123
+         }
+      },
+      {
+         "tick":"2014-07-12",
+         "data": {
+             "count":98
+         }
+      }
+   ]
+}
+```
+
+> Пример с группировкой по статусу платежей
+
+```shell
+$ curl -uadmin:admin "https://sandbox.wallet.best/adm2/payments/count?date_from=2014-07-11&date_to=2014-07-11&group_by=status&tick=3h"
+```
+
+```json
+{
+   "meta":{
+      "code":200
+   },
+   "data":[
+      {
+         "tick":"2014-07-11T00:00:00",
+         "data":{
+            "count":83,
+            "created":24,
+            "processing":37,
+            "completed":21,
+            "declined":1
+         }
+      },
+      {
+         "tick":"2014-07-11T00:03:00",
+         "data":{
+            "count":83,
+            "created":24,
+            "processing":37,
+            "completed":21,
+            "declined":1
+         }
+      },
+      ...
+      {
+         "tick":"2014-07-12T00:00:00",
+         "data":{
+            "count":83,
+            "created":24,
+            "processing":37,
+            "completed":21,
+            "declined":1
+         }
+      }
+   ]
+}
+```
+
+> Пример группировки по типу поставщика
+
+```shell
+$ curl -uadmin:admin "https://sandbox.wallet.best/adm2/payments/count?date_from=2014-07-11&date_to=2014-07-11&group_by=provider_types&tick=3h"
+```
+
+```json
+{
+   "meta":{
+      "code":200
+   },
+   "data":[
+      {
+         "tick":"2014-07-12T00:00:00",
+         "data":{
+            "count":83,
+            "providers":[
+               {
+                  "id" : 1,
+                  "code" : "tpr_out",
+                  "name" : "Кредит Пилот",
+                  "type" : "outbound", 
+                  "count": 50
+               },
+               {
+                  "id" : 4,
+                  "code" : "ipsp_in",
+                  "name" : "ООО ИПСП (агент)",
+                  "type" : "inbound",
+                  "count": 50
+                }
+            ]
+         }
+      }
+      ...
+   ]
+}
+```
+
+> Пример группировки по сервису
+
+```shell
+$ curl -uadmin:admin "https://sandbox.wallet.best/adm2/payments/count?date_from=2014-07-11&date_to=2014-07-11&group_by=service_ids&tick=3h"
+```
+
+```json
+{
+   "meta":{
+      "code":200
+   },
+   "data":[
+      {
+         "tick":"2014-07-12T00:00:00",
+         "data":{
+            "count":83,
+            "services":[
+               {
+                  "type" : "out",
+                  "id" : 834,
+                  "count": 50
+               },
+               {
+                  "type" : "out",
+                  "id" : 4,
+                  "count": 30
+                },
+                {
+                  "type" : "p2p",
+                  "count": 20
+                }
+            ]
+         }
+      }
+      ...
+   ]
+}
+```
+
+> Пример группировки по сервису и статусу
+
+```shell
+$ curl -uadmin:admin "https://sandbox.wallet.best/adm2/payments/count?tick=month&service_ids=1691&group_by=service_ids,status"
+```
+
+```json
+{
+  "meta" : {
+    "code" : 200,
+    "page" : {
+      "total_elements" : 2
+    }
+  },
+  "data" : [ {
+    "data" : {
+      "count" : 66,
+      "services" : [ {
+        "data" : {
+          "declined" : 2,
+          "created" : 51,
+          "count" : 61,
+          "completed" : 8
+        },
+        "id" : 1691,
+        "type" : "out"
+      }, {
+        "data" : {
+          "count" : 5,
+          "completed" : 5
+        },
+        "id" : 1691,
+        "type" : "inout"
+      } ]
+    },
+    "tick" : "2015-02-28T22:00:00.000+0000"
+  }, {
+    "data" : {
+      "count" : 15,
+      "services" : [ {
+        "data" : {
+          "created" : 7,
+          "count" : 14,
+          "completed" : 7
+        },
+        "id" : 1691,
+        "type" : "out"
+      }, {
+        "data" : {
+          "declined" : 1,
+          "count" : 1
+        },
+        "id" : 1691,
+        "type" : "inout"
+      } ]
+    },
+    "tick" : "2015-03-31T21:00:00.000+0000"
+  } ]
+}
+```
+
+### Параметры
+
+* `date_from`, `date_to` - (фильтр) временной промежуток, по-умолчанию 1 месяц с текущего момента
+* `status` - (фильтр) created | processing | completed | declined - статус платежа
+* `service_ids` - (фильтр) сервис или список идентификаторов сервисов через запятую и/или флаг p2p (11,23,45,p2p)
+* `group_by` - параметр группировки
+* `wallet` - фильтр по номеру кошелька (смотреть данные в разрезе кошелька)
+* `type` - (in | out | inout | p2p) фильтр по типу транзакции
+* `tick` (30m | 3h | day | month) - выбор разреза при группировке. По умолчанию - день (day).
+
+### Группировки
+* `status` - для динамики проходимости платежей
+* `service_ids` - для распределения платежей по сервисам, включая P2P как отдельный тип
+* `service_ids,status` - по сервисам и статусам
+* `provider_types` - по типу провайдеров, через которые проходили транзакции
+
+## Отчет о обороте платежей проекта за период
+
+```shell
+$ curl -uadmin:admin "https://sandbox.wallet.best/adm2/payments/turnover?date_from=2014-07-11&date_to=2014-07-12"
+```
+
+```json
+{
+   "meta":{
+      "code":200
+   },
+   "data":[
+      {
+         "tick":"2014-07-11",
+         "data": {
+             "amount":1233424
+         }
+      },
+      {
+         "tick":"2014-07-12",
+         "data": {
+             "amount":98234342
+         }
+      }
+   ]
+}
+```
+
+> Пример с группировкой по статусу платежей
+
+```shell
+$ curl -uadmin:admin "https://sandbox.wallet.best/adm2/payments/turnover?date_from=2014-07-11&date_to=2014-07-11&group_by=status&tick=3h"
+```
+
+```json
+{
+   "meta":{
+      "code":200
+   },
+   "data":[
+      {
+         "tick":"2014-07-11T00:00:00",
+         "data":{
+            "amount":83324324324,
+            "created":2434234,
+            "processing":3723434,
+            "completed":2123423,
+            "declined":12
+         }
+      },
+      ...
+   ]
+}
+```
+
+> Пример группировки по типу поставщика
+
+```shell
+$ curl -uadmin:admin "https://sandbox.wallet.best/adm2/payments/turnover?date_from=2014-07-11&date_to=2014-07-11&group_by=provider_types&tick=3h"
+```
+
+```json
+{
+   "meta":{
+      "code":200
+   },
+   "data":[
+      {
+         "tick":"2014-07-12T00:00:00",
+         "data":{
+            "amount":83,
+            "providers":[
+               {
+                  "id" : 1,
+                  "code" : "tpr_out",
+                  "name" : "Кредит Пилот",
+                  "type" : "outbound", 
+                  "amount": 5043
+               },
+               {
+                  "id" : 4,
+                  "code" : "ipsp_in",
+                  "name" : "ООО ИПСП (агент)",
+                  "type" : "inbound",
+                  "amount": 1293
+                }
+            ]
+         }
+      }
+      ...
+   ]
+}
+```
+
+> Пример группировки по сервису
+
+```shell
+$ curl -uadmin:admin "https://sandbox.wallet.best/adm2/payments/turnover?date_from=2014-07-11&date_to=2014-07-11&group_by=service_ids&tick=3h"
+```
+
+```json
+{
+   "meta":{
+      "code":200
+   },
+   "data":[
+      {
+         "tick":"2014-07-12T00:00:00",
+         "data":{
+            "amount":83243,
+            "services":[
+               {
+                  "type" : "out",
+                  "id" : 834,
+                  "amount": 50234
+               },
+               {
+                  "type" : "out",
+                  "id" : 4,
+                  "amount": 3012
+               },
+               {
+                  "type" : "p2p",
+                  "amount": 2033
+               }
+            ]
+         }
+      }
+      ...
+   ]
+}
+```
+
+> Пример группировки по сервису и статусу
+
+```shell
+$ curl -uadmin:admin "https://sandbox.wallet.best/adm2/payments/turnover?tick=month&service_ids=1691&group_by=service_ids,status"
+```
+
+```json
+{
+  "meta" : {
+    "code" : 200,
+    "page" : {
+      "total_elements" : 2
+    }
+  },
+  "data" : [ {
+    "data" : {
+      "amount" : 154,
+      "services" : [ {
+        "data" : {
+          "amount" : 144,
+          "declined" : 20,
+          "created" : 114,
+          "completed" : 10
+        },
+        "id" : 1691,
+        "type" : "out"
+      }, {
+        "data" : {
+          "amount" : 10,
+          "completed" : 10
+        },
+        "id" : 1691,
+        "type" : "inout"
+      } ]
+    },
+    "tick" : "2015-02-28T22:00:00.000+0000"
+  }, {
+    "data" : {
+      "amount" : 114,
+      "services" : [ {
+        "data" : {
+          "amount" : 14,
+          "created" : 7,
+          "completed" : 7
+        },
+        "id" : 1691,
+        "type" : "out"
+      }, {
+        "data" : {
+          "amount" : 100,
+          "declined" : 100
+        },
+        "id" : 1691,
+        "type" : "inout"
+      } ]
+    },
+    "tick" : "2015-03-31T21:00:00.000+0000"
+  } ]
+}
+```
+### Параметры
+
+* `date_from`, `date_to` - (фильтр) временной промежуток, по-умолчанию 1 месяц с текущего момента
+* `amount_from`, `amount_to` - (фильтр) по сумме платежа
+* `status` - (фильтр) created | processing | completed | declined - статус платежа
+* `service_ids` - (фильтр) сервис или сервисок идентификаторов сервисов через запятую и/или флаг p2p (11,23,45,p2p) 
+* `group_by` - параметр группировки
+* `wallet` - фильтр по номеру кошелька (смотреть данные в разрезе кошелька)
+* `type` - (in | out | inout | p2p) фильтр по типу транзакции
+* `tick` (30m | 3h | day | month) - выбор разреза при группировке. По умолчанию - день (day).
+
+### Группировки
+* `status` - для динамики проходимости платежей
+* `service_ids` - для распределения платежей по сервисам, включая P2P как отдельный тип
+* `service_ids,status` - по сервисам и статусам
+* `provider_types` - по типу провайдеров, через которые проходили транзакции
+
+> Оборот всех платежей за период
+* `date_from` и `date_to` - границы диапазона дат создания платежей
+* `ipsp_payment_id` - идентификатор платежа из IPSP
+* `page` - номер (начиная с 0) страницы, которую запрашивает клиент, по умолчанию 0
+* `size` - размер страницы, которую запрашивает клиент, по умолчанию 20
+* `sort` - поле сортировки, через запятую может следовать направление

@@ -121,7 +121,7 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user "sandbox.wallet.best/adm2/error
 ##Добавление ошибки
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json'  -X POST -u user:user -d '{"code":"some_code","title":{"en_EN":"some_en_name","ru_RU":"some_ru_name"}}' http://sandbox.wallet.best/adm2/errors/
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json'  -X POST -u user:user -d '{"code":"some_code","title":{"en_EN":"some_en_name","ru_RU":"some_ru_name"}}' https://sandbox.wallet.best/adm2/errors/
 ```
 
 ```json
@@ -150,7 +150,7 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json'  -X POST -u user
 ##Изменение ошибки
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json'  -X POST -u user:user -d '{"code":"some_code_edited","title":{"en_EN":"some_en_name_edited","ru_RU":"some_ru_name_edited"}}' http://sandbox.wallet.best/adm2/errors/55490aa1cccc90f621004246
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json'  -X POST -u user:user -d '{"code":"some_code_edited","title":{"en_EN":"some_en_name_edited","ru_RU":"some_ru_name_edited"}}' https://sandbox.wallet.best/adm2/errors/55490aa1cccc90f621004246
 ```
 
 ```json
@@ -179,7 +179,7 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json'  -X POST -u user
 ##Удаление ошибки
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u user:user http://sandbox.wallet.best/adm2/errors/55490aa1cccc90f621004246
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u user:user https://sandbox.wallet.best/adm2/errors/55490aa1cccc90f621004246
 
 ```
 
@@ -194,7 +194,7 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u use
 ##Загрузка списка общих настроек
 
 ```shell
-curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/adm2/settings/common/"
+curl -H 'X-Project-ID:mbank' -X GET -u user:user "https://sandbox.wallet.best/adm2/settings/common/"
 ```
 
 ```json
@@ -308,7 +308,7 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/adm
 ##Изменения списка общих настроек
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"settings":{"support_phone":{"ru_RU":"edited_name_ru"},"autopayments_sms_payment_fail":{"ru_RU":"edited_name_ru"}}}' http://sandbox.wallet.best/adm2/settings/common/
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"settings":{"support_phone":{"ru_RU":"edited_name_ru"},"autopayments_sms_payment_fail":{"ru_RU":"edited_name_ru"}}}' https://sandbox.wallet.best/adm2/settings/common/
 ```
 
 ```json
@@ -322,7 +322,7 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:
 ##Загрузка списка лимитов
 
 ```shell
-curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/adm2/settings/limits/"
+curl -H 'X-Project-ID:mbank' -X GET -u user:user "https://sandbox.wallet.best/adm2/settings/limits/"
 ```
 
 ```json
@@ -378,7 +378,7 @@ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/adm
 ##Загрузка лимита по id
 
 ```shell
-$ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/adm2/settings/limits/53dfa37456c35f7375ebdc44"
+$ curl -H 'X-Project-ID:mbank' -X GET -u user:user "https://sandbox.wallet.best/adm2/settings/limits/53dfa37456c35f7375ebdc44"
 ```
 
 ```json
@@ -423,7 +423,7 @@ $ curl -H 'X-Project-ID:mbank' -X GET -u user:user "http://sandbox.wallet.best/a
 ##Сортировка лимитов
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"limits_order":"53dfa35f56c35f737578012e,53dfa37456c35f7375ebdc44,53dfa38a56c35f7375e1a14c,53dfa34856c35f737505a834,54b3cc0c56c35f744758bfd0,53dfa3ac56c35f7375481acc"}' http://sandbox.wallet.best/adm2/settings/limits/sort
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"limits_order":"53dfa35f56c35f737578012e,53dfa37456c35f7375ebdc44,53dfa38a56c35f7375e1a14c,53dfa34856c35f737505a834,54b3cc0c56c35f744758bfd0,53dfa3ac56c35f7375481acc"}' https://sandbox.wallet.best/adm2/settings/limits/sort
 ```
 
 ```json
@@ -439,7 +439,7 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:
 
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"title":{"ru_RU":"Название","en_US":"test title"},"description":{"ru_RU":"Описание","en_US":"test description"},"limit":{"anonymous":111,"verified":222,"personified":333},"status":{"anonymous":0,"verified":1,"personified":2}}' http://sandbox.wallet.best/adm2/settings/limits/
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"title":{"ru_RU":"Название","en_US":"test title"},"description":{"ru_RU":"Описание","en_US":"test description"},"limit":{"anonymous":111,"verified":222,"personified":333},"status":{"anonymous":0,"verified":1,"personified":2}}' https://sandbox.wallet.best/adm2/settings/limits/
 ```
 
 ```json
@@ -489,7 +489,7 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:
 ##Изменение лимита
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"title":{"ru_RU":"Название","en_US":"test title edited"},"description":{"ru_RU":"Описание","en_US":"test description edited"}, "limit":{"anonymous":111,"verified":222,"personified":333},"status":{"anonymous":0,"verified":1,"personified":2}}' http://sandbox.wallet.best/adm2/settings/limits/554cb2d6cccc9080250041a8
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:user -d '{"title":{"ru_RU":"Название","en_US":"test title edited"},"description":{"ru_RU":"Описание","en_US":"test description edited"}, "limit":{"anonymous":111,"verified":222,"personified":333},"status":{"anonymous":0,"verified":1,"personified":2}}' https://sandbox.wallet.best/adm2/settings/limits/554cb2d6cccc9080250041a8
 
 ```
 
@@ -537,7 +537,7 @@ curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X POST -u user:
 ##Удаление лимита
 
 ```shell
-curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u user:user http://sandbox.wallet.best/adm2/settings/limits/554cb2d6cccc9080250041a8
+curl -H 'X-Project-ID:mbank' -H 'Content-type:application/json' -X DELETE -u user:user https://sandbox.wallet.best/adm2/settings/limits/554cb2d6cccc9080250041a8
 ```
 
 ```json
