@@ -3086,6 +3086,29 @@ https://sandbox.wallet.best/v1/payments/templates/5422dd02b7f47b52010041a9
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
+          <h1 id='cron-taski-dlya-proda'>CRON таски для прода</h1>
+<table><thead>
+<tr>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>0 3 * * * /www/mbank.api/vendor/bin/pake -f /www/mbank.api/pakefile.php wallet_intersecting_contacts</td>
+</tr>
+<tr>
+<td>45 12 * * * /www/mbank.api/vendor/bin/pake -f /www/mbank.api/pakefile.php apns_feedback</td>
+</tr>
+<tr>
+<td>* * * * * /www/mbank.api/vendor/bin/drunken do &ndash;config=&ldquo;/www/mbank.api/drunken.config.php&rdquo;</td>
+</tr>
+<tr>
+<td>30 10-21 * * * /www/mbank.api/vendor/bin/pake -f /www/mbank.api/pakefile.php sync_mserver_services</td>
+</tr>
+<tr>
+<td>10 * * * * /www/mbank.api/vendor/bin/pake -f /www/mbank.api/pakefile.php aggregate_services_statistics</td>
+</tr>
+</tbody></table>
+
       </div>
       <div class="dark-box">
       </div>
