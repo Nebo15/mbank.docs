@@ -17,5 +17,6 @@ includes:
   - best_wallet/limits
   - best_wallet/invoices
   - best_wallet/templates
+  - best_wallet/crons
 search: true
 ---
