@@ -1315,7 +1315,7 @@ $ curl -u +79261111111:password -H 'Content-type:application/json' https://sandb
 | `redo`                | Ранее отмененный платеж сделан успешным (сторно сторно and we need to go deeper)    |
 
 
-## Webhook для логирования переводов Бэста
+## Webhook для логирования переводов Бэст
 
 ```shell
 $ curl 'https://sandbox.wallet.best/v1/payments/best/p2p' -X POST -H 'Content-type:application/json' -d '{"payment_id": 12345678, "sender": {"id":7777777, "phone": "+79250101212"}, "recipient": {"id":88888888, "phone": "+79110992233"}}'
@@ -1331,3 +1331,84 @@ $ curl 'https://sandbox.wallet.best/v1/payments/best/p2p' -X POST -H 'Content-ty
 Коды ошибок
 
 * `empty_request` - в запросе отсутствуют данные для логирования
+
+## Получение переводов Бэст по кошельку
+
+Платежей может не быть или они еще не сформированы. В таком слечае вернется пустое поле date
+Каждый платеж имеет флаг `unseen` со зачением **true**, аналогично платежам /payments
+
+```shell
+$ curl -u +79261111111:password -H 'Content-type:application/json' https://sandbox.wallet.best/v1/payments/best
+```
+
+```json
+{
+    "meta": {
+        "code": 200,
+        "urgent_data": {
+            "amount": 3143.76,
+            "unseen_payments": 1
+        }
+    },
+    "data": [
+        {
+            "number": 413258621,
+            "amount": 30,
+            "currency_alpha": "RUR",
+            "note": "test pay",
+            "smstosender": 0,
+            "creating_date": "2014-12-24T21:00:00.000+0000",
+            "fee": 30,
+            "amount_charge": 30,
+            "currency_charge": "RUR",
+            "rate": 1,
+            "unseen": true,
+            "sender": {
+                "data": {
+                    "country": {
+                        "numeric": "643"
+                    },
+                    "lastname": "Александр",
+                    "firstname": "Янышин",
+                    "patronymic": "Сергеевич",
+                    "isresident": 1
+                },
+                "address": {
+                    "phone": "9267101280"
+                }
+            },
+            "receiver": {
+                "data": {
+                    "country": {
+                        "numeric": "643"
+                    },
+                    "lastname": "Александр",
+                    "firstname": "Янышин",
+                    "patronymic": "Сергеевич",
+                    "isresident": 1
+                },
+                "address": []
+            }
+        }
+    ]
+}
+```
+
+## Сброс счетчика непросмотренных платежей Бэст
+
+Возможно обнулить счетчик непросмотренных платежей
+
+```shell
+$ curl -u +79261111111:password -H 'Content-type:application/json' https://sandbox.wallet.best/v1/payments/best/reset_unseen
+```
+```json
+{
+    "meta": {
+        "code": 200,
+        "urgent_data": {
+            "amount": 9862
+        }
+    },
+    "data": "ok"
+}
+```
