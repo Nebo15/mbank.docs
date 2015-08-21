@@ -1347,7 +1347,7 @@ $ curl -u +79261111111:password -H 'Content-type:application/json' https://sandb
         "code": 200,
         "urgent_data": {
             "amount": 3143.76,
-            "unseen_payments": 1
+            "unseen_payments_best": 1
         }
     },
     "data": [
