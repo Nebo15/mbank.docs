@@ -2422,7 +2422,7 @@ $ curl -u +79261111111:password -H &#39;Content-type:application/json&#39; https
 <td style="text-align: left">Ранее отмененный платеж сделан успешным (сторно сторно and we need to go deeper)</td>
 </tr>
 </tbody></table>
-<h2 id='webhook-dlya-logirovaniya-perevodov-besta'>Webhook для логирования переводов Бэста</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl <span class="s1">'https://sandbox.wallet.best/v1/payments/best/p2p'</span> -X POST -H <span class="s1">'Content-type:application/json'</span> -d <span class="s1">'{"payment_id": 12345678, "sender": {"id":7777777, "phone": "+79250101212"}, "recipient": {"id":88888888, "phone": "+79110992233"}}'</span>
+<h2 id='webhook-dlya-logirovaniya-perevodov-best'>Webhook для логирования переводов Бэст</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl <span class="s1">'https://sandbox.wallet.best/v1/payments/best/p2p'</span> -X POST -H <span class="s1">'Content-type:application/json'</span> -d <span class="s1">'{"payment_id": 12345678, "sender": {"id":7777777, "phone": "+79250101212"}, "recipient": {"id":88888888, "phone": "+79110992233"}}'</span>
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2436,6 +2436,76 @@ $ curl -u +79261111111:password -H &#39;Content-type:application/json&#39; https
 <ul>
 <li><code class="prettyprint">empty_request</code> - в запросе отсутствуют данные для логирования</li>
 </ul>
+<h2 id='poluchenie-perevodov-best-po-koshelku'>Получение переводов Бэст по кошельку</h2>
+<p>Платежей может не быть или они еще не сформированы. В таком слечае вернется пустое поле date
+Каждый платеж имеет флаг <code class="prettyprint">unseen</code> со зачением <strong>true</strong>, аналогично платежам /payments</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:password -H <span class="s1">'Content-type:application/json'</span> https://sandbox.wallet.best/v1/payments/best
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"urgent_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">3143.76</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unseen_payments"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">413258621</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"currency_alpha"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test pay"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"smstosender"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"creating_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-12-24T21:00:00.000+0000"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount_charge"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"currency_charge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUR"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unseen"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"643"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Александр"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Янышин"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"patronymic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Сергеевич"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"isresident"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9267101280"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"receiver"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"numeric"</span><span class="p">:</span><span class="w"> </span><span class="s2">"643"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"lastname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Александр"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"firstname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Янышин"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"patronymic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Сергеевич"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"isresident"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h2 id='sbros-schetchika-neprosmotrennyh-platezhey-best'>Сброс счетчика непросмотренных платежей Бэст</h2>
+<p>Возможно обнулить счетчик непросмотренных платежей</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -u +79261111111:password -H <span class="s1">'Content-type:application/json'</span> https://sandbox.wallet.best/v1/payments/best/reset_unseen
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"urgent_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">9862</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
           <h1 id='karty'>Карты</h1>
 <p>Карта - это сохраненный в mserver токен, с помощью которого пользователь кошелька может пополнять счет без ввода данных пластиковой карты.</p>
