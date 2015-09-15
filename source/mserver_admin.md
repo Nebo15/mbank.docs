@@ -11,6 +11,7 @@ includes:
   - mserver_admin/intro
   - mserver_admin/wallets
   - mserver_admin/services
+  - mserver_admin/providers
   - mserver_admin/payments
   - mserver_admin/best
 search: true
