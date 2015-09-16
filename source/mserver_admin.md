@@ -12,6 +12,7 @@ includes:
   - mserver_admin/wallets
   - mserver_admin/services
   - mserver_admin/providers
+  - mserver_admin/projects
   - mserver_admin/payments
   - mserver_admin/best
 search: true
