@@ -653,6 +653,169 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<h2 id='sozdanie-servisa'>Создание сервиса</h2><h3 id='parametry'>Параметры</h3>
+<ul>
+<li><code class="prettyprint">name</code> - Имя сервиса</li>
+<li><code class="prettyprint">verification_required</code> -  true | false требуется ли идентификация плательщика</li>
+<li><code class="prettyprint">group</code> - Группа, куда добавить сервис</li>
+<li><code class="prettyprint">foreign_id</code> - ID сервиса провайдера, куда маршрутизировать платежи</li>
+</ul>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -u admin:admin -d <span class="s1">'{"name":"Test Госуслуги РФ: ФНС", "verification_required": false, "group": "misc", "foreign_id": "39863886"}'</span> https://www.synq.ru/mserver2-dev/admin/services
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1716</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Госуслуги РФ: ФНС"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h2 id='vklyuchenie-servisa-dlya-proekta'>Включение сервиса для проекта</h2><h3 id='parametry'>Параметры</h3>
+<ul>
+<li><code class="prettyprint">project</code> - Код проекта</li>
+<li><code class="prettyprint">rate</code> - комиссия (необязательный параметр в случае уже установленной комиисии, например сервис был выключен для этого проекта)</li>
+</ul>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -u admin:admin -d <span class="s1">'{"project": "mbank", "rate": {"min": 30, "fix": 10, "max": 10000, "percent": 3.2}}'</span> https://www.synq.ru/mserver2-dev/admin/services/1714/enable
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1714</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Госуслуги РФ: ФНС"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"min"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"max"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"verification_required"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"parameters"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"phoneNumber"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"min_length"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"max_length"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Индекс Документа"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"^(\\d{15}|\\d{20}|\\d{25})$"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"numeric"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern_description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Индекс Документа"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"№ Телефона"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"^\\d{10}$"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern_description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"№ Телефона"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Фамилия Плательщика"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"^([А-Я]{2,70}|[А-Я]{2,70}\\-[А-Я]{2,70})$"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern_description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Фамилия Плательщика"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Имя Плательщика"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"^[А-Я]{2,50}$"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern_description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Имя Плательщика"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Отчество Плательщика"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"^[А-Я ]{2,50}$"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern_description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Отчество Плательщика"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"rate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"min"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"max"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fix"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"percent"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">3.2</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h2 id='vyklyuchenie-servisa-dlya-proekta'>Выключение сервиса для проекта</h2><h3 id='parametry'>Параметры</h3>
+<ul>
+<li><code class="prettyprint">project</code> - Код проекта</li>
+</ul>
+<pre class="highlight shell"><code>curl -H <span class="s1">'Content-type:application/json'</span> -u admin:admin -d <span class="s1">'{"project": "mbank"}'</span> https://www.synq.ru/mserver2-dev/admin/services/1714/disable
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1714</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Госуслуги РФ: ФНС"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h2 id='ustanovka-komissii'>Установка комиссии</h2><h3 id='parametry'>Параметры</h3>
+<ul>
+<li><code class="prettyprint">project</code> - Код проекта</li>
+<li><code class="prettyprint">rate</code> - комиссия</li>
+</ul>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -u admin:admin -d <span class="s1">'{"project": "mbank", "rate": {"min": 3, "fix": 100, "max": 1000, "percent": 30.2}}'</span> https://www.synq.ru/mserver2-dev/admin/services/1714/rate
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1714</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Госуслуги РФ: ФНС"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"min"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"max"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"verification_required"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"parameters"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"phoneNumber"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"min_length"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"max_length"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Индекс Документа"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"^(\\d{15}|\\d{20}|\\d{25})$"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"numeric"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern_description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Индекс Документа"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"№ Телефона"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"^\\d{10}$"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern_description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"№ Телефона"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Фамилия Плательщика"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"^([А-Я]{2,70}|[А-Я]{2,70}\\-[А-Я]{2,70})$"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern_description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Фамилия Плательщика"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Имя Плательщика"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"^[А-Я]{2,50}$"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern_description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Имя Плательщика"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Отчество Плательщика"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"^[А-Я ]{2,50}$"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern_description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Отчество Плательщика"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"rate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"min"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"max"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fix"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"percent"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">30.2</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
           <h1 id='provaydery'>Провайдеры</h1><h2 id='zagruzka-spiska-provayderov'>Загрузка списка провайдеров</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u admin:admin https://www.synq.ru/mserver2-dev/admin/providers
 </code></pre>
