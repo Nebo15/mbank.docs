@@ -655,9 +655,9 @@
 </span></code></pre>
 <h2 id='sozdanie-servisa'>Создание сервиса</h2><h3 id='parametry'>Параметры</h3>
 <ul>
-<li><code class="prettyprint">name</code> - Имя сервиса</li>
+<li><code class="prettyprint">name</code> - имя сервиса</li>
 <li><code class="prettyprint">verification_required</code> -  true | false требуется ли идентификация плательщика</li>
-<li><code class="prettyprint">group</code> - Группа, куда добавить сервис</li>
+<li><code class="prettyprint">group</code> - группа, куда добавить сервис</li>
 <li><code class="prettyprint">foreign_id</code> - ID сервиса провайдера, куда маршрутизировать платежи</li>
 </ul>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -u admin:admin -d <span class="s1">'{"name":"Test Госуслуги РФ: ФНС", "verification_required": false, "group": "misc", "foreign_id": "39863886"}'</span> https://www.synq.ru/mserver2-dev/admin/services
@@ -674,7 +674,7 @@
 </span></code></pre>
 <h2 id='vklyuchenie-servisa-dlya-proekta'>Включение сервиса для проекта</h2><h3 id='parametry'>Параметры</h3>
 <ul>
-<li><code class="prettyprint">project</code> - Код проекта</li>
+<li><code class="prettyprint">project</code> - код проекта</li>
 <li><code class="prettyprint">rate</code> - комиссия (необязательный параметр в случае уже установленной комиисии, например сервис был выключен для этого проекта)</li>
 </ul>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -u admin:admin -d <span class="s1">'{"project": "mbank", "rate": {"min": 30, "fix": 10, "max": 10000, "percent": 3.2}}'</span> https://www.synq.ru/mserver2-dev/admin/services/1714/enable
@@ -738,7 +738,7 @@
 </span></code></pre>
 <h2 id='vyklyuchenie-servisa-dlya-proekta'>Выключение сервиса для проекта</h2><h3 id='parametry'>Параметры</h3>
 <ul>
-<li><code class="prettyprint">project</code> - Код проекта</li>
+<li><code class="prettyprint">project</code> - код проекта</li>
 </ul>
 <pre class="highlight shell"><code>curl -H <span class="s1">'Content-type:application/json'</span> -u admin:admin -d <span class="s1">'{"project": "mbank"}'</span> https://www.synq.ru/mserver2-dev/admin/services/1714/disable
 </code></pre>
@@ -754,7 +754,7 @@
 </span></code></pre>
 <h2 id='ustanovka-komissii'>Установка комиссии</h2><h3 id='parametry'>Параметры</h3>
 <ul>
-<li><code class="prettyprint">project</code> - Код проекта</li>
+<li><code class="prettyprint">project</code> - код проекта</li>
 <li><code class="prettyprint">rate</code> - комиссия</li>
 </ul>
 <pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -u admin:admin -d <span class="s1">'{"project": "mbank", "rate": {"min": 3, "fix": 100, "max": 1000, "percent": 30.2}}'</span> https://www.synq.ru/mserver2-dev/admin/services/1714/rate
