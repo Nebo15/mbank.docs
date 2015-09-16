@@ -654,37 +654,29 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-          <h1 id='provaydery'>Провайдеры</h1><h2 id='zagruzka-spiska-provayderov'>Загрузка списка провайдеров</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -uadmin:admin https://www.synq.ru/mserver2-dev/admin/services
+          <h1 id='provaydery'>Провайдеры</h1><h2 id='zagruzka-spiska-provayderov'>Загрузка списка провайдеров</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u admin:admin https://www.synq.ru/mserver2-dev/admin/providers
 </code></pre>
 <pre class="highlight json"><code><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
     </span><span class="s2">"page"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"total_elements"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">391</span><span class="w">
+      </span><span class="s2">"total_elements"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1670</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CityLink (Королёв)"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"min"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"max"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"verification_required"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"parameters"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"phoneNumber"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"min_length"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"max_length"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Логин"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"pattern"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"^.{6,7}$"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"pattern_description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Логин"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"items"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w"> </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"rate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"fix"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"percent"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"tpr_out"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Кредит Пилот"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"tpr_in"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ООО ТПР (агент)"</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rapida_in"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ПС Рапида (агент)"</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
           <h1 id='platezhi'>Платежи</h1><h2 id='poisk-po-platezham'>Поиск по платежам</h2><h3 id='parametry-optsionalnye'>Параметры (опциональные)</h3>
