@@ -5,6 +5,8 @@
 ```shell
 $ curl -u admin:admin https://www.synq.ru/mserver2-dev/admin/projects
 ```
+
+```json
 {
   "meta" : {
     "code" : 200,
