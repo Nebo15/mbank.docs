@@ -760,6 +760,26 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
+          <h1 id='proekty'>Проекты</h1><h2 id='zagruzka-spiska-proektov'>Загрузка списка проектов</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u admin:admin https://www.synq.ru/mserver2-dev/admin/projects
+</code></pre>
+
+<p>{
+  &ldquo;meta&rdquo; : {
+    &ldquo;code&rdquo; : 200,
+    &ldquo;page&rdquo; : {
+      &ldquo;total_elements&rdquo; : 2
+    }
+  },
+  &ldquo;data&rdquo; : [ {
+    &ldquo;code&rdquo; : &ldquo;mbank&rdquo;,
+    &ldquo;name&rdquo; : &ldquo;МБанк&rdquo;
+  }, {
+    &ldquo;code&rdquo; : &ldquo;bov&rdquo;,
+    &ldquo;name&rdquo; : &ldquo;Банк Воронеж&rdquo;
+  } ]
+}
+&ldquo;`</p>
+
           <h1 id='platezhi'>Платежи</h1><h2 id='poisk-po-platezham'>Поиск по платежам</h2><h3 id='parametry-optsionalnye'>Параметры (опциональные)</h3>
 <ul>
 <li><code class="prettyprint">id</code> - ID платежа</li>
