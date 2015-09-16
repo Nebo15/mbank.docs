@@ -77,9 +77,9 @@ $ curl -uadmin:admin https://www.synq.ru/mserver2-dev/admin/services/834
 
 ### Параметры
 
-* `name` - Имя сервиса
+* `name` - имя сервиса
 * `verification_required` -  true | false требуется ли идентификация плательщика
-* `group` - Группа, куда добавить сервис
+* `group` - группа, куда добавить сервис
 * `foreign_id` - ID сервиса провайдера, куда маршрутизировать платежи
 
 
@@ -103,7 +103,7 @@ $ curl -H 'Content-type:application/json' -u admin:admin -d '{"name":"Test Го�
 
 ### Параметры
 
-* `project` - Код проекта
+* `project` - код проекта
 * `rate` - комиссия (необязательный параметр в случае уже установленной комиисии, например сервис был выключен для этого проекта)
 
 ```shell
@@ -173,7 +173,7 @@ $ curl -H 'Content-type:application/json' -u admin:admin -d '{"project": "mbank"
 
 ### Параметры
 
-* `project` - Код проекта
+* `project` - код проекта
 
 ```shell
 curl -H 'Content-type:application/json' -u admin:admin -d '{"project": "mbank"}' https://www.synq.ru/mserver2-dev/admin/services/1714/disable
@@ -195,7 +195,7 @@ curl -H 'Content-type:application/json' -u admin:admin -d '{"project": "mbank"}'
 
 ### Параметры
 
-* `project` - Код проекта
+* `project` - код проекта
 * `rate` - комиссия
 
 ```shell
