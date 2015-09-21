@@ -9,6 +9,7 @@ toc_footers:
 
 includes:
   - mserver_admin/intro
+  - mserver_admin/users
   - mserver_admin/wallets
   - mserver_admin/services
   - mserver_admin/providers
