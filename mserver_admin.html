@@ -72,7 +72,59 @@
 <li><code class="prettyprint">size</code> - размер страницы, которую запрашивает клиент, опционально, по умолчанию 35</li>
 </ul>
 
-          <h1 id='polzovateli-administratory'>Пользователи (Администраторы)</h1>
+          <h1 id='polzovateli-administratory'>Пользователи (Администраторы)</h1><h2 id='sozdanie-polzovateley'>Создание пользователей</h2><h3 id='parametry'>Параметры</h3>
+<ul>
+<li><code class="prettyprint">login</code> - логин пользователя</li>
+<li><code class="prettyprint">password</code> - пароль пользователя</li>
+</ul>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -u admin:admin -d <span class="s1">'{"login":"testadminuser", "password":"strongpassword"}'</span> https://www.synq.ru/mserver2-dev/admin/users
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">134432</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"login"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"testadminuser"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h2 id='razblokirovka-polzovatelya'>Разблокировка пользователя</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u admin:admin -X POST https://www.synq.ru/mserver2-dev/admin/users/133829/enable
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h2 id='blokirovka-polzovatelya'>Блокировка пользователя</h2><h3 id='parametry'>Параметры</h3>
+<p>Пэйлоад является необязательным параметром</p>
+
+<ul>
+<li><code class="prettyprint">message</code> - сообщение для пользователя кошелька, объясняющее причину блокировки и как дальше жить (Необязательный параметр)</li>
+<li><code class="prettyprint">reason</code> - сообщение для сотрудников проекта о причине блокировки. Это сообщение не видно клиенту. (Необязательный параметр)</li>
+</ul>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -u admin:admin -d <span class="s1">'{"message": "text message", "reason": "text reason"}'</span> https://www.synq.ru/mserver2-dev/admin/users/133829/disable
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h2 id='ustanovka-roley-polzovatelya'>Установка ролей пользователя</h2><h3 id='parametry'>Параметры</h3>
+<ul>
+<li><code class="prettyprint">roles</code> - роли пользователя</li>
+</ul>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -u admin:admin -d <span class="s1">'{"roles": ["user", "spectator"]}'</span> https://www.synq.ru/mserver2-dev/admin/users/133829/roles
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
           <h1 id='koshelki'>Кошельки</h1><h2 id='poisk-po-koshelkam-proekta'>Поиск по кошелькам проекта</h2><h3 id='postranichnaya-navitsiya'>Постраничная навиция</h3>
 <p>См. выше.</p>
 <h3 id='parametry'>Параметры</h3>
