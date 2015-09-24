@@ -40,7 +40,7 @@
 ## Загрузка списка сервисов
 
 ```shell
-$ curl -u+79261111111:password https://www.synq.ru/mserver2-dev/v1/services?size=1
+$ curl -u+79261111111:password https://www.synq.ru/mserver2-dev/v1/services
 ```
 
 ```json
@@ -118,7 +118,7 @@ $ curl -u+79261111111:password https://www.synq.ru/mserver2-dev/v1/services/1
 ## Сервисы по группам
 
 ```shell
-$ curl -u+79261111111:password https://www.synq.ru/mserver2-dev/v1/services/groups?size=1
+$ curl -u+79261111111:password https://www.synq.ru/mserver2-dev/v1/services/groups
 ```
 
 ```json
