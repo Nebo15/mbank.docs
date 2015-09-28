@@ -2160,6 +2160,165 @@ https://sandbox.wallet.best/v1/payments/25832/pay
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<h2 id='anonimnyy-platezh'>Анонимный платеж</h2>
+<p>Анонимный платеж соединяет в одном действии зачисление денег на кошелек через поставщика ввода средств (в настоящее время ИПСП) и списание денег со счета кошелька в пользу поставщика вывода средств (в настоящее время КредитПилот).</p>
+
+<p>Анонимный платеж - аналог Транизитного, только без авторизации</p>
+
+<p>Для того что бы провести такой платеж - клиенту необходимо получить токен доступа для приложения у MServer</p>
+<h3 id='token-dostupa-prilozheniya'>Токен доступа приложения</h3>
+<p>curl -H &ldquo;Accept: application/json&rdquo; -u mbank_storefront:oklol https://www.synq.ru/mserver2-dev/oauth/token -d grant_type=client_credentials
+{
+  &ldquo;meta&rdquo; : {
+    &ldquo;code&rdquo; : 200
+  },
+  &ldquo;data&rdquo; : {
+    &ldquo;access_token&rdquo; : &ldquo;88357939-aa71-426b-9afc-a5a9769ce527&rdquo;,
+    &ldquo;token_type&rdquo; : &ldquo;bearer&rdquo;,
+    &ldquo;expires_in&rdquo; : 599,
+    &ldquo;scope&rdquo; : &ldquo;wallet.read person.read person.modify cards.read cards.modify payments.read payments.modify&rdquo;
+  }
+}</p>
+
+<p>После - с этим токеном совершается обычный транзитный платеж, но с обязательной передачей заголовка 
+X-Authorization-Type : application</p>
+
+<p>Параметры:</p>
+
+<ul>
+<li><code class="prettyprint">type</code> = <strong>inout</strong> - тип платежа</li>
+<li><code class="prettyprint">client_payment_id</code> - клиентский идентификатор платежа</li>
+<li><code class="prettyprint">amount</code> - сумма к зачислению</li>
+<li><code class="prettyprint">service</code> - назначение платежа, идентификатор Сервиса</li>
+<li><code class="prettyprint">parameters</code> - параметры платежного запроса в соответствии с /services/{service_id}</li>
+<li><code class="prettyprint">card</code> - идентификатор сохраненной карты с которой будут списаны деньги (опциональный)</li>
+<li><code class="prettyprint">store_card</code> - <strong>true | false</strong> - сохранить карту, чтобы использовать ее для платежей в дальнейшем (опциональный)</li>
+</ul>
+<h3 id='odnokratnoe-spisanie-s-karty'>Однократное списание с карты</h3>
+<p>Создаем платеж:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -H <span class="s1">'X-Authorization-Type:application'</span> -H <span class="s1">'Authorization: bearer 88357939-aa71-426b-9afc-a5a9769ce527'</span>
+-d <span class="s1">'{"type": "inout", "client_payment_id": "021c6d23-7508-4e35-ad92-852308a47689", "amount": 100, "service": 834,
+"parameters": {"phoneNumber": "9267101283"}}'</span>
+https://sandbox.wallet.best/v1/payments
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"urgent_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">9999</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"unseen_payments"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"next_action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pay"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.418221</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25778</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"client_payment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"021c6d23-7508-4e35-ad92-852308a47689"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">103</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-03-17T13:49:13.394Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inout"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">834</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Мегафон"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"phoneNumber"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"is_disabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"is_hidden"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"is_required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"min_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"max_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"range_start"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"range_end"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"patterns"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="s2">"pattern"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^\\+7[0-9]{10}$"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"pattern_desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Номер телефона РФ начиная с +7 (в международном формате). Например, +79261112233"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"phone"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Номер телефона, начиная с +7"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"default_value"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"suggested_values"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"localized_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"title"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"pattern_desc"</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+79267101283"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"inbound"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ipsp_in"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ООО ИПСП (агент)"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"outbound"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tpr_out"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Кредит Пилот"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"created"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+79261111111"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Платим:
+<code class="prettyprint">shell
+curl -H &#39;X-Authorization-Type:application&#39; -H &#39;Authorization: bearer 88357939-aa71-426b-9afc-a5a9769ce527&#39; -H &#39;Content-type:application/json&#39; -X POST https://sandbox.wallet.best/v1/payments/25818/pay
+</code></p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"next_action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"get"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.317098</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">25818</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"client_payment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"131c6d23-7508-4e35-ad92-852308a47689"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">103</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-03-17T15:03:41.606Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"processing"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"inout"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">834</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Мегафон"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"phoneNumber"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"№ Телефона"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9267101283"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"inbound"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ipsp_in"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ООО ИПСП (агент)"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"outbound"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tpr_out"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Кредит Пилот"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"card"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"payment_page_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https:\/\/test1.ipsp.com\/frontend\/endpoint?product_id=1721&amp;desc=TestWallet&amp;payment_type=S&amp;amount=103.00&amp;currency=RUB&amp;cf=25818&amp;locale=ru&amp;hash=afbe9967151306a3e69900d5e3bffd7b5ef8475c"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"wallet"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+79261111111"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Далее следует перенаправить пользователя на платежную страницу по ссылке из поля <code class="prettyprint">card.payment_page_url</code></p>
 <h2 id='poluchenie-istorii-platezhey'>Получение истории платежей</h2>
 <p>Сервис может быть выключеным, но в момент проведения транзакции был активен. Такой сервис будет помечен флагом <code class="prettyprint">is_disabled</code>
 <code class="prettyprint">shell
@@ -3188,6 +3347,9 @@ https://sandbox.wallet.best/v1/payments/templates/5422dd02b7f47b52010041a9
 </tr>
 <tr>
 <td>10 * * * * /www/mbank.api/vendor/bin/pake -f /www/mbank.api/pakefile.php aggregate_services_statistics</td>
+</tr>
+<tr>
+<td>2 * * * * /bin/bash /www/mbank.api/bin/image-optim.sh</td>
 </tr>
 </tbody></table>
 
