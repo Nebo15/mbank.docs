@@ -2166,25 +2166,24 @@ https://sandbox.wallet.best/v1/payments/25832/pay
 <p>Анонимный платеж - аналог Транизитного, только без авторизации</p>
 
 <p>Для того что бы провести такой платеж - клиенту необходимо получить токен доступа для приложения у MServer</p>
-<h3 id='token-dostupa-prilozheniya'>Токен доступа приложения</h3>
-<p>curl -H &ldquo;Accept: application/json&rdquo; -u mbank_storefront:oklol https://www.synq.ru/mserver2-dev/oauth/token -d grant_type=client_credentials
-{
-  &ldquo;meta&rdquo; : {
-    &ldquo;code&rdquo; : 200
-  },
-  &ldquo;data&rdquo; : {
-    &ldquo;access_token&rdquo; : &ldquo;88357939-aa71-426b-9afc-a5a9769ce527&rdquo;,
-    &ldquo;token_type&rdquo; : &ldquo;bearer&rdquo;,
-    &ldquo;expires_in&rdquo; : 599,
-    &ldquo;scope&rdquo; : &ldquo;wallet.read person.read person.modify cards.read cards.modify payments.read payments.modify&rdquo;
-  }
-}</p>
+<h3 id='token-dostupa-prilozheniya'>Токен доступа приложения</h3><pre class="highlight shell"><code>curl -H <span class="s2">"Accept: application/json"</span> -u mbank_storefront:oklol https://www.synq.ru/mserver2-dev/oauth/token -d <span class="nv">grant_type</span><span class="o">=</span>client_credentials
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"access_token"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"88357939-aa71-426b-9afc-a5a9769ce527"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"token_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bearer"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expires_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">599</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"scope"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"wallet.read person.read person.modify cards.read cards.modify payments.read payments.modify"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <p>После - с этим токеном совершается обычный транзитный платеж, но с обязательной передачей заголовка 
 X-Authorization-Type : application</p>
-
-<p>Параметры:</p>
-
+<h3 id='parametry'>Параметры:</h3>
 <ul>
 <li><code class="prettyprint">type</code> = <strong>inout</strong> - тип платежа</li>
 <li><code class="prettyprint">client_payment_id</code> - клиентский идентификатор платежа</li>
@@ -2194,9 +2193,7 @@ X-Authorization-Type : application</p>
 <li><code class="prettyprint">card</code> - идентификатор сохраненной карты с которой будут списаны деньги (опциональный)</li>
 <li><code class="prettyprint">store_card</code> - <strong>true | false</strong> - сохранить карту, чтобы использовать ее для платежей в дальнейшем (опциональный)</li>
 </ul>
-<h3 id='odnokratnoe-spisanie-s-karty'>Однократное списание с карты</h3>
-<p>Создаем платеж:</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -H <span class="s1">'X-Authorization-Type:application'</span> -H <span class="s1">'Authorization: bearer 88357939-aa71-426b-9afc-a5a9769ce527'</span>
+<h3 id='sozdaem-platezh'>Создаем платеж:</h3><pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -H <span class="s1">'X-Authorization-Type:application'</span> -H <span class="s1">'Authorization: bearer 88357939-aa71-426b-9afc-a5a9769ce527'</span>
 -d <span class="s1">'{"type": "inout", "client_payment_id": "021c6d23-7508-4e35-ad92-852308a47689", "amount": 100, "service": 834,
 "parameters": {"phoneNumber": "9267101283"}}'</span>
 https://sandbox.wallet.best/v1/payments
@@ -2268,10 +2265,9 @@ https://sandbox.wallet.best/v1/payments
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>Платим:
-<code class="prettyprint">shell
-curl -H &#39;X-Authorization-Type:application&#39; -H &#39;Authorization: bearer 88357939-aa71-426b-9afc-a5a9769ce527&#39; -H &#39;Content-type:application/json&#39; -X POST https://sandbox.wallet.best/v1/payments/25818/pay
-</code></p>
+<p>Платим:</p>
+<pre class="highlight shell"><code>curl -H <span class="s1">'X-Authorization-Type:application'</span> -H <span class="s1">'Authorization: bearer 88357939-aa71-426b-9afc-a5a9769ce527'</span> -H <span class="s1">'Content-type:application/json'</span> -X POST https://sandbox.wallet.best/v1/payments/25818/pay
+</code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
