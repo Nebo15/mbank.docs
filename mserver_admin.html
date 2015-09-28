@@ -870,7 +870,45 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-          <h1 id='provaydery'>Провайдеры</h1><h2 id='zagruzka-spiska-provayderov'>Загрузка списка провайдеров</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u admin:admin https://www.synq.ru/mserver2-dev/admin/providers
+          <h1 id='provaydery'>Провайдеры</h1><h2 id='sozdanie-provaydera'>Создание провайдера</h2><h3 id='parametry'>Параметры</h3>
+<ul>
+<li><code class="prettyprint">code</code> - код провайдера</li>
+<li><code class="prettyprint">name</code> - имя провайдера</li>
+<li><code class="prettyprint">jur_name</code> - юр. имя провайдера</li>
+</ul>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -u admin:admin -d <span class="s1">'{"code":"rest_provider_1", "name":"Test provider 1", "jur_name": "Some info"}'</span> https://www.synq.ru/mserver2-dev/admin/providers
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">124</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rest_provider_1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Test provider 1"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h2 id='redaktirovanie-provaydera'>Редактирование провайдера</h2><h3 id='parametry'>Параметры</h3>
+<ul>
+<li><code class="prettyprint">code</code> - код провайдера</li>
+<li><code class="prettyprint">name</code> - имя провайдера</li>
+<li><code class="prettyprint">jur_name</code> - юр. имя провайдера</li>
+</ul>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -u admin:admin -d <span class="s1">'{"code":"rest_provider_2", "name":"Test provider 2", "jur_name": "Some info (changed)"}'</span> https://www.synq.ru/mserver2-dev/admin/providers/124
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">124</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rest_provider_2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Test provider 2"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h2 id='zagruzka-spiska-provayderov'>Загрузка списка провайдеров</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u admin:admin https://www.synq.ru/mserver2-dev/admin/providers
 </code></pre>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -892,6 +930,132 @@
     </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rapida_in"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ПС Рапида (агент)"</span><span class="w">
   </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h2 id='sozdanie-servisa-provaydera'>Создание сервиса провайдера</h2><h3 id='parametry'>Параметры</h3>
+<ul>
+<li><code class="prettyprint">name</code> - человекочитаемое имя сервиса</li>
+<li><code class="prettyprint">min, max</code> - минимальная и максимальная сумма платежа, включительно</li>
+<li><code class="prettyprint">parameters.code</code> - ключ параметра платежа</li>
+<li><code class="prettyprint">parameters.comments</code> - комментарий параметра платежа</li>
+<li><code class="prettyprint">parameters.min_length, parameters.max_length</code> - минимальная и максимальная длина значения параметра</li>
+<li><code class="prettyprint">parameters.pattern</code> - регулярное выражение, которому должно удовлетворять значение параметра </li>
+<li><code class="prettyprint">parameters.pattern_description</code> - человекочитаемое описание для pattern</li>
+<li><code class="prettyprint">parameters.title</code> - заголовок параметра</li>
+<li><code class="prettyprint">parameters.type</code> - numeric|text|enum тип параметра, число/текст/перечисление</li>
+<li><code class="prettyprint">parameters.items</code> - возможные значения параметра с типом enum</li>
+</ul>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -u admin:admin -d <span class="s1">'{"name":"Provider service #1", "min":"10", "max": "10000", "parameters" : [{"code": "param1", "comments": "test comment", "min_length": 1, "max_length": 10, "pattern": "*", "pattern_description": "Phone number", "title" : "test title", "type": "numeric"}, {"code": "param2", "comments": "test comment2", "min_length": 1, "max_length": 10, "pattern": "***", "pattern_description": "Phone number2", "title" : "test title2", "type": "text", "items": [{"code" : "item1", "value": "Test Item 1"}, {"code" : "item2", "value": "Test Item 2"}]}]}'</span> https://www.synq.ru/mserver2-dev/admin/providers/124/services
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">7208</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"service_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Provider service #1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"min"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"max"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"payment_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-28T09:05:15.189Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"version"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"provider"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">124</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rest_provider_2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Test provider 2"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"parameters"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"param2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comments"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"test comment2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"min_length"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"max_length"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"***"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern_description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Phone number2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"test title2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"item1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Item 1"</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"item2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Item 2"</span><span class="w">
+      </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"param1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comments"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"test comment"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"min_length"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"max_length"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern_description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Phone number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"test title"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"numeric"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h2 id='redaktirovanie-servisa-provaydera'>Редактирование сервиса провайдера</h2><h3 id='parametry'>Параметры</h3>
+<ul>
+<li><code class="prettyprint">name</code> - человекочитаемое имя сервиса</li>
+<li><code class="prettyprint">min, max</code> - минимальная и максимальная сумма платежа, включительно</li>
+<li><code class="prettyprint">parameters.code</code> - ключ параметра платежа</li>
+<li><code class="prettyprint">parameters.comments</code> - комментарий параметра платежа</li>
+<li><code class="prettyprint">parameters.min_length, parameters.max_length</code> - минимальная и максимальная длина значения параметра</li>
+<li><code class="prettyprint">parameters.pattern</code> - регулярное выражение, которому должно удовлетворять значение параметра </li>
+<li><code class="prettyprint">parameters.pattern_description</code> - человекочитаемое описание для pattern</li>
+<li><code class="prettyprint">parameters.title</code> - заголовок параметра</li>
+<li><code class="prettyprint">parameters.type</code> - numeric|text|enum тип параметра, число/текст/перечисление</li>
+<li><code class="prettyprint">parameters.items</code> - возможные значения параметра с типом enum</li>
+</ul>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -u admin:admin -d <span class="s1">'{"name":"Provider service #1-2", "min":"10", "max": "10000", "parameters" : [{"code": "param1-2", "comments": "test comment", "min_length": 1, "max_length": 10, "pattern": "*", "pattern_description": "Phone number", "title" : "test title-2", "type": "numeric"}, {"code": "param2", "comments": "test comment2-2", "min_length": 1, "max_length": 10, "pattern": "***", "pattern_description": "Phone number2-2", "title" : "test title2-2", "type": "text", "items": [{"code" : "item1-2", "value": "Test Item 1-2"}, {"code" : "item2-2", "value": "Test Item 2-2"}]}]}'</span> https://www.synq.ru/mserver2-dev/admin/providers/services/7208
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">7208</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"service_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Provider service #1-2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"min"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"max"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"payment_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-28T09:26:21.493Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"version"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"provider"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">124</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rest_provider_2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Test provider 2"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"parameters"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"param1-2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comments"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"test comment"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"min_length"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"max_length"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern_description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Phone number"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"test title-2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"numeric"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"param2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"comments"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"test comment2-2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"min_length"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"max_length"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"***"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"pattern_description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Phone number2-2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"test title2-2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"items"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"item2-2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Item 2-2"</span><span class="w">
+      </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"item1-2"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Item 1-2"</span><span class="w">
+      </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h2 id='zagruzka-spiska-servisov-provayderov'>Загрузка списка сервисов провайдеров</h2><pre class="highlight shell"><code><span class="gp">$ </span>curl -u admin:admin https://www.synq.ru/mserver2-dev/admin/providers/services
