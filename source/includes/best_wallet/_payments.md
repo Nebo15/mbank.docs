@@ -1068,7 +1068,10 @@ https://sandbox.wallet.best/v1/payments/25832/pay
 
 ### Токен доступа приложения
 
+```shell
 curl -H "Accept: application/json" -u mbank_storefront:oklol https://www.synq.ru/mserver2-dev/oauth/token -d grant_type=client_credentials
+```
+```json
 {
   "meta" : {
     "code" : 200
@@ -1080,11 +1083,12 @@ curl -H "Accept: application/json" -u mbank_storefront:oklol https://www.synq.ru
     "scope" : "wallet.read person.read person.modify cards.read cards.modify payments.read payments.modify"
   }
 }
+```
 
 После - с этим токеном совершается обычный транзитный платеж, но с обязательной передачей заголовка 
 X-Authorization-Type : application
 
-Параметры:
+### Параметры:
 
 * `type` = **inout** - тип платежа
 * `client_payment_id` - клиентский идентификатор платежа
@@ -1094,9 +1098,7 @@ X-Authorization-Type : application
 * `card` - идентификатор сохраненной карты с которой будут списаны деньги (опциональный)
 * `store_card` - **true | false** - сохранить карту, чтобы использовать ее для платежей в дальнейшем (опциональный)
 
-### Однократное списание с карты
-
-Создаем платеж:
+### Создаем платеж:
 
 ```shell
 $ curl -H 'Content-type:application/json' -H 'X-Authorization-Type:application' -H 'Authorization: bearer 88357939-aa71-426b-9afc-a5a9769ce527'
@@ -1174,6 +1176,7 @@ https://sandbox.wallet.best/v1/payments
 ```
 
 Платим:
+
 ```shell
 curl -H 'X-Authorization-Type:application' -H 'Authorization: bearer 88357939-aa71-426b-9afc-a5a9769ce527' -H 'Content-type:application/json' -X POST https://sandbox.wallet.best/v1/payments/25818/pay
 ```
