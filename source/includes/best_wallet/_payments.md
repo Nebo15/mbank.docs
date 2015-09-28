@@ -1058,6 +1058,177 @@ https://sandbox.wallet.best/v1/payments/25832/pay
 }
 ```
 
+## Анонимный платеж
+
+Анонимный платеж соединяет в одном действии зачисление денег на кошелек через поставщика ввода средств (в настоящее время ИПСП) и списание денег со счета кошелька в пользу поставщика вывода средств (в настоящее время КредитПилот).
+
+Анонимный платеж - аналог Транизитного, только без авторизации
+
+Для того что бы провести такой платеж - клиенту необходимо получить токен доступа для приложения у MServer
+
+### Токен доступа приложения
+
+curl -H "Accept: application/json" -u mbank_storefront:oklol https://www.synq.ru/mserver2-dev/oauth/token -d grant_type=client_credentials
+{
+  "meta" : {
+    "code" : 200
+  },
+  "data" : {
+    "access_token" : "88357939-aa71-426b-9afc-a5a9769ce527",
+    "token_type" : "bearer",
+    "expires_in" : 599,
+    "scope" : "wallet.read person.read person.modify cards.read cards.modify payments.read payments.modify"
+  }
+}
+
+После - с этим токеном совершается обычный транзитный платеж, но с обязательной передачей заголовка 
+X-Authorization-Type : application
+
+Параметры:
+
+* `type` = **inout** - тип платежа
+* `client_payment_id` - клиентский идентификатор платежа
+* `amount` - сумма к зачислению
+* `service` - назначение платежа, идентификатор Сервиса
+* `parameters` - параметры платежного запроса в соответствии с /services/{service_id}
+* `card` - идентификатор сохраненной карты с которой будут списаны деньги (опциональный)
+* `store_card` - **true | false** - сохранить карту, чтобы использовать ее для платежей в дальнейшем (опциональный)
+
+### Однократное списание с карты
+
+Создаем платеж:
+
+```shell
+$ curl -H 'Content-type:application/json' -H 'X-Authorization-Type:application' -H 'Authorization: bearer 88357939-aa71-426b-9afc-a5a9769ce527'
+-d '{"type": "inout", "client_payment_id": "021c6d23-7508-4e35-ad92-852308a47689", "amount": 100, "service": 834,
+"parameters": {"phoneNumber": "9267101283"}}'
+https://sandbox.wallet.best/v1/payments
+```
+
+```json
+{
+    "meta": {
+        "code": 200,
+        "urgent_data": {
+            "amount": 9999,
+            "unseen_payments": 1
+        },
+        "next_action": "pay",
+        "time": 0.418221
+    },
+    "data": {
+        "id": 25778,
+        "client_payment_id": "021c6d23-7508-4e35-ad92-852308a47689",
+        "amount": 100,
+        "total": 103,
+        "created_at": "2015-03-17T13:49:13.394Z",
+        "status": "created",
+        "type": "inout",
+        "service": {
+            "id": 834,
+            "name": "Мегафон"
+        },
+        "parameters": [
+            {
+                "id": "phoneNumber",
+                "is_disabled": false,
+                "is_hidden": false,
+                "is_required": true,
+                "min_length": 12,
+                "max_length": 12,
+                "range_start": 0,
+                "range_end": 0,
+                "patterns": [],
+                "pattern": "^\\+7[0-9]{10}$",
+                "pattern_desc": "Номер телефона РФ начиная с +7 (в международном формате). Например, +79261112233",
+                "type": "phone",
+                "title": "Номер телефона, начиная с +7",
+                "default_value": null,
+                "suggested_values": [],
+                "items": null,
+                "localized_fields": [
+                    "title",
+                    "pattern_desc"
+                ],
+                "value": "+79267101283"
+            }
+        ],
+        "inbound": {
+            "id": 4,
+            "code": "ipsp_in",
+            "name": "ООО ИПСП (агент)"
+        },
+        "outbound": {
+            "id": 1,
+            "code": "tpr_out",
+            "name": "Кредит Пилот"
+        },
+        "card": {
+            "state": "created"
+        },
+        "wallet": {
+            "phone": "+79261111111"
+        }
+    }
+}
+```
+
+Платим:
+```shell
+curl -H 'X-Authorization-Type:application' -H 'Authorization: bearer 88357939-aa71-426b-9afc-a5a9769ce527' -H 'Content-type:application/json' -X POST https://sandbox.wallet.best/v1/payments/25818/pay
+```
+
+```json
+{
+    "meta": {
+        "code": 200,
+        "next_action": "get",
+        "time": 0.317098
+    },
+    "data": {
+        "id": 25818,
+        "client_payment_id": "131c6d23-7508-4e35-ad92-852308a47689",
+        "amount": 100,
+        "total": 103,
+        "created_at": "2015-03-17T15:03:41.606Z",
+        "status": "processing",
+        "type": "inout",
+        "service": {
+            "id": 834,
+            "name": "Мегафон"
+        },
+        "parameters": [
+            {
+                "code": "phoneNumber",
+                "name": "№ Телефона",
+                "value": "9267101283"
+            }
+        ],
+        "inbound": {
+            "id": 4,
+            "code": "ipsp_in",
+            "name": "ООО ИПСП (агент)"
+        },
+        "outbound": {
+            "id": 1,
+            "code": "tpr_out",
+            "name": "Кредит Пилот"
+        },
+        "card": {
+            "state": "pending",
+            "payment_page_url": "https:\/\/test1.ipsp.com\/frontend\/endpoint?product_id=1721&desc=TestWallet&payment_type=S&amount=103.00&currency=RUB&cf=25818&locale=ru&hash=afbe9967151306a3e69900d5e3bffd7b5ef8475c"
+        },
+        "wallet": {
+            "phone": "+79261111111"
+        }
+    }
+}
+```
+
+Далее следует перенаправить пользователя на платежную страницу по ссылке из поля `card.payment_page_url`
+
+
+
 ## Получение истории платежей
 
 Сервис может быть выключеным, но в момент проведения транзакции был активен. Такой сервис будет помечен флагом `is_disabled`
