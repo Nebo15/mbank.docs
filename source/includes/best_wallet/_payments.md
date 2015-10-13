@@ -1231,6 +1231,23 @@ curl -H 'X-Authorization-Type:application' -H 'Authorization: bearer 88357939-aa
 Далее следует перенаправить пользователя на платежную страницу по ссылке из поля `card.payment_page_url`
 
 
+## Уведомление об анонимном платеже на почту
+ 
+Для отправки чека на почту после процессинга анонимного платежа
+
+Параметры:
+
+* `id` - идентификатор платежа
+* `email` - почта получателя
+
+Для локализации использовать заголовк *Accept-Language*, по умолчанию **ru_RU**
+
+```shell
+$ curl -H 'Content-type:application/json' -H 'X-Authorization-Type:application' -H 'Authorization: bearer 88357939-aa71-426b-9afc-a5a9769ce527'
+-d '{"id": 34123, "email": "vasya@petrov.xxx"}'
+https://sandbox.wallet.best/v1/payments/bill
+```
+
 
 ## Получение истории платежей
 
