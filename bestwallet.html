@@ -3347,6 +3347,12 @@ https://sandbox.wallet.best/v1/payments/templates/5422dd02b7f47b52010041a9
 <tr>
 <td>2 * * * * /bin/bash /www/mbank.api/bin/image-optim.sh</td>
 </tr>
+<tr>
+<td>0 12 * * * /www/mbank.api/vendor/bin/pake -f /www/mbank.api/pakefile.php send_daily_transaction_log</td>
+</tr>
+<tr>
+<td>0 13 1 * * /www/mbank.api/vendor/bin/pake -f /www/mbank.api/pakefile.php send_monthly_transaction_log</td>
+</tr>
 </tbody></table>
 
       </div>
