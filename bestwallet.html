@@ -2315,6 +2315,21 @@ https://sandbox.wallet.best/v1/payments
 </span></code></pre>
 
 <p>Далее следует перенаправить пользователя на платежную страницу по ссылке из поля <code class="prettyprint">card.payment_page_url</code></p>
+<h2 id='uvedomlenie-ob-anonimnom-platezhe-na-pochtu'>Уведомление об анонимном платеже на почту</h2>
+<p>Для отправки чека на почту после процессинга анонимного платежа</p>
+
+<p>Параметры:</p>
+
+<ul>
+<li><code class="prettyprint">id</code> - идентификатор платежа</li>
+<li><code class="prettyprint">email</code> - почта получателя</li>
+</ul>
+
+<p>Для локализации использовать заголовк <em>Accept-Language</em>, по умолчанию <strong>ru_RU</strong></p>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -H <span class="s1">'Content-type:application/json'</span> -H <span class="s1">'X-Authorization-Type:application'</span> -H <span class="s1">'Authorization: bearer 88357939-aa71-426b-9afc-a5a9769ce527'</span>
+-d <span class="s1">'{"id": 34123, "email": "vasya@petrov.xxx"}'</span>
+https://sandbox.wallet.best/v1/payments/bill
+</code></pre>
 <h2 id='poluchenie-istorii-platezhey'>Получение истории платежей</h2>
 <p>Сервис может быть выключеным, но в момент проведения транзакции был активен. Такой сервис будет помечен флагом <code class="prettyprint">is_disabled</code>
 <code class="prettyprint">shell
